@@ -106,7 +106,7 @@ def main():
     output_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["grid"])
 
     print(f"AOI  : W={west}, S={south}, E={east}, N={north}")
-    print(f"Cell : {cell_size}° ≈ 1 km")
+    print(f"Cell : {cell_size} deg ~ 1 km")
 
     # ---- Generate the fishnet grid -----------------------------------------
     grid = create_fishnet_grid(west, south, east, north, cell_size)

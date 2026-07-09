@@ -12,6 +12,7 @@ time_window:
   end: "2023-05-31"
 
 gee:
+  project: "citysense-501917"
   sentinel2_collection: "COPERNICUS/S2_HARMONIZED"
   landsat8_collection: "LANDSAT/LC08/C02/T1_L2"
   landsat9_collection: "LANDSAT/LC09/C02/T1_L2"
@@ -19,4 +20,5 @@ gee:
 
 output_paths:
   grid: "data/grid.geojson"
+  ndvi_grid: "data/ndvi_grid.geojson"
   master_data: "data/cells_master.geojson"
