@@ -21,4 +21,5 @@ gee:
 output_paths:
   grid: "data/grid.geojson"
   ndvi_grid: "data/ndvi_grid.geojson"
+  lst_grid: "data/lst_grid.geojson"
   master_data: "data/cells_master.geojson"
