@@ -22,4 +22,6 @@ output_paths:
   grid: "data/grid.geojson"
   ndvi_grid: "data/ndvi_grid.geojson"
   lst_grid: "data/lst_grid.geojson"
+  ndbi_grid: "data/ndbi_grid.geojson"
+  dem_grid: "data/dem_grid.geojson"
   master_data: "data/cells_master.geojson"
