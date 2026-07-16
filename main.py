@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import time
 from collections.abc import Callable
 from pathlib import Path
 
@@ -21,8 +22,17 @@ def run_stage(
         logger.info("Skipping stage '%s'; output already exists: %s", name, expected_output)
         return
     logger.info("Running stage: %s", name)
-    stage()
-    logger.info("Completed stage: %s", name)
+    t0 = time.time()
+    try:
+        stage()
+    except Exception:
+        elapsed = time.time() - t0
+        logger.error(
+            "Stage '%s' FAILED after %.2fs", name, elapsed, exc_info=True,
+        )
+        raise
+    elapsed = time.time() - t0
+    logger.info("Completed stage: %s (%.2fs)", name, elapsed)
 
 
 def main() -> None:

@@ -1,27 +1,28 @@
 """
 compute_uhi.py
 ==============
-Computes Urban Heat Island (UHI) intensity for each grid cell by comparing
-its LST to a baseline "cool/green" reference zone (Sanjay Gandhi National
-Park / Aarey Colony area).
+Computes the Urban Heat Island (UHI) intensity for each cell by comparing
+its LST to a rural/green baseline (Sanjay Gandhi National Park).
 
-UHI_intensity = cell_LST - rural_reference_temp
+UHI_intensity = LST_cell - LST_baseline_mean
 
-Also generates a UHI map showing the spatial distribution of heat island
-intensity across Mumbai.
+Adds 'uhi_intensity' column to data/cells_master.geojson and creates a map.
 
 Usage:
-    python processing/compute_uhi.py         (from project root)
+    python processing/compute_uhi.py
 """
 
 import os
+import logging
 import geopandas as gpd
+import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
-import numpy as np
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.processing.compute_uhi")
 
 # ---------------------------------------------------------------------------
 # Resolve paths
@@ -29,131 +30,125 @@ from config_loader import load_config
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
 
-# Sanjay Gandhi National Park / Aarey Colony baseline bounding box
-# This covers the core forested area used as the "rural/green" reference
+
 def main() -> None:
-    """Add UHI intensity and its configured map artifact to the master data."""
-    print("=" * 60)
-    print("  City Sense -- Week 4: Compute UHI Intensity")
-    print("=" * 60)
+    """Compute Urban Heat Island intensity relative to a green baseline."""
+    logger.info("=== City Sense -- Week 5: Compute UHI Intensity ===")
 
     cfg = load_config()
     master_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["master_data"])
-    output_png = os.path.join(PROJECT_ROOT, cfg["output_paths"]["uhi_map"])
-    park_bbox = cfg["uhi"]["reference_bbox"]
+    output_png = os.path.join(PROJECT_ROOT, "data", "uhi_map.png")
+    baseline = cfg["processing"]["uhi_baseline"]
 
-    # ---- Load master dataset -----------------------------------------------
+    # ---- 1. Load data ------------------------------------------------------
     gdf = gpd.read_file(master_path)
-    print(f"\nLoaded {len(gdf)} cells from {master_path}")
-    print(f"Columns: {list(gdf.columns)}")
+    logger.info("Loaded %d cells from %s", len(gdf), master_path)
 
-    # ---- Define baseline zone (SGNP) using centroid filter -----------------
-    print(f"\n> Baseline zone (SGNP): "
-          f"lon [{park_bbox['west']}, {park_bbox['east']}], "
-          f"lat [{park_bbox['south']}, {park_bbox['north']}]")
+    # ---- 2. Define baseline zone (SGNP) ------------------------------------
+    b_minx, b_maxx = baseline["lon_min"], baseline["lon_max"]
+    b_miny, b_maxy = baseline["lat_min"], baseline["lat_max"]
+    logger.info("Baseline zone defined as: lon [%s, %s], lat [%s, %s]", b_minx, b_maxx, b_miny, b_maxy)
 
-    # Compute centroids for filtering
+    # Find centroids to see which cells fall in the baseline box
     centroids = gdf.geometry.centroid
-    cx = centroids.x
-    cy = centroids.y
-
-    # Filter cells whose centroids fall within the park bounding box
-    park_mask = (
-        (cx >= park_bbox["west"]) & (cx <= park_bbox["east"]) &
-        (cy >= park_bbox["south"]) & (cy <= park_bbox["north"])
+    in_baseline = (
+        (centroids.x >= b_minx) & (centroids.x <= b_maxx) &
+        (centroids.y >= b_miny) & (centroids.y <= b_maxy)
     )
-    park_cells = gdf[park_mask]
-    print(f"  Baseline cells selected: {len(park_cells)}")
 
-    if len(park_cells) == 0:
-        print("  [ERROR] No cells found in the park bounding box!")
-        print("  Adjust PARK_BBOX coordinates in compute_uhi.py.")
+    baseline_cells = gdf[in_baseline]
+    logger.info("Selected %d cells as the baseline reference.", len(baseline_cells))
+
+    if len(baseline_cells) == 0:
+        logger.error("No cells found in the baseline bounding box. Check coordinates.")
         return
 
-    # ---- Compute rural reference temperature --------------------------------
-    rural_ref_temp = park_cells["mean_lst"].mean()
-    print(f"  Rural reference temperature (mean LST of SGNP cells): {rural_ref_temp:.2f} C")
+    # ---- 3. Compute baseline mean LST --------------------------------------
+    ref_temp = baseline_cells["mean_lst"].mean()
+    logger.info("Rural/Green reference temperature (mean): %.2f C", ref_temp)
 
-    # ---- Compute UHI intensity for every cell --------------------------------
-    gdf["uhi_intensity"] = gdf["mean_lst"] - rural_ref_temp
+    # ---- 4. Calculate UHI intensity ----------------------------------------
+    gdf["uhi_intensity"] = gdf["mean_lst"] - ref_temp
 
-    # Stats
-    print(f"\n> UHI Intensity Statistics:")
-    print(f"  Min   : {gdf['uhi_intensity'].min():.2f} C")
-    print(f"  Max   : {gdf['uhi_intensity'].max():.2f} C")
-    print(f"  Mean  : {gdf['uhi_intensity'].mean():.2f} C")
-    print(f"  Median: {gdf['uhi_intensity'].median():.2f} C")
+    logger.info("UHI Intensity stats:")
+    logger.info("  Min : %.2f C", gdf["uhi_intensity"].min())
+    logger.info("  Max : %.2f C", gdf["uhi_intensity"].max())
+    logger.info("  Mean: %.2f C", gdf["uhi_intensity"].mean())
 
-    # Verify: park cells should have negative or near-zero UHI
-    park_uhi_mean = gdf.loc[park_mask, "uhi_intensity"].mean()
-    overall_lst_mean = gdf["mean_lst"].mean()
-    print(f"\n  Verification:")
-    print(f"    Mean LST (baseline/park): {rural_ref_temp:.2f} C")
-    print(f"    Mean LST (all cells):     {overall_lst_mean:.2f} C")
-    print(f"    Mean UHI (park cells):    {park_uhi_mean:.2f} C  (should be ~0)")
-    print(f"    UHI difference (urban - park): {overall_lst_mean - rural_ref_temp:.2f} C")
+    # Verification: built-up cells should have positive UHI
+    hot_cells = gdf[gdf["uhi_intensity"] > 5.0]
+    logger.info("Number of cells with UHI > +5 C: %d", len(hot_cells))
+    if "mean_ndbi" in gdf.columns:
+        hot_ndbi_mean = hot_cells["mean_ndbi"].mean()
+        logger.info("Mean NDBI of these hot cells: %.3f (expect positive/high)", hot_ndbi_mean)
 
-    # ---- Save updated master file -------------------------------------------
+    # ---- 5. Save updated master data ---------------------------------------
     gdf.to_file(master_path, driver="GeoJSON")
-    print(f"\n[OK] Updated master file with uhi_intensity: {master_path}")
+    logger.info("Updated master dataset with 'uhi_intensity' column.")
 
-    # ---- Plot UHI map -------------------------------------------------------
-    print("\n> Generating UHI map...")
-    fig, ax = plt.subplots(1, 1, figsize=(12, 10))
+    # ---- 6. Generate UHI Map -----------------------------------------------
+    logger.info("Generating UHI map...")
+    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 
-    # Use a diverging colormap centered at 0
-    vmax = max(abs(gdf["uhi_intensity"].quantile(0.02)),
-               abs(gdf["uhi_intensity"].quantile(0.98)))
-    vmin = -vmax
+    # A diverging colormap is perfect for UHI:
+    # Blue for cooler than ref, White for neutral, Red for hotter
+    # We centre the colormap at 0.
+    vmin = -3.0
+    vmax = 12.0
+    
+    # Create a custom normalization centered at 0
+    class MidpointNormalize(mcolors.Normalize):
+        def __init__(self, vmin=None, vmax=None, midpoint=None, clip=False):
+            self.midpoint = midpoint
+            mcolors.Normalize.__init__(self, vmin, vmax, clip)
 
-    gdf.plot(
+        def __call__(self, value, clip=None):
+            x, y = [self.vmin, self.midpoint, self.vmax], [0, 0.5, 1]
+            return np.ma.masked_array(np.interp(value, x, y))
+
+    import numpy as np
+    norm = MidpointNormalize(vmin=vmin, vmax=vmax, midpoint=0)
+
+    # Fill NaN with 0 for plotting safety
+    plot_data = gdf.copy()
+    plot_data["uhi_intensity"] = plot_data["uhi_intensity"].fillna(0)
+
+    plot_data.plot(
         column="uhi_intensity",
-        cmap="RdBu_r",  # Red = hot (positive UHI), Blue = cool (negative)
-        edgecolor="gray",
-        linewidth=0.2,
+        cmap="coolwarm",
+        norm=norm,
+        edgecolor="none",
         ax=ax,
-        vmin=vmin,
-        vmax=vmax,
         legend=False,
     )
 
-    # Colorbar
-    sm = plt.cm.ScalarMappable(
-        cmap="RdBu_r",
-        norm=mcolors.Normalize(vmin=vmin, vmax=vmax),
-    )
+    # Add colorbar
+    sm = plt.cm.ScalarMappable(cmap="coolwarm", norm=norm)
     sm.set_array([])
     cbar = fig.colorbar(sm, ax=ax, shrink=0.7, pad=0.02)
-    cbar.set_label("UHI Intensity (C relative to SGNP baseline)", fontsize=11)
+    cbar.set_label("UHI Intensity (C)", fontsize=12)
 
-    # Draw the baseline bounding box
+    # Add a rectangle showing the baseline area
     from matplotlib.patches import Rectangle
-    park_rect = Rectangle(
-        (park_bbox["west"], park_bbox["south"]),
-        park_bbox["east"] - park_bbox["west"],
-        park_bbox["north"] - park_bbox["south"],
-        linewidth=2, edgecolor="green", facecolor="none",
-        linestyle="--", label="SGNP baseline zone",
+    rect = Rectangle(
+        (b_minx, b_miny), b_maxx - b_minx, b_maxy - b_miny,
+        linewidth=2, edgecolor='darkgreen', facecolor='none', linestyle='--'
     )
-    ax.add_patch(park_rect)
+    ax.add_patch(rect)
+    ax.annotate("Baseline\n(SGNP)", xy=(b_maxx, b_maxy), xytext=(b_maxx+0.01, b_maxy),
+                color='darkgreen', weight='bold', fontsize=9)
 
-    ax.set_title(
-        "Mumbai -- Urban Heat Island Intensity (Pre-Monsoon 2023)",
-        fontsize=14, fontweight="bold",
-    )
-    ax.set_xlabel("Longitude", fontsize=11)
-    ax.set_ylabel("Latitude", fontsize=11)
+    ax.set_title("Mumbai UHI Intensity (Relative to SGNP Baseline)", fontsize=14, fontweight="bold")
+    ax.set_xlabel("Longitude")
+    ax.set_ylabel("Latitude")
     ax.ticklabel_format(useOffset=False)
-    ax.legend(loc="lower left", fontsize=10)
 
     plt.tight_layout()
     plt.savefig(output_png, dpi=150, bbox_inches="tight")
-    print(f"[OK] UHI map saved to: {output_png}")
+    logger.info("Saved UHI map to: %s", output_png)
     plt.close()
 
-    print("\n" + "=" * 60)
-    print("  [OK] UHI computation complete!")
-    print("=" * 60)
+    logger.info("=== UHI computation complete! ===")
 
 
 if __name__ == "__main__":

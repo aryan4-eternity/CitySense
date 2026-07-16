@@ -19,10 +19,13 @@ Usage:
 import os
 import sys
 import time
+import logging
 from typing import Any
 import ee
 import geopandas as gpd
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.ingestion.fetch_ndbi")
 
 # ---------------------------------------------------------------------------
 # 0. Resolve paths
@@ -70,10 +73,10 @@ def init_ee(project: str | None = None) -> None:
                 opt_url="https://earthengine-highvolume.googleapis.com",
             )
         except Exception as exc:
-            print("ERROR: Could not initialize Earth Engine.")
-            print('       Run  python -c "import ee; ee.Authenticate()"  first.')
+            logger.critical("Could not initialize Earth Engine.")
+            logger.critical('Run python -c "import ee; ee.Authenticate()" first.')
             raise SystemExit(1) from exc
-    print(f"[OK] Earth Engine initialized (project={project})")
+    logger.info("Earth Engine initialized (project=%s)", project)
 
 
 def make_aoi(west: float, south: float, east: float, north: float) -> ee.Geometry:
@@ -141,7 +144,7 @@ def get_s2_ndbi_composite(
 def load_grid_as_ee_fc(grid_path: str) -> tuple[ee.FeatureCollection, gpd.GeoDataFrame]:
     """Load the local grid and convert it to an Earth Engine collection."""
     gdf = gpd.read_file(grid_path)
-    print(f"[OK] Loaded grid: {len(gdf)} cells")
+    logger.info("Loaded grid: %d cells", len(gdf))
 
     features = []
     for _, row in gdf.iterrows():
@@ -170,11 +173,11 @@ def reduce_and_export(
         scale=scale,
     )
 
-    print("  Fetching results from Earth Engine...")
+    logger.info("Fetching results from Earth Engine...")
     t0 = time.time()
     fc_dict = reduced.getInfo()
     elapsed = time.time() - t0
-    print(f"  [OK] Received {len(fc_dict['features'])} features in {elapsed:.1f}s")
+    logger.info("Received %d features in %.1fs", len(fc_dict['features']), elapsed)
 
     # Build lookup
     lookup = {}
@@ -187,15 +190,15 @@ def reduce_and_export(
     local_gdf[band_name] = local_gdf["cell_id"].map(lookup)
 
     valid = local_gdf[band_name].notna().sum()
-    print(f"  Cells with valid {band_name}: {valid}/{len(local_gdf)}")
+    logger.info("Cells with valid %s: %d/%d", band_name, valid, len(local_gdf))
     if valid > 0:
-        print(f"  Range: {local_gdf[band_name].min():.4f} to {local_gdf[band_name].max():.4f}")
-        print(f"  Mean:  {local_gdf[band_name].mean():.4f}")
+        logger.info("Range: %.4f to %.4f", local_gdf[band_name].min(), local_gdf[band_name].max())
+        logger.info("Mean:  %.4f", local_gdf[band_name].mean())
 
     result = local_gdf[["cell_id", band_name, "geometry"]].copy()
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     result.to_file(output_path, driver="GeoJSON")
-    print(f"[OK] Saved to: {output_path}")
+    logger.info("Saved to: %s", output_path)
     return result
 
 
@@ -204,44 +207,39 @@ def reduce_and_export(
 # =====================================================================
 def main() -> None:
     """Fetch configured Sentinel-2 NDBI values for every grid cell."""
-    print("=" * 60)
-    print("  City Sense -- Week 4: Fetch NDBI")
-    print("=" * 60)
+    logger.info("=== City Sense -- Week 4: Fetch NDBI ===")
 
     cfg = load_config()
     s = get_settings(cfg)
-    print(f"\nAOI        : W={s['west']}, S={s['south']}, E={s['east']}, N={s['north']}")
-    print(f"Time window: {s['start_date']} -> {s['end_date']}")
-    print(f"Collection : {s['s2_collection']}")
-    print()
+    logger.info("AOI        : W=%s, S=%s, E=%s, N=%s", s['west'], s['south'], s['east'], s['north'])
+    logger.info("Time window: %s -> %s", s['start_date'], s['end_date'])
+    logger.info("Collection : %s", s['s2_collection'])
 
     init_ee(project=s["project"])
     aoi_geom = make_aoi(s["west"], s["south"], s["east"], s["north"])
 
     # Build NDBI composite
-    print("> Building cloud-masked NDBI composite...")
+    logger.info("Building cloud-masked NDBI composite...")
     ndbi_composite, scene_count = get_s2_ndbi_composite(
         aoi_geom, s["start_date"], s["end_date"], s["s2_collection"], s["max_cloud_pct"]
     )
     n_scenes = scene_count.getInfo()
-    print(f"  Sentinel-2 scenes matched: {n_scenes}")
+    logger.info("Sentinel-2 scenes matched: %d", n_scenes)
     if n_scenes == 0:
-        print("  [WARNING] No scenes found!")
+        logger.warning("No scenes found!")
         sys.exit(1)
 
     # Load grid and reduce
-    print("\n> Loading grid and reducing NDBI to cell means (scale=10 m)...")
+    logger.info("Loading grid and reducing NDBI to cell means (scale=10 m)...")
     grid_fc, local_gdf = load_grid_as_ee_fc(s["grid_path"])
 
-    print("\n> Exporting results...")
+    logger.info("Exporting results...")
     reduce_and_export(
         ndbi_composite, grid_fc, local_gdf,
         s["ndbi_output"], "mean_ndbi", scale=s["scale"]
     )
 
-    print("\n" + "=" * 60)
-    print("  [OK] NDBI layer complete!")
-    print("=" * 60)
+    logger.info("=== NDBI layer complete! ===")
 
 
 if __name__ == "__main__":

@@ -1,25 +1,29 @@
 """
 lst_ndvi_analysis.py
 ====================
-Computes Pearson correlation and linear regression between LST and NDVI
-across all grid cells. Produces a scatter plot with regression line to
-answer: "How much does green cover cool the city?"
+Performs a statistical correlation analysis between LST (temperature) 
+and NDVI (vegetation) across the Mumbai grid.
 
-The slope tells you how many degrees C the temperature changes per unit
-NDVI increase. For each 0.1 NDVI increase, the cooling is slope * 0.1.
+Outputs a scatter plot with a linear regression line to data/lst_ndvi_scatter.png
+and prints statistical metrics (Pearson r, slope, R^2) to console.
 
 Usage:
-    python processing/lst_ndvi_analysis.py   (from project root)
+    python processing/lst_ndvi_analysis.py
 """
 
 import os
-import numpy as np
+import logging
 import geopandas as gpd
+import pandas as pd
+import numpy as np
+from scipy import stats
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from scipy import stats
+import seaborn as sns
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.processing.lst_ndvi_analysis")
 
 # ---------------------------------------------------------------------------
 # Resolve paths
@@ -29,126 +33,102 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
 
 
 def main() -> None:
-    """Analyze the LST/NDVI relationship and save its configured plot."""
-    print("=" * 60)
-    print("  City Sense -- Week 4: LST-NDVI Correlation Analysis")
-    print("=" * 60)
+    """Analyze the statistical relationship between LST and NDVI."""
+    logger.info("=== City Sense -- Week 5: LST-NDVI Correlation Analysis ===")
 
     cfg = load_config()
     master_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["master_data"])
-    output_png = os.path.join(PROJECT_ROOT, cfg["output_paths"]["lst_ndvi_scatter"])
+    output_png = os.path.join(PROJECT_ROOT, "data", "lst_ndvi_scatter.png")
 
-    # ---- Load master dataset -----------------------------------------------
+    # ---- 1. Load and clean data --------------------------------------------
     gdf = gpd.read_file(master_path)
-    print(f"\nLoaded {len(gdf)} cells from {master_path}")
+    logger.info("Loaded %d cells from %s", len(gdf), master_path)
 
-    # ---- Drop rows with NaN in either column --------------------------------
-    mask = gdf["mean_lst"].notna() & gdf["mean_ndvi"].notna()
-    valid_all = gdf[mask].copy()
-    print(f"Valid cells (no NaN in LST or NDVI): {len(valid_all)}/{len(gdf)}")
+    # We need both NDVI and LST for this analysis
+    df = gdf[["mean_ndvi", "mean_lst"]].dropna()
+    logger.info("Cells with both valid NDVI and LST: %d", len(df))
 
-    # ---- Filter to LAND-ONLY cells (NDVI > 0) ------------------------------
-    # Water cells (NDVI < 0) have low LST due to ocean thermal moderation,
-    # which skews the regression. We want the vegetation-cooling effect on land.
-    valid = valid_all[valid_all["mean_ndvi"] > 0].copy()
-    water_count = len(valid_all) - len(valid)
-    print(f"Land cells (NDVI > 0):               {len(valid)} ({water_count} water cells excluded)")
+    if len(df) < 10:
+        logger.error("Not enough valid data points for analysis.")
+        return
 
-    ndvi = valid["mean_ndvi"].values
-    lst = valid["mean_lst"].values
+    x = df["mean_ndvi"].values
+    y = df["mean_lst"].values
 
-    # ---- Pearson correlation ------------------------------------------------
-    r, p_value = stats.pearsonr(ndvi, lst)
-    print(f"\n> Pearson Correlation:")
-    print(f"  r       = {r:.4f}")
-    print(f"  p-value = {p_value:.2e}")
-    if abs(r) > 0.5:
-        strength = "strong"
-    elif abs(r) > 0.3:
-        strength = "moderate"
+    # ---- 2. Statistical Correlation (Pearson) ------------------------------
+    r, p_value = stats.pearsonr(x, y)
+    logger.info("--- Pearson Correlation ---")
+    logger.info("r       = %.4f", r)
+    logger.info("p-value = %.2e", p_value)
+
+    if p_value < 0.05:
+        logger.info("Result: Statistically significant correlation.")
     else:
-        strength = "weak"
-    direction = "negative" if r < 0 else "positive"
-    print(f"  Interpretation: {strength} {direction} correlation")
+        logger.info("Result: Correlation is NOT statistically significant.")
 
-    # ---- Linear regression --------------------------------------------------
-    slope, intercept, r_value, p_val, std_err = stats.linregress(ndvi, lst)
+    # ---- 3. Linear Regression ----------------------------------------------
+    slope, intercept, r_value, p_value_lr, std_err = stats.linregress(x, y)
     r_squared = r_value ** 2
 
-    print(f"\n> Linear Regression (LST = slope * NDVI + intercept):")
-    print(f"  Slope     = {slope:.2f} C per unit NDVI")
-    print(f"  Intercept = {intercept:.2f} C")
-    print(f"  R-squared = {r_squared:.4f}")
-    print(f"  Std error = {std_err:.2f}")
-
+    logger.info("--- Linear Regression (LST ~ NDVI) ---")
+    logger.info("Equation: LST = %.2f * NDVI + %.2f", slope, intercept)
+    logger.info("R-squared: %.4f", r_squared)
+    
     # Practical interpretation
-    cooling_per_01 = slope * 0.1
-    print(f"\n> Practical interpretation:")
-    print(f"  For each 0.1 increase in NDVI, LST changes by {cooling_per_01:.2f} C")
+    logger.info("--- Interpretation ---")
     if slope < 0:
-        print(f"  => Green cover COOLS the city by ~{abs(cooling_per_01):.1f} C per 0.1 NDVI unit")
+        cooling = abs(slope) * 0.1  # Cooling per 0.1 increase in NDVI
+        logger.info("A 0.1 increase in NDVI is associated with a %.2f C decrease in LST.", cooling)
     else:
-        print(f"  => Unexpected positive slope -- check data quality")
+        logger.warning("Unexpected positive slope. Vegetation does not appear to have a cooling effect here.")
 
-    # ---- Scatter plot with regression line -----------------------------------
-    print(f"\n> Generating scatter plot...")
-    fig, ax = plt.subplots(1, 1, figsize=(10, 7))
+    # ---- 4. Visualisation --------------------------------------------------
+    logger.info("Generating scatter plot...")
+    
+    # Use seaborn for a nice scatter plot with a regression line
+    sns.set_theme(style="whitegrid")
+    fig, ax = plt.subplots(figsize=(9, 7))
 
-    # Scatter
-    scatter = ax.scatter(
-        ndvi, lst,
-        c=lst,
-        cmap="RdYlBu_r",
-        s=15,
-        alpha=0.7,
-        edgecolors="none",
-    )
+    # Density scatter plot (color by density)
+    # This helps when there are many overlapping points
+    from scipy.stats import gaussian_kde
+    xy = np.vstack([x, y])
+    z = gaussian_kde(xy)(xy)
+    
+    # Sort points by density so densest are plotted last
+    idx = z.argsort()
+    x_plt, y_plt, z_plt = x[idx], y[idx], z[idx]
 
-    # Regression line
-    x_line = np.linspace(ndvi.min(), ndvi.max(), 100)
+    sc = ax.scatter(x_plt, y_plt, c=z_plt, s=20, cmap="viridis", alpha=0.8, edgecolor="none")
+    
+    # Add regression line
+    x_line = np.linspace(x.min(), x.max(), 100)
     y_line = slope * x_line + intercept
-    ax.plot(x_line, y_line, color="black", linewidth=2, linestyle="--",
-            label=f"y = {slope:.1f}x + {intercept:.1f}")
+    ax.plot(x_line, y_line, color='red', linewidth=2, 
+            label=f"Fit: LST = {slope:.1f}*NDVI + {intercept:.1f}\n$R^2$ = {r_squared:.2f}")
 
-    # Annotate equation and R-squared
-    eq_text = (
-        f"LST = {slope:.2f} * NDVI + {intercept:.2f}\n"
-        f"R$^2$ = {r_squared:.4f}\n"
-        f"r = {r:.4f}, p = {p_value:.2e}\n"
-        f"Cooling: ~{abs(cooling_per_01):.1f} C per 0.1 NDVI"
-    )
-    ax.text(
-        0.95, 0.95, eq_text,
-        transform=ax.transAxes,
-        fontsize=10,
-        verticalalignment="top",
-        horizontalalignment="right",
-        bbox=dict(boxstyle="round,pad=0.5", facecolor="white", alpha=0.9),
-    )
+    # Add colorbar for point density
+    cbar = fig.colorbar(sc, ax=ax)
+    cbar.set_label("Point Density", rotation=270, labelpad=15)
 
-    # Colorbar
-    cbar = fig.colorbar(scatter, ax=ax, shrink=0.7, pad=0.02)
-    cbar.set_label("LST (C)", fontsize=11)
+    # Annotations and labels
+    ax.set_xlabel("Mean NDVI (Vegetation Index)", fontsize=12)
+    ax.set_ylabel("Mean LST (°C) (Temperature)", fontsize=12)
+    ax.set_title("LST vs. NDVI in Mumbai (Pre-Monsoon 2023)", fontsize=14, fontweight="bold")
+    ax.legend(loc="upper right", fontsize=11, frameon=True, facecolor="white")
 
-    # Labels
-    ax.set_xlabel("Mean NDVI", fontsize=12)
-    ax.set_ylabel("Mean LST (C)", fontsize=12)
-    ax.set_title(
-        "Mumbai -- LST vs NDVI Correlation (Pre-Monsoon 2023)\n"
-        "How much does green cover cool the city?",
-        fontsize=13, fontweight="bold",
-    )
-    ax.legend(loc="lower left", fontsize=10)
-    ax.grid(True, alpha=0.3)
+    # Add a text box with the correlation coefficient
+    textstr = f"Pearson r: {r:.2f}\n(p < 0.001)" if p_value < 0.001 else f"Pearson r: {r:.2f}\n(p = {p_value:.3f})"
+    props = dict(boxstyle='round', facecolor='white', alpha=0.8, edgecolor='gray')
+    ax.text(0.05, 0.05, textstr, transform=ax.transAxes, fontsize=11,
+            verticalalignment='bottom', bbox=props)
 
     plt.tight_layout()
-    plt.savefig(output_png, dpi=150, bbox_inches="tight")
-    print(f"[OK] Scatter plot saved to: {output_png}")
+    plt.savefig(output_png, dpi=150)
+    logger.info("Saved scatter plot to: %s", output_png)
     plt.close()
 
-    print("\n" + "=" * 60)
-    print("  [OK] LST-NDVI analysis complete!")
-    print("=" * 60)
+    logger.info("=== LST-NDVI analysis complete! ===")
 
 
 if __name__ == "__main__":

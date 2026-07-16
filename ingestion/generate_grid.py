@@ -11,12 +11,14 @@ Usage:
     python ingestion/generate_grid.py        (from project root)
 """
 
+import logging
 import os
-import sys
 import numpy as np
 import geopandas as gpd
 from shapely.geometry import box, Polygon
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.ingestion.generate_grid")
 
 # ---------------------------------------------------------------------------
 # 1. Resolve paths – make sure project resources can be found regardless of
@@ -98,21 +100,21 @@ def main() -> None:
     cell_size = cfg["grid"]["cell_size_deg"]
     output_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["grid"])
 
-    print(f"AOI  : W={west}, S={south}, E={east}, N={north}")
-    print(f"Cell : {cell_size} deg ~ 1 km")
+    logger.info("AOI  : W=%s, S=%s, E=%s, N=%s", west, south, east, north)
+    logger.info("Cell : %s deg ~ 1 km", cell_size)
 
     # ---- Generate the fishnet grid -----------------------------------------
     grid = create_fishnet_grid(west, south, east, north, cell_size)
-    print(f"Total cells generated: {len(grid)}")
+    logger.info("Total cells generated: %d", len(grid))
 
     # ---- Clip to AOI -------------------------------------------------------
     grid = clip_to_aoi(grid, west, south, east, north)
-    print(f"Cells after clipping : {len(grid)}")
+    logger.info("Cells after clipping : %d", len(grid))
 
     # ---- Save to GeoJSON ---------------------------------------------------
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     grid.to_file(output_path, driver="GeoJSON")
-    print(f"Grid saved to: {output_path}")
+    logger.info("Grid saved to: %s", output_path)
 
 
 if __name__ == "__main__":

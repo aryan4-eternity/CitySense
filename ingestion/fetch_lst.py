@@ -30,11 +30,14 @@ import os
 import sys
 import math
 import time
+import logging
 from typing import Any
 import ee
 import geopandas as gpd
 import pandas as pd
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.ingestion.fetch_lst")
 
 # ---------------------------------------------------------------------------
 # 0. Resolve paths
@@ -96,11 +99,11 @@ def init_ee(project: str | None = None) -> None:
                 opt_url="https://earthengine-highvolume.googleapis.com",
             )
         except Exception as exc:
-            print("ERROR: Could not initialize Earth Engine.")
-            print('       Run  python -c "import ee; ee.Authenticate()"  first.')
-            print(f"       Project: {project}")
+            logger.critical("Could not initialize Earth Engine.")
+            logger.critical('Run python -c "import ee; ee.Authenticate()" first.')
+            logger.critical("Project: %s", project)
             raise SystemExit(1) from exc
-    print(f"[OK] Earth Engine initialized (project={project})")
+    logger.info("Earth Engine initialized (project=%s)", project)
 
 
 def make_aoi(west: float, south: float, east: float, north: float) -> ee.Geometry:
@@ -256,7 +259,7 @@ def load_grid_as_ee_fc(grid_path: str) -> tuple:
     preserving cell_id property.
     """
     gdf = gpd.read_file(grid_path)
-    print(f"[OK] Loaded grid: {len(gdf)} cells from {grid_path}")
+    logger.info("Loaded grid: %d cells from %s", len(gdf), grid_path)
 
     features = []
     for _, row in gdf.iterrows():
@@ -311,12 +314,12 @@ def export_to_geojson(
 
     For ~836 cells this runs within getInfo() limits.
     """
-    print("  Fetching results from Earth Engine (this may take 1-3 minutes)...")
+    logger.info("Fetching results from Earth Engine (this may take 1-3 minutes)...")
     t0 = time.time()
 
     fc_dict = reduced_fc.getInfo()
     elapsed = time.time() - t0
-    print(f"  [OK] Received {len(fc_dict['features'])} features in {elapsed:.1f}s")
+    logger.info("Received %d features in %.1fs", len(fc_dict['features']), elapsed)
 
     # Build lookup: cell_id -> mean LST
     lst_lookup = {}
@@ -332,19 +335,17 @@ def export_to_geojson(
 
     # Report stats
     valid = local_gdf["mean_lst"].notna().sum()
-    print(f"  Cells with valid LST: {valid}/{len(local_gdf)}")
+    logger.info("Cells with valid LST: %d/%d", valid, len(local_gdf))
     if valid > 0:
-        print(f"  LST range: "
-              f"{local_gdf['mean_lst'].min():.2f} - "
-              f"{local_gdf['mean_lst'].max():.2f} C")
-        print(f"  LST mean:  {local_gdf['mean_lst'].mean():.2f} C")
+        logger.info("LST range: %.2f - %.2f C", local_gdf['mean_lst'].min(), local_gdf['mean_lst'].max())
+        logger.info("LST mean:  %.2f C", local_gdf['mean_lst'].mean())
 
     # Sanity check: Mumbai pre-monsoon should be 25-50 C
     lst_min = local_gdf["mean_lst"].min()
     lst_max = local_gdf["mean_lst"].max()
     if lst_min < 10 or lst_max > 60:
-        print("  [WARNING] LST values outside expected range (25-45 C).")
-        print("            Check emissivity parameters or input data.")
+        logger.warning("LST values outside expected range (25-45 C).")
+        logger.warning("Check emissivity parameters or input data.")
 
     # Keep only required columns
     result = local_gdf[["cell_id", "mean_lst", "geometry"]].copy()
@@ -352,7 +353,7 @@ def export_to_geojson(
     # Save to GeoJSON
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     result.to_file(output_path, driver="GeoJSON")
-    print(f"[OK] Saved LST grid to: {output_path}")
+    logger.info("Saved LST grid to: %s", output_path)
 
     return result
 
@@ -362,26 +363,23 @@ def export_to_geojson(
 # =====================================================================
 def main() -> None:
     """Fetch configured Landsat land-surface temperatures for the grid."""
-    print("=" * 60)
-    print("  City Sense -- Week 3: Fetch LST")
-    print("=" * 60)
+    logger.info("=== City Sense -- Week 3: Fetch LST ===")
 
     # ---- Step 1: Configuration -------------------------------------------
     cfg = load_config()
     s = get_settings(cfg)
-    print(f"\nAOI        : W={s['west']}, S={s['south']}, E={s['east']}, N={s['north']}")
-    print(f"Time window: {s['start_date']} -> {s['end_date']}")
-    print(f"Collections: {s['l8_collection']} + {s['l9_collection']}")
-    print(f"Grid input : {s['grid_path']}")
-    print(f"LST output : {s['lst_output']}")
-    print()
+    logger.info("AOI        : W=%s, S=%s, E=%s, N=%s", s['west'], s['south'], s['east'], s['north'])
+    logger.info("Time window: %s -> %s", s['start_date'], s['end_date'])
+    logger.info("Collections: %s + %s", s['l8_collection'], s['l9_collection'])
+    logger.info("Grid input : %s", s['grid_path'])
+    logger.info("LST output : %s", s['lst_output'])
 
     # ---- Step 2: Initialize Earth Engine ---------------------------------
     init_ee(project=s["project"])
     aoi_geom = make_aoi(s["west"], s["south"], s["east"], s["north"])
 
     # ---- Step 3-5: Build LST composite -----------------------------------
-    print("> Building cloud-masked Landsat 8+9 LST composite...")
+    logger.info("Building cloud-masked Landsat 8+9 LST composite...")
     lst_composite, scene_count = get_landsat_lst_composite(
         aoi=aoi_geom,
         start_date=s["start_date"],
@@ -390,26 +388,24 @@ def main() -> None:
         l9_id=s["l9_collection"],
     )
     n_scenes = scene_count.getInfo()
-    print(f"  Landsat 8+9 scenes matched: {n_scenes}")
+    logger.info("Landsat 8+9 scenes matched: %d", n_scenes)
     if n_scenes == 0:
-        print("  [WARNING] No scenes found! Try widening the date range.")
+        logger.warning("No scenes found! Try widening the date range.")
         sys.exit(1)
 
     # ---- Step 6: Load grid as ee.FeatureCollection -----------------------
-    print("\n> Loading grid into Earth Engine...")
+    logger.info("Loading grid into Earth Engine...")
     grid_fc, local_gdf = load_grid_as_ee_fc(s["grid_path"])
 
     # ---- Step 7: Reduce to grid cell means (scale=100m) ------------------
-    print(f"\n> Reducing LST to grid cell means (scale={s['scale']} m)...")
+    logger.info("Reducing LST to grid cell means (scale=%d m)...", s['scale'])
     reduced_fc = reduce_lst_to_grid(lst_composite, grid_fc, scale=s["scale"])
 
     # ---- Step 8: Export to local GeoJSON ---------------------------------
-    print("\n> Exporting results...")
+    logger.info("Exporting results...")
     result_gdf = export_to_geojson(reduced_fc, local_gdf, s["lst_output"])
 
-    print("\n" + "=" * 60)
-    print("  [OK] Week 3 complete - LST layer generated!")
-    print("=" * 60)
+    logger.info("=== Week 3 complete - LST layer generated! ===")
 
 
 if __name__ == "__main__":

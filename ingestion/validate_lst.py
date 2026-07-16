@@ -16,6 +16,7 @@ Usage:
 """
 
 import os
+import logging
 import geopandas as gpd
 import matplotlib
 matplotlib.use("Agg")  # non-interactive backend
@@ -23,6 +24,8 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.ingestion.validate_lst")
 
 
 # ---------------------------------------------------------------------------
@@ -37,31 +40,33 @@ def main() -> None:
     output_png = os.path.join(PROJECT_ROOT, config["output_paths"]["lst_validation"])
     # ---- Load the LST grid -------------------------------------------------
     if not os.path.exists(lst_path):
-        print(f"ERROR: LST file not found at {lst_path}")
-        print("Run  python ingestion/fetch_lst.py  first.")
+        logger.error("LST file not found at %s", lst_path)
+        logger.error("Run python ingestion/fetch_lst.py first.")
         return
 
     gdf = gpd.read_file(lst_path)
-    print(f"Loaded {len(gdf)} cells from {lst_path}")
-    print(f"Columns: {list(gdf.columns)}")
+    logger.info("Loaded %d cells from %s", len(gdf), lst_path)
+    logger.info("Columns: %s", list(gdf.columns))
 
     # ---- Quick stats -------------------------------------------------------
     valid = gdf["mean_lst"].notna()
-    print(f"\nValid LST values: {valid.sum()}/{len(gdf)}")
+    logger.info("Valid LST values: %d/%d", valid.sum(), len(gdf))
     if valid.sum() > 0:
-        print(f"  Min   : {gdf.loc[valid, 'mean_lst'].min():.2f} C")
-        print(f"  Max   : {gdf.loc[valid, 'mean_lst'].max():.2f} C")
-        print(f"  Mean  : {gdf.loc[valid, 'mean_lst'].mean():.2f} C")
-        print(f"  Median: {gdf.loc[valid, 'mean_lst'].median():.2f} C")
+        logger.info("Min   : %.2f C", gdf.loc[valid, 'mean_lst'].min())
+        logger.info("Max   : %.2f C", gdf.loc[valid, 'mean_lst'].max())
+        logger.info("Mean  : %.2f C", gdf.loc[valid, 'mean_lst'].mean())
+        logger.info("Median: %.2f C", gdf.loc[valid, 'mean_lst'].median())
 
     # ---- Plausibility check ------------------------------------------------
     lst_min = gdf.loc[valid, "mean_lst"].min()
     lst_max = gdf.loc[valid, "mean_lst"].max()
     if lst_min >= 20 and lst_max <= 50:
-        print("\n  [OK] LST values are in the expected range for Mumbai pre-monsoon.")
+        logger.info("LST values are in the expected range for Mumbai pre-monsoon.")
     else:
-        print(f"\n  [NOTE] LST range ({lst_min:.1f} - {lst_max:.1f} C) is outside "
-              "the typical 25-45 C band. Check data quality.")
+        logger.warning(
+            "LST range (%.1f - %.1f C) is outside the typical 25-45 C band. Check data quality.",
+            lst_min, lst_max
+        )
 
     # ---- Plot with temperature colormap ------------------------------------
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
@@ -131,7 +136,7 @@ def main() -> None:
 
     plt.tight_layout()
     plt.savefig(output_png, dpi=150, bbox_inches="tight")
-    print(f"\n[OK] Validation plot saved to: {output_png}")
+    logger.info("Validation plot saved to: %s", output_png)
     plt.close()
 
 

@@ -9,6 +9,7 @@ Usage:
     python ingestion/validate_grid.py        (from project root)
 """
 
+import logging
 import os
 import geopandas as gpd
 import matplotlib
@@ -16,6 +17,7 @@ matplotlib.use("Agg")  # non-interactive backend for saving to file
 import matplotlib.pyplot as plt
 from config_loader import load_config
 
+logger = logging.getLogger("CitySense.ingestion.validate_grid")
 
 # ---------------------------------------------------------------------------
 # Resolve paths
@@ -29,13 +31,13 @@ def main() -> None:
     output_png = os.path.join(PROJECT_ROOT, config["output_paths"]["grid_validation"])
     # ---- Load the grid GeoJSON ---------------------------------------------
     if not os.path.exists(grid_path):
-        print(f"ERROR: Grid file not found at {grid_path}")
-        print("Run  python ingestion/generate_grid.py  first.")
+        logger.error("Grid file not found at %s", grid_path)
+        logger.error("Run  python ingestion/generate_grid.py  first.")
         return
 
     grid = gpd.read_file(grid_path)
-    print(f"Loaded {len(grid)} cells from {grid_path}")
-    print(grid.head())
+    logger.info("Loaded %d cells from %s", len(grid), grid_path)
+    logger.debug("Grid head:\n%s", str(grid.head()))
 
     # ---- Plot --------------------------------------------------------------
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
@@ -58,7 +60,7 @@ def main() -> None:
 
     plt.tight_layout()
     plt.savefig(output_png, dpi=150)
-    print(f"Validation plot saved to: {output_png}")
+    logger.info("Validation plot saved to: %s", output_png)
     plt.close()
 
 

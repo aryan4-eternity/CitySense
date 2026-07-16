@@ -14,6 +14,7 @@ Usage:
     python -m ingestion.validate_ndvi        (from project root)
 """
 
+import logging
 import os
 import geopandas as gpd
 import matplotlib
@@ -22,6 +23,8 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.ingestion.validate_ndvi")
 
 
 # ---------------------------------------------------------------------------
@@ -36,22 +39,22 @@ def main() -> None:
     output_png = os.path.join(PROJECT_ROOT, config["output_paths"]["ndvi_validation"])
     # ---- Load the NDVI grid ------------------------------------------------
     if not os.path.exists(ndvi_path):
-        print(f"ERROR: NDVI file not found at {ndvi_path}")
-        print("Run  python ingestion/fetch_ndvi.py  first.")
+        logger.error("NDVI file not found at %s", ndvi_path)
+        logger.error("Run  python ingestion/fetch_ndvi.py  first.")
         return
 
     gdf = gpd.read_file(ndvi_path)
-    print(f"Loaded {len(gdf)} cells from {ndvi_path}")
-    print(f"Columns: {list(gdf.columns)}")
+    logger.info("Loaded %d cells from %s", len(gdf), ndvi_path)
+    logger.info("Columns: %s", list(gdf.columns))
 
     # ---- Quick stats -------------------------------------------------------
     valid = gdf["mean_ndvi"].notna()
-    print(f"\nValid NDVI values: {valid.sum()}/{len(gdf)}")
+    logger.info("Valid NDVI values: %d/%d", valid.sum(), len(gdf))
     if valid.sum() > 0:
-        print(f"  Min  : {gdf.loc[valid, 'mean_ndvi'].min():.4f}")
-        print(f"  Max  : {gdf.loc[valid, 'mean_ndvi'].max():.4f}")
-        print(f"  Mean : {gdf.loc[valid, 'mean_ndvi'].mean():.4f}")
-        print(f"  Median: {gdf.loc[valid, 'mean_ndvi'].median():.4f}")
+        logger.info("  Min  : %.4f", gdf.loc[valid, 'mean_ndvi'].min())
+        logger.info("  Max  : %.4f", gdf.loc[valid, 'mean_ndvi'].max())
+        logger.info("  Mean : %.4f", gdf.loc[valid, 'mean_ndvi'].mean())
+        logger.info("  Median: %.4f", gdf.loc[valid, 'mean_ndvi'].median())
 
     # ---- Plot with greens colourmap ----------------------------------------
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
@@ -108,7 +111,7 @@ def main() -> None:
 
     plt.tight_layout()
     plt.savefig(output_png, dpi=150, bbox_inches="tight")
-    print(f"\n[OK] Validation plot saved to: {output_png}")
+    logger.info("Validation plot saved to: %s", output_png)
     plt.close()
 
 

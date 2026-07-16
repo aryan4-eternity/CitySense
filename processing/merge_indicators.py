@@ -12,9 +12,12 @@ Usage:
 """
 
 import os
+import logging
 import geopandas as gpd
 import pandas as pd
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.processing.merge_indicators")
 
 # ---------------------------------------------------------------------------
 # Resolve paths
@@ -25,9 +28,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
 
 def main() -> None:
     """Merge the four configured indicator layers into the master dataset."""
-    print("=" * 60)
-    print("  City Sense -- Week 4: Merge Indicators")
-    print("=" * 60)
+    logger.info("=== City Sense -- Week 4: Merge Indicators ===")
 
     cfg = load_config()
     paths = cfg["output_paths"]
@@ -53,17 +54,17 @@ def main() -> None:
     }
 
     # ---- Load the first source as the base GeoDataFrame --------------------
-    print("\n> Loading indicator layers...")
+    logger.info("Loading indicator layers...")
     base_name = "ndvi"
     base_info = sources.pop(base_name)
     master = gpd.read_file(base_info["path"])
-    print(f"  [{base_name.upper()}] {len(master)} cells, column: {base_info['column']}")
+    logger.info("[%s] %d cells, column: %s", base_name.upper(), len(master), base_info['column'])
 
     # ---- Merge remaining sources on cell_id --------------------------------
     for name, info in sources.items():
         gdf = gpd.read_file(info["path"])
         col = info["column"]
-        print(f"  [{name.upper()}] {len(gdf)} cells, column: {col}")
+        logger.info("[%s] %d cells, column: %s", name.upper(), len(gdf), col)
 
         # Extract only cell_id and the indicator column (drop geometry)
         df = pd.DataFrame(gdf[["cell_id", col]])
@@ -76,34 +77,29 @@ def main() -> None:
     master = master[available]
 
     # ---- Print summary -----------------------------------------------------
-    print(f"\n> Merged dataset: {len(master)} rows x {len(master.columns)} columns")
-    print(f"  Columns: {list(master.columns)}")
-    print(f"\n  First 5 rows:")
-    # Print without geometry for readability
-    print(master.drop(columns="geometry").head().to_string(index=False))
+    logger.info("Merged dataset: %d rows x %d columns", len(master), len(master.columns))
+    logger.info("Columns: %s", list(master.columns))
+    logger.debug("First 5 rows:\n%s", master.drop(columns="geometry").head().to_string(index=False))
 
-    print(f"\n  Basic statistics:")
-    print(master.drop(columns=["geometry", "cell_id"]).describe().to_string())
+    logger.debug("Basic statistics:\n%s", master.drop(columns=["geometry", "cell_id"]).describe().to_string())
 
     # ---- Check for missing values ------------------------------------------
     missing = master.drop(columns="geometry").isnull().sum()
     if missing.sum() > 0:
-        print(f"\n  [WARNING] Missing values detected:")
+        logger.warning("Missing values detected:")
         for col, count in missing.items():
             if count > 0:
-                print(f"    {col}: {count} missing")
+                logger.warning("  %s: %d missing", col, count)
     else:
-        print(f"\n  [OK] No missing values in any column.")
+        logger.info("No missing values in any column.")
 
     # ---- Save ---------------------------------------------------------------
     output_path = os.path.join(PROJECT_ROOT, paths["master_data"])
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     master.to_file(output_path, driver="GeoJSON")
-    print(f"\n[OK] Saved master dataset to: {output_path}")
+    logger.info("Saved master dataset to: %s", output_path)
 
-    print("\n" + "=" * 60)
-    print("  [OK] Merge complete!")
-    print("=" * 60)
+    logger.info("=== Merge complete! ===")
 
 
 if __name__ == "__main__":

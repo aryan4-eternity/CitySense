@@ -14,10 +14,13 @@ Usage:
 import os
 import sys
 import time
+import logging
 from typing import Any
 import ee
 import geopandas as gpd
 from config_loader import load_config
+
+logger = logging.getLogger("CitySense.ingestion.fetch_dem")
 
 # ---------------------------------------------------------------------------
 # 0. Resolve paths
@@ -56,9 +59,9 @@ def init_ee(project: str | None = None) -> None:
                 opt_url="https://earthengine-highvolume.googleapis.com",
             )
         except Exception as exc:
-            print("ERROR: Could not initialize Earth Engine.")
+            logger.critical("Could not initialize Earth Engine.")
             raise SystemExit(1) from exc
-    print(f"[OK] Earth Engine initialized (project={project})")
+    logger.info("Earth Engine initialized (project=%s)", project)
 
 
 def make_aoi(west: float, south: float, east: float, north: float) -> ee.Geometry:
@@ -69,7 +72,7 @@ def make_aoi(west: float, south: float, east: float, north: float) -> ee.Geometr
 def load_grid_as_ee_fc(grid_path: str) -> tuple[ee.FeatureCollection, gpd.GeoDataFrame]:
     """Load the local grid and convert it to an Earth Engine collection."""
     gdf = gpd.read_file(grid_path)
-    print(f"[OK] Loaded grid: {len(gdf)} cells")
+    logger.info("Loaded grid: %d cells", len(gdf))
 
     features = []
     for _, row in gdf.iterrows():
@@ -82,25 +85,22 @@ def load_grid_as_ee_fc(grid_path: str) -> tuple[ee.FeatureCollection, gpd.GeoDat
 
 def main() -> None:
     """Fetch configured SRTM elevation values for every grid cell."""
-    print("=" * 60)
-    print("  City Sense -- Week 4: Fetch DEM (SRTM)")
-    print("=" * 60)
+    logger.info("=== City Sense -- Week 4: Fetch DEM (SRTM) ===")
 
     cfg = load_config()
     s = get_settings(cfg)
-    print(f"\nAOI       : W={s['west']}, S={s['south']}, E={s['east']}, N={s['north']}")
-    print(f"Collection: {s['srtm_collection']}")
-    print()
+    logger.info("AOI       : W=%s, S=%s, E=%s, N=%s", s['west'], s['south'], s['east'], s['north'])
+    logger.info("Collection: %s", s['srtm_collection'])
 
     init_ee(project=s["project"])
     aoi_geom = make_aoi(s["west"], s["south"], s["east"], s["north"])
 
     # ---- Load SRTM elevation -----------------------------------------------
-    print("> Loading SRTM elevation data...")
+    logger.info("Loading SRTM elevation data...")
     srtm = ee.Image(s["srtm_collection"]).select("elevation").clip(aoi_geom)
 
     # ---- Load grid ----------------------------------------------------------
-    print(f"\n> Loading grid and reducing DEM to cell means (scale={s['scale']} m)...")
+    logger.info("Loading grid and reducing DEM to cell means (scale=%d m)...", s['scale'])
     grid_fc, local_gdf = load_grid_as_ee_fc(s["grid_path"])
 
     # ---- Reduce to grid cell means -----------------------------------------
@@ -111,12 +111,12 @@ def main() -> None:
     )
 
     # ---- Export via getInfo() -----------------------------------------------
-    print("\n> Exporting results...")
-    print("  Fetching results from Earth Engine...")
+    logger.info("Exporting results...")
+    logger.info("Fetching results from Earth Engine...")
     t0 = time.time()
     fc_dict = reduced.getInfo()
     elapsed = time.time() - t0
-    print(f"  [OK] Received {len(fc_dict['features'])} features in {elapsed:.1f}s")
+    logger.info("Received %d features in %.1fs", len(fc_dict['features']), elapsed)
 
     # Build lookup
     dem_lookup = {}
@@ -128,22 +128,19 @@ def main() -> None:
     local_gdf["mean_dem"] = local_gdf["cell_id"].map(dem_lookup)
 
     valid = local_gdf["mean_dem"].notna().sum()
-    print(f"  Cells with valid DEM: {valid}/{len(local_gdf)}")
+    logger.info("Cells with valid DEM: %d/%d", valid, len(local_gdf))
     if valid > 0:
-        print(f"  Elevation range: {local_gdf['mean_dem'].min():.1f} - "
-              f"{local_gdf['mean_dem'].max():.1f} m")
-        print(f"  Mean elevation:  {local_gdf['mean_dem'].mean():.1f} m")
+        logger.info("Elevation range: %.1f - %.1f m", local_gdf['mean_dem'].min(), local_gdf['mean_dem'].max())
+        logger.info("Mean elevation:  %.1f m", local_gdf['mean_dem'].mean())
 
     # Save
     result = local_gdf[["cell_id", "mean_dem", "geometry"]].copy()
     output_path = s["dem_output"]
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     result.to_file(output_path, driver="GeoJSON")
-    print(f"[OK] Saved DEM grid to: {output_path}")
+    logger.info("Saved DEM grid to: %s", output_path)
 
-    print("\n" + "=" * 60)
-    print("  [OK] DEM layer complete!")
-    print("=" * 60)
+    logger.info("=== DEM layer complete! ===")
 
 
 if __name__ == "__main__":
