@@ -19,27 +19,23 @@ Usage:
 import os
 import sys
 import time
-import yaml
+from typing import Any
 import ee
 import geopandas as gpd
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # 0. Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
-
-
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
 
 
 # =====================================================================
 # Configuration
 # =====================================================================
-def get_settings(cfg: dict) -> dict:
+def get_settings(cfg: dict[str, Any]) -> dict[str, Any]:
+    """Flatten NDBI-related configuration for the ingestion stage."""
     aoi = cfg["aoi"]
     return {
         "west":  aoi["west"],
@@ -50,6 +46,8 @@ def get_settings(cfg: dict) -> dict:
         "end_date":   cfg["time_window"]["end"],
         "project": cfg["gee"].get("project", None),
         "s2_collection": cfg["gee"]["sentinel2_collection"],
+        "max_cloud_pct": cfg["gee"]["max_cloud_percentage"],
+        "scale": cfg["gee"]["reduction_scales_m"]["ndbi"],
         "grid_path": os.path.join(PROJECT_ROOT, cfg["output_paths"]["grid"]),
         "ndbi_output": os.path.join(
             PROJECT_ROOT,
@@ -61,7 +59,8 @@ def get_settings(cfg: dict) -> dict:
 # =====================================================================
 # Earth Engine init
 # =====================================================================
-def init_ee(project: str = None):
+def init_ee(project: str | None = None) -> None:
+    """Initialize the Earth Engine client for the configured project."""
     try:
         ee.Initialize(project=project)
     except Exception:
@@ -77,7 +76,8 @@ def init_ee(project: str = None):
     print(f"[OK] Earth Engine initialized (project={project})")
 
 
-def make_aoi(west, south, east, north):
+def make_aoi(west: float, south: float, east: float, north: float) -> ee.Geometry:
+    """Create a rectangular Earth Engine geometry from AOI coordinates."""
     return ee.Geometry.Rectangle([west, south, east, north])
 
 
@@ -99,7 +99,13 @@ def mask_s2_clouds(image: ee.Image) -> ee.Image:
 # =====================================================================
 # NDBI composite
 # =====================================================================
-def get_s2_ndbi_composite(aoi, start_date, end_date, collection_id, max_cloud_pct=20):
+def get_s2_ndbi_composite(
+    aoi: ee.Geometry,
+    start_date: str,
+    end_date: str,
+    collection_id: str,
+    max_cloud_pct: int = 20,
+) -> tuple[ee.Image, ee.Number]:
     """
     Build a cloud-masked Sentinel-2 NDBI median composite.
     NDBI = (B11 - B8) / (B11 + B8)
@@ -116,7 +122,8 @@ def get_s2_ndbi_composite(aoi, start_date, end_date, collection_id, max_cloud_pc
     s2_masked = s2.map(mask_s2_clouds)
 
     # Compute NDBI for each image
-    def add_ndbi(image):
+    def add_ndbi(image: ee.Image) -> ee.Image:
+        """Add the NDBI band to one cloud-masked Sentinel-2 image."""
         ndbi = image.normalizedDifference(["B11", "B8"]).rename("ndbi")
         return image.addBands(ndbi)
 
@@ -131,7 +138,8 @@ def get_s2_ndbi_composite(aoi, start_date, end_date, collection_id, max_cloud_pc
 # =====================================================================
 # Load grid as ee.FeatureCollection
 # =====================================================================
-def load_grid_as_ee_fc(grid_path: str):
+def load_grid_as_ee_fc(grid_path: str) -> tuple[ee.FeatureCollection, gpd.GeoDataFrame]:
+    """Load the local grid and convert it to an Earth Engine collection."""
     gdf = gpd.read_file(grid_path)
     print(f"[OK] Loaded grid: {len(gdf)} cells")
 
@@ -147,7 +155,14 @@ def load_grid_as_ee_fc(grid_path: str):
 # =====================================================================
 # Reduce + Export
 # =====================================================================
-def reduce_and_export(image, grid_fc, local_gdf, output_path, band_name, scale=10):
+def reduce_and_export(
+    image: ee.Image,
+    grid_fc: ee.FeatureCollection,
+    local_gdf: gpd.GeoDataFrame,
+    output_path: str,
+    band_name: str,
+    scale: int = 10,
+) -> gpd.GeoDataFrame:
     """Reduce image to grid cell means and export as GeoJSON."""
     reduced = image.reduceRegions(
         collection=grid_fc,
@@ -187,7 +202,8 @@ def reduce_and_export(image, grid_fc, local_gdf, output_path, band_name, scale=1
 # =====================================================================
 # MAIN
 # =====================================================================
-def main():
+def main() -> None:
+    """Fetch configured Sentinel-2 NDBI values for every grid cell."""
     print("=" * 60)
     print("  City Sense -- Week 4: Fetch NDBI")
     print("=" * 60)
@@ -205,7 +221,7 @@ def main():
     # Build NDBI composite
     print("> Building cloud-masked NDBI composite...")
     ndbi_composite, scene_count = get_s2_ndbi_composite(
-        aoi_geom, s["start_date"], s["end_date"], s["s2_collection"]
+        aoi_geom, s["start_date"], s["end_date"], s["s2_collection"], s["max_cloud_pct"]
     )
     n_scenes = scene_count.getInfo()
     print(f"  Sentinel-2 scenes matched: {n_scenes}")
@@ -220,7 +236,7 @@ def main():
     print("\n> Exporting results...")
     reduce_and_export(
         ndbi_composite, grid_fc, local_gdf,
-        s["ndbi_output"], "mean_ndbi", scale=10
+        s["ndbi_output"], "mean_ndbi", scale=s["scale"]
     )
 
     print("\n" + "=" * 60)

@@ -14,6 +14,7 @@ import geopandas as gpd
 import matplotlib
 matplotlib.use("Agg")  # non-interactive backend for saving to file
 import matplotlib.pyplot as plt
+from config_loader import load_config
 
 
 # ---------------------------------------------------------------------------
@@ -21,19 +22,19 @@ import matplotlib.pyplot as plt
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-GRID_PATH = os.path.join(PROJECT_ROOT, "data", "grid.geojson")
-OUTPUT_PNG = os.path.join(PROJECT_ROOT, "data", "grid_validation.png")
-
-
-def main():
+def main() -> None:
+    """Create a visual validation plot for the configured grid output."""
+    config = load_config()
+    grid_path = os.path.join(PROJECT_ROOT, config["output_paths"]["grid"])
+    output_png = os.path.join(PROJECT_ROOT, config["output_paths"]["grid_validation"])
     # ---- Load the grid GeoJSON ---------------------------------------------
-    if not os.path.exists(GRID_PATH):
-        print(f"ERROR: Grid file not found at {GRID_PATH}")
+    if not os.path.exists(grid_path):
+        print(f"ERROR: Grid file not found at {grid_path}")
         print("Run  python ingestion/generate_grid.py  first.")
         return
 
-    grid = gpd.read_file(GRID_PATH)
-    print(f"Loaded {len(grid)} cells from {GRID_PATH}")
+    grid = gpd.read_file(grid_path)
+    print(f"Loaded {len(grid)} cells from {grid_path}")
     print(grid.head())
 
     # ---- Plot --------------------------------------------------------------
@@ -56,8 +57,8 @@ def main():
     ax.ticklabel_format(useOffset=False)  # avoid scientific notation on axes
 
     plt.tight_layout()
-    plt.savefig(OUTPUT_PNG, dpi=150)
-    print(f"Validation plot saved to: {OUTPUT_PNG}")
+    plt.savefig(output_png, dpi=150)
+    print(f"Validation plot saved to: {output_png}")
     plt.close()
 
 

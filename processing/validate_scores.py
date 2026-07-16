@@ -14,35 +14,29 @@ Usage:
 """
 
 import os
-import yaml
 import numpy as np
 import geopandas as gpd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
-def main():
+def main() -> None:
+    """Create validation diagnostics for the scored and clustered dataset."""
     print("=" * 60)
     print("  City Sense -- Week 5: Validation & Visualization")
     print("=" * 60)
 
     cfg = load_config()
     master_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["master_data"])
-    data_dir = os.path.join(PROJECT_ROOT, "data")
 
     # ---- Load master dataset -----------------------------------------------
     gdf = gpd.read_file(master_path)
@@ -86,7 +80,7 @@ def main():
     axes[1].legend()
 
     plt.tight_layout()
-    path_dist = os.path.join(data_dir, "score_distributions.png")
+    path_dist = os.path.join(PROJECT_ROOT, cfg["output_paths"]["score_distributions"])
     plt.savefig(path_dist, dpi=150)
     print(f"  [OK] Saved: {path_dist}")
     plt.close()
@@ -115,7 +109,7 @@ def main():
     cbar.set_label("Risk Score", fontsize=10)
 
     plt.tight_layout()
-    path_scatter = os.path.join(data_dir, "score_scatter.png")
+    path_scatter = os.path.join(PROJECT_ROOT, cfg["output_paths"]["score_scatter"])
     plt.savefig(path_scatter, dpi=150)
     print(f"  [OK] Saved: {path_scatter}")
     plt.close()
@@ -137,7 +131,7 @@ def main():
     ax.set_ylabel("Latitude", fontsize=11)
     ax.ticklabel_format(useOffset=False)
     plt.tight_layout()
-    path_risk = os.path.join(data_dir, "risk_map.png")
+    path_risk = os.path.join(PROJECT_ROOT, cfg["output_paths"]["risk_map"])
     plt.savefig(path_risk, dpi=150, bbox_inches="tight")
     print(f"  [OK] Saved: {path_risk}")
     plt.close()
@@ -160,7 +154,7 @@ def main():
     ax.set_ylabel("Latitude", fontsize=11)
     ax.ticklabel_format(useOffset=False)
     plt.tight_layout()
-    path_sust = os.path.join(data_dir, "sustainability_map.png")
+    path_sust = os.path.join(PROJECT_ROOT, cfg["output_paths"]["sustainability_map"])
     plt.savefig(path_sust, dpi=150, bbox_inches="tight")
     print(f"  [OK] Saved: {path_sust}")
     plt.close()
@@ -186,7 +180,7 @@ def main():
     ax.ticklabel_format(useOffset=False)
     ax.legend(loc="lower left", fontsize=8, framealpha=0.9)
     plt.tight_layout()
-    path_cluster = os.path.join(data_dir, "cluster_map.png")
+    path_cluster = os.path.join(PROJECT_ROOT, cfg["output_paths"]["cluster_map"])
     plt.savefig(path_cluster, dpi=150, bbox_inches="tight")
     print(f"  [OK] Saved: {path_cluster}")
     plt.close()

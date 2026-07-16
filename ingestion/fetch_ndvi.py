@@ -2,7 +2,7 @@
 fetch_ndvi.py
 =============
 Pulls a cloud-masked Sentinel-2 NDVI composite for the pre-monsoon window
-defined in config.yaml, reduces it to mean values per grid cell, and saves
+defined in config/config.yaml, reduces it to mean values per grid cell, and saves
 the result as data/ndvi_grid.geojson.
 
 Usage:
@@ -19,31 +19,25 @@ import os
 import sys
 import json
 import time
-import yaml
+from typing import Any
 import ee
 import geopandas as gpd
 import pandas as pd
 from shapely.geometry import shape
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # 0. Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
-
-
-def load_config(path: str = CONFIG_PATH) -> dict:
-    """Load and return the YAML configuration file."""
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
 
 
 # =====================================================================
 # STEP 1 — Read configuration
 # =====================================================================
-def get_settings(cfg: dict) -> dict:
-    """Extract all the settings we need from config.yaml into a flat dict."""
+def get_settings(cfg: dict[str, Any]) -> dict[str, Any]:
+    """Extract the configured NDVI settings into a flat mapping."""
     aoi = cfg["aoi"]
     return {
         "west":  aoi["west"],
@@ -54,6 +48,8 @@ def get_settings(cfg: dict) -> dict:
         "end_date":   cfg["time_window"]["end"],
         "project": cfg["gee"].get("project", None),
         "s2_collection": cfg["gee"]["sentinel2_collection"],
+        "max_cloud_pct": cfg["gee"]["max_cloud_percentage"],
+        "scale": cfg["gee"]["reduction_scales_m"]["ndvi"],
         "grid_path": os.path.join(PROJECT_ROOT, cfg["output_paths"]["grid"]),
         "ndvi_output": os.path.join(
             PROJECT_ROOT,
@@ -65,7 +61,7 @@ def get_settings(cfg: dict) -> dict:
 # =====================================================================
 # STEP 2 — Initialize Earth Engine and create AOI rectangle
 # =====================================================================
-def init_ee(project: str = None):
+def init_ee(project: str | None = None) -> None:
     """Initialize the Earth Engine API with the given GCP project."""
     try:
         ee.Initialize(project=project)
@@ -161,6 +157,7 @@ def get_s2_ndvi_composite(
 
     # Compute NDVI for each image: (B8 – B4) / (B8 + B4)
     def add_ndvi(image: ee.Image) -> ee.Image:
+        """Add the NDVI band to one cloud-masked Sentinel-2 image."""
         ndvi = image.normalizedDifference(["B8", "B4"]).rename("ndvi")
         return image.addBands(ndvi)
 
@@ -285,7 +282,8 @@ def export_to_geojson(
 # =====================================================================
 # MAIN
 # =====================================================================
-def main():
+def main() -> None:
+    """Fetch configured Sentinel-2 NDVI values for every grid cell."""
     print("=" * 60)
     print("  City Sense — Week 2: Fetch NDVI")
     print("=" * 60)
@@ -311,7 +309,7 @@ def main():
         start_date=s["start_date"],
         end_date=s["end_date"],
         collection_id=s["s2_collection"],
-        max_cloud_pct=20,
+        max_cloud_pct=s["max_cloud_pct"],
     )
     n_scenes = scene_count.getInfo()
     print(f"  Sentinel-2 scenes matched: {n_scenes}")
@@ -325,8 +323,8 @@ def main():
     grid_fc, local_gdf = load_grid_as_ee_fc(s["grid_path"])
 
     # ---- Step 5: Reduce to grid cell means ---------------------------------
-    print("\n> Reducing NDVI to grid cell means (scale=10 m)...")
-    reduced_fc = reduce_ndvi_to_grid(ndvi_composite, grid_fc, scale=10)
+    print(f"\n> Reducing NDVI to grid cell means (scale={s['scale']} m)...")
+    reduced_fc = reduce_ndvi_to_grid(ndvi_composite, grid_fc, scale=s["scale"])
 
     # ---- Step 6: Export to local GeoJSON -----------------------------------
     print("\n> Exporting results...")

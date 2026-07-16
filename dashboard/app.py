@@ -12,6 +12,11 @@ import pandas as pd
 import json
 import os
 import numpy as np
+from collections.abc import Callable
+from typing import Any
+from config_loader import load_config, project_path
+
+CONFIG = load_config()
 
 # Page configuration
 st.set_page_config(page_title="City Sense", layout="wide")
@@ -21,7 +26,7 @@ st.title("🌆 City Sense – Mumbai Environmental Dashboard")
 # 1. Load data
 # ------------------------------------------------------------------------------
 @st.cache_data
-def load_geodata(path):
+def load_geodata(path: str) -> gpd.GeoDataFrame:
     """Load GeoJSON master dataset and ensure coordinate reference system."""
     gdf = gpd.read_file(path)
     if gdf.crs is None:
@@ -29,13 +34,13 @@ def load_geodata(path):
     return gdf
 
 @st.cache_data
-def load_explanations(path):
+def load_explanations(path: str) -> Any:
     """Load cell explanations JSON."""
     with open(path, "r") as f:
         return json.load(f)
 
-gdf = load_geodata("data/cells_master.geojson")
-explanations = load_explanations("data/cell_explanations.json")
+gdf = load_geodata(str(project_path(CONFIG, "master_data")))
+explanations = load_explanations(str(project_path(CONFIG, "explanations")))
 
 # Quick sanity check
 st.sidebar.write(f"✅ Loaded {len(gdf)} grid cells")
@@ -72,7 +77,11 @@ else:
 # ------------------------------------------------------------------------------
 # 3. Build Folium map
 # ------------------------------------------------------------------------------
-m = folium.Map(location=[19.076, 72.877], zoom_start=11, tiles=None)
+m = folium.Map(
+    location=CONFIG["dashboard"]["map_center"],
+    zoom_start=CONFIG["dashboard"]["zoom_start"],
+    tiles=None,
+)
 folium.TileLayer(
     "CartoDB Positron",
     name="Basemap – Light",
@@ -83,21 +92,21 @@ folium.TileLayer(
 folium.TileLayer("CartoDB dark_matter", name="Basemap – Dark").add_to(m)
 
 # Optional static satellite overlays (if files exist)
-overlay_dir = "data/overlays"
+overlay_dir = str(project_path(CONFIG, "overlays_dir"))
 if os.path.exists(overlay_dir):
     rgb_tif = os.path.join(overlay_dir, "mumbai_rgb.tif")
     thermal_tif = os.path.join(overlay_dir, "mumbai_thermal.tif")
     if os.path.exists(rgb_tif):
         folium.raster_layers.ImageOverlay(
             image=rgb_tif,
-            bounds=[[18.89, 72.77], [19.27, 72.98]],  # rough Mumbai bounds
+            bounds=CONFIG["dashboard"]["overlay_bounds"],
             name="Sentinel‑2 RGB",
             opacity=0.7,
         ).add_to(m)
     if os.path.exists(thermal_tif):
         folium.raster_layers.ImageOverlay(
             image=thermal_tif,
-            bounds=[[18.89, 72.77], [19.27, 72.98]],
+            bounds=CONFIG["dashboard"]["overlay_bounds"],
             name="Thermal False‑Color",
             opacity=0.7,
         ).add_to(m)
@@ -107,7 +116,14 @@ else:
 # ------------------------------------------------------------------------------
 # 4. Function: add choropleth layer
 # ------------------------------------------------------------------------------
-def add_choropleth(gdf, column, name, color_map, tooltip_fields=None, fill_opacity=0.7):
+def add_choropleth(
+    gdf: gpd.GeoDataFrame,
+    column: str,
+    name: str,
+    color_map: Callable[[float], str],
+    tooltip_fields: list[str] | None = None,
+    fill_opacity: float = 0.7,
+) -> folium.GeoJson | None:
     """
     Adds a GeoJson choropleth layer to the map m.
     Returns the folium.GeoJson layer so we can use it for click interactions if needed.
@@ -118,7 +134,8 @@ def add_choropleth(gdf, column, name, color_map, tooltip_fields=None, fill_opaci
         return None
 
     # Build a style function based on a colormap
-    def style_function(feature):
+    def style_function(feature: dict[str, Any]) -> dict[str, Any]:
+        """Style one GeoJSON feature from the selected numeric column."""
         value = feature["properties"].get(column)
         if value is None:
             return {"fillColor": "#cccccc", "color": "#999999", "weight": 0.5, "fillOpacity": 0}
@@ -156,7 +173,8 @@ def add_choropleth(gdf, column, name, color_map, tooltip_fields=None, fill_opaci
     return layer
 
 # Color maps as simple functions
-def risk_color(ratio):  # red (high) -> yellow -> green (low)
+def risk_color(ratio: float) -> str:
+    """Return a green-to-red color representing normalized risk."""
     # diverging: high risk red, low risk green
     if ratio > 0.5:
         r = 255
@@ -166,7 +184,8 @@ def risk_color(ratio):  # red (high) -> yellow -> green (low)
         g = 255
     return f"#{r:02x}{g:02x}00"
 
-def sustainability_color(ratio):  # green (high) -> red (low)
+def sustainability_color(ratio: float) -> str:
+    """Return a red-to-green color representing normalized sustainability."""
     # high sustainability is green, low is red
     if ratio > 0.5:
         g = 255
@@ -176,7 +195,8 @@ def sustainability_color(ratio):  # green (high) -> red (low)
         r = 255
     return f"#{r:02x}{g:02x}00"
 
-def ndvi_color(ratio):  # brown -> yellow -> dark green
+def ndvi_color(ratio: float) -> str:
+    """Return a brown-to-green color representing normalized NDVI."""
     if ratio < 0.5:
         r = 150
         g = int(150 + ratio * 210)  # yellow-green
@@ -186,18 +206,21 @@ def ndvi_color(ratio):  # brown -> yellow -> dark green
     b = 0
     return f"#{max(0,min(255,r)):02x}{max(0,min(255,g)):02x}{b:02x}"
 
-def lst_color(ratio):  # cool (blue) to hot (red)
+def lst_color(ratio: float) -> str:
+    """Return a blue-to-red color representing normalized temperature."""
     r = int(ratio * 255)
     b = int((1 - ratio) * 255)
     return f"#{r:02x}00{b:02x}"
 
-def ndbi_color(ratio):  # grey-pink for built-up
+def ndbi_color(ratio: float) -> str:
+    """Return a grey-pink color representing normalized built-up index."""
     r = int(180 + ratio * 75)
     g = int(130 + ratio * 50)
     b = int(130 + ratio * 50)
     return f"#{r:02x}{g:02x}{b:02x}"
 
-def dem_color(ratio):  # brown (low) to blue (high) via green
+def dem_color(ratio: float) -> str:
+    """Return a terrain-like color representing normalized elevation."""
     if ratio < 0.5:
         r = int(139 + ratio * 200)
         g = int(69 + ratio * 200)
@@ -208,7 +231,8 @@ def dem_color(ratio):  # brown (low) to blue (high) via green
         b = int(34 + (ratio - 0.5) * 200)
     return f"#{r:02x}{g:02x}{b:02x}"
 
-def uhi_color(ratio):  # diverging: RdBu (red high, blue low)
+def uhi_color(ratio: float) -> str:
+    """Return a diverging color representing normalized UHI intensity."""
     if ratio < 0.5:
         # blue to white
         r = int(ratio * 2 * 200)
@@ -245,7 +269,8 @@ if "cluster" in gdf.columns:
     cluster_color_dict = {
         cl: mcolors.rgb2hex(colors[i]) for i, cl in enumerate(sorted(clusters))
     }
-    def cluster_style(feature):
+    def cluster_style(feature: dict[str, Any]) -> dict[str, Any]:
+        """Style one GeoJSON feature with its categorical cluster color."""
         cl = feature["properties"].get("cluster")
         color = cluster_color_dict.get(cl, "#cccccc")
         return {"fillColor": color, "color": "#333333", "weight": 0.5, "fillOpacity": 0.7}
@@ -346,11 +371,12 @@ if clicked_cell_id is not None:
             dem_val = cell.get("mean_dem", 0)
             ndbi_val = cell.get("mean_ndbi", 0)
             if ndvi_val is not None and lst_val is not None:
-                if ndvi_val < 0.2 and lst_val > 35:
+                if (ndvi_val < CONFIG["dashboard"]["thresholds"]["low_ndvi"]
+                        and lst_val > CONFIG["dashboard"]["thresholds"]["high_lst"]):
                     rec.append("🌳 Increase green cover (low NDVI, high temperature).")
-            if dem_val is not None and dem_val < 5:
+            if dem_val is not None and dem_val < CONFIG["dashboard"]["thresholds"]["low_dem"]:
                 rec.append("💧 Elevation risk – improve drainage and flood protection.")
-            if ndbi_val is not None and ndbi_val > 0.2:
+            if ndbi_val is not None and ndbi_val > CONFIG["dashboard"]["thresholds"]["high_ndbi"]:
                 rec.append("🏗️ High built-up density – consider permeable surfaces and cool roofs.")
             if rec:
                 for r in rec:

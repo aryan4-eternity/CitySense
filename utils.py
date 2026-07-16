@@ -1,9 +1,10 @@
 import logging
-import os
 import sys
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Mapping
 
-def setup_logging(log_file="citysense.log"):
+def setup_logging(log_file: str | Path = "citysense.log") -> logging.Logger:
     """
     Sets up structured logging to both console and a file.
     """
@@ -33,7 +34,7 @@ def setup_logging(log_file="citysense.log"):
 
     return logger
 
-def validate_config(config):
+def validate_config(config: Mapping[str, Any]) -> bool:
     """
     Validates the parsed configuration dictionary to ensure required keys exist
     and values are sensible.
@@ -42,13 +43,13 @@ def validate_config(config):
     logger = logging.getLogger("CitySense")
     logger.info("Validating configuration...")
 
-    required_keys = ['bbox', 'grid_resolution']
+    required_keys = ["aoi", "grid", "time_window", "output_paths"]
     for key in required_keys:
         if key not in config:
             raise ValueError(f"Missing required configuration key: '{key}'")
             
     # Validate bbox
-    bbox = config.get('bbox', {})
+    bbox = config.get("aoi", {})
     bbox_keys = ['west', 'south', 'east', 'north']
     for b_key in bbox_keys:
         if b_key not in bbox:
@@ -60,7 +61,7 @@ def validate_config(config):
         raise ValueError("Invalid bounding box: 'south' must be less than 'north'")
         
     # Validate date range if present
-    dates = config.get('dates', {})
+    dates = config.get("time_window", {})
     if 'start' in dates and 'end' in dates:
         try:
             start_date = datetime.strptime(dates['start'], "%Y-%m-%d")

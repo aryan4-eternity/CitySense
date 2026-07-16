@@ -24,36 +24,31 @@ Usage:
 
 import os
 import pickle
-import yaml
 import numpy as np
 import geopandas as gpd
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.decomposition import PCA
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 INDICATOR_COLS = ["mean_ndvi", "mean_lst", "mean_ndbi", "mean_dem"]
 
 
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
-def main():
+def main() -> None:
+    """Calculate PCA-derived risk and sustainability scores."""
     print("=" * 60)
     print("  City Sense -- Week 5: PCA Scoring")
     print("=" * 60)
 
     cfg = load_config()
     master_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["master_data"])
-    scaler_path = os.path.join(PROJECT_ROOT, "models", "scaler.pkl")
+    scaler_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["pca_scaler"])
 
     # ---- Load master dataset -----------------------------------------------
     gdf = gpd.read_file(master_path)
@@ -101,7 +96,7 @@ def main():
     print("\n> Step 3: Running PCA on risk-aligned variables...")
     X_risk = risk_aligned.values
 
-    pca = PCA(n_components=4)  # fit all 4 components
+    pca = PCA(n_components=cfg["model"]["pca_components"])
     pca.fit(X_risk)
 
     print(f"\n  Explained variance ratios:")
@@ -160,7 +155,7 @@ def main():
     print(f"     Saved to: {master_path}")
 
     # ---- Save PCA model for reference --------------------------------------
-    pca_path = os.path.join(PROJECT_ROOT, "models", "pca_risk.pkl")
+    pca_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["pca_model"])
     with open(pca_path, "wb") as f:
         pickle.dump({"pca": pca, "weights": weights, "feature_names": feature_names}, f)
     print(f"[OK] PCA model saved to: {pca_path}")

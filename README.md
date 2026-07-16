@@ -46,8 +46,10 @@ CitySense/city_sense/
 ├── README.md
 ├── LICENSE
 ├── requirements.txt
-├── config.yaml
-├── main.py                  # Main orchestration pipeline
+├── config/
+│   └── config.yaml          # All runtime configuration
+├── config_loader.py         # Shared YAML configuration loader
+├── main.py                  # Single pipeline entry point
 ├── utils.py                 # Configuration validation & structured logging
 ├── ingestion/               # Scripts to fetch and grid GEE data
 ├── processing/              # Scripts to calculate indicators
@@ -87,11 +89,15 @@ CitySense/city_sense/
    ```
 
 5. **Configuration:**
-   Update `config.yaml` with your preferred bounding box, grid resolution, and date ranges.
+   Update `config/config.yaml` with your preferred city, bounding box, grid
+   resolution, date range, model settings, dashboard defaults, and output paths.
 
 ## How to Run the Pipeline
 
-The entire pipeline is orchestrated by `main.py`. It checks `config.yaml` for validity, sets up structured logging, and runs ingestion, processing, and modeling sequentially. It automatically skips steps if the output files already exist.
+The entire pipeline is orchestrated by `main.py`. It validates
+`config/config.yaml`, sets up structured logging, and calls the real ingestion
+and processing stages in dependency order. Individual stages remain runnable
+as Python modules for focused development.
 
 ```bash
 python main.py

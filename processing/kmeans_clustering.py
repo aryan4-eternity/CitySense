@@ -11,7 +11,6 @@ Usage:
 """
 
 import os
-import yaml
 import numpy as np
 import geopandas as gpd
 import pandas as pd
@@ -21,21 +20,16 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 INDICATOR_COLS = ["mean_ndvi", "mean_lst", "mean_ndbi", "mean_dem"]
-K_RANGE = range(2, 9)  # test k = 2, 3, ..., 8
-
-
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
+K_RANGE = range(2, 9)  # retained as a module-level compatibility constant
 
 
 def name_cluster(centroid: dict) -> str:
@@ -79,14 +73,17 @@ def name_cluster(centroid: dict) -> str:
     return "Mixed Transitional"
 
 
-def main():
+def main() -> None:
+    """Select and apply the configured K-Means clustering model."""
     print("=" * 60)
     print("  City Sense -- Week 5: K-Means Clustering")
     print("=" * 60)
 
     cfg = load_config()
+    model_config = cfg["model"]["kmeans"]
+    k_values = model_config["candidate_clusters"]
     master_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["master_data"])
-    silhouette_png = os.path.join(PROJECT_ROOT, "data", "silhouette_scores.png")
+    silhouette_png = os.path.join(PROJECT_ROOT, cfg["output_paths"]["silhouette_scores"])
 
     # ---- Load master dataset -----------------------------------------------
     gdf = gpd.read_file(master_path)
@@ -101,11 +98,16 @@ def main():
     print(f"  Shape: {X_norm.shape}")
 
     # ---- Silhouette analysis for k = 2..8 ----------------------------------
-    print(f"\n> Running silhouette analysis for k = {K_RANGE.start} to {K_RANGE.stop - 1}...")
+    print(f"\n> Running silhouette analysis for k = {min(k_values)} to {max(k_values)}...")
     silhouette_scores = {}
 
-    for k in K_RANGE:
-        km = KMeans(n_clusters=k, random_state=42, n_init=10, max_iter=300)
+    for k in k_values:
+        km = KMeans(
+            n_clusters=k,
+            random_state=cfg["project"]["random_seed"],
+            n_init=model_config["n_init"],
+            max_iter=model_config["max_iter"],
+        )
         labels = km.fit_predict(X_norm)
         sil = silhouette_score(X_norm, labels)
         silhouette_scores[k] = sil
@@ -138,7 +140,12 @@ def main():
 
     # ---- Fit final K-Means with optimal k ----------------------------------
     print(f"\n> Fitting K-Means with k = {best_k}...")
-    km_final = KMeans(n_clusters=best_k, random_state=42, n_init=10, max_iter=300)
+    km_final = KMeans(
+        n_clusters=best_k,
+        random_state=cfg["project"]["random_seed"],
+        n_init=model_config["n_init"],
+        max_iter=model_config["max_iter"],
+    )
     gdf["cluster"] = km_final.fit_predict(X_norm)
 
     # ---- Characterize clusters by raw indicator centroids -------------------

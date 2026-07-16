@@ -1,7 +1,7 @@
 """
 generate_grid.py
 ================
-Reads the AOI bounds and grid cell size from config.yaml,
+Reads the AOI bounds and grid cell size from config/config.yaml,
 creates a fishnet grid (~1 km × 1 km) over Mumbai,
 assigns each cell a unique cell_id, clips to the AOI bounding box,
 and saves the result as data/grid.geojson.
@@ -13,25 +13,17 @@ Usage:
 
 import os
 import sys
-import yaml
 import numpy as np
 import geopandas as gpd
 from shapely.geometry import box, Polygon
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
-# 1. Resolve paths – make sure we can find config.yaml regardless of how
+# 1. Resolve paths – make sure project resources can be found regardless of
 #    the script is invoked.
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
-
-
-def load_config(path: str = CONFIG_PATH) -> dict:
-    """Load and return the YAML configuration file."""
-    with open(path, "r") as f:
-        cfg = yaml.safe_load(f)
-    return cfg
 
 
 def create_fishnet_grid(
@@ -95,7 +87,8 @@ def clip_to_aoi(
     return clipped
 
 
-def main():
+def main() -> None:
+    """Generate and persist the configured fishnet grid."""
     # ---- Load configuration ------------------------------------------------
     cfg = load_config()
 

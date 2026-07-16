@@ -42,11 +42,11 @@ import matplotlib.patches as mpatches
 import numpy as np
 import pandas as pd
 import shap
-import yaml
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from config_loader import load_config
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -55,7 +55,6 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 FEATURE_COLS = ["mean_ndvi", "mean_lst", "mean_ndbi", "mean_dem"]
 
@@ -76,11 +75,6 @@ RISK_DIRECTION = {
     "mean_ndbi": "high",  # high built-up ↑ risk
     "mean_dem":  "low",   # low elevation ↑ risk
 }
-
-
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
 
 
 # ── helpers ────────────────────────────────────────────────────────────────
@@ -120,15 +114,18 @@ def build_explanation_text(row: pd.Series) -> str:
 # ═══════════════════════════════════════════════════════════════════════════
 #  MAIN
 # ═══════════════════════════════════════════════════════════════════════════
-def main():
+def main() -> None:
+    """Train the configured surrogate model and generate explanations."""
     print("=" * 65)
     print("  City Sense – Week 6: Explainability Layer")
     print("=" * 65)
 
     cfg = load_config()
+    model_config = cfg["model"]["explainability"]
+    random_seed = cfg["project"]["random_seed"]
     master_path = os.path.join(PROJECT_ROOT,
                                cfg["output_paths"]["master_data"])
-    model_dir = os.path.join(PROJECT_ROOT, "models")
+    model_dir = os.path.join(PROJECT_ROOT, cfg["output_paths"]["models_dir"])
     data_dir = os.path.join(PROJECT_ROOT, "data")
     os.makedirs(model_dir, exist_ok=True)
 
@@ -147,9 +144,9 @@ def main():
     # ------------------------------------------------------------------
     # 2. Train / test split
     # ------------------------------------------------------------------
-    print("\n▸ Splitting data (80 / 20, random_state=42) …")
+    print(f"\n▸ Splitting data (test_size={model_config['test_size']}, random_seed={random_seed}) …")
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.20, random_state=42
+        X, y, test_size=model_config["test_size"], random_state=random_seed
     )
     print(f"  Train: {X_train.shape[0]}  |  Test: {X_test.shape[0]}")
 
@@ -161,7 +158,7 @@ def main():
     X_train_sc = scaler.fit_transform(X_train)
     X_test_sc = scaler.transform(X_test)
 
-    scaler_path = os.path.join(model_dir, "explain_scaler.pkl")
+    scaler_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["explain_scaler"])
     with open(scaler_path, "wb") as f:
         pickle.dump(scaler, f)
     print(f"  [OK] Scaler saved → {scaler_path}")
@@ -169,17 +166,17 @@ def main():
     # ------------------------------------------------------------------
     # 4. Train Random Forest
     # ------------------------------------------------------------------
-    print("\n▸ Training RandomForestRegressor (n_estimators=200, "
-          "max_depth=5) …")
+    print("\n▸ Training RandomForestRegressor "
+          f"(n_estimators={model_config['n_estimators']}, max_depth={model_config['max_depth']}) …")
     rf = RandomForestRegressor(
-        n_estimators=200,
-        max_depth=5,
-        random_state=42,
+        n_estimators=model_config["n_estimators"],
+        max_depth=model_config["max_depth"],
+        random_state=random_seed,
         n_jobs=-1,
     )
     rf.fit(X_train_sc, y_train)
 
-    model_path = os.path.join(model_dir, "risk_model.pkl")
+    model_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["risk_model"])
     with open(model_path, "wb") as f:
         pickle.dump(rf, f)
     print(f"  [OK] Model saved → {model_path}")
@@ -220,7 +217,7 @@ def main():
         ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.005,
                 f"{val:.3f}", ha="center", va="bottom", fontsize=10)
     plt.tight_layout()
-    imp_path = os.path.join(data_dir, "feature_importance.png")
+    imp_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["feature_importance"])
     fig.savefig(imp_path, dpi=150)
     plt.close(fig)
     print(f"  [OK] Saved → {imp_path}")
@@ -245,7 +242,7 @@ def main():
         plot_size=None,
     )
     plt.tight_layout()
-    shap_path = os.path.join(data_dir, "shap_summary.png")
+    shap_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["shap_summary"])
     plt.savefig(shap_path, dpi=150, bbox_inches="tight")
     plt.close("all")
     print(f"  [OK] Saved → {shap_path}")
@@ -304,7 +301,10 @@ def main():
     # ------------------------------------------------------------------
     print("\n▸ Sample cell explanations:")
     print("-" * 80)
-    samples = gdf.sample(n=min(6, len(gdf)), random_state=7)
+    samples = gdf.sample(
+        n=min(model_config["sample_size"], len(gdf)),
+        random_state=model_config["sample_seed"],
+    )
     for _, row in samples.iterrows():
         print(f"  {row['cell_id']:>8s}  risk={row['risk_score']:5.1f}  "
               f"cluster={row['cluster_label']}")
@@ -361,7 +361,7 @@ def main():
     ax_map.legend(handles=patches, loc="lower left", fontsize=9,
                   title="Top Driver", title_fontsize=10)
     plt.tight_layout()
-    map_path = os.path.join(data_dir, "top_driver_map.png")
+    map_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["top_driver_map"])
     fig_map.savefig(map_path, dpi=150)
     plt.close(fig_map)
     print(f"  [OK] Saved → {map_path}")

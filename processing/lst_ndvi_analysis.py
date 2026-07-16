@@ -13,35 +13,30 @@ Usage:
 """
 
 import os
-import yaml
 import numpy as np
 import geopandas as gpd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy import stats
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
-def main():
+def main() -> None:
+    """Analyze the LST/NDVI relationship and save its configured plot."""
     print("=" * 60)
     print("  City Sense -- Week 4: LST-NDVI Correlation Analysis")
     print("=" * 60)
 
     cfg = load_config()
     master_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["master_data"])
-    output_png = os.path.join(PROJECT_ROOT, "data", "lst_ndvi_scatter.png")
+    output_png = os.path.join(PROJECT_ROOT, cfg["output_paths"]["lst_ndvi_scatter"])
 
     # ---- Load master dataset -----------------------------------------------
     gdf = gpd.read_file(master_path)

@@ -15,44 +15,32 @@ Usage:
 """
 
 import os
-import yaml
 import geopandas as gpd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 # Sanjay Gandhi National Park / Aarey Colony baseline bounding box
 # This covers the core forested area used as the "rural/green" reference
-PARK_BBOX = {
-    "west":  72.87,
-    "east":  72.93,
-    "south": 19.18,
-    "north": 19.25,
-}
-
-
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
-def main():
+def main() -> None:
+    """Add UHI intensity and its configured map artifact to the master data."""
     print("=" * 60)
     print("  City Sense -- Week 4: Compute UHI Intensity")
     print("=" * 60)
 
     cfg = load_config()
     master_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["master_data"])
-    output_png = os.path.join(PROJECT_ROOT, "data", "uhi_map.png")
+    output_png = os.path.join(PROJECT_ROOT, cfg["output_paths"]["uhi_map"])
+    park_bbox = cfg["uhi"]["reference_bbox"]
 
     # ---- Load master dataset -----------------------------------------------
     gdf = gpd.read_file(master_path)
@@ -61,8 +49,8 @@ def main():
 
     # ---- Define baseline zone (SGNP) using centroid filter -----------------
     print(f"\n> Baseline zone (SGNP): "
-          f"lon [{PARK_BBOX['west']}, {PARK_BBOX['east']}], "
-          f"lat [{PARK_BBOX['south']}, {PARK_BBOX['north']}]")
+          f"lon [{park_bbox['west']}, {park_bbox['east']}], "
+          f"lat [{park_bbox['south']}, {park_bbox['north']}]")
 
     # Compute centroids for filtering
     centroids = gdf.geometry.centroid
@@ -71,8 +59,8 @@ def main():
 
     # Filter cells whose centroids fall within the park bounding box
     park_mask = (
-        (cx >= PARK_BBOX["west"]) & (cx <= PARK_BBOX["east"]) &
-        (cy >= PARK_BBOX["south"]) & (cy <= PARK_BBOX["north"])
+        (cx >= park_bbox["west"]) & (cx <= park_bbox["east"]) &
+        (cy >= park_bbox["south"]) & (cy <= park_bbox["north"])
     )
     park_cells = gdf[park_mask]
     print(f"  Baseline cells selected: {len(park_cells)}")
@@ -141,9 +129,9 @@ def main():
     # Draw the baseline bounding box
     from matplotlib.patches import Rectangle
     park_rect = Rectangle(
-        (PARK_BBOX["west"], PARK_BBOX["south"]),
-        PARK_BBOX["east"] - PARK_BBOX["west"],
-        PARK_BBOX["north"] - PARK_BBOX["south"],
+        (park_bbox["west"], park_bbox["south"]),
+        park_bbox["east"] - park_bbox["west"],
+        park_bbox["north"] - park_bbox["south"],
         linewidth=2, edgecolor="green", facecolor="none",
         linestyle="--", label="SGNP baseline zone",
     )

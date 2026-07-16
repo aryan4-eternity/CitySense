@@ -2,7 +2,7 @@
 fetch_lst.py
 ============
 Pulls Landsat 8/9 thermal data for the pre-monsoon window defined in
-config.yaml, applies full emissivity correction to convert brightness
+config/config.yaml, applies full emissivity correction to convert brightness
 temperature to true land surface temperature (LST) in degrees Celsius,
 reduces to mean per grid cell, and saves data/lst_grid.geojson.
 
@@ -30,17 +30,17 @@ import os
 import sys
 import math
 import time
-import yaml
+from typing import Any
 import ee
 import geopandas as gpd
 import pandas as pd
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # 0. Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 # ---------------------------------------------------------------------------
 # Physical constants for LST calculation
@@ -57,17 +57,11 @@ ST_SCALE = 0.00341802      # Surface temperature scale
 ST_OFFSET = 149.0          # Surface temperature offset (result in Kelvin)
 
 
-def load_config(path: str = CONFIG_PATH) -> dict:
-    """Load and return the YAML configuration file."""
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
 # =====================================================================
 # STEP 1 -- Read configuration
 # =====================================================================
-def get_settings(cfg: dict) -> dict:
-    """Extract all the settings we need from config.yaml into a flat dict."""
+def get_settings(cfg: dict[str, Any]) -> dict[str, Any]:
+    """Extract the configured LST settings into a flat mapping."""
     aoi = cfg["aoi"]
     return {
         "west":  aoi["west"],
@@ -79,6 +73,7 @@ def get_settings(cfg: dict) -> dict:
         "project": cfg["gee"].get("project", None),
         "l8_collection": cfg["gee"]["landsat8_collection"],
         "l9_collection": cfg["gee"]["landsat9_collection"],
+        "scale": cfg["gee"]["reduction_scales_m"]["lst"],
         "grid_path": os.path.join(PROJECT_ROOT, cfg["output_paths"]["grid"]),
         "lst_output": os.path.join(
             PROJECT_ROOT,
@@ -90,7 +85,7 @@ def get_settings(cfg: dict) -> dict:
 # =====================================================================
 # STEP 2 -- Initialize Earth Engine and create AOI rectangle
 # =====================================================================
-def init_ee(project: str = None):
+def init_ee(project: str | None = None) -> None:
     """Initialize the Earth Engine API with the given GCP project."""
     try:
         ee.Initialize(project=project)
@@ -365,7 +360,8 @@ def export_to_geojson(
 # =====================================================================
 # MAIN
 # =====================================================================
-def main():
+def main() -> None:
+    """Fetch configured Landsat land-surface temperatures for the grid."""
     print("=" * 60)
     print("  City Sense -- Week 3: Fetch LST")
     print("=" * 60)
@@ -404,8 +400,8 @@ def main():
     grid_fc, local_gdf = load_grid_as_ee_fc(s["grid_path"])
 
     # ---- Step 7: Reduce to grid cell means (scale=100m) ------------------
-    print("\n> Reducing LST to grid cell means (scale=100 m)...")
-    reduced_fc = reduce_lst_to_grid(lst_composite, grid_fc, scale=100)
+    print(f"\n> Reducing LST to grid cell means (scale={s['scale']} m)...")
+    reduced_fc = reduce_lst_to_grid(lst_composite, grid_fc, scale=s["scale"])
 
     # ---- Step 8: Export to local GeoJSON ---------------------------------
     print("\n> Exporting results...")

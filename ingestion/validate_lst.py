@@ -22,6 +22,7 @@ matplotlib.use("Agg")  # non-interactive backend
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
+from config_loader import load_config
 
 
 # ---------------------------------------------------------------------------
@@ -29,19 +30,19 @@ import numpy as np
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-LST_PATH = os.path.join(PROJECT_ROOT, "data", "lst_grid.geojson")
-OUTPUT_PNG = os.path.join(PROJECT_ROOT, "data", "lst_validation.png")
-
-
-def main():
+def main() -> None:
+    """Create a visual validation plot for the configured LST output."""
+    config = load_config()
+    lst_path = os.path.join(PROJECT_ROOT, config["output_paths"]["lst_grid"])
+    output_png = os.path.join(PROJECT_ROOT, config["output_paths"]["lst_validation"])
     # ---- Load the LST grid -------------------------------------------------
-    if not os.path.exists(LST_PATH):
-        print(f"ERROR: LST file not found at {LST_PATH}")
+    if not os.path.exists(lst_path):
+        print(f"ERROR: LST file not found at {lst_path}")
         print("Run  python ingestion/fetch_lst.py  first.")
         return
 
-    gdf = gpd.read_file(LST_PATH)
-    print(f"Loaded {len(gdf)} cells from {LST_PATH}")
+    gdf = gpd.read_file(lst_path)
+    print(f"Loaded {len(gdf)} cells from {lst_path}")
     print(f"Columns: {list(gdf.columns)}")
 
     # ---- Quick stats -------------------------------------------------------
@@ -129,8 +130,8 @@ def main():
     )
 
     plt.tight_layout()
-    plt.savefig(OUTPUT_PNG, dpi=150, bbox_inches="tight")
-    print(f"\n[OK] Validation plot saved to: {OUTPUT_PNG}")
+    plt.savefig(output_png, dpi=150, bbox_inches="tight")
+    print(f"\n[OK] Validation plot saved to: {output_png}")
     plt.close()
 
 

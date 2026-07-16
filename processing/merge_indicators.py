@@ -12,24 +12,19 @@ Usage:
 """
 
 import os
-import yaml
 import geopandas as gpd
 import pandas as pd
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
-def main():
+def main() -> None:
+    """Merge the four configured indicator layers into the master dataset."""
     print("=" * 60)
     print("  City Sense -- Week 4: Merge Indicators")
     print("=" * 60)

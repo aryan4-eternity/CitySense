@@ -1,0 +1,88 @@
+project:
+  city: Mumbai
+  random_seed: 42
+
+aoi:
+  west: 72.77
+  south: 18.89
+  east: 72.99
+  north: 19.27
+
+grid:
+  cell_size_deg: 0.01
+
+time_window:
+  start: "2023-03-01"
+  end: "2023-05-31"
+
+gee:
+  project: "citysense-501917"
+  sentinel2_collection: "COPERNICUS/S2_HARMONIZED"
+  landsat8_collection: "LANDSAT/LC08/C02/T1_L2"
+  landsat9_collection: "LANDSAT/LC09/C02/T1_L2"
+  srtm_collection: "USGS/SRTMGL1_003"
+  max_cloud_percentage: 20
+  reduction_scales_m:
+    ndvi: 10
+    ndbi: 10
+    lst: 100
+    dem: 30
+
+model:
+  pca_components: 4
+  kmeans:
+    candidate_clusters: [2, 3, 4, 5, 6]
+    n_init: 10
+    max_iter: 300
+  explainability:
+    test_size: 0.20
+    sample_size: 6
+    sample_seed: 7
+    n_estimators: 200
+    max_depth: 5
+
+uhi:
+  reference_bbox:
+    west: 72.87
+    east: 72.93
+    south: 19.18
+    north: 19.25
+
+dashboard:
+  map_center: [19.076, 72.877]
+  zoom_start: 11
+  overlay_bounds: [[18.89, 72.77], [19.27, 72.98]]
+  thresholds:
+    low_ndvi: 0.2
+    high_lst: 35
+    high_ndbi: 0.2
+    low_dem: 5
+
+output_paths:
+  grid: "data/grid.geojson"
+  ndvi_grid: "data/ndvi_grid.geojson"
+  lst_grid: "data/lst_grid.geojson"
+  ndbi_grid: "data/ndbi_grid.geojson"
+  dem_grid: "data/dem_grid.geojson"
+  master_data: "data/cells_master.geojson"
+  explanations: "data/cell_explanations.json"
+  uhi_map: "data/uhi_map.png"
+  models_dir: "models"
+  pca_scaler: "models/scaler.pkl"
+  pca_model: "models/pca_risk.pkl"
+  risk_model: "models/risk_model.pkl"
+  explain_scaler: "models/explain_scaler.pkl"
+  overlays_dir: "data/overlays"
+  lst_ndvi_scatter: "data/lst_ndvi_scatter.png"
+  silhouette_scores: "data/silhouette_scores.png"
+  grid_validation: "data/grid_validation.png"
+  ndvi_validation: "data/ndvi_validation.png"
+  lst_validation: "data/lst_validation.png"
+  score_distributions: "data/score_distributions.png"
+  score_scatter: "data/score_scatter.png"
+  risk_map: "data/risk_map.png"
+  sustainability_map: "data/sustainability_map.png"
+  cluster_map: "data/cluster_map.png"
+  feature_importance: "data/feature_importance.png"
+  shap_summary: "data/shap_summary.png"
+  top_driver_map: "data/top_driver_map.png"

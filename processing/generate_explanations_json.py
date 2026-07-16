@@ -43,21 +43,13 @@ except AttributeError:
     pass
 
 import geopandas as gpd
-import yaml
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
-
-
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
 # Fields to include in the JSON export
 EXPORT_FIELDS = [
     "cell_id",
@@ -78,7 +70,8 @@ EXPORT_FIELDS = [
 ]
 
 
-def main():
+def main() -> None:
+    """Export dashboard-ready explanations using configured paths."""
     print("=" * 65)
     print("  City Sense – Week 6: Generate Explanations JSON")
     print("=" * 65)
@@ -86,8 +79,7 @@ def main():
     cfg = load_config()
     master_path = os.path.join(PROJECT_ROOT,
                                cfg["output_paths"]["master_data"])
-    output_path = os.path.join(PROJECT_ROOT, "data",
-                               "cell_explanations.json")
+    output_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["explanations"])
 
     # ------------------------------------------------------------------
     # 1. Load enriched master dataset

@@ -14,24 +14,20 @@ Usage:
 import os
 import sys
 import time
-import yaml
+from typing import Any
 import ee
 import geopandas as gpd
+from config_loader import load_config
 
 # ---------------------------------------------------------------------------
 # 0. Resolve paths
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
-CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.yaml")
 
 
-def load_config(path: str = CONFIG_PATH) -> dict:
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
-def get_settings(cfg: dict) -> dict:
+def get_settings(cfg: dict[str, Any]) -> dict[str, Any]:
+    """Flatten DEM-related configuration for the ingestion stage."""
     aoi = cfg["aoi"]
     return {
         "west":  aoi["west"],
@@ -40,6 +36,7 @@ def get_settings(cfg: dict) -> dict:
         "north": aoi["north"],
         "project": cfg["gee"].get("project", None),
         "srtm_collection": cfg["gee"]["srtm_collection"],
+        "scale": cfg["gee"]["reduction_scales_m"]["dem"],
         "grid_path": os.path.join(PROJECT_ROOT, cfg["output_paths"]["grid"]),
         "dem_output": os.path.join(
             PROJECT_ROOT,
@@ -48,7 +45,8 @@ def get_settings(cfg: dict) -> dict:
     }
 
 
-def init_ee(project: str = None):
+def init_ee(project: str | None = None) -> None:
+    """Initialize the Earth Engine client for the configured project."""
     try:
         ee.Initialize(project=project)
     except Exception:
@@ -63,11 +61,13 @@ def init_ee(project: str = None):
     print(f"[OK] Earth Engine initialized (project={project})")
 
 
-def make_aoi(west, south, east, north):
+def make_aoi(west: float, south: float, east: float, north: float) -> ee.Geometry:
+    """Create a rectangular Earth Engine geometry from AOI coordinates."""
     return ee.Geometry.Rectangle([west, south, east, north])
 
 
-def load_grid_as_ee_fc(grid_path: str):
+def load_grid_as_ee_fc(grid_path: str) -> tuple[ee.FeatureCollection, gpd.GeoDataFrame]:
+    """Load the local grid and convert it to an Earth Engine collection."""
     gdf = gpd.read_file(grid_path)
     print(f"[OK] Loaded grid: {len(gdf)} cells")
 
@@ -80,7 +80,8 @@ def load_grid_as_ee_fc(grid_path: str):
     return ee.FeatureCollection(features), gdf
 
 
-def main():
+def main() -> None:
+    """Fetch configured SRTM elevation values for every grid cell."""
     print("=" * 60)
     print("  City Sense -- Week 4: Fetch DEM (SRTM)")
     print("=" * 60)
@@ -99,14 +100,14 @@ def main():
     srtm = ee.Image(s["srtm_collection"]).select("elevation").clip(aoi_geom)
 
     # ---- Load grid ----------------------------------------------------------
-    print("\n> Loading grid and reducing DEM to cell means (scale=30 m)...")
+    print(f"\n> Loading grid and reducing DEM to cell means (scale={s['scale']} m)...")
     grid_fc, local_gdf = load_grid_as_ee_fc(s["grid_path"])
 
     # ---- Reduce to grid cell means -----------------------------------------
     reduced = srtm.reduceRegions(
         collection=grid_fc,
         reducer=ee.Reducer.mean(),
-        scale=30,  # SRTM native resolution
+        scale=s["scale"],
     )
 
     # ---- Export via getInfo() -----------------------------------------------
