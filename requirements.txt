@@ -13,3 +13,6 @@ shap
 matplotlib
 seaborn
 rasterio
+requests
+geopy
+pyproj

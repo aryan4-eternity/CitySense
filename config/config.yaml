@@ -86,3 +86,6 @@ output_paths:
   feature_importance: "data/feature_importance.png"
   shap_summary: "data/shap_summary.png"
   top_driver_map: "data/top_driver_map.png"
+  geographic_metadata: "data/geo/geographic_metadata.json"
+  ward_boundaries: "data/geo/mumbai_wards.geojson"
+  geographic_config: "config/geographic_config.yaml"

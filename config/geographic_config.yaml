@@ -1,0 +1,49 @@
+geographic:
+  city_prefix: "MUM"
+  nominatim_rate_limit_sec: 1.1
+  landmark_radius_km: 1.5
+  max_landmarks_per_cell: 5
+  overpass_batch_size: 50
+  
+  ward_population:  # 2024 estimated (based on 2011 Census + growth proxy)
+    "A Ward": 192000
+    "B Ward": 130000
+    "C Ward": 165000
+    "D Ward": 350000
+    "E Ward": 400000
+    "F/North Ward": 540000
+    "F/South Ward": 370000
+    "G/North Ward": 615000
+    "G/South Ward": 385000
+    "H/East Ward": 570000
+    "H/West Ward": 315000
+    "K/East Ward": 850000
+    "K/West Ward": 780000
+    "L Ward": 930000
+    "M/East Ward": 830000
+    "M/West Ward": 420000
+    "N Ward": 640000
+    "P/North Ward": 970000
+    "P/South Ward": 480000
+    "R/Central Ward": 580000
+    "R/North Ward": 440000
+    "R/South Ward": 710000
+    "S Ward": 720000
+    "T Ward": 350000
+    
+  land_use_thresholds:
+    green_ndvi_min: 0.4
+    commercial_ndbi_min: 0.3
+    residential_ndbi_min: 0.2
+    water_dem_max: 2.0
+    
+  osm_categories:
+    hospitals: "amenity=hospital"
+    schools: "amenity=school"
+    railway_stations: "railway=station"
+    metro_stations: "station=subway"
+    universities: "amenity=university"
+    parks: "leisure=park"
+    lakes: "natural=water"
+    religious: "amenity=place_of_worship"
+    roads: "highway=primary"

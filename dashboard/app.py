@@ -39,8 +39,31 @@ def load_explanations(path: str) -> Any:
     with open(path, "r") as f:
         return json.load(f)
 
+@st.cache_data
+def load_geographic_metadata(path: str) -> dict:
+    """Load geographic metadata JSON."""
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            return json.load(f)
+    return {}
+
 gdf = load_geodata(str(project_path(CONFIG, "master_data")))
 explanations = load_explanations(str(project_path(CONFIG, "explanations")))
+geo_meta = load_geographic_metadata(str(project_path(CONFIG, "geographic_metadata")))
+
+# Augment gdf with display_name for tooltips
+def get_display_name(cell_id):
+    if geo_meta and cell_id in geo_meta:
+        gm = geo_meta[cell_id]
+        loc = gm.get("primary_locality", "Unknown")
+        gid = gm.get("grid_id", cell_id)
+        return f"{loc} ({gid})"
+    return cell_id
+
+if "cell_id" in gdf.columns:
+    gdf["display_name"] = gdf["cell_id"].apply(get_display_name)
+else:
+    gdf["display_name"] = gdf.index.astype(str)
 
 # Quick sanity check
 st.sidebar.write(f"✅ Loaded {len(gdf)} grid cells")
@@ -58,14 +81,14 @@ if not gdf.empty:
     if "mean_lst" in gdf.columns:
         hottest_idx = gdf["mean_lst"].idxmax()
         hottest_val = gdf.loc[hottest_idx, "mean_lst"]
-        hottest_id = gdf.loc[hottest_idx, "cell_id"] if "cell_id" in gdf.columns else hottest_idx
-        col3.metric("Hottest Cell", f"{hottest_id} ({hottest_val:.1f}°C)")
+        hottest_name = gdf.loc[hottest_idx, "display_name"]
+        col3.metric("Hottest Area", f"{hottest_name} ({hottest_val:.1f}°C)")
 
     if "mean_ndvi" in gdf.columns:
         greenest_idx = gdf["mean_ndvi"].idxmax()
         greenest_val = gdf.loc[greenest_idx, "mean_ndvi"]
-        greenest_id = gdf.loc[greenest_idx, "cell_id"] if "cell_id" in gdf.columns else greenest_idx
-        col4.metric("Greenest Cell", f"{greenest_id} (NDVI {greenest_val:.3f})")
+        greenest_name = gdf.loc[greenest_idx, "display_name"]
+        col4.metric("Greenest Area", f"{greenest_name} (NDVI {greenest_val:.3f})")
 
     if "cluster" in gdf.columns:
         # Most at-risk cluster: cluster with highest mean risk score
@@ -156,8 +179,8 @@ def add_choropleth(
 
     # Tooltip
     tooltip = folium.GeoJsonTooltip(
-        fields=tooltip_fields if tooltip_fields else ["cell_id", column],
-        aliases=["Cell ID", column.replace("_", " ").title()],
+        fields=tooltip_fields if tooltip_fields else ["display_name", column],
+        aliases=["Location", column.replace("_", " ").title()],
         localize=True,
     ) if tooltip_fields else None
 
@@ -291,7 +314,7 @@ interactive_layer = folium.GeoJson(
     name="Clickable Grid (transparent)",
     style_function=lambda x: {"fillColor": "#000000", "color": "#000000", "weight": 0, "fillOpacity": 0},
     highlight_function=lambda x: {"weight": 3, "color": "#FF0000", "fillOpacity": 0.3},
-    tooltip=folium.GeoJsonTooltip(fields=["cell_id"], aliases=["Cell ID"]),
+    tooltip=folium.GeoJsonTooltip(fields=["display_name"], aliases=["Location"]),
     zoom_on_click=True,
 )
 interactive_layer.add_to(m)
@@ -321,18 +344,61 @@ if clicked_cell_id is not None:
     cell_row = gdf[gdf["cell_id"] == clicked_cell_id]
     if not cell_row.empty:
         cell = cell_row.iloc[0]
-        # Display info in sidebar and main area
+        
         with st.sidebar:
-            st.markdown(f"### Cell `{clicked_cell_id}`")
+            # Check if geographic metadata exists for this cell
+            if geo_meta and clicked_cell_id in geo_meta:
+                gm = geo_meta[clicked_cell_id]
+                st.markdown(f"### 📍 Geographic Profile")
+                st.markdown(f"**{gm.get('primary_locality', 'Unknown')}** (Grid {gm.get('grid_id', clicked_cell_id)})")
+                
+                ward = gm.get('ward', 'Unknown Ward')
+                zone = gm.get('zone', 'Unknown Zone')
+                st.markdown(f"📌 {ward} | {zone}")
+                
+                st.markdown(f"🏘️ {gm.get('dominant_land_use', 'Unknown')}")
+                
+                pop = gm.get('population', 0)
+                if pop > 0:
+                    st.markdown(f"👥 Population: ~{pop:,}")
+                else:
+                    st.markdown(f"👥 Population: Minimal/Uninhabited")
+                    
+                secondary = gm.get('secondary_localities', [])
+                if secondary:
+                    st.markdown("**📍 Nearby Areas**")
+                    for s in secondary[:3]:
+                        st.markdown(f"  • {s}")
+                        
+                landmarks = gm.get('nearest_landmarks', [])
+                if landmarks:
+                    st.markdown("**🏛️ Nearby Landmarks**")
+                    for lm in landmarks:
+                        st.markdown(f"  • {lm['name']} ({lm['distance_km']} km)")
+                        
+                lat, lon = gm.get('centroid_lat'), gm.get('centroid_lon')
+                if lat and lon:
+                    st.markdown("**🌐 Coordinates**")
+                    st.markdown(f"{lat}°N, {lon}°E")
+                    st.markdown(f"[🔗 Open in Google Maps](https://www.google.com/maps/search/?api=1&query={lat},{lon})")
+                    st.markdown(f"[🔗 Open in OpenStreetMap](https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=16/{lat}/{lon})")
+            else:
+                st.markdown(f"### Cell `{clicked_cell_id}`")
+                st.info("💡 Run geographic enrichment pipeline to see locality details.")
+
+            st.markdown("---")
+            st.markdown("### 📊 Environmental Analysis")
+            
             # Risk & Sustainability
             if "risk_score" in cell:
                 st.metric("Risk Score", f"{cell['risk_score']:.2f}")
             if "sustainability_score" in cell:
                 st.metric("Sustainability Score", f"{cell['sustainability_score']:.2f}")
-            if "cluster" in cell:
+            if "cluster_label" in cell:
+                st.markdown(f"**Cluster:** {cell['cluster_label']}")
+            elif "cluster" in cell:
                 st.markdown(f"**Cluster:** {cell['cluster']}")
 
-            st.markdown("---")
             # Indicators
             indicators = {
                 "mean_ndvi": "🌿 NDVI",
@@ -349,18 +415,17 @@ if clicked_cell_id is not None:
             if clicked_cell_id in explanations:
                 explain = explanations[clicked_cell_id]
                 explanation_text = explain.get("explanation_text", "")
+                st.markdown("---")
                 st.markdown("**🧠 AI Explanation**")
                 st.info(explanation_text if explanation_text else "No explanation available.")
 
                 # SHAP values if present
                 top_pos = explain.get("top_positive_driver")
                 top_neg = explain.get("top_negative_driver")
-                if top_pos:
-                    st.write(f"↑ **Positive driver:** {top_pos.get('feature', '?')} (SHAP {top_pos.get('shap_value', 0):.3f})")
-                if top_neg:
-                    st.write(f"↓ **Negative driver:** {top_neg.get('feature', '?')} (SHAP {top_neg.get('shap_value', 0):.3f})")
-            else:
-                st.markdown("_No explanation found for this cell._")
+                if top_pos and top_pos.get("feature"):
+                    st.write(f"↑ **Positive driver:** {top_pos.get('feature')} (SHAP {top_pos.get('shap_value', 0):.3f})")
+                if top_neg and top_neg.get("feature"):
+                    st.write(f"↓ **Negative driver:** {top_neg.get('feature')} (SHAP {top_neg.get('shap_value', 0):.3f})")
 
             # Rule-based recommendation
             st.markdown("---")
@@ -378,6 +443,7 @@ if clicked_cell_id is not None:
                 rec.append("💧 Elevation risk – improve drainage and flood protection.")
             if ndbi_val is not None and ndbi_val > CONFIG["dashboard"]["thresholds"]["high_ndbi"]:
                 rec.append("🏗️ High built-up density – consider permeable surfaces and cool roofs.")
+            
             if rec:
                 for r in rec:
                     st.success(r)

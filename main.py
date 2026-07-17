@@ -55,6 +55,7 @@ def main() -> None:
         train_explainability,
         validate_scores,
     )
+    from metadata import geo_enrichment
 
     output_paths = config["output_paths"]
     stages: list[tuple[str, Callable[[], None], Path | None]] = [
@@ -70,6 +71,7 @@ def main() -> None:
         ("Cluster urban typologies", kmeans_clustering.main, None),
         ("Train explainability model", train_explainability.main, None),
         ("Create dashboard explanations", generate_explanations_json.main, None),
+        ("Enrich geographic metadata", geo_enrichment.main, project_path(config, "geographic_metadata")),
         ("Generate validation plots", validate_scores.main, None),
     ]
     for name, stage, expected_output in stages:

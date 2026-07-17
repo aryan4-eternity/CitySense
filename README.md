@@ -31,7 +31,13 @@ graph TD
 - **PCA Scoring**: Uses Principal Component Analysis to compute a composite Risk Score and a Sustainability Score.
 - **Clustering**: K-Means clustering groups cells into distinct urban typologies (e.g., "Dense Urban Heat Core", "Vegetated Suburbs").
 - **Explainability (SHAP)**: An XGBoost surrogate model predicts the Risk Score, and SHAP values are extracted to explain the primary positive and negative drivers for *every single grid cell*.
-- **Interactive Dashboard**: A Streamlit application featuring Folium maps for visualizing layers, clicking on cells for detailed breakdowns, and generating rule-based recommendations.
+- **Geographic Intelligence Layer (Phase 1)**: Transforms raw grid identifiers into meaningful geographic profiles.
+  - Reverse geocoding (OpenStreetMap Nominatim) maps cells to localities (e.g., *Powai*).
+  - Spatial joins map grids to administrative wards and zones.
+  - Overpass API detects nearby landmarks (hospitals, schools, parks).
+  - Land use classification categorizes dominant urban footprints.
+  - Ward-level census data estimates cell-level population.
+- **Interactive Dashboard**: A Streamlit application featuring Folium maps for visualizing layers, clicking on cells for detailed Geographic Profiles, environmental breakdowns, AI explanations, and rule-based recommendations.
 
 ## Results & Key Findings
 
@@ -54,8 +60,10 @@ CitySense/city_sense/
 ├── ingestion/               # Scripts to fetch and grid GEE data
 ├── processing/              # Scripts to calculate indicators
 ├── modeling/                # Scoring, clustering, and SHAP explanations
+├── metadata/                # Geographic Intelligence Layer (geocoding, POIs, wards)
 ├── dashboard/               # Streamlit application (app.py)
 ├── data/                    # Processed GeoJSON, JSON, and imagery
+│   ├── geo/                 # Cached geographic metadata and ward boundaries
 │   └── overlays/            # Optional static satellite imagery overlays
 └── tests/                   # Unit tests for scoring and indicators
 ```
