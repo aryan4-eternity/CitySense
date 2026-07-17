@@ -1,20 +1,26 @@
 # dashboard/app.py
 """
 City Sense – Mumbai Environmental Risk & Sustainability Dashboard
+Phase 2: Environmental Intelligence & Context Engine
 """
 
-import streamlit as st
-from streamlit_folium import st_folium
-import folium
-from folium.plugins import Fullscreen
-import geopandas as gpd
-import pandas as pd
+from __future__ import annotations
+
 import json
 import os
-import numpy as np
 from collections.abc import Callable
 from typing import Any
+
+import folium
+import geopandas as gpd
+import numpy as np
+import pandas as pd
+import streamlit as st
+from folium.plugins import Fullscreen
+from streamlit_folium import st_folium
+
 from config_loader import load_config, project_path
+from environment.environment_templates import STATUS_COLORS
 
 CONFIG = load_config()
 
@@ -23,8 +29,9 @@ st.set_page_config(page_title="City Sense", layout="wide")
 st.title("🌆 City Sense – Mumbai Environmental Dashboard")
 
 # ------------------------------------------------------------------------------
-# 1. Load data
+# 1. Data loaders  (all cached)
 # ------------------------------------------------------------------------------
+
 @st.cache_data
 def load_geodata(path: str) -> gpd.GeoDataFrame:
     """Load GeoJSON master dataset and ensure coordinate reference system."""
@@ -33,26 +40,45 @@ def load_geodata(path: str) -> gpd.GeoDataFrame:
         gdf.set_crs(epsg=4326, inplace=True)
     return gdf
 
+
 @st.cache_data
-def load_explanations(path: str) -> Any:
-    """Load cell explanations JSON."""
-    with open(path, "r") as f:
+def load_explanations(path: str) -> dict:
+    """Load cell explanations JSON (SHAP + AI text)."""
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 @st.cache_data
 def load_geographic_metadata(path: str) -> dict:
-    """Load geographic metadata JSON."""
+    """Load geographic metadata JSON; returns {} if file not found."""
     if os.path.exists(path):
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     return {}
 
+
+@st.cache_data
+def load_environmental_intelligence(path: str) -> dict:
+    """Load environmental intelligence JSON; returns {} if file not found.
+
+    Graceful degradation: if the Phase 2 pipeline stage has not been run
+    yet, the dashboard falls back to the legacy raw-metrics display.
+    """
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+# Load all data
 gdf = load_geodata(str(project_path(CONFIG, "master_data")))
 explanations = load_explanations(str(project_path(CONFIG, "explanations")))
 geo_meta = load_geographic_metadata(str(project_path(CONFIG, "geographic_metadata")))
+env_intel = load_environmental_intelligence(str(project_path(CONFIG, "environmental_intelligence")))
 
-# Augment gdf with display_name for tooltips
-def get_display_name(cell_id):
+
+# Augment GDF with display_name for map tooltips
+def _get_display_name(cell_id: str) -> str:
     if geo_meta and cell_id in geo_meta:
         gm = geo_meta[cell_id]
         loc = gm.get("primary_locality", "Unknown")
@@ -60,23 +86,38 @@ def get_display_name(cell_id):
         return f"{loc} ({gid})"
     return cell_id
 
+
 if "cell_id" in gdf.columns:
-    gdf["display_name"] = gdf["cell_id"].apply(get_display_name)
+    gdf["display_name"] = gdf["cell_id"].apply(_get_display_name)
 else:
     gdf["display_name"] = gdf.index.astype(str)
 
-# Quick sanity check
+# Merge EHI into GDF for choropleth layer (if intelligence data available)
+if env_intel:
+    ehi_map = {cid: v.get("environmental_health", np.nan) for cid, v in env_intel.items()}
+    if "cell_id" in gdf.columns:
+        gdf["environmental_health"] = gdf["cell_id"].map(ehi_map)
+
 st.sidebar.write(f"✅ Loaded {len(gdf)} grid cells")
+if env_intel:
+    st.sidebar.write(f"🧠 Environmental intelligence: {len(env_intel)} cells enriched")
+else:
+    st.sidebar.info("ℹ️ Run the pipeline to generate environmental intelligence data.")
 
 # ------------------------------------------------------------------------------
-# 2. Summary statistics (top of dashboard)
+# 2. Summary statistics bar
 # ------------------------------------------------------------------------------
 if not gdf.empty:
     col1, col2, col3, col4, col5 = st.columns(5)
     col1.metric("Total Cells", len(gdf))
 
-    avg_risk = gdf["risk_score"].mean() if "risk_score" in gdf.columns else 0
-    col2.metric("Avg Risk Score", f"{avg_risk:.2f}")
+    # Use EHI if available, fall back to risk score
+    if env_intel and "environmental_health" in gdf.columns:
+        avg_ehi = gdf["environmental_health"].mean()
+        col2.metric("Avg Environmental Health", f"{avg_ehi:.1f} / 100")
+    elif "risk_score" in gdf.columns:
+        avg_risk = gdf["risk_score"].mean()
+        col2.metric("Avg Risk Score", f"{avg_risk:.2f}")
 
     if "mean_lst" in gdf.columns:
         hottest_idx = gdf["mean_lst"].idxmax()
@@ -90,8 +131,7 @@ if not gdf.empty:
         greenest_name = gdf.loc[greenest_idx, "display_name"]
         col4.metric("Greenest Area", f"{greenest_name} (NDVI {greenest_val:.3f})")
 
-    if "cluster" in gdf.columns:
-        # Most at-risk cluster: cluster with highest mean risk score
+    if "cluster" in gdf.columns and "risk_score" in gdf.columns:
         cluster_risk = gdf.groupby("cluster")["risk_score"].mean().idxmax()
         col5.metric("Most At-Risk Cluster", str(cluster_risk))
 else:
@@ -105,16 +145,10 @@ m = folium.Map(
     zoom_start=CONFIG["dashboard"]["zoom_start"],
     tiles=None,
 )
-folium.TileLayer(
-    "CartoDB Positron",
-    name="Basemap – Light",
-    control=False  # base tile doesn't need toggle, but we'll add it as default
-).add_to(m)
-
-# Add a dark basemap as alternative (will appear in layer control)
+folium.TileLayer("CartoDB Positron", name="Basemap – Light", control=False).add_to(m)
 folium.TileLayer("CartoDB dark_matter", name="Basemap – Dark").add_to(m)
 
-# Optional static satellite overlays (if files exist)
+# Optional static satellite overlays
 overlay_dir = str(project_path(CONFIG, "overlays_dir"))
 if os.path.exists(overlay_dir):
     rgb_tif = os.path.join(overlay_dir, "mumbai_rgb.tif")
@@ -136,48 +170,39 @@ if os.path.exists(overlay_dir):
 else:
     st.sidebar.info("ℹ️ Satellite overlays not found. Place .tif files in data/overlays/ to enable.")
 
+
 # ------------------------------------------------------------------------------
-# 4. Function: add choropleth layer
+# 4. Choropleth helper + colour maps
 # ------------------------------------------------------------------------------
+
 def add_choropleth(
-    gdf: gpd.GeoDataFrame,
+    base_gdf: gpd.GeoDataFrame,
     column: str,
     name: str,
     color_map: Callable[[float], str],
     tooltip_fields: list[str] | None = None,
     fill_opacity: float = 0.7,
 ) -> folium.GeoJson | None:
-    """
-    Adds a GeoJson choropleth layer to the map m.
-    Returns the folium.GeoJson layer so we can use it for click interactions if needed.
-    """
-    # Drop missing values for the column to avoid style errors
-    valid_gdf = gdf.dropna(subset=[column])
+    """Add a GeoJson choropleth layer to the global map *m*."""
+    valid_gdf = base_gdf.dropna(subset=[column])
     if len(valid_gdf) == 0:
         return None
 
-    # Build a style function based on a colormap
+    vmin = float(valid_gdf[column].min())
+    vmax = float(valid_gdf[column].max())
+
     def style_function(feature: dict[str, Any]) -> dict[str, Any]:
-        """Style one GeoJSON feature from the selected numeric column."""
         value = feature["properties"].get(column)
         if value is None:
             return {"fillColor": "#cccccc", "color": "#999999", "weight": 0.5, "fillOpacity": 0}
-        # Map value to color (linearly scaled within valid range)
-        vmin = valid_gdf[column].min()
-        vmax = valid_gdf[column].max()
-        if vmax == vmin:
-            ratio = 0.5
-        else:
-            ratio = (value - vmin) / (vmax - vmin)
-        color = color_map(ratio)
+        ratio = 0.5 if vmax == vmin else (value - vmin) / (vmax - vmin)
         return {
-            "fillColor": color,
+            "fillColor": color_map(ratio),
             "color": "#555555",
             "weight": 0.5,
             "fillOpacity": fill_opacity,
         }
 
-    # Tooltip
     tooltip = folium.GeoJsonTooltip(
         fields=tooltip_fields if tooltip_fields else ["display_name", column],
         aliases=["Location", column.replace("_", " ").title()],
@@ -190,60 +215,51 @@ def add_choropleth(
         style_function=style_function,
         tooltip=tooltip,
         highlight_function=lambda x: {"weight": 2, "color": "black"},
-        show=False,  # start hidden, user can toggle
+        show=False,
     )
     layer.add_to(m)
     return layer
 
-# Color maps as simple functions
+
 def risk_color(ratio: float) -> str:
-    """Return a green-to-red color representing normalized risk."""
-    # diverging: high risk red, low risk green
+    """Green-to-red for risk (high ratio = high risk = red)."""
     if ratio > 0.5:
-        r = 255
-        g = int(255 * (1 - (ratio - 0.5) * 2))
+        r, g = 255, int(255 * (1 - (ratio - 0.5) * 2))
     else:
-        r = int(255 * (ratio * 2))
-        g = 255
+        r, g = int(255 * ratio * 2), 255
     return f"#{r:02x}{g:02x}00"
+
 
 def sustainability_color(ratio: float) -> str:
-    """Return a red-to-green color representing normalized sustainability."""
-    # high sustainability is green, low is red
+    """Red-to-green for sustainability (high ratio = high sustainability = green)."""
     if ratio > 0.5:
-        g = 255
-        r = int(255 * (1 - (ratio - 0.5) * 2))
+        g, r = 255, int(255 * (1 - (ratio - 0.5) * 2))
     else:
-        g = int(255 * (ratio * 2))
-        r = 255
+        g, r = int(255 * ratio * 2), 255
     return f"#{r:02x}{g:02x}00"
 
+
 def ndvi_color(ratio: float) -> str:
-    """Return a brown-to-green color representing normalized NDVI."""
-    if ratio < 0.5:
-        r = 150
-        g = int(150 + ratio * 210)  # yellow-green
-    else:
-        r = int(150 - (ratio - 0.5) * 300)
-        g = 255
-    b = 0
-    return f"#{max(0,min(255,r)):02x}{max(0,min(255,g)):02x}{b:02x}"
+    """Brown-to-green for NDVI."""
+    r = int(150 - max(0.0, ratio - 0.5) * 300) if ratio >= 0.5 else 150
+    g = 255 if ratio >= 0.5 else int(150 + ratio * 210)
+    return f"#{max(0,min(255,r)):02x}{max(0,min(255,g)):02x}00"
+
 
 def lst_color(ratio: float) -> str:
-    """Return a blue-to-red color representing normalized temperature."""
-    r = int(ratio * 255)
-    b = int((1 - ratio) * 255)
-    return f"#{r:02x}00{b:02x}"
+    """Blue-to-red for surface temperature."""
+    return f"#{int(ratio*255):02x}00{int((1-ratio)*255):02x}"
+
 
 def ndbi_color(ratio: float) -> str:
-    """Return a grey-pink color representing normalized built-up index."""
+    """Grey-pink for built-up index."""
     r = int(180 + ratio * 75)
     g = int(130 + ratio * 50)
-    b = int(130 + ratio * 50)
-    return f"#{r:02x}{g:02x}{b:02x}"
+    return f"#{r:02x}{g:02x}{g:02x}"
+
 
 def dem_color(ratio: float) -> str:
-    """Return a terrain-like color representing normalized elevation."""
+    """Terrain colour for elevation."""
     if ratio < 0.5:
         r = int(139 + ratio * 200)
         g = int(69 + ratio * 200)
@@ -254,49 +270,55 @@ def dem_color(ratio: float) -> str:
         b = int(34 + (ratio - 0.5) * 200)
     return f"#{r:02x}{g:02x}{b:02x}"
 
+
 def uhi_color(ratio: float) -> str:
-    """Return a diverging color representing normalized UHI intensity."""
+    """Diverging blue-to-red for UHI intensity."""
     if ratio < 0.5:
-        # blue to white
-        r = int(ratio * 2 * 200)
-        g = int(ratio * 2 * 100)
-        b = 255
+        r, g, b = int(ratio * 2 * 200), int(ratio * 2 * 100), 255
     else:
-        # white to red
-        r = 255
-        g = int((1 - (ratio - 0.5) * 2) * 100)
-        b = int((1 - (ratio - 0.5) * 2) * 200)
+        r, g, b = 255, int((1 - (ratio - 0.5) * 2) * 100), int((1 - (ratio - 0.5) * 2) * 200)
     return f"#{r:02x}{g:02x}{b:02x}"
 
-# Add layers if columns exist
-col_layers = {
-    "risk_score": ("Risk Score", risk_color),
-    "sustainability_score": ("Sustainability Score", sustainability_color),
-    "mean_ndvi": ("NDVI", ndvi_color),
-    "mean_lst": ("LST (°C)", lst_color),
-    "mean_ndbi": ("NDBI", ndbi_color),
-    "mean_dem": ("DEM (m)", dem_color),
-    "uhi_intensity": ("UHI Intensity", uhi_color),
+
+# Environmental Health: high EHI = green (reuse sustainability_color)
+ehi_color = sustainability_color
+
+# Add all available choropleth layers
+col_layers: dict[str, tuple[str, Callable]] = {
+    "environmental_health":  ("Environmental Health (EHI)", ehi_color),
+    "risk_score":            ("Risk Score", risk_color),
+    "sustainability_score":  ("Sustainability Score", sustainability_color),
+    "mean_ndvi":             ("NDVI", ndvi_color),
+    "mean_lst":              ("LST (°C)", lst_color),
+    "mean_ndbi":             ("NDBI", ndbi_color),
+    "mean_dem":              ("DEM (m)", dem_color),
+    "uhi_intensity":         ("UHI Intensity", uhi_color),
 }
 for col, (label, cmap) in col_layers.items():
     if col in gdf.columns:
         add_choropleth(gdf, col, label, cmap)
 
-# Add cluster layer as distinct colors (categorical)
+# Cluster layer (categorical colours)
 if "cluster" in gdf.columns:
-    clusters = gdf["cluster"].dropna().unique()
-    # create a discrete color mapping
-    import matplotlib.colors as mcolors
     import matplotlib.cm as cm
+    import matplotlib.colors as mcolors
+
+    clusters = gdf["cluster"].dropna().unique()
     colors = cm.tab10(np.linspace(0, 1, len(clusters)))
     cluster_color_dict = {
         cl: mcolors.rgb2hex(colors[i]) for i, cl in enumerate(sorted(clusters))
     }
+
     def cluster_style(feature: dict[str, Any]) -> dict[str, Any]:
-        """Style one GeoJSON feature with its categorical cluster color."""
+        """Categorical colour per cluster."""
         cl = feature["properties"].get("cluster")
-        color = cluster_color_dict.get(cl, "#cccccc")
-        return {"fillColor": color, "color": "#333333", "weight": 0.5, "fillOpacity": 0.7}
+        return {
+            "fillColor": cluster_color_dict.get(cl, "#cccccc"),
+            "color": "#333333",
+            "weight": 0.5,
+            "fillOpacity": 0.7,
+        }
+
     folium.GeoJson(
         gdf,
         name="Clusters",
@@ -305,145 +327,310 @@ if "cluster" in gdf.columns:
         show=False,
     ).add_to(m)
 
-# ------------------------------------------------------------------------------
-# 5. Interactive layer for click detection (transparent, but with cell_id)
-# ------------------------------------------------------------------------------
-# We create a dedicated GeoJson layer that sends the clicked feature data back.
-interactive_layer = folium.GeoJson(
+# Transparent interactive layer for click detection
+folium.GeoJson(
     gdf,
     name="Clickable Grid (transparent)",
-    style_function=lambda x: {"fillColor": "#000000", "color": "#000000", "weight": 0, "fillOpacity": 0},
+    style_function=lambda x: {
+        "fillColor": "#000000", "color": "#000000", "weight": 0, "fillOpacity": 0,
+    },
     highlight_function=lambda x: {"weight": 3, "color": "#FF0000", "fillOpacity": 0.3},
     tooltip=folium.GeoJsonTooltip(fields=["display_name"], aliases=["Location"]),
     zoom_on_click=True,
-)
-interactive_layer.add_to(m)
+).add_to(m)
 
-# Add layer control
 folium.LayerControl(collapsed=False).add_to(m)
 Fullscreen().add_to(m)
 
 # ------------------------------------------------------------------------------
-# 6. Render map and capture clicks
+# 5. Render map
 # ------------------------------------------------------------------------------
 st.markdown("### Interactive Map")
 map_data = st_folium(m, width=1200, height=650, returned_objects=["last_object_clicked"])
 
 # ------------------------------------------------------------------------------
-# 7. Sidebar / expander for cell details
+# 6. Sidebar helpers
+# ------------------------------------------------------------------------------
+
+def _render_status_badge(status: str) -> None:
+    """Render the environmental status label using an appropriate Streamlit call."""
+    color_type = STATUS_COLORS.get(status, "info")
+    msg = f"**Environmental Status: {status}**"
+    if color_type == "success":
+        st.success(msg)
+    elif color_type == "warning":
+        st.warning(msg)
+    else:
+        st.error(msg)
+
+
+def _render_comparison_row(
+    label: str,
+    value: float,
+    unit: str,
+    vs_avg: float,
+    rank: float,
+    pct_diff: float,
+) -> None:
+    """Render one indicator comparison row using st.metric with delta."""
+    c1, c2 = st.columns([3, 2])
+    with c1:
+        delta_str = f"{vs_avg:+.2f}{unit} vs city avg"
+        st.metric(label=label, value=f"{value:.2f}{unit}", delta=delta_str)
+    with c2:
+        st.caption(f"City rank: **{rank:.0f}th** percentile")
+        diff_sign = "above" if pct_diff >= 0 else "below"
+        st.caption(f"{abs(pct_diff):.0f}% {diff_sign} city average")
+
+
+def _render_conditions_tags(conditions: list[str]) -> None:
+    """Render detected environmental conditions as labelled pills."""
+    if not conditions:
+        st.write("No critical environmental conditions detected.")
+        return
+
+    # Colour-code by condition type
+    _condition_styles = {
+        "Urban Heat Island":    "🔥",
+        "Low Vegetation":       "🌱",
+        "High Built-up Density":"🏢",
+        "Flood Susceptibility": "💧",
+        "Environmental Stress": "⚠️",
+        "Ecological Stability": "✅",
+    }
+    for cond in conditions:
+        icon = _condition_styles.get(cond, "•")
+        st.write(f"{icon} {cond}")
+
+def _render_environmental_intelligence_panel(
+    cell: pd.Series,
+    ei: dict,
+) -> None:
+    """Render the full Phase 2 Environmental Intelligence panel in the sidebar."""
+
+    ehi    = ei.get("environmental_health", 50.0)
+    status = ei.get("environmental_status", "Unknown")
+
+    # ── Environmental Health ──────────────────────────────────────────────
+    st.markdown("### 🌿 Environmental Health")
+    st.metric(label="Environmental Health Index", value=f"{ehi:.1f} / 100")
+    _render_status_badge(status)
+
+    # ── Environmental Issues ──────────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 🔥 Environmental Issues")
+    conditions: list[str] = ei.get("detected_conditions", [])
+    primary   = ei.get("primary_issue")
+    secondary = ei.get("secondary_issue")
+    _render_conditions_tags(conditions)
+    if primary:
+        st.caption(f"Primary issue: **{primary}**")
+    if secondary:
+        st.caption(f"Secondary issue: **{secondary}**")
+
+    # ── Comparative Analysis ──────────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 📈 Comparative Analysis")
+
+    lst_val  = float(cell.get("mean_lst", 0) or 0)
+    ndvi_val = float(cell.get("mean_ndvi", 0) or 0)
+    ndbi_val = float(cell.get("mean_ndbi", 0) or 0)
+    uhi_val  = float(cell.get("uhi_intensity", 0) or 0)
+
+    comparisons = [
+        ("🌡️ Surface Temp",  lst_val,  "°C", ei.get("mean_lst_vs_city_avg", 0),
+         ei.get("city_rank_lst", 50),   ei.get("mean_lst_pct_diff", 0)),
+        ("🌿 Vegetation",    ndvi_val, "",   ei.get("mean_ndvi_vs_city_avg", 0),
+         ei.get("city_rank_ndvi", 50),  ei.get("mean_ndvi_pct_diff", 0)),
+        ("🏢 Built-up",      ndbi_val, "",   ei.get("mean_ndbi_vs_city_avg", 0),
+         ei.get("city_rank_ndbi", 50),  ei.get("mean_ndbi_pct_diff", 0)),
+        ("🔥 UHI Intensity", uhi_val,  "°C", ei.get("uhi_intensity_vs_city_avg", 0),
+         ei.get("city_rank_uhi", 50),   ei.get("uhi_intensity_pct_diff", 0)),
+    ]
+    for label, val, unit, vs_avg, rank, pct_diff in comparisons:
+        _render_comparison_row(label, val, unit, vs_avg, rank, pct_diff)
+
+    # ── Environmental Summary ─────────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 🧠 Environmental Summary")
+    summary = ei.get("environmental_summary", "")
+    if summary:
+        st.info(summary)
+    else:
+        st.write("No summary available.")
+
+    # ── Spatial Context ───────────────────────────────────────────────────
+    spatial_ctx = ei.get("spatial_context", "")
+    if spatial_ctx:
+        st.markdown("### 📊 Spatial Context")
+        st.write(spatial_ctx)
+
+    # ── Cluster (unchanged) ───────────────────────────────────────────────
+    st.markdown("---")
+    cluster_val = cell.get("cluster_label") or cell.get("cluster")
+    if cluster_val:
+        st.markdown(f"**Urban Typology:** {cluster_val}")
+
+def _render_raw_indicators_expander(cell: pd.Series) -> None:
+    """Render raw indicator values inside a collapsed expander."""
+    with st.expander("📋 Raw Indicators", expanded=False):
+        indicators = {
+            "mean_ndvi":     "🌿 NDVI",
+            "mean_lst":      "🌡️ LST (°C)",
+            "mean_ndbi":     "🏢 NDBI",
+            "mean_dem":      "⛰️ DEM (m)",
+            "uhi_intensity": "🔥 UHI Intensity (°C)",
+        }
+        for col_name, label in indicators.items():
+            val = cell.get(col_name)
+            if val is not None:
+                try:
+                    st.write(f"{label}: **{float(val):.3f}**")
+                except (ValueError, TypeError):
+                    st.write(f"{label}: {val}")
+
+        if "risk_score" in cell:
+            st.metric("Risk Score", f"{cell['risk_score']:.2f}")
+        if "sustainability_score" in cell:
+            st.metric("Sustainability Score", f"{cell['sustainability_score']:.2f}")
+
+
+def _render_legacy_environmental_panel(cell: pd.Series) -> None:
+    """Fallback: render the original raw metrics panel when Phase 2 data is absent."""
+    st.markdown("### 📊 Environmental Analysis")
+    st.info("💡 Run 'Generate environmental intelligence' pipeline stage for full analysis.")
+
+    if "risk_score" in cell:
+        st.metric("Risk Score", f"{cell['risk_score']:.2f}")
+    if "sustainability_score" in cell:
+        st.metric("Sustainability Score", f"{cell['sustainability_score']:.2f}")
+    cluster_val = cell.get("cluster_label") or cell.get("cluster")
+    if cluster_val:
+        st.markdown(f"**Cluster:** {cluster_val}")
+
+    indicators = {
+        "mean_ndvi":     "🌿 NDVI",
+        "mean_lst":      "🌡️ LST (°C)",
+        "mean_ndbi":     "🏢 NDBI",
+        "mean_dem":      "⛰️ DEM (m)",
+        "uhi_intensity": "🔥 UHI Intensity",
+    }
+    for col_name, label in indicators.items():
+        val = cell.get(col_name)
+        if val is not None:
+            try:
+                st.write(f"{label}: **{float(val):.3f}**")
+            except (ValueError, TypeError):
+                st.write(f"{label}: {val}")
+
+# ------------------------------------------------------------------------------
+# 7. Sidebar – cell details
 # ------------------------------------------------------------------------------
 st.sidebar.header("🔍 Cell Details")
-clicked_cell_id = None
+clicked_cell_id: str | None = None
 
-if map_data and map_data["last_object_clicked"]:
+if map_data and map_data.get("last_object_clicked"):
     props = map_data["last_object_clicked"].get("properties", {})
-    clicked_cell_id = props.get("cell_id", None)
+    clicked_cell_id = props.get("cell_id")
 
 if clicked_cell_id is not None:
-    # Retrieve row from GeoDataFrame
     cell_row = gdf[gdf["cell_id"] == clicked_cell_id]
     if not cell_row.empty:
         cell = cell_row.iloc[0]
-        
+
         with st.sidebar:
-            # Check if geographic metadata exists for this cell
+            # ── Geographic Profile (unchanged) ────────────────────────────
             if geo_meta and clicked_cell_id in geo_meta:
                 gm = geo_meta[clicked_cell_id]
-                st.markdown(f"### 📍 Geographic Profile")
-                st.markdown(f"**{gm.get('primary_locality', 'Unknown')}** (Grid {gm.get('grid_id', clicked_cell_id)})")
-                
-                ward = gm.get('ward', 'Unknown Ward')
-                zone = gm.get('zone', 'Unknown Zone')
+                st.markdown("### 📍 Geographic Profile")
+                st.markdown(
+                    f"**{gm.get('primary_locality', 'Unknown')}** "
+                    f"(Grid {gm.get('grid_id', clicked_cell_id)})"
+                )
+                ward = gm.get("ward", "Unknown Ward")
+                zone = gm.get("zone", "Unknown Zone")
                 st.markdown(f"📌 {ward} | {zone}")
-                
                 st.markdown(f"🏘️ {gm.get('dominant_land_use', 'Unknown')}")
-                
-                pop = gm.get('population', 0)
-                if pop > 0:
+
+                pop = gm.get("population", 0)
+                if pop and pop > 0:
                     st.markdown(f"👥 Population: ~{pop:,}")
                 else:
-                    st.markdown(f"👥 Population: Minimal/Uninhabited")
-                    
-                secondary = gm.get('secondary_localities', [])
+                    st.markdown("👥 Population: Minimal/Uninhabited")
+
+                secondary = gm.get("secondary_localities", [])
                 if secondary:
                     st.markdown("**📍 Nearby Areas**")
                     for s in secondary[:3]:
                         st.markdown(f"  • {s}")
-                        
-                landmarks = gm.get('nearest_landmarks', [])
+
+                landmarks = gm.get("nearest_landmarks", [])
                 if landmarks:
                     st.markdown("**🏛️ Nearby Landmarks**")
                     for lm in landmarks:
                         st.markdown(f"  • {lm['name']} ({lm['distance_km']} km)")
-                        
-                lat, lon = gm.get('centroid_lat'), gm.get('centroid_lon')
+
+                lat, lon = gm.get("centroid_lat"), gm.get("centroid_lon")
                 if lat and lon:
                     st.markdown("**🌐 Coordinates**")
                     st.markdown(f"{lat}°N, {lon}°E")
-                    st.markdown(f"[🔗 Open in Google Maps](https://www.google.com/maps/search/?api=1&query={lat},{lon})")
-                    st.markdown(f"[🔗 Open in OpenStreetMap](https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=16/{lat}/{lon})")
+                    st.markdown(
+                        f"[🔗 Google Maps](https://www.google.com/maps/search/?api=1&query={lat},{lon})"
+                        f" | "
+                        f"[🔗 OpenStreetMap](https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=16/{lat}/{lon})"
+                    )
             else:
                 st.markdown(f"### Cell `{clicked_cell_id}`")
-                st.info("💡 Run geographic enrichment pipeline to see locality details.")
+                st.info("💡 Run geographic enrichment to see locality details.")
 
             st.markdown("---")
-            st.markdown("### 📊 Environmental Analysis")
-            
-            # Risk & Sustainability
-            if "risk_score" in cell:
-                st.metric("Risk Score", f"{cell['risk_score']:.2f}")
-            if "sustainability_score" in cell:
-                st.metric("Sustainability Score", f"{cell['sustainability_score']:.2f}")
-            if "cluster_label" in cell:
-                st.markdown(f"**Cluster:** {cell['cluster_label']}")
-            elif "cluster" in cell:
-                st.markdown(f"**Cluster:** {cell['cluster']}")
 
-            # Indicators
-            indicators = {
-                "mean_ndvi": "🌿 NDVI",
-                "mean_lst": "🌡️ LST (°C)",
-                "mean_ndbi": "🏢 NDBI",
-                "mean_dem": "⛰️ DEM (m)",
-                "uhi_intensity": "🔥 UHI Intensity",
-            }
-            for col, label in indicators.items():
-                if col in cell:
-                    st.write(f"{label}: **{cell[col]:.3f}**" if not isinstance(cell[col], str) else f"{label}: {cell[col]}")
+            # ── Environmental Intelligence panel OR legacy fallback ────────
+            ei = env_intel.get(clicked_cell_id) if env_intel else None
+            if ei:
+                _render_environmental_intelligence_panel(cell, ei)
+                _render_raw_indicators_expander(cell)
+            else:
+                _render_legacy_environmental_panel(cell)
 
-            # Explanation
+            # ── AI Explanation (SHAP – unchanged) ─────────────────────────
             if clicked_cell_id in explanations:
                 explain = explanations[clicked_cell_id]
                 explanation_text = explain.get("explanation_text", "")
                 st.markdown("---")
                 st.markdown("**🧠 AI Explanation**")
-                st.info(explanation_text if explanation_text else "No explanation available.")
+                st.info(explanation_text or "No explanation available.")
 
-                # SHAP values if present
                 top_pos = explain.get("top_positive_driver")
                 top_neg = explain.get("top_negative_driver")
                 if top_pos and top_pos.get("feature"):
-                    st.write(f"↑ **Positive driver:** {top_pos.get('feature')} (SHAP {top_pos.get('shap_value', 0):.3f})")
+                    st.write(
+                        f"↑ **Positive driver:** {top_pos['feature']} "
+                        f"(SHAP {top_pos.get('shap_value', 0):.3f})"
+                    )
                 if top_neg and top_neg.get("feature"):
-                    st.write(f"↓ **Negative driver:** {top_neg.get('feature')} (SHAP {top_neg.get('shap_value', 0):.3f})")
+                    st.write(
+                        f"↓ **Negative driver:** {top_neg['feature']} "
+                        f"(SHAP {top_neg.get('shap_value', 0):.3f})"
+                    )
 
-            # Rule-based recommendation
+            # ── Rule-based recommendation (unchanged) ─────────────────────
             st.markdown("---")
             st.markdown("**💡 Recommendation**")
-            rec = []
-            ndvi_val = cell.get("mean_ndvi", 0)
-            lst_val = cell.get("mean_lst", 0)
-            dem_val = cell.get("mean_dem", 0)
-            ndbi_val = cell.get("mean_ndbi", 0)
-            if ndvi_val is not None and lst_val is not None:
-                if (ndvi_val < CONFIG["dashboard"]["thresholds"]["low_ndvi"]
-                        and lst_val > CONFIG["dashboard"]["thresholds"]["high_lst"]):
-                    rec.append("🌳 Increase green cover (low NDVI, high temperature).")
-            if dem_val is not None and dem_val < CONFIG["dashboard"]["thresholds"]["low_dem"]:
+            rec: list[str] = []
+            ndvi_val = cell.get("mean_ndvi") or 0
+            lst_val  = cell.get("mean_lst")  or 0
+            dem_val  = cell.get("mean_dem")  or 0
+            ndbi_val = cell.get("mean_ndbi") or 0
+            thresholds = CONFIG["dashboard"]["thresholds"]
+
+            if (ndvi_val < thresholds["low_ndvi"] and lst_val > thresholds["high_lst"]):
+                rec.append("🌳 Increase green cover (low NDVI, high temperature).")
+            if dem_val < thresholds["low_dem"]:
                 rec.append("💧 Elevation risk – improve drainage and flood protection.")
-            if ndbi_val is not None and ndbi_val > CONFIG["dashboard"]["thresholds"]["high_ndbi"]:
+            if ndbi_val > thresholds["high_ndbi"]:
                 rec.append("🏗️ High built-up density – consider permeable surfaces and cool roofs.")
-            
+
             if rec:
                 for r in rec:
                     st.success(r)
@@ -458,4 +645,4 @@ else:
 # Footer
 # ------------------------------------------------------------------------------
 st.markdown("---")
-st.caption("City Sense Dashboard – Week 7 | Built with Streamlit, Folium, and Geopandas")
+st.caption("City Sense Dashboard – Phase 2 | Built with Streamlit, Folium, and Geopandas")

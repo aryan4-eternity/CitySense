@@ -56,8 +56,8 @@ def main() -> None:
         validate_scores,
     )
     from metadata import geo_enrichment
+    from environment import generate_environmental_intelligence
 
-    output_paths = config["output_paths"]
     stages: list[tuple[str, Callable[[], None], Path | None]] = [
         ("Generate grid", generate_grid.main, project_path(config, "grid")),
         ("Fetch NDVI", fetch_ndvi.main, project_path(config, "ndvi_grid")),
@@ -71,6 +71,7 @@ def main() -> None:
         ("Cluster urban typologies", kmeans_clustering.main, None),
         ("Train explainability model", train_explainability.main, None),
         ("Create dashboard explanations", generate_explanations_json.main, None),
+        ("Generate environmental intelligence", generate_environmental_intelligence.main, project_path(config, "environmental_intelligence")),
         ("Enrich geographic metadata", geo_enrichment.main, project_path(config, "geographic_metadata")),
         ("Generate validation plots", validate_scores.main, None),
     ]

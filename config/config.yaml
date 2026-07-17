@@ -89,3 +89,4 @@ output_paths:
   geographic_metadata: "data/geo/geographic_metadata.json"
   ward_boundaries: "data/geo/mumbai_wards.geojson"
   geographic_config: "config/geographic_config.yaml"
+  environmental_intelligence: "data/environmental_intelligence.json"
