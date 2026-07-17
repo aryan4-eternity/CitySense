@@ -16,10 +16,12 @@ graph TD
     D -->|Risk & Sustainability Scores| E(K-Means Clustering)
     E -->|Urban Typologies| F(XGBoost & SHAP)
     F -->|Explainability| G(Enriched Master Dataset)
-    G --> P2(Environmental Intelligence Layer)
-    P2 -->|EHI, Status, Comparisons, Summaries| H[Interactive Streamlit Dashboard]
-    G --> GEO(Geographic Intelligence Layer)
+    G --> GEO(Phase 1: Geographic Intelligence)
+    G --> P2(Phase 2: Environmental Intelligence)
+    P2 --> P3(Phase 3: Planning Decision Engine)
+    P3 -->|Profiles, Priorities, Interventions| H[Interactive Streamlit Dashboard]
     GEO -->|Localities, Wards, Landmarks| H
+    P2 -->|EHI, Status, Summaries| H
 ```
 
 ## Phase 2: Environmental Intelligence Layer
@@ -137,21 +139,198 @@ Each cell in `data/environmental_intelligence.json` contains:
 ```
 📍 Geographic Profile
 ↓
-🌿 Environmental Health   ← EHI score + status badge (NEW)
+🌿 Environmental Health   ← EHI score + status badge
 ↓
-🔥 Environmental Issues   ← detected conditions (NEW)
+🔥 Environmental Issues   ← detected conditions
 ↓
-📈 Comparative Analysis   ← per-indicator rank + delta vs city avg (NEW)
+📈 Comparative Analysis   ← per-indicator rank + delta vs city avg
 ↓
-🧠 Environmental Summary  ← template-based paragraph (NEW)
+🧠 Environmental Summary  ← template-based paragraph
 ↓
-📊 Spatial Context        ← spatial ranking sentence (NEW)
+📊 Spatial Context        ← spatial ranking sentence
 ↓
-📋 Raw Indicators         ← collapsed expander (previously top-level)
+📋 Raw Indicators         ← collapsed expander
 ↓
 🧠 AI Explanation         ← SHAP explanation (unchanged)
 ↓
-💡 Recommendation         ← rule-based recommendation (unchanged)
+🚨 Planning Priority      ← Phase 3 (see below)
+```
+
+## Phase 3: Urban Planning Intelligence & Decision Engine
+
+Phase 3 transforms environmental evidence into actionable planning decisions.
+Where Phase 2 answered *"What conditions exist?"*, Phase 3 answers
+*"What should the city do, how urgent is it, and why?"*
+
+### Design Philosophy
+
+Every environmental issue produces a complete planning response:
+
+```
+Environmental Condition
+    → Planning Objective
+    → Recommended Intervention (primary + secondary)
+    → Expected Benefits
+    → Implementation Cost / Timeline / Complexity
+    → Priority Score
+    → Explainable Evidence
+```
+
+All reasoning is **deterministic and reproducible** — no LLM required.
+
+### YAML-Driven Knowledge Base
+
+All recommendation logic lives in `planning/intervention_catalog.yaml`.
+**No source-code changes are needed to add or modify interventions.**
+
+To add a new intervention:
+1. Open `planning/intervention_catalog.yaml`.
+2. Add a new key under `interventions:` matching the condition name exactly.
+3. Provide `primary`, `secondary`, `objectives`, `benefits`, `cost`, `timeline`, `complexity`.
+4. Optionally add a multi-condition override under `multi_condition_overrides:`.
+
+Example:
+```yaml
+interventions:
+  My New Condition:
+    primary: "My Intervention"
+    secondary: ["Supporting Action 1", "Supporting Action 2"]
+    objectives: ["My Planning Goal"]
+    benefits: ["Benefit A", "Benefit B"]
+    cost: "Medium"
+    timeline: "2-4 Years"
+    complexity: "Moderate"
+    priority_weight: "High"
+```
+
+### Priority Score Formula
+
+| Component | Weight | Source |
+|---|---|---|
+| EHI deficit `(100 − EHI)` | 35% | Phase 2 environmental_intelligence.json |
+| Risk Score | 30% | cells_master.geojson (PCA) |
+| Population Score (normalised) | 20% | geographic_metadata.json |
+| Strategic Weight (land-use) | 15% | geographic_metadata.json → knowledge_base |
+
+**Priority Labels:** Critical (80–100) · High (60–79) · Medium (40–59) · Low (20–39) · Very Low (0–19)
+
+**Strategic weights by land use:**
+
+| Land Use | Weight |
+|---|---|
+| Dense Commercial / Industrial | 90 |
+| Residential | 80 |
+| Mixed Urban | 70 |
+| Mixed Residential | 60 |
+| Sparse Vegetation / Open Land | 40 |
+| Green Space / Forest | 30 |
+| Water Body / Coastal | 10 |
+
+### Confidence Score Formula
+
+```
+shap_score        = min(|top_positive_shap| / city_max_shap, 1.0)
+data_completeness = n_indicators_present / 5
+condition_boost   = min(n_conditions × 0.05, 0.15)
+
+confidence = 0.50 × shap_score
+           + 0.35 × data_completeness
+           + 0.15 × condition_boost
+```
+
+### Multi-Indicator Reasoning
+
+The engine evaluates all detected conditions simultaneously.
+Multi-condition overrides select the most appropriate intervention
+when conditions co-occur:
+
+| Conditions | Selected Intervention |
+|---|---|
+| UHI + Low Vegetation + High Built-up | Urban Forest (complex) |
+| UHI + Low Vegetation | Urban Forest (moderate) |
+| UHI + High Built-up | Cool Roof Program |
+| Flood + High Built-up | Integrated Drainage & Green Infrastructure |
+
+### Architecture
+
+```mermaid
+graph TD
+    EI[environmental_intelligence.json] --> KB(knowledge_base.py)
+    YAML[intervention_catalog.yaml] --> KB
+    MASTER[cells_master.geojson] --> PE(priority_engine.py)
+    GEOMETA[geographic_metadata.json] --> PE
+    EI --> PE
+    KB --> IE(intervention_engine.py)
+    EI --> IE
+    PE --> DE(decision_engine.py)
+    IE --> DE
+    DE --> GEN(generate_planning_profiles.py)
+    GEN --> OUT[data/planning_profiles.json]
+    OUT --> DASH[dashboard/app.py]
+```
+
+### Module Reference
+
+| Module | Responsibility |
+|---|---|
+| `intervention_catalog.yaml` | YAML knowledge base — edit to add interventions, no code changes needed |
+| `knowledge_base.py` | Loads catalog; resolves single/multi-condition lookups |
+| `priority_engine.py` | Priority Score (0–100) and Priority Label per cell |
+| `intervention_engine.py` | Intervention selection; confidence scoring; evidence text |
+| `planning_summary.py` | Assembles the final Planning Profile dict |
+| `decision_engine.py` | Top-level orchestrator; runs all modules over the dataset |
+| `generate_planning_profiles.py` | Pipeline stage; writes `data/planning_profiles.json` |
+
+### Output Data Model
+
+Each cell in `data/planning_profiles.json` contains:
+
+```json
+{
+  "planning_priority":          "Critical",
+  "priority_score":             91.2,
+  "primary_objective":          "Reduce Urban Heat",
+  "recommended_intervention":   "Urban Forest",
+  "secondary_interventions":    ["Cool Roof Program", "Street Tree Plantation"],
+  "expected_benefits":          ["Lower LST", "Higher NDVI", "Better Air Quality"],
+  "implementation_cost":        "Medium",
+  "implementation_timeline":    "2-5 Years",
+  "implementation_complexity":  "Moderate",
+  "confidence":                 0.883,
+  "evidence":                   "This area has been identified as having Urban Heat Island. Surface temperature ranks in the hottest 93% of the city. SHAP analysis identifies surface temperature as the strongest contributor to risk (SHAP value: +4.23). Therefore Urban Forest provides the highest expected environmental benefit for this grid.",
+  "environmental_health":       18.5,
+  "risk_score":                 88.0
+}
+```
+
+### Dashboard Sidebar Layout (Phase 3)
+
+```
+📍 Geographic Profile
+↓
+🌿 Environmental Health   ← EHI score + status badge (Phase 2)
+↓
+🔥 Environmental Issues   ← detected conditions (Phase 2)
+↓
+📈 Comparative Analysis   ← per-indicator rank + delta (Phase 2)
+↓
+🧠 Environmental Summary  ← template paragraph (Phase 2)
+↓
+📋 Raw Indicators         ← collapsed expander
+↓
+🧠 AI Explanation         ← SHAP explanation (unchanged)
+↓
+🚨 Planning Priority      ← priority label + score (Phase 3, NEW)
+↓
+🎯 Planning Objective     ← primary objective (Phase 3, NEW)
+↓
+🏗️ Recommended Intervention ← primary + secondary list (Phase 3, NEW)
+↓
+📈 Expected Benefits      ← benefit list (Phase 3, NEW)
+↓
+💰 Implementation Details ← cost | timeline | complexity (Phase 3, NEW)
+↓
+🧠 Why this recommendation? ← evidence + confidence (Phase 3, NEW)
 ```
 
 ## Features & Methodology
@@ -178,7 +357,13 @@ Each cell in `data/environmental_intelligence.json` contains:
   - Automatic detection of six named environmental conditions (Urban Heat Island, Low Vegetation, etc.).
   - Deterministic template-based Environmental Summary paragraphs.
   - Spatial context sentences ("hotter than 93% of Mumbai grids").
-- **Interactive Dashboard**: A Streamlit application featuring Folium maps for visualizing layers, clicking on cells for detailed Geographic Profiles, environmental breakdowns, AI explanations, and rule-based recommendations.
+- **Planning Decision Engine (Phase 3)**: Converts environmental evidence into actionable planning recommendations.
+  - YAML-driven intervention knowledge base — add interventions without code changes.
+  - Multi-indicator reasoning selects the most appropriate intervention for co-occurring conditions.
+  - Priority Score (0–100) combining EHI, risk, population, and strategic land-use weight.
+  - Confidence score grounded in SHAP magnitude and data completeness.
+  - Explainable evidence paragraph linking every recommendation to indicator ranks and SHAP drivers.
+- **Interactive Dashboard**: A Streamlit application featuring Folium maps, Environmental Intelligence panels, and Planning Profile sidebars with full intervention rationale.
 
 ## Results & Key Findings
 
@@ -211,11 +396,20 @@ CitySense/city_sense/
 │   ├── indicator_interpreter.py     # Condition detection and spatial context
 │   ├── environmental_summary.py     # Template-based narrative paragraphs
 │   └── generate_environmental_intelligence.py  # Pipeline stage + JSON output
+├── planning/                    # Phase 3: Urban Planning Decision Engine
+│   ├── intervention_catalog.yaml    # YAML knowledge base (edit to add interventions)
+│   ├── knowledge_base.py            # Catalog loading and intervention resolution
+│   ├── priority_engine.py           # Priority Score and label computation
+│   ├── intervention_engine.py       # Intervention selection and confidence scoring
+│   ├── planning_summary.py          # Planning Profile assembly
+│   ├── decision_engine.py           # Top-level orchestrator
+│   └── generate_planning_profiles.py # Pipeline stage + JSON output
 ├── dashboard/                   # Streamlit application (app.py)
 ├── data/                        # Processed GeoJSON, JSON, and imagery
 │   ├── geo/                     # Cached geographic metadata and ward boundaries
 │   ├── overlays/                # Optional static satellite imagery overlays
-│   └── environmental_intelligence.json  # Phase 2 enrichment output
+│   ├── environmental_intelligence.json  # Phase 2 enrichment output
+│   └── planning_profiles.json       # Phase 3 planning decisions output
 └── tests/                       # Unit tests for all modules
 ```
 
@@ -289,13 +483,16 @@ pytest tests/
 - **EHI Bounds:** Unit tests verify EHI is always in [0, 100] and that high-stress cells score lower than low-stress cells.
 - **Condition Detection:** Deterministic unit tests verify each of the six environmental conditions fires correctly on synthetic data.
 - **Summary Templates:** Tests assert that generated summaries never contain unfilled `{placeholder}` tokens across all condition/status combinations.
+- **Priority Score Bounds:** Unit tests verify the Priority Score is always in [0, 100] and that high-stress cells rank higher than healthy cells.
+- **Intervention Resolution:** Tests verify single-condition lookups, multi-condition override selection (most-specific wins), and default fallback.
+- **Confidence Score:** Tests verify the confidence score is clamped to [0, 1] and that high SHAP magnitude with all indicators produces higher confidence than zero SHAP.
 
 ## Future Work
 
-- **Phase 3 — Planning Recommendation Engine:** Will consume `primary_issue`, `environmental_health`, `environmental_status`, and `environmental_summary` from `environmental_intelligence.json` to generate ward-level intervention recommendations without recomputation.
+- **Phase 4 — Policy Simulator & Budget Optimizer:** Will consume `planning_priority`, `priority_score`, `recommended_intervention`, and `confidence` from `planning_profiles.json` to simulate the impact of green-roof additions or drainage upgrades on predicted risk, and to rank interventions by cost-effectiveness across the city.
 - **Temporal Analysis:** Expanding the pipeline to process multiple time windows and assess seasonal changes. The `environment/` modules are designed for future extensibility to time-series inputs.
 - **Higher Resolution:** Utilizing commercial satellite data for sub-10m resolution.
-- **Policy Simulator:** Adding a feature to the dashboard allowing users to "simulate" adding green roofs to a cell and observing the predicted risk reduction.
+- **AI Planning Assistant:** A conversational interface that queries Phase 3 planning profiles to answer natural-language questions like "Which 10 grids should receive funding first?" without recomputation.
 
 ## License
 

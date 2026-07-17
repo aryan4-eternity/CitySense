@@ -1,7 +1,7 @@
 # dashboard/app.py
 """
 City Sense – Mumbai Environmental Risk & Sustainability Dashboard
-Phase 2: Environmental Intelligence & Context Engine
+Phase 3: Urban Planning Intelligence & Decision Engine
 """
 
 from __future__ import annotations
@@ -21,6 +21,7 @@ from streamlit_folium import st_folium
 
 from config_loader import load_config, project_path
 from environment.environment_templates import STATUS_COLORS
+from planning.planning_summary import get_priority_color
 
 CONFIG = load_config()
 
@@ -70,11 +71,25 @@ def load_environmental_intelligence(path: str) -> dict:
     return {}
 
 
+@st.cache_data
+def load_planning_profiles(path: str) -> dict:
+    """Load planning profiles JSON; returns {} if file not found.
+
+    Graceful degradation: if the Phase 3 pipeline stage has not been run
+    yet, the dashboard falls back to the Phase 2 panel only.
+    """
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
 # Load all data
 gdf = load_geodata(str(project_path(CONFIG, "master_data")))
 explanations = load_explanations(str(project_path(CONFIG, "explanations")))
 geo_meta = load_geographic_metadata(str(project_path(CONFIG, "geographic_metadata")))
 env_intel = load_environmental_intelligence(str(project_path(CONFIG, "environmental_intelligence")))
+planning_profiles = load_planning_profiles(str(project_path(CONFIG, "planning_profiles")))
 
 
 # Augment GDF with display_name for map tooltips
@@ -98,17 +113,27 @@ if env_intel:
     if "cell_id" in gdf.columns:
         gdf["environmental_health"] = gdf["cell_id"].map(ehi_map)
 
+# Merge priority_score into GDF for choropleth layer (if planning data available)
+if planning_profiles:
+    priority_map = {cid: v.get("priority_score", np.nan) for cid, v in planning_profiles.items()}
+    if "cell_id" in gdf.columns:
+        gdf["planning_priority_score"] = gdf["cell_id"].map(priority_map)
+
 st.sidebar.write(f"✅ Loaded {len(gdf)} grid cells")
 if env_intel:
     st.sidebar.write(f"🧠 Environmental intelligence: {len(env_intel)} cells enriched")
 else:
     st.sidebar.info("ℹ️ Run the pipeline to generate environmental intelligence data.")
+if planning_profiles:
+    st.sidebar.write(f"🏗️ Planning profiles: {len(planning_profiles)} cells")
+else:
+    st.sidebar.info("ℹ️ Run the pipeline to generate planning profiles.")
 
 # ------------------------------------------------------------------------------
 # 2. Summary statistics bar
 # ------------------------------------------------------------------------------
 if not gdf.empty:
-    col1, col2, col3, col4, col5 = st.columns(5)
+    col1, col2, col3, col4, col5, col6 = st.columns(6)
     col1.metric("Total Cells", len(gdf))
 
     # Use EHI if available, fall back to risk score
@@ -134,6 +159,14 @@ if not gdf.empty:
     if "cluster" in gdf.columns and "risk_score" in gdf.columns:
         cluster_risk = gdf.groupby("cluster")["risk_score"].mean().idxmax()
         col5.metric("Most At-Risk Cluster", str(cluster_risk))
+
+    # Critical priority cells count (Phase 3)
+    if planning_profiles:
+        critical_count = sum(
+            1 for v in planning_profiles.values()
+            if v.get("planning_priority") == "Critical"
+        )
+        col6.metric("Critical Priority Cells", critical_count)
 else:
     st.warning("No data loaded. Check your data files.")
 
@@ -285,6 +318,7 @@ ehi_color = sustainability_color
 
 # Add all available choropleth layers
 col_layers: dict[str, tuple[str, Callable]] = {
+    "planning_priority_score": ("Planning Priority Score", risk_color),
     "environmental_health":  ("Environmental Health (EHI)", ehi_color),
     "risk_score":            ("Risk Score", risk_color),
     "sustainability_score":  ("Sustainability Score", sustainability_color),
@@ -523,6 +557,68 @@ def _render_legacy_environmental_panel(cell: pd.Series) -> None:
             except (ValueError, TypeError):
                 st.write(f"{label}: {val}")
 
+
+def _render_planning_profile_panel(pp: dict) -> None:
+    """Render the Phase 3 Planning Profile panel in the sidebar."""
+
+    priority_label = pp.get("planning_priority", "Medium")
+    priority_score = pp.get("priority_score", 0.0)
+    color_type     = get_priority_color(priority_label)
+
+    # ── Planning Priority ─────────────────────────────────────────────────
+    st.markdown("### 🚨 Planning Priority")
+    priority_msg = f"**Priority: {priority_label}**"
+    if color_type == "error":
+        st.error(priority_msg)
+    elif color_type == "warning":
+        st.warning(priority_msg)
+    else:
+        st.success(priority_msg)
+    st.metric(label="Priority Score", value=f"{priority_score:.1f} / 100")
+
+    # ── Planning Objective ────────────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 🎯 Planning Objective")
+    st.write(f"**{pp.get('primary_objective', 'Environmental Management')}**")
+
+    # ── Recommended Intervention ──────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 🏗️ Recommended Intervention")
+    st.markdown(f"**{pp.get('recommended_intervention', 'Environmental Monitoring')}**")
+
+    secondary: list[str] = pp.get("secondary_interventions", [])
+    if secondary:
+        st.caption("Supporting interventions:")
+        for s in secondary:
+            st.write(f"  • {s}")
+
+    # ── Expected Benefits ─────────────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 📈 Expected Benefits")
+    benefits: list[str] = pp.get("expected_benefits", [])
+    for b in benefits:
+        st.write(f"  ✓ {b}")
+
+    # ── Implementation Details ────────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 💰 Implementation Details")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Cost",       pp.get("implementation_cost",       "—"))
+    c2.metric("Timeline",   pp.get("implementation_timeline",   "—"))
+    c3.metric("Complexity", pp.get("implementation_complexity", "—"))
+
+    # ── Why this recommendation? ──────────────────────────────────────────
+    st.markdown("---")
+    st.markdown("### 🧠 Why this recommendation?")
+    evidence = pp.get("evidence", "")
+    if evidence:
+        st.info(evidence)
+    confidence = pp.get("confidence", 0.0)
+    st.metric(
+        label="Recommendation Confidence",
+        value=f"{confidence * 100:.0f}%",
+    )
+
 # ------------------------------------------------------------------------------
 # 7. Sidebar – cell details
 # ------------------------------------------------------------------------------
@@ -614,28 +710,34 @@ if clicked_cell_id is not None:
                         f"(SHAP {top_neg.get('shap_value', 0):.3f})"
                     )
 
-            # ── Rule-based recommendation (unchanged) ─────────────────────
+            # ── Planning Profile (Phase 3) or legacy recommendation ────────
             st.markdown("---")
-            st.markdown("**💡 Recommendation**")
-            rec: list[str] = []
-            ndvi_val = cell.get("mean_ndvi") or 0
-            lst_val  = cell.get("mean_lst")  or 0
-            dem_val  = cell.get("mean_dem")  or 0
-            ndbi_val = cell.get("mean_ndbi") or 0
-            thresholds = CONFIG["dashboard"]["thresholds"]
-
-            if (ndvi_val < thresholds["low_ndvi"] and lst_val > thresholds["high_lst"]):
-                rec.append("🌳 Increase green cover (low NDVI, high temperature).")
-            if dem_val < thresholds["low_dem"]:
-                rec.append("💧 Elevation risk – improve drainage and flood protection.")
-            if ndbi_val > thresholds["high_ndbi"]:
-                rec.append("🏗️ High built-up density – consider permeable surfaces and cool roofs.")
-
-            if rec:
-                for r in rec:
-                    st.success(r)
+            pp = planning_profiles.get(clicked_cell_id) if planning_profiles else None
+            if pp:
+                _render_planning_profile_panel(pp)
             else:
-                st.write("No specific urgent recommendation.")
+                st.markdown("**💡 Recommendation**")
+                st.info(
+                    "💡 Run 'Generate planning profiles' pipeline stage "
+                    "for full planning recommendations."
+                )
+                rec: list[str] = []
+                ndvi_val  = cell.get("mean_ndvi") or 0
+                lst_val   = cell.get("mean_lst")  or 0
+                dem_val   = cell.get("mean_dem")  or 0
+                ndbi_val  = cell.get("mean_ndbi") or 0
+                thresholds = CONFIG["dashboard"]["thresholds"]
+                if ndvi_val < thresholds["low_ndvi"] and lst_val > thresholds["high_lst"]:
+                    rec.append("🌳 Increase green cover (low NDVI, high temperature).")
+                if dem_val < thresholds["low_dem"]:
+                    rec.append("💧 Elevation risk – improve drainage and flood protection.")
+                if ndbi_val > thresholds["high_ndbi"]:
+                    rec.append("🏗️ High built-up density – consider permeable surfaces and cool roofs.")
+                if rec:
+                    for r in rec:
+                        st.success(r)
+                else:
+                    st.write("No specific urgent recommendation.")
     else:
         st.sidebar.warning("Cell data not found.")
 else:
@@ -645,4 +747,4 @@ else:
 # Footer
 # ------------------------------------------------------------------------------
 st.markdown("---")
-st.caption("City Sense Dashboard – Phase 2 | Built with Streamlit, Folium, and Geopandas")
+st.caption("City Sense Dashboard – Phase 3 | Built with Streamlit, Folium, and Geopandas")

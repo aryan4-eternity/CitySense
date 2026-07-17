@@ -57,6 +57,7 @@ def main() -> None:
     )
     from metadata import geo_enrichment
     from environment import generate_environmental_intelligence
+    from planning import generate_planning_profiles
 
     stages: list[tuple[str, Callable[[], None], Path | None]] = [
         ("Generate grid", generate_grid.main, project_path(config, "grid")),
@@ -72,6 +73,7 @@ def main() -> None:
         ("Train explainability model", train_explainability.main, None),
         ("Create dashboard explanations", generate_explanations_json.main, None),
         ("Generate environmental intelligence", generate_environmental_intelligence.main, project_path(config, "environmental_intelligence")),
+        ("Generate planning profiles", generate_planning_profiles.main, project_path(config, "planning_profiles")),
         ("Enrich geographic metadata", geo_enrichment.main, project_path(config, "geographic_metadata")),
         ("Generate validation plots", validate_scores.main, None),
     ]
