@@ -29,7 +29,7 @@ export function useCityStats() {
 // ------------------------------------------------------------------
 export function useCells() {
   return useQuery<GeoJSON.FeatureCollection>({
-    queryKey: ['cells'],
+    queryKey: ['cells-landmass-only-v2'],
     queryFn: () => fetchJSON<GeoJSON.FeatureCollection>('/cells'),
     staleTime: Infinity,
     retry: 3,
