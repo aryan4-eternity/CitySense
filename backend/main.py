@@ -66,7 +66,48 @@ if isinstance(_explanations_raw, list):
 else:
     _explanations = _explanations_raw
 
-# Pre-build fast lookup: cell_id → GeoJSON feature properties
+
+# ---------------------------------------------------------------------------
+# Land / water classification — filter sea cells at the data layer
+# ---------------------------------------------------------------------------
+
+def _is_land_cell(props: dict) -> bool:
+    """Return True if the cell is on land, False if it is water/sea.
+
+    Uses broadened thresholds that catch turbid coastal water, open ocean,
+    and low-elevation tidal flats that the pipeline's grid covers but that
+    are not meaningful for urban environmental analysis.
+    """
+    ndvi = props.get("mean_ndvi")
+    dem  = props.get("mean_dem")
+    # Missing data → treat as water (these are typically empty ocean cells)
+    if ndvi is None or dem is None:
+        return False
+    import math
+    if math.isnan(ndvi) or math.isnan(dem):
+        return False
+    # Ocean / coastal water: very low vegetation AND very low elevation
+    if ndvi < 0.05 and dem < 3.5:
+        return False
+    return True
+
+
+_total_before = len(_cells_geojson["features"])
+
+# Build a land-only GeoJSON for the map endpoint
+_cells_land_geojson: dict = {
+    "type": "FeatureCollection",
+    "features": [
+        f for f in _cells_geojson["features"]
+        if _is_land_cell(f.get("properties", {}))
+    ],
+}
+
+_total_after = len(_cells_land_geojson["features"])
+print(f"[CitySense API] Filtered {_total_before - _total_after} water cells "
+      f"({_total_before} -> {_total_after} land cells)")
+
+# Pre-build fast lookup: cell_id → GeoJSON feature properties (all cells)
 _cell_props: dict[str, dict] = {
     f["properties"]["cell_id"]: f["properties"]
     for f in _cells_geojson["features"]
@@ -85,12 +126,12 @@ print(f"[CitySense API] Explanations: {len(_explanations)} cells")
 
 @app.get("/api/cells")
 def get_cells() -> dict:
-    """Full GeoJSON FeatureCollection for Deck.gl map layer.
+    """Land-only GeoJSON FeatureCollection for Deck.gl map layer.
 
-    Returns the complete cells_master.geojson so the frontend can render
-    the choropleth without any additional requests.
+    Returns cells_master.geojson with water/sea cells removed so the
+    frontend renders a clean landmass-only choropleth.
     """
-    return _cells_geojson
+    return _cells_land_geojson
 
 
 @app.get("/api/cell/{cell_id}")

@@ -11,24 +11,42 @@ function lerp(a: number, b: number, t: number): number {
 
 type RGBA = [number, number, number, number]
 
+// ----------------------------------------------------------------
+// Water / sea cell detection
+// ----------------------------------------------------------------
+// Matches the backend land_use_classifier logic:
+//   if dem < 2.0 and ndvi < 0.0 → "Water Body / Coastal"
+
+function isWaterCell(props: Record<string, unknown>): boolean {
+  const ndvi = props['mean_ndvi'] as number | null | undefined
+  const dem  = props['mean_dem']  as number | null | undefined
+  if (ndvi == null || dem == null) return true // hide missing data
+  // Broader threshold to catch turbid coastal water and remove sea grids
+  return ndvi < 0.05 && dem < 3.5
+}
+
+/** Translucent alpha — low enough to see the basemap through, high
+ *  enough that colour differences are still readable. */
+const FILL_ALPHA = 120
+
 /** Map a 0–1 ratio to an RGBA colour using the given scale. */
 function applyScale(ratio: number, scale: LayerConfig['colorScale']): RGBA {
   const t = Math.max(0, Math.min(1, ratio))
   switch (scale) {
-    case 'green_red':   // EHI: green (high) → red (low)  — note: high EHI = healthier
-      return [lerp(0, 255, 1 - t), lerp(255, 40, 1 - t), lerp(159, 60, 1 - t), 210]
+    case 'green_red':   // EHI: green (high) → red (low)
+      return [lerp(0, 255, 1 - t), lerp(255, 30, 1 - t), lerp(120, 50, 1 - t), FILL_ALPHA]
     case 'red_green':   // Risk: red (high) → green (low)
-      return [lerp(0, 255, t), lerp(255, 40, t), lerp(159, 60, t), 210]
+      return [lerp(0, 255, t), lerp(255, 30, t), lerp(120, 50, t), FILL_ALPHA]
     case 'blue_red':    // LST: blue (cool) → red (hot)
-      return [lerp(30, 255, t), lerp(120, 30, t), lerp(220, 50, t), 210]
+      return [lerp(30, 255, t), lerp(140, 30, t), lerp(240, 40, t), FILL_ALPHA]
     case 'brown_green': // NDVI: brown (low) → green (high)
-      return [lerp(139, 20, t), lerp(90, 200, t), lerp(43, 60, t), 210]
+      return [lerp(160, 10, t), lerp(80, 220, t), lerp(30, 50, t), FILL_ALPHA]
     case 'blue_orange': // UHI: blue (negative) → orange (positive)
-      return [lerp(20, 255, t), lerp(100, 150, t), lerp(220, 20, t), 210]
+      return [lerp(20, 255, t), lerp(100, 160, t), lerp(240, 20, t), FILL_ALPHA]
     case 'categorical':
-      return [100, 160, 220, 180] // fallback — handled per-feature below
+      return [100, 160, 220, FILL_ALPHA] // fallback — handled per-feature below
     default:
-      return [100, 180, 255, 180]
+      return [100, 180, 255, FILL_ALPHA]
   }
 }
 
@@ -124,11 +142,11 @@ export const LAYER_CONFIGS: Record<LayerKey, LayerConfig> = {
 
 // Cluster colour palette (Tab10-inspired, high contrast on dark background)
 const CLUSTER_COLORS: Record<number, RGBA> = {
-  0: [0, 180, 255, 200],    // Coastal/Lowland — cyan
-  1: [0, 220, 120, 200],    // Green/Forested — green
-  2: [255, 80, 60, 200],    // Dense Urban Heat — red
-  3: [180, 100, 255, 200],  // Green/Forested alt — purple
-  4: [255, 180, 40, 200],   // fallback — amber
+  0: [0, 180, 255, FILL_ALPHA],    // Coastal/Lowland — cyan
+  1: [0, 220, 120, FILL_ALPHA],    // Green/Forested — green
+  2: [255, 80, 60, FILL_ALPHA],    // Dense Urban Heat — red
+  3: [180, 100, 255, FILL_ALPHA],  // Green/Forested alt — purple
+  4: [255, 180, 40, FILL_ALPHA],   // fallback — amber
 }
 
 // ----------------------------------------------------------------
@@ -159,6 +177,9 @@ export function getCellColor(
 ): RGBA {
   if (isSelected) return [0, 212, 255, 240]   // bright cyan for selected
 
+  // Hide water / sea cells — fully transparent
+  if (isWaterCell(props)) return [0, 0, 0, 0]
+
   if (layerKey === 'cluster') {
     const clusterId = props['cluster_id'] as number ?? 0
     return CLUSTER_COLORS[clusterId] ?? CLUSTER_COLORS[4]
@@ -167,7 +188,7 @@ export function getCellColor(
   const config = LAYER_CONFIGS[layerKey]
   const value = getValue(props, layerKey)
 
-  if (value === null || isNaN(value)) return [40, 60, 90, 120]  // grey for missing
+  if (value === null || isNaN(value)) return [40, 60, 90, 80]  // grey for missing
 
   const vmin = config.min ?? 0
   const vmax = config.max ?? 100
@@ -205,12 +226,15 @@ export function makeChoroplethLayer(
 
     getLineColor: (feature: GeoJSON.Feature) => {
       const props = feature.properties as Record<string, unknown>
+      // Hide grid lines for water cells
+      if (isWaterCell(props)) return [0, 0, 0, 0]
       if (props['cell_id'] === selectedCellId) return [0, 212, 255, 255]
-      return [0, 80, 140, 60]
+      return [100, 180, 240, 50]
     },
 
     getLineWidth: (feature: GeoJSON.Feature) => {
       const props = feature.properties as Record<string, unknown>
+      if (isWaterCell(props)) return 0
       return props['cell_id'] === selectedCellId ? 2 : 0.5
     },
 
