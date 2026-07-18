@@ -1,0 +1,1563 @@
+2026-07-17 23:55:03,116 - CitySense - INFO - === City Sense Pipeline Started ===
+2026-07-17 23:55:03,131 - CitySense - INFO - Validating configuration...
+2026-07-17 23:55:03,137 - CitySense - INFO - Configuration is valid.
+2026-07-17 23:55:14,683 - CitySense - INFO - Skipping stage 'Generate grid'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\grid.geojson
+2026-07-17 23:55:14,684 - CitySense - INFO - Skipping stage 'Fetch NDVI'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\ndvi_grid.geojson
+2026-07-17 23:55:14,684 - CitySense - INFO - Skipping stage 'Fetch land-surface temperature'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\lst_grid.geojson
+2026-07-17 23:55:14,684 - CitySense - INFO - Skipping stage 'Fetch NDBI'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\ndbi_grid.geojson
+2026-07-17 23:55:14,684 - CitySense - INFO - Skipping stage 'Fetch DEM'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\dem_grid.geojson
+2026-07-17 23:55:14,684 - CitySense - INFO - Running stage: Merge indicators
+2026-07-17 23:55:14,685 - CitySense.processing.merge_indicators - INFO - === City Sense -- Week 4: Merge Indicators ===
+2026-07-17 23:55:14,689 - CitySense.processing.merge_indicators - INFO - Loading indicator layers...
+2026-07-17 23:55:14,745 - CitySense.processing.merge_indicators - INFO - [NDVI] 836 cells, column: mean_ndvi
+2026-07-17 23:55:14,770 - CitySense.processing.merge_indicators - INFO - [LST] 836 cells, column: mean_lst
+2026-07-17 23:55:14,797 - CitySense.processing.merge_indicators - INFO - [NDBI] 836 cells, column: mean_ndbi
+2026-07-17 23:55:14,825 - CitySense.processing.merge_indicators - INFO - [DEM] 836 cells, column: mean_dem
+2026-07-17 23:55:14,828 - CitySense.processing.merge_indicators - INFO - Merged dataset: 836 rows x 6 columns
+2026-07-17 23:55:14,828 - CitySense.processing.merge_indicators - INFO - Columns: ['cell_id', 'mean_ndvi', 'mean_lst', 'mean_ndbi', 'mean_dem', 'geometry']
+2026-07-17 23:55:14,832 - CitySense.processing.merge_indicators - DEBUG - First 5 rows:
+cell_id  mean_ndvi  mean_lst  mean_ndbi  mean_dem
+  r0_c0  -0.143165 30.243749  -0.052936  0.000000
+  r0_c1  -0.151584 30.268030  -0.054288  0.000000
+  r0_c2  -0.161391 30.272786  -0.067398  0.000000
+  r0_c3  -0.013260 33.068555  -0.049276  1.899245
+  r0_c4  -0.006067 33.255702  -0.075647  3.256442
+2026-07-17 23:55:14,837 - CitySense.processing.merge_indicators - DEBUG - Basic statistics:
+        mean_ndvi    mean_lst   mean_ndbi    mean_dem
+count  836.000000  836.000000  836.000000  836.000000
+mean     0.095393   37.205626   -0.067646   22.427618
+std      0.182677    5.150374    0.076193   49.434387
+min     -0.202734   30.017884   -0.335785   -0.505823
+25%     -0.118259   31.395320   -0.103111    0.000000
+50%      0.152285   37.768269   -0.056164    3.802165
+75%      0.224524   41.910599   -0.016208   15.012170
+max      0.523807   48.929549    0.124413  363.190029
+2026-07-17 23:55:14,839 - CitySense.processing.merge_indicators - INFO - No missing values in any column.
+2026-07-17 23:55:14,869 - CitySense.processing.merge_indicators - INFO - Saved master dataset to: D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-07-17 23:55:14,870 - CitySense.processing.merge_indicators - INFO - === Merge complete! ===
+2026-07-17 23:55:14,870 - CitySense - INFO - Completed stage: Merge indicators (0.19s)
+2026-07-17 23:55:14,870 - CitySense - INFO - Running stage: Compute UHI
+2026-07-17 23:55:14,870 - CitySense.processing.compute_uhi - INFO - === City Sense -- Week 5: Compute UHI Intensity ===
+2026-07-17 23:55:14,875 - CitySense - ERROR - Stage 'Compute UHI' FAILED after 0.00s
+Traceback (most recent call last):
+  File "D:\Clg\Major Project\CitySense\city_sense\main.py", line 27, in run_stage
+    stage()
+    ~~~~~^^
+  File "D:\Clg\Major Project\CitySense\city_sense\processing\compute_uhi.py", line 41, in main
+    baseline = cfg["processing"]["uhi_baseline"]
+               ~~~^^^^^^^^^^^^^^
+KeyError: 'processing'
+2026-07-17 23:56:59,222 - CitySense - INFO - === City Sense Pipeline Started ===
+2026-07-17 23:56:59,227 - CitySense - INFO - Validating configuration...
+2026-07-17 23:56:59,232 - CitySense - INFO - Configuration is valid.
+2026-07-17 23:57:02,221 - CitySense - INFO - Skipping stage 'Generate grid'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\grid.geojson
+2026-07-17 23:57:02,221 - CitySense - INFO - Skipping stage 'Fetch NDVI'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\ndvi_grid.geojson
+2026-07-17 23:57:02,222 - CitySense - INFO - Skipping stage 'Fetch land-surface temperature'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\lst_grid.geojson
+2026-07-17 23:57:02,222 - CitySense - INFO - Skipping stage 'Fetch NDBI'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\ndbi_grid.geojson
+2026-07-17 23:57:02,222 - CitySense - INFO - Skipping stage 'Fetch DEM'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\dem_grid.geojson
+2026-07-17 23:57:02,222 - CitySense - INFO - Running stage: Merge indicators
+2026-07-17 23:57:02,222 - CitySense.processing.merge_indicators - INFO - === City Sense -- Week 4: Merge Indicators ===
+2026-07-17 23:57:02,227 - CitySense.processing.merge_indicators - INFO - Loading indicator layers...
+2026-07-17 23:57:02,269 - CitySense.processing.merge_indicators - INFO - [NDVI] 836 cells, column: mean_ndvi
+2026-07-17 23:57:02,281 - CitySense.processing.merge_indicators - INFO - [LST] 836 cells, column: mean_lst
+2026-07-17 23:57:02,297 - CitySense.processing.merge_indicators - INFO - [NDBI] 836 cells, column: mean_ndbi
+2026-07-17 23:57:02,311 - CitySense.processing.merge_indicators - INFO - [DEM] 836 cells, column: mean_dem
+2026-07-17 23:57:02,314 - CitySense.processing.merge_indicators - INFO - Merged dataset: 836 rows x 6 columns
+2026-07-17 23:57:02,315 - CitySense.processing.merge_indicators - INFO - Columns: ['cell_id', 'mean_ndvi', 'mean_lst', 'mean_ndbi', 'mean_dem', 'geometry']
+2026-07-17 23:57:02,318 - CitySense.processing.merge_indicators - DEBUG - First 5 rows:
+cell_id  mean_ndvi  mean_lst  mean_ndbi  mean_dem
+  r0_c0  -0.143165 30.243749  -0.052936  0.000000
+  r0_c1  -0.151584 30.268030  -0.054288  0.000000
+  r0_c2  -0.161391 30.272786  -0.067398  0.000000
+  r0_c3  -0.013260 33.068555  -0.049276  1.899245
+  r0_c4  -0.006067 33.255702  -0.075647  3.256442
+2026-07-17 23:57:02,324 - CitySense.processing.merge_indicators - DEBUG - Basic statistics:
+        mean_ndvi    mean_lst   mean_ndbi    mean_dem
+count  836.000000  836.000000  836.000000  836.000000
+mean     0.095393   37.205626   -0.067646   22.427618
+std      0.182677    5.150374    0.076193   49.434387
+min     -0.202734   30.017884   -0.335785   -0.505823
+25%     -0.118259   31.395320   -0.103111    0.000000
+50%      0.152285   37.768269   -0.056164    3.802165
+75%      0.224524   41.910599   -0.016208   15.012170
+max      0.523807   48.929549    0.124413  363.190029
+2026-07-17 23:57:02,325 - CitySense.processing.merge_indicators - INFO - No missing values in any column.
+2026-07-17 23:57:02,350 - CitySense.processing.merge_indicators - INFO - Saved master dataset to: D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-07-17 23:57:02,351 - CitySense.processing.merge_indicators - INFO - === Merge complete! ===
+2026-07-17 23:57:02,351 - CitySense - INFO - Completed stage: Merge indicators (0.13s)
+2026-07-17 23:57:02,352 - CitySense - INFO - Running stage: Compute UHI
+2026-07-17 23:57:02,352 - CitySense.processing.compute_uhi - INFO - === City Sense -- Week 5: Compute UHI Intensity ===
+2026-07-17 23:57:02,357 - CitySense - ERROR - Stage 'Compute UHI' FAILED after 0.01s
+Traceback (most recent call last):
+  File "D:\Clg\Major Project\CitySense\city_sense\main.py", line 27, in run_stage
+    stage()
+    ~~~~~^^
+  File "D:\Clg\Major Project\CitySense\city_sense\processing\compute_uhi.py", line 41, in main
+    baseline = cfg["processing"]["uhi_baseline"]
+               ~~~^^^^^^^^^^^^^^
+KeyError: 'processing'
+2026-07-18 13:39:00,531 - CitySense.environment.generate_environmental_intelligence - INFO - === City Sense – Phase 2: Generate Environmental Intelligence ===
+2026-07-18 13:39:00,546 - CitySense.environment.generate_environmental_intelligence - INFO - Master dataset : D:\Clg\Major Project\CitySense\city_sense\data\cells_master.geojson
+2026-07-18 13:39:00,546 - CitySense.environment.generate_environmental_intelligence - INFO - Output path    : D:\Clg\Major Project\CitySense\city_sense\data\environmental_intelligence.json
+2026-07-18 13:39:01,054 - CitySense.environment.generate_environmental_intelligence - INFO - Loaded 836 cells from master dataset.
+2026-07-18 13:39:01,054 - CitySense.environment.generate_environmental_intelligence - ERROR - cells_master.geojson is missing required columns: ['uhi_intensity', 'risk_score']. Ensure all upstream pipeline stages have been run before this stage.
+2026-07-18 13:39:30,171 - CitySense.processing.compute_uhi - INFO - === City Sense -- Week 5: Compute UHI Intensity ===
+2026-07-18 13:39:51,815 - CitySense.processing.compute_uhi - INFO - === City Sense -- Week 5: Compute UHI Intensity ===
+2026-07-18 13:39:51,914 - CitySense.processing.compute_uhi - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-07-18 13:39:51,915 - CitySense.processing.compute_uhi - INFO - Baseline zone defined as: lon [72.87, 72.93], lat [19.18, 19.25]
+2026-07-18 13:39:52,051 - CitySense.processing.compute_uhi - INFO - Selected 42 cells as the baseline reference.
+2026-07-18 13:39:52,052 - CitySense.processing.compute_uhi - INFO - Rural/Green reference temperature (mean): 39.01 C
+2026-07-18 13:39:52,053 - CitySense.processing.compute_uhi - INFO - UHI Intensity stats:
+2026-07-18 13:39:52,053 - CitySense.processing.compute_uhi - INFO -   Min : -8.99 C
+2026-07-18 13:39:52,053 - CitySense.processing.compute_uhi - INFO -   Max : 9.92 C
+2026-07-18 13:39:52,053 - CitySense.processing.compute_uhi - INFO -   Mean: -1.80 C
+2026-07-18 13:39:52,054 - CitySense.processing.compute_uhi - INFO - Number of cells with UHI > +5 C: 70
+2026-07-18 13:39:52,054 - CitySense.processing.compute_uhi - INFO - Mean NDBI of these hot cells: 0.028 (expect positive/high)
+2026-07-18 13:39:52,084 - CitySense.processing.compute_uhi - INFO - Updated master dataset with 'uhi_intensity' column.
+2026-07-18 13:39:52,084 - CitySense.processing.compute_uhi - INFO - Generating UHI map...
+2026-07-18 13:39:52,458 - CitySense.processing.compute_uhi - INFO - Saved UHI map to: D:\Clg\Major Project\CitySense\city_sense\data\uhi_map.png
+2026-07-18 13:39:52,459 - CitySense.processing.compute_uhi - INFO - === UHI computation complete! ===
+2026-07-18 13:40:05,652 - CitySense.processing.pca_scoring - INFO - === City Sense -- Week 6: PCA Scoring ===
+2026-07-18 13:40:05,714 - CitySense.processing.pca_scoring - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-07-18 13:40:05,718 - CitySense.processing.pca_scoring - INFO - Normalising features to [0, 1] range...
+2026-07-18 13:40:05,722 - CitySense.processing.pca_scoring - INFO - Saved MinMaxScaler to D:\Clg\Major Project\CitySense\city_sense\models\scaler.pkl
+2026-07-18 13:40:05,722 - CitySense.processing.pca_scoring - INFO - Scaled data ranges:
+2026-07-18 13:40:05,723 - CitySense.processing.pca_scoring - INFO -   mean_lst: min=0.00, max=1.00
+2026-07-18 13:40:05,723 - CitySense.processing.pca_scoring - INFO -   mean_ndvi: min=0.00, max=1.00
+2026-07-18 13:40:05,723 - CitySense.processing.pca_scoring - INFO -   mean_ndbi: min=0.00, max=1.00
+2026-07-18 13:40:05,724 - CitySense.processing.pca_scoring - INFO -   mean_dem: min=0.00, max=1.00
+2026-07-18 13:40:05,724 - CitySense.processing.pca_scoring - INFO - Aligning feature directions towards RISK...
+2026-07-18 13:40:05,724 - CitySense.processing.pca_scoring - INFO -   - Inverting mean_ndvi (less greenery = higher risk)
+2026-07-18 13:40:05,724 - CitySense.processing.pca_scoring - INFO -   - Inverting mean_dem (lower elevation = higher flood risk)
+2026-07-18 13:40:05,725 - CitySense.processing.pca_scoring - INFO - Fitting PCA (n_components=1)...
+2026-07-18 13:40:05,729 - CitySense.processing.pca_scoring - INFO - PCA Explained Variance Ratio: 0.6537 (65.4%)
+2026-07-18 13:40:05,729 - CitySense.processing.pca_scoring - INFO - Feature Loadings for PC1:
+2026-07-18 13:40:05,729 - CitySense.processing.pca_scoring - INFO -   mean_lst: 0.7418
+2026-07-18 13:40:05,729 - CitySense.processing.pca_scoring - INFO -   mean_ndvi: -0.6151
+2026-07-18 13:40:05,729 - CitySense.processing.pca_scoring - INFO -   mean_ndbi: 0.2146
+2026-07-18 13:40:05,729 - CitySense.processing.pca_scoring - INFO -   mean_dem: -0.1593
+2026-07-18 13:40:05,730 - CitySense.processing.pca_scoring - INFO - --- Risk Score Stats ---
+2026-07-18 13:40:05,730 - CitySense.processing.pca_scoring - INFO -   Min: 0.00
+2026-07-18 13:40:05,731 - CitySense.processing.pca_scoring - INFO -   Max: 100.00
+2026-07-18 13:40:05,731 - CitySense.processing.pca_scoring - INFO -   Mean: 51.78
+2026-07-18 13:40:05,731 - CitySense.processing.pca_scoring - INFO -   Median: 63.97
+2026-07-18 13:40:05,731 - CitySense.processing.pca_scoring - INFO - --- Sustainability Score Stats ---
+2026-07-18 13:40:05,731 - CitySense.processing.pca_scoring - INFO -   Min: 0.00
+2026-07-18 13:40:05,732 - CitySense.processing.pca_scoring - INFO -   Max: 100.00
+2026-07-18 13:40:05,732 - CitySense.processing.pca_scoring - INFO -   Mean: 48.22
+2026-07-18 13:40:05,732 - CitySense.processing.pca_scoring - INFO -   Median: 36.03
+2026-07-18 13:40:05,756 - CitySense.processing.pca_scoring - INFO - Updated master dataset with 'risk_score' and 'sustainability_score'.
+2026-07-18 13:40:05,757 - CitySense.processing.pca_scoring - INFO - Saved PCA model to D:\Clg\Major Project\CitySense\city_sense\models\pca_model.pkl
+2026-07-18 13:40:05,757 - CitySense.processing.pca_scoring - INFO - === PCA Scoring complete! ===
+2026-07-18 13:40:13,602 - CitySense.processing.kmeans_clustering - INFO - === City Sense -- Week 6: K-Means Clustering ===
+2026-07-18 13:40:13,663 - CitySense.processing.kmeans_clustering - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-07-18 13:40:13,665 - CitySense.processing.kmeans_clustering - INFO - Normalising features for clustering...
+2026-07-18 13:40:13,667 - CitySense.processing.kmeans_clustering - INFO - Running silhouette analysis to evaluate k (2 to 6)...
+2026-07-18 13:40:17,334 - CitySense.processing.kmeans_clustering - INFO -   k=2 | Silhouette Score = 0.5666
+2026-07-18 13:40:17,379 - CitySense.processing.kmeans_clustering - INFO -   k=3 | Silhouette Score = 0.5607
+2026-07-18 13:40:17,397 - CitySense.processing.kmeans_clustering - INFO -   k=4 | Silhouette Score = 0.5911
+2026-07-18 13:40:17,448 - CitySense.processing.kmeans_clustering - INFO -   k=5 | Silhouette Score = 0.4924
+2026-07-18 13:40:17,468 - CitySense.processing.kmeans_clustering - INFO -   k=6 | Silhouette Score = 0.4513
+2026-07-18 13:40:17,468 - CitySense.processing.kmeans_clustering - INFO - Best k by silhouette score: 4
+2026-07-18 13:40:17,599 - CitySense.processing.kmeans_clustering - INFO - Saved silhouette plot to D:\Clg\Major Project\CitySense\city_sense\data\kmeans_silhouette.png
+2026-07-18 13:40:17,600 - CitySense.processing.kmeans_clustering - INFO - Fitting final K-Means model with k=4...
+2026-07-18 13:40:17,605 - CitySense.processing.kmeans_clustering - INFO - Cluster Centroids (Scaled 0-1):
+2026-07-18 13:40:17,612 - CitySense.processing.kmeans_clustering - INFO -    mean_lst  mean_ndvi  mean_ndbi  mean_dem
+2026-07-18 13:40:17,612 - CitySense.processing.kmeans_clustering - INFO - 0  0.072943   0.107249   0.532396  0.004021
+2026-07-18 13:40:17,612 - CitySense.processing.kmeans_clustering - INFO - 1  0.442968   0.740041   0.622675  0.456473
+2026-07-18 13:40:17,612 - CitySense.processing.kmeans_clustering - INFO - 2  0.644395   0.516023   0.702010  0.050269
+2026-07-18 13:40:17,612 - CitySense.processing.kmeans_clustering - INFO - 3  0.303690   0.664508   0.310278  0.017573
+2026-07-18 13:40:17,613 - CitySense.processing.kmeans_clustering - INFO - Assigned typologies:
+2026-07-18 13:40:17,613 - CitySense.processing.kmeans_clustering - INFO -   Cluster 0: Coastal/Lowland Urban
+2026-07-18 13:40:17,613 - CitySense.processing.kmeans_clustering - INFO -   Cluster 1: Green/Forested
+2026-07-18 13:40:17,613 - CitySense.processing.kmeans_clustering - INFO -   Cluster 2: Dense Urban Heat
+2026-07-18 13:40:17,614 - CitySense.processing.kmeans_clustering - INFO -   Cluster 3: Green/Forested
+2026-07-18 13:40:17,656 - CitySense.processing.kmeans_clustering - INFO - Updated master dataset with 'cluster' assignments.
+2026-07-18 13:40:17,658 - CitySense.processing.kmeans_clustering - INFO - Cluster distribution:
+2026-07-18 13:40:17,660 - CitySense.processing.kmeans_clustering - INFO -   Cluster 2: Dense Urban Heat: 359 cells
+2026-07-18 13:40:17,661 - CitySense.processing.kmeans_clustering - INFO -   Cluster 0: Coastal/Lowland Urban: 295 cells
+2026-07-18 13:40:17,661 - CitySense.processing.kmeans_clustering - INFO -   Cluster 3: Green/Forested: 113 cells
+2026-07-18 13:40:17,661 - CitySense.processing.kmeans_clustering - INFO -   Cluster 1: Green/Forested: 69 cells
+2026-07-18 13:40:17,661 - CitySense.processing.kmeans_clustering - INFO - === K-Means Clustering complete! ===
+2026-07-18 13:40:26,780 - CitySense.processing.train_explainability - INFO - === City Sense – Week 6: Explainability Layer ===
+2026-07-18 13:40:26,785 - CitySense.processing.train_explainability - INFO - Loading master dataset …
+2026-07-18 13:40:26,844 - CitySense.processing.train_explainability - INFO - Loaded 836 cells  |  columns: ['cell_id', 'mean_ndvi', 'mean_lst', 'mean_ndbi', 'mean_dem', 'uhi_intensity', 'risk_score', 'sustainability_score', 'cluster_id', 'cluster', 'geometry']
+2026-07-18 13:40:26,845 - CitySense.processing.train_explainability - INFO - Features shape: (836, 4)  |  Target range: [0.00, 100.00]
+2026-07-18 13:40:26,845 - CitySense.processing.train_explainability - INFO - Splitting data (test_size=0.2, random_seed=42) …
+2026-07-18 13:40:26,848 - CitySense.processing.train_explainability - INFO - Train: 668  |  Test: 168
+2026-07-18 13:40:26,848 - CitySense.processing.train_explainability - INFO - Fitting StandardScaler on training set …
+2026-07-18 13:40:26,849 - CitySense.processing.train_explainability - INFO - [OK] Scaler saved → D:\Clg\Major Project\CitySense\city_sense\models/explain_scaler.pkl
+2026-07-18 13:40:26,850 - CitySense.processing.train_explainability - INFO - Training RandomForestRegressor (n_estimators=200, max_depth=5) …
+2026-07-18 13:40:27,044 - CitySense.processing.train_explainability - INFO - [OK] Model saved → D:\Clg\Major Project\CitySense\city_sense\models/risk_model.pkl
+2026-07-18 13:40:27,085 - CitySense.processing.train_explainability - INFO - Test-set evaluation:
+2026-07-18 13:40:27,085 - CitySense.processing.train_explainability - INFO -   R² Score             : 0.9934
+2026-07-18 13:40:27,085 - CitySense.processing.train_explainability - INFO -   Mean Absolute Error  : 1.8507
+2026-07-18 13:40:27,086 - CitySense.processing.train_explainability - INFO -   Root Mean Sq Error   : 2.5785
+2026-07-18 13:40:27,086 - CitySense.processing.train_explainability - INFO - Generating feature importance chart …
+2026-07-18 13:40:27,208 - CitySense.processing.train_explainability - INFO - [OK] Saved → D:\Clg\Major Project\CitySense\city_sense\data/feature_importance.png
+2026-07-18 13:40:27,208 - CitySense.processing.train_explainability - INFO - Computing SHAP values (TreeExplainer, full dataset) …
+2026-07-18 13:40:27,459 - CitySense.processing.train_explainability - INFO - SHAP values shape: (836, 4)
+2026-07-18 13:40:27,460 - CitySense.processing.train_explainability - INFO - Generating SHAP summary plot …
+2026-07-18 13:40:27,653 - CitySense.processing.train_explainability - INFO - [OK] Saved → D:\Clg\Major Project\CitySense\city_sense\data/shap_summary.png
+2026-07-18 13:40:27,653 - CitySense.processing.train_explainability - INFO - Extracting per-cell top positive / negative drivers …
+2026-07-18 13:40:27,700 - CitySense.processing.train_explainability - INFO - [OK] Master GeoJSON updated → D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-07-18 13:40:27,700 - CitySense.processing.train_explainability - INFO - New columns: top_positive_driver, top_positive_shap, top_negative_driver, top_negative_shap, explanation_text
+2026-07-18 13:40:27,700 - CitySense.processing.train_explainability - INFO - Sample cell explanations:
+2026-07-18 13:40:27,703 - CitySense.processing.train_explainability - INFO -   r10_c19  risk= 13.3  cluster=Cluster 0: Coastal/Lowland Urban
+2026-07-18 13:40:27,703 - CitySense.processing.train_explainability - INFO -            ➜ Low risk driven by low LST (temperature) (-33.05)
+2026-07-18 13:40:27,703 - CitySense.processing.train_explainability - INFO -   r35_c19  risk= 83.2  cluster=Cluster 1: Green/Forested
+2026-07-18 13:40:27,703 - CitySense.processing.train_explainability - INFO -            ➜ High risk driven by high LST (temperature) (+16.21) and low NDBI (built-up) (-0.33)
+2026-07-18 13:40:27,703 - CitySense.processing.train_explainability - INFO -   r2_c17  risk= 16.1  cluster=Cluster 0: Coastal/Lowland Urban
+2026-07-18 13:40:27,704 - CitySense.processing.train_explainability - INFO -            ➜ Low risk driven by low LST (temperature) (-30.88)
+2026-07-18 13:40:27,704 - CitySense.processing.train_explainability - INFO -   r17_c1  risk=  8.4  cluster=Cluster 0: Coastal/Lowland Urban
+2026-07-18 13:40:27,704 - CitySense.processing.train_explainability - INFO -            ➜ Low risk driven by high NDBI (built-up) (+0.41) and low LST (temperature) (-35.01)
+2026-07-18 13:40:27,704 - CitySense.processing.train_explainability - INFO -   r37_c13  risk= 76.4  cluster=Cluster 1: Green/Forested
+2026-07-18 13:40:27,704 - CitySense.processing.train_explainability - INFO -            ➜ High risk driven by high LST (temperature) (+10.39)
+2026-07-18 13:40:27,704 - CitySense.processing.train_explainability - INFO -   r8_c12  risk=  1.5  cluster=Cluster 0: Coastal/Lowland Urban
+2026-07-18 13:40:27,705 - CitySense.processing.train_explainability - INFO -            ➜ Low risk driven by low LST (temperature) (-36.05)
+2026-07-18 13:40:27,705 - CitySense.processing.train_explainability - INFO - Sanity checks:
+2026-07-18 13:40:27,705 - CitySense.processing.train_explainability - INFO - ✔ LST and NDVI are the top-2 predictors – matches domain knowledge
+2026-07-18 13:40:27,707 - CitySense.processing.train_explainability - INFO - ✔ 100% of the 20 hottest cells have positive LST SHAP (expected ~100%)
+2026-07-18 13:40:27,707 - CitySense.processing.train_explainability - INFO - Generating top-driver map …
+2026-07-18 13:40:27,906 - CitySense.processing.train_explainability - INFO - [OK] Saved → D:\Clg\Major Project\CitySense\city_sense\data/top_driver_map.png
+2026-07-18 13:40:27,907 - CitySense.processing.train_explainability - INFO - === Week 6 Explainability Layer complete! ===
+2026-07-18 13:40:35,459 - CitySense.processing.generate_explanations_json - INFO - === City Sense -- Generate Explanations JSON ===
+2026-07-18 13:40:35,464 - CitySense.processing.generate_explanations_json - INFO - Loading master dataset from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-07-18 13:40:35,562 - CitySense.processing.generate_explanations_json - INFO - Extracting explanation data...
+2026-07-18 13:40:35,602 - CitySense.processing.generate_explanations_json - INFO - Saved explanations for 836 cells to D:\Clg\Major Project\CitySense\city_sense\data/cell_explanations.json
+2026-07-18 13:40:35,603 - CitySense.processing.generate_explanations_json - INFO - === Generation complete! ===
+2026-07-18 13:40:42,440 - CitySense.environment.generate_environmental_intelligence - INFO - === City Sense – Phase 2: Generate Environmental Intelligence ===
+2026-07-18 13:40:42,446 - CitySense.environment.generate_environmental_intelligence - INFO - Master dataset : D:\Clg\Major Project\CitySense\city_sense\data\cells_master.geojson
+2026-07-18 13:40:42,446 - CitySense.environment.generate_environmental_intelligence - INFO - Output path    : D:\Clg\Major Project\CitySense\city_sense\data\environmental_intelligence.json
+2026-07-18 13:40:42,538 - CitySense.environment.generate_environmental_intelligence - INFO - Loaded 836 cells from master dataset.
+2026-07-18 13:40:42,538 - CitySense.environment.generate_environmental_intelligence - INFO - Computing city-wide statistics …
+2026-07-18 13:40:42,546 - CitySense.environment.comparative_analysis - DEBUG - City stats computed for indicators: ['mean_lst', 'mean_ndvi', 'mean_ndbi', 'uhi_intensity', 'mean_dem', 'risk_score']
+2026-07-18 13:40:42,546 - CitySense.environment.generate_environmental_intelligence - INFO - City stats computed for indicators: ['mean_lst', 'mean_ndvi', 'mean_ndbi', 'uhi_intensity', 'mean_dem', 'risk_score']
+2026-07-18 13:40:42,546 - CitySense.environment.generate_environmental_intelligence - INFO - Computing Environmental Health Index (batch) …
+2026-07-18 13:40:42,553 - CitySense.environment.environmental_health - DEBUG - Batch EHI computed: min=10.9  max=80.9  mean=48.1
+2026-07-18 13:40:42,554 - CitySense.environment.generate_environmental_intelligence - INFO - EHI stats: min=10.9  max=80.9  mean=48.1  median=53.0
+2026-07-18 13:40:42,554 - CitySense.environment.generate_environmental_intelligence - INFO - Enriching 836 cells …
+2026-07-18 13:40:42,556 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c0'.
+2026-07-18 13:40:42,557 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c1'.
+2026-07-18 13:40:42,558 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c2'.
+2026-07-18 13:40:42,559 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c3'.
+2026-07-18 13:40:42,560 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c4'.
+2026-07-18 13:40:42,561 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c5'.
+2026-07-18 13:40:42,563 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c6'.
+2026-07-18 13:40:42,564 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c7'.
+2026-07-18 13:40:42,565 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c8'.
+2026-07-18 13:40:42,566 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c9'.
+2026-07-18 13:40:42,567 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c10'.
+2026-07-18 13:40:42,568 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c11'.
+2026-07-18 13:40:42,569 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c12'.
+2026-07-18 13:40:42,570 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r0_c13'.
+2026-07-18 13:40:42,579 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c0'.
+2026-07-18 13:40:42,580 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c1'.
+2026-07-18 13:40:42,581 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c2'.
+2026-07-18 13:40:42,582 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c3'.
+2026-07-18 13:40:42,583 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c4'.
+2026-07-18 13:40:42,584 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c5'.
+2026-07-18 13:40:42,585 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c6'.
+2026-07-18 13:40:42,586 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c7'.
+2026-07-18 13:40:42,587 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c8'.
+2026-07-18 13:40:42,588 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c9'.
+2026-07-18 13:40:42,590 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c10'.
+2026-07-18 13:40:42,591 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c11'.
+2026-07-18 13:40:42,592 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c12'.
+2026-07-18 13:40:42,593 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c13'.
+2026-07-18 13:40:42,594 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c14'.
+2026-07-18 13:40:42,596 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c16'.
+2026-07-18 13:40:42,597 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c17'.
+2026-07-18 13:40:42,599 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r1_c19'.
+2026-07-18 13:40:42,602 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c0'.
+2026-07-18 13:40:42,603 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c1'.
+2026-07-18 13:40:42,604 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c2'.
+2026-07-18 13:40:42,605 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c3'.
+2026-07-18 13:40:42,606 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c4'.
+2026-07-18 13:40:42,608 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c6'.
+2026-07-18 13:40:42,609 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c7'.
+2026-07-18 13:40:42,610 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c8'.
+2026-07-18 13:40:42,611 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c9'.
+2026-07-18 13:40:42,612 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c10'.
+2026-07-18 13:40:42,613 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c11'.
+2026-07-18 13:40:42,615 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c12'.
+2026-07-18 13:40:42,616 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c13'.
+2026-07-18 13:40:42,617 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c14'.
+2026-07-18 13:40:42,618 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c15'.
+2026-07-18 13:40:42,619 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c16'.
+2026-07-18 13:40:42,620 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c17'.
+2026-07-18 13:40:42,621 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r2_c18'.
+2026-07-18 13:40:42,626 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c0'.
+2026-07-18 13:40:42,627 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c1'.
+2026-07-18 13:40:42,628 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c2'.
+2026-07-18 13:40:42,629 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c3'.
+2026-07-18 13:40:42,630 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c4'.
+2026-07-18 13:40:42,631 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c5'.
+2026-07-18 13:40:42,633 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c7'.
+2026-07-18 13:40:42,634 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c8'.
+2026-07-18 13:40:42,635 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c9'.
+2026-07-18 13:40:42,636 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c10'.
+2026-07-18 13:40:42,638 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c11'.
+2026-07-18 13:40:42,639 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c12'.
+2026-07-18 13:40:42,640 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c13'.
+2026-07-18 13:40:42,641 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c14'.
+2026-07-18 13:40:42,642 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c15'.
+2026-07-18 13:40:42,643 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c16'.
+2026-07-18 13:40:42,644 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c17'.
+2026-07-18 13:40:42,646 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r3_c18'.
+2026-07-18 13:40:42,650 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c0'.
+2026-07-18 13:40:42,651 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c1'.
+2026-07-18 13:40:42,652 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c2'.
+2026-07-18 13:40:42,653 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c3'.
+2026-07-18 13:40:42,654 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c4'.
+2026-07-18 13:40:42,657 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c7'.
+2026-07-18 13:40:42,658 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c8'.
+2026-07-18 13:40:42,659 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c9'.
+2026-07-18 13:40:42,660 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c10'.
+2026-07-18 13:40:42,661 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c11'.
+2026-07-18 13:40:42,662 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c12'.
+2026-07-18 13:40:42,663 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c13'.
+2026-07-18 13:40:42,664 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c14'.
+2026-07-18 13:40:42,665 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c15'.
+2026-07-18 13:40:42,669 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r4_c19'.
+2026-07-18 13:40:42,672 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c0'.
+2026-07-18 13:40:42,673 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c1'.
+2026-07-18 13:40:42,674 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c2'.
+2026-07-18 13:40:42,675 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c3'.
+2026-07-18 13:40:42,676 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c4'.
+2026-07-18 13:40:42,680 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c8'.
+2026-07-18 13:40:42,681 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c9'.
+2026-07-18 13:40:42,682 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c10'.
+2026-07-18 13:40:42,683 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c11'.
+2026-07-18 13:40:42,684 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c12'.
+2026-07-18 13:40:42,685 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c13'.
+2026-07-18 13:40:42,686 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c14'.
+2026-07-18 13:40:42,687 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c15'.
+2026-07-18 13:40:42,688 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c16'.
+2026-07-18 13:40:42,691 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c20'.
+2026-07-18 13:40:42,692 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r5_c21'.
+2026-07-18 13:40:42,693 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c0'.
+2026-07-18 13:40:42,694 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c1'.
+2026-07-18 13:40:42,695 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c2'.
+2026-07-18 13:40:42,701 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c8'.
+2026-07-18 13:40:42,702 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c9'.
+2026-07-18 13:40:42,703 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c10'.
+2026-07-18 13:40:42,704 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c11'.
+2026-07-18 13:40:42,705 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c12'.
+2026-07-18 13:40:42,706 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c13'.
+2026-07-18 13:40:42,708 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c14'.
+2026-07-18 13:40:42,709 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c15'.
+2026-07-18 13:40:42,710 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c16'.
+2026-07-18 13:40:42,711 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c17'.
+2026-07-18 13:40:42,713 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r6_c19'.
+2026-07-18 13:40:42,715 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:42,716 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:42,717 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c0'.
+2026-07-18 13:40:42,718 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c1'.
+2026-07-18 13:40:42,719 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c2'.
+2026-07-18 13:40:42,725 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c8'.
+2026-07-18 13:40:42,726 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c9'.
+2026-07-18 13:40:42,728 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c10'.
+2026-07-18 13:40:42,729 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c11'.
+2026-07-18 13:40:42,730 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c12'.
+2026-07-18 13:40:42,731 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c13'.
+2026-07-18 13:40:42,732 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c14'.
+2026-07-18 13:40:42,733 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c15'.
+2026-07-18 13:40:42,735 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c17'.
+2026-07-18 13:40:42,737 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c18'.
+2026-07-18 13:40:42,738 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c19'.
+2026-07-18 13:40:42,739 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r7_c20'.
+2026-07-18 13:40:42,739 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:42,741 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c0'.
+2026-07-18 13:40:42,742 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c1'.
+2026-07-18 13:40:42,743 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c2'.
+2026-07-18 13:40:42,744 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c3'.
+2026-07-18 13:40:42,750 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c8'.
+2026-07-18 13:40:42,751 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c9'.
+2026-07-18 13:40:42,752 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c10'.
+2026-07-18 13:40:42,753 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c11'.
+2026-07-18 13:40:42,754 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c12'.
+2026-07-18 13:40:42,755 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c13'.
+2026-07-18 13:40:42,756 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c14'.
+2026-07-18 13:40:42,757 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c15'.
+2026-07-18 13:40:42,758 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c16'.
+2026-07-18 13:40:42,759 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c17'.
+2026-07-18 13:40:42,760 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c18'.
+2026-07-18 13:40:42,761 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c19'.
+2026-07-18 13:40:42,763 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c20'.
+2026-07-18 13:40:42,764 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r8_c21'.
+2026-07-18 13:40:42,765 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c0'.
+2026-07-18 13:40:42,766 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c1'.
+2026-07-18 13:40:42,767 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c2'.
+2026-07-18 13:40:42,768 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c3'.
+2026-07-18 13:40:42,774 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c9'.
+2026-07-18 13:40:42,775 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c10'.
+2026-07-18 13:40:42,777 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c11'.
+2026-07-18 13:40:42,778 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c12'.
+2026-07-18 13:40:42,779 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c13'.
+2026-07-18 13:40:42,781 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c14'.
+2026-07-18 13:40:42,782 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c15'.
+2026-07-18 13:40:42,783 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c16'.
+2026-07-18 13:40:42,784 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c17'.
+2026-07-18 13:40:42,785 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c18'.
+2026-07-18 13:40:42,787 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c19'.
+2026-07-18 13:40:42,788 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c20'.
+2026-07-18 13:40:42,789 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r9_c21'.
+2026-07-18 13:40:42,790 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c0'.
+2026-07-18 13:40:42,791 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c1'.
+2026-07-18 13:40:42,793 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c2'.
+2026-07-18 13:40:42,794 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c3'.
+2026-07-18 13:40:42,800 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c9'.
+2026-07-18 13:40:42,802 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c10'.
+2026-07-18 13:40:42,803 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c11'.
+2026-07-18 13:40:42,805 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c12'.
+2026-07-18 13:40:42,806 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c13'.
+2026-07-18 13:40:42,807 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c14'.
+2026-07-18 13:40:42,808 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c15'.
+2026-07-18 13:40:42,809 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c16'.
+2026-07-18 13:40:42,810 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c17'.
+2026-07-18 13:40:42,811 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c18'.
+2026-07-18 13:40:42,812 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c19'.
+2026-07-18 13:40:42,813 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c20'.
+2026-07-18 13:40:42,814 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r10_c21'.
+2026-07-18 13:40:42,815 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c0'.
+2026-07-18 13:40:42,816 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c1'.
+2026-07-18 13:40:42,818 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c2'.
+2026-07-18 13:40:42,819 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c3'.
+2026-07-18 13:40:42,825 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c9'.
+2026-07-18 13:40:42,826 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c10'.
+2026-07-18 13:40:42,827 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c11'.
+2026-07-18 13:40:42,832 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c15'.
+2026-07-18 13:40:42,833 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c16'.
+2026-07-18 13:40:42,834 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c17'.
+2026-07-18 13:40:42,835 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c18'.
+2026-07-18 13:40:42,836 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c19'.
+2026-07-18 13:40:42,837 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c20'.
+2026-07-18 13:40:42,838 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r11_c21'.
+2026-07-18 13:40:42,839 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c0'.
+2026-07-18 13:40:42,840 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c1'.
+2026-07-18 13:40:42,841 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c2'.
+2026-07-18 13:40:42,842 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c3'.
+2026-07-18 13:40:42,843 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c4'.
+2026-07-18 13:40:42,844 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c5'.
+2026-07-18 13:40:42,849 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c10'.
+2026-07-18 13:40:42,854 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c15'.
+2026-07-18 13:40:42,855 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c16'.
+2026-07-18 13:40:42,856 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c17'.
+2026-07-18 13:40:42,857 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c18'.
+2026-07-18 13:40:42,859 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c19'.
+2026-07-18 13:40:42,860 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c20'.
+2026-07-18 13:40:42,861 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r12_c21'.
+2026-07-18 13:40:42,862 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c0'.
+2026-07-18 13:40:42,863 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c1'.
+2026-07-18 13:40:42,864 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c2'.
+2026-07-18 13:40:42,865 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c3'.
+2026-07-18 13:40:42,866 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c4'.
+2026-07-18 13:40:42,867 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c5'.
+2026-07-18 13:40:42,868 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c6'.
+2026-07-18 13:40:42,870 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c8'.
+2026-07-18 13:40:42,878 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c16'.
+2026-07-18 13:40:42,880 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:42,881 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c18'.
+2026-07-18 13:40:42,882 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c19'.
+2026-07-18 13:40:42,883 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c20'.
+2026-07-18 13:40:42,884 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r13_c21'.
+2026-07-18 13:40:42,885 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c0'.
+2026-07-18 13:40:42,886 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c1'.
+2026-07-18 13:40:42,887 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c2'.
+2026-07-18 13:40:42,889 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c3'.
+2026-07-18 13:40:42,890 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c4'.
+2026-07-18 13:40:42,891 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c5'.
+2026-07-18 13:40:42,892 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c6'.
+2026-07-18 13:40:42,898 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Urban Heat Island' (cell status: Excellent).
+2026-07-18 13:40:42,904 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c18'.
+2026-07-18 13:40:42,905 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c19'.
+2026-07-18 13:40:42,906 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c20'.
+2026-07-18 13:40:42,907 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r14_c21'.
+2026-07-18 13:40:42,908 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c0'.
+2026-07-18 13:40:42,910 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c1'.
+2026-07-18 13:40:42,911 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c2'.
+2026-07-18 13:40:42,912 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c3'.
+2026-07-18 13:40:42,912 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c4'.
+2026-07-18 13:40:42,913 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c5'.
+2026-07-18 13:40:42,915 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c6'.
+2026-07-18 13:40:42,925 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c17'.
+2026-07-18 13:40:42,926 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c18'.
+2026-07-18 13:40:42,927 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c19'.
+2026-07-18 13:40:42,928 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c20'.
+2026-07-18 13:40:42,929 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r15_c21'.
+2026-07-18 13:40:42,930 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c0'.
+2026-07-18 13:40:42,931 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c1'.
+2026-07-18 13:40:42,932 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c2'.
+2026-07-18 13:40:42,933 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c3'.
+2026-07-18 13:40:42,934 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c4'.
+2026-07-18 13:40:42,935 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c5'.
+2026-07-18 13:40:42,938 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c8'.
+2026-07-18 13:40:42,946 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c17'.
+2026-07-18 13:40:42,947 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c18'.
+2026-07-18 13:40:42,948 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c19'.
+2026-07-18 13:40:42,949 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c20'.
+2026-07-18 13:40:42,950 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r16_c21'.
+2026-07-18 13:40:42,951 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c0'.
+2026-07-18 13:40:42,952 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c1'.
+2026-07-18 13:40:42,953 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c2'.
+2026-07-18 13:40:42,954 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c3'.
+2026-07-18 13:40:42,955 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c4'.
+2026-07-18 13:40:42,957 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c5'.
+2026-07-18 13:40:42,969 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c17'.
+2026-07-18 13:40:42,971 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:42,972 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c19'.
+2026-07-18 13:40:42,973 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c20'.
+2026-07-18 13:40:42,974 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r17_c21'.
+2026-07-18 13:40:42,975 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c0'.
+2026-07-18 13:40:42,976 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c1'.
+2026-07-18 13:40:42,977 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c2'.
+2026-07-18 13:40:42,978 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c3'.
+2026-07-18 13:40:42,979 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c4'.
+2026-07-18 13:40:42,981 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c6'.
+2026-07-18 13:40:42,989 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c13'.
+2026-07-18 13:40:42,992 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c16'.
+2026-07-18 13:40:42,994 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:42,995 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c19'.
+2026-07-18 13:40:42,996 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c20'.
+2026-07-18 13:40:42,997 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r18_c21'.
+2026-07-18 13:40:42,998 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c0'.
+2026-07-18 13:40:42,999 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c1'.
+2026-07-18 13:40:43,000 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c2'.
+2026-07-18 13:40:43,001 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c3'.
+2026-07-18 13:40:43,002 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c4'.
+2026-07-18 13:40:43,003 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c5'.
+2026-07-18 13:40:43,016 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,017 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c19'.
+2026-07-18 13:40:43,018 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c20'.
+2026-07-18 13:40:43,019 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r19_c21'.
+2026-07-18 13:40:43,020 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c0'.
+2026-07-18 13:40:43,021 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c1'.
+2026-07-18 13:40:43,022 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c2'.
+2026-07-18 13:40:43,023 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c3'.
+2026-07-18 13:40:43,024 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c4'.
+2026-07-18 13:40:43,025 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c5'.
+2026-07-18 13:40:43,036 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,037 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,038 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c19'.
+2026-07-18 13:40:43,040 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r20_c20'.
+2026-07-18 13:40:43,041 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,042 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c0'.
+2026-07-18 13:40:43,043 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c1'.
+2026-07-18 13:40:43,044 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c2'.
+2026-07-18 13:40:43,045 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c3'.
+2026-07-18 13:40:43,047 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c4'.
+2026-07-18 13:40:43,048 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c5'.
+2026-07-18 13:40:43,049 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c6'.
+2026-07-18 13:40:43,050 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c7'.
+2026-07-18 13:40:43,059 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,061 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,062 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c19'.
+2026-07-18 13:40:43,063 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r21_c20'.
+2026-07-18 13:40:43,064 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,065 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c0'.
+2026-07-18 13:40:43,066 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c1'.
+2026-07-18 13:40:43,067 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c2'.
+2026-07-18 13:40:43,068 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c3'.
+2026-07-18 13:40:43,069 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c4'.
+2026-07-18 13:40:43,070 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c5'.
+2026-07-18 13:40:43,083 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,084 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,086 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c19'.
+2026-07-18 13:40:43,087 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r22_c20'.
+2026-07-18 13:40:43,090 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,092 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r23_c0'.
+2026-07-18 13:40:43,094 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r23_c1'.
+2026-07-18 13:40:43,096 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r23_c2'.
+2026-07-18 13:40:43,098 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r23_c3'.
+2026-07-18 13:40:43,099 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r23_c4'.
+2026-07-18 13:40:43,100 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r23_c5'.
+2026-07-18 13:40:43,109 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Flood Susceptibility' (cell status: Good).
+2026-07-18 13:40:43,115 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,116 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r23_c20'.
+2026-07-18 13:40:43,117 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,118 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r24_c0'.
+2026-07-18 13:40:43,119 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r24_c1'.
+2026-07-18 13:40:43,121 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r24_c3'.
+2026-07-18 13:40:43,122 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r24_c4'.
+2026-07-18 13:40:43,130 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,135 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,136 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,137 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r24_c20'.
+2026-07-18 13:40:43,138 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,139 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r25_c0'.
+2026-07-18 13:40:43,140 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r25_c1'.
+2026-07-18 13:40:43,142 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r25_c3'.
+2026-07-18 13:40:43,144 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r25_c5'.
+2026-07-18 13:40:43,153 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Flood Susceptibility' (cell status: Good).
+2026-07-18 13:40:43,158 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,160 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,162 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r26_c0'.
+2026-07-18 13:40:43,163 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r26_c1'.
+2026-07-18 13:40:43,164 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,165 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,166 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,176 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Flood Susceptibility' (cell status: Good).
+2026-07-18 13:40:43,181 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r26_c18'.
+2026-07-18 13:40:43,182 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r26_c19'.
+2026-07-18 13:40:43,183 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r26_c20'.
+2026-07-18 13:40:43,184 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,186 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r27_c0'.
+2026-07-18 13:40:43,187 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r27_c1'.
+2026-07-18 13:40:43,188 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,190 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,191 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r27_c5'.
+2026-07-18 13:40:43,194 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r27_c8'.
+2026-07-18 13:40:43,195 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,201 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Flood Susceptibility' (cell status: Good).
+2026-07-18 13:40:43,206 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r27_c19'.
+2026-07-18 13:40:43,208 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,209 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r28_c0'.
+2026-07-18 13:40:43,210 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r28_c1'.
+2026-07-18 13:40:43,211 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r28_c2'.
+2026-07-18 13:40:43,215 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,216 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r28_c6'.
+2026-07-18 13:40:43,222 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,231 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r28_c21'.
+2026-07-18 13:40:43,232 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r29_c0'.
+2026-07-18 13:40:43,233 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r29_c1'.
+2026-07-18 13:40:43,235 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r29_c2'.
+2026-07-18 13:40:43,244 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,246 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,248 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,254 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r29_c21'.
+2026-07-18 13:40:43,255 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r30_c0'.
+2026-07-18 13:40:43,262 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r30_c7'.
+2026-07-18 13:40:43,263 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r30_c8'.
+2026-07-18 13:40:43,270 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,271 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,276 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r31_c0'.
+2026-07-18 13:40:43,278 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r31_c1'.
+2026-07-18 13:40:43,279 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r31_c2'.
+2026-07-18 13:40:43,280 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,292 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,297 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r32_c0'.
+2026-07-18 13:40:43,300 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r32_c3'.
+2026-07-18 13:40:43,308 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,311 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,312 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,318 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r33_c0'.
+2026-07-18 13:40:43,320 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,321 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,322 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r33_c4'.
+2026-07-18 13:40:43,326 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r33_c7'.
+2026-07-18 13:40:43,333 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,342 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r34_c0'.
+2026-07-18 13:40:43,344 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,346 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,347 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r34_c5'.
+2026-07-18 13:40:43,354 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,356 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,365 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r35_c0'.
+2026-07-18 13:40:43,368 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,369 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,370 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,371 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,374 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r35_c8'.
+2026-07-18 13:40:43,378 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,380 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,389 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r36_c0'.
+2026-07-18 13:40:43,392 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,393 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,394 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,395 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,397 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r36_c8'.
+2026-07-18 13:40:43,398 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r36_c9'.
+2026-07-18 13:40:43,402 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,403 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,404 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,405 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Excellent).
+2026-07-18 13:40:43,406 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,411 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r37_c0'.
+2026-07-18 13:40:43,412 - CitySense.environment.environmental_summary - DEBUG - Used fallback summary template for cell 'r37_c1'.
+2026-07-18 13:40:43,415 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,416 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,417 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,419 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Excellent).
+2026-07-18 13:40:43,420 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,427 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,428 - CitySense.environment.environmental_summary - DEBUG - Used fallback tier 'Moderate' for condition 'Low Vegetation' (cell status: Good).
+2026-07-18 13:40:43,459 - CitySense.environment.generate_environmental_intelligence - INFO - Wrote environmental intelligence for 836 cells → D:\Clg\Major Project\CitySense\city_sense\data\environmental_intelligence.json
+2026-07-18 13:40:43,460 - CitySense.environment.generate_environmental_intelligence - INFO - Completed in 1.02 seconds.
+2026-07-18 13:40:43,460 - CitySense.environment.generate_environmental_intelligence - INFO - Environmental Status distribution:
+2026-07-18 13:40:43,460 - CitySense.environment.generate_environmental_intelligence - INFO -   Excellent    :    5 cells  (0.6%)
+2026-07-18 13:40:43,460 - CitySense.environment.generate_environmental_intelligence - INFO -   Good         :   96 cells  (11.5%)
+2026-07-18 13:40:43,460 - CitySense.environment.generate_environmental_intelligence - INFO -   Moderate     :  483 cells  (57.8%)
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO -   Poor         :  241 cells  (28.8%)
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO -   Critical     :   11 cells  (1.3%)
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO - Top primary environmental issues:
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO -   Urban Heat Island              : 209 cells
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO -   Low Vegetation                 : 187 cells
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO -   High Built-up Density          : 31 cells
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO -   Environmental Stress           : 23 cells
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO -   Flood Susceptibility           : 19 cells
+2026-07-18 13:40:43,461 - CitySense.environment.generate_environmental_intelligence - INFO - === Environmental Intelligence generation complete! ===
+2026-07-18 13:40:49,059 - CitySense.planning.generate_planning_profiles - INFO - === City Sense – Phase 3: Generate Planning Profiles ===
+2026-07-18 13:40:49,064 - CitySense.planning.generate_planning_profiles - INFO - Master dataset            : D:\Clg\Major Project\CitySense\city_sense\data\cells_master.geojson
+2026-07-18 13:40:49,064 - CitySense.planning.generate_planning_profiles - INFO - Environmental intelligence: D:\Clg\Major Project\CitySense\city_sense\data\environmental_intelligence.json
+2026-07-18 13:40:49,064 - CitySense.planning.generate_planning_profiles - INFO - Output path               : D:\Clg\Major Project\CitySense\city_sense\data\planning_profiles.json
+2026-07-18 13:40:49,065 - CitySense.planning.generate_planning_profiles - INFO - Loading master dataset …
+2026-07-18 13:40:49,158 - CitySense.planning.generate_planning_profiles - INFO - Loaded 836 cells.
+2026-07-18 13:40:49,177 - CitySense.planning.generate_planning_profiles - WARNING - Geographic metadata not found at 'D:\Clg\Major Project\CitySense\city_sense\data\geo\geographic_metadata.json' — proceeding without it.
+2026-07-18 13:40:49,189 - CitySense.planning.generate_planning_profiles - INFO - Inputs: env_intel=836  geo_meta=0  explanations=836
+2026-07-18 13:40:49,190 - CitySense.planning.decision_engine - INFO - Decision engine: processing 836 cells …
+2026-07-18 13:40:49,190 - CitySense.planning.decision_engine - DEBUG - City-wide max |SHAP| = 36.3469
+2026-07-18 13:40:49,190 - CitySense.planning.priority_engine - DEBUG - Priority batch: 836 cells | max_population=1
+2026-07-18 13:40:49,226 - CitySense.planning.priority_engine - DEBUG - Priority distribution: {'Medium': 439, 'Low': 369, 'High': 28}
+2026-07-18 13:40:49,261 - CitySense.planning.knowledge_base - DEBUG - Intervention catalog loaded from D:\Clg\Major Project\CitySense\city_sense\planning\intervention_catalog.yaml
+2026-07-18 13:40:49,261 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,262 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,262 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,262 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,262 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,262 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,263 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,264 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,265 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,266 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,266 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,266 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,266 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,266 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,266 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,267 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,268 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,269 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,269 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,269 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,269 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,269 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,269 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,269 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,270 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,271 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,272 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,273 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,274 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,275 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,276 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,276 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,276 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,276 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,276 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,277 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,278 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,279 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,280 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,281 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,282 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,282 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,282 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,282 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,282 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,282 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,283 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,284 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,285 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,286 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,287 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,288 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,289 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,289 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,289 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,289 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,289 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,289 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,289 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,290 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,291 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,292 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,293 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,294 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,295 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,296 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,296 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,296 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,296 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,296 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,297 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,298 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,299 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,300 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,301 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,302 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,303 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,304 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,305 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,306 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,307 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,308 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,309 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,310 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,310 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,310 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,310 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,310 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,310 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,311 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,312 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,312 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,312 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,312 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,312 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,313 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,314 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,315 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,316 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,317 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,317 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,317 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,317 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,317 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,317 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,318 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,319 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,320 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,321 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,322 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,323 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,324 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,324 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,324 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,324 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,324 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,325 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,326 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,326 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,326 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,326 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,326 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,326 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,326 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,327 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,328 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,329 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,330 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,331 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,331 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,331 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,331 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,331 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,332 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,333 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,334 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,336 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,336 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,336 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,336 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,336 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,337 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,338 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,339 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,340 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,341 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,342 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,343 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,344 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,344 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,344 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,344 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,344 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,344 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,345 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,345 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,345 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,345 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,345 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,346 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'High Built-up Density'
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,347 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Environmental Stress'
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,348 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,349 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,350 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,351 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,352 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,352 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,352 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,352 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,352 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,353 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,354 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,354 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,354 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,354 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,354 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,354 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,354 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - No condition match; using default intervention.
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,355 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,356 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,357 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-07-18 13:40:49,357 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-07-18 13:40:49,357 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-07-18 13:40:49,357 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-07-18 13:40:49,357 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-07-18 13:40:49,357 - CitySense.planning.decision_engine - INFO - Decision engine complete: 836 profiles generated.
+2026-07-18 13:40:49,376 - CitySense.planning.generate_planning_profiles - INFO - Wrote planning profiles for 836 cells → D:\Clg\Major Project\CitySense\city_sense\data\planning_profiles.json (0.32s)
+2026-07-18 13:40:49,377 - CitySense.planning.generate_planning_profiles - INFO - Planning Priority distribution:
+2026-07-18 13:40:49,377 - CitySense.planning.generate_planning_profiles - INFO -   Critical   :    0 cells  (0.0%)
+2026-07-18 13:40:49,377 - CitySense.planning.generate_planning_profiles - INFO -   High       :   28 cells  (3.3%)
+2026-07-18 13:40:49,378 - CitySense.planning.generate_planning_profiles - INFO -   Medium     :  439 cells  (52.5%)
+2026-07-18 13:40:49,378 - CitySense.planning.generate_planning_profiles - INFO -   Low        :  369 cells  (44.1%)
+2026-07-18 13:40:49,378 - CitySense.planning.generate_planning_profiles - INFO -   Very Low   :    0 cells  (0.0%)
+2026-07-18 13:40:49,378 - CitySense.planning.generate_planning_profiles - INFO - Top 5 recommended interventions:
+2026-07-18 13:40:49,378 - CitySense.planning.generate_planning_profiles - INFO -   Environmental Monitoring                      : 367 cells
+2026-07-18 13:40:49,378 - CitySense.planning.generate_planning_profiles - INFO -   Afforestation Program                         : 163 cells
+2026-07-18 13:40:49,379 - CitySense.planning.generate_planning_profiles - INFO -   Cool Roof Program                             : 143 cells
+2026-07-18 13:40:49,379 - CitySense.planning.generate_planning_profiles - INFO -   Urban Forest                                  : 66 cells
+2026-07-18 13:40:49,379 - CitySense.planning.generate_planning_profiles - INFO -   Integrated Drainage and Green Infrastructure  : 29 cells
+2026-07-18 13:40:49,379 - CitySense.planning.generate_planning_profiles - INFO - === Planning Profiles generation complete! ===

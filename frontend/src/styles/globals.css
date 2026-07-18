@@ -1,0 +1,348 @@
+@import 'tailwindcss';
+
+/* ================================================================
+   CitySense Design System — Dark Command-Center Theme
+   ================================================================ */
+
+:root {
+  /* Background layers */
+  --bg-base:         #050d1a;
+  --bg-panel:        rgba(5, 16, 35, 0.88);
+  --bg-card:         rgba(8, 22, 48, 0.92);
+  --bg-card-hover:   rgba(10, 28, 58, 0.95);
+  --bg-input:        rgba(0, 180, 255, 0.06);
+
+  /* Borders */
+  --border:          rgba(0, 180, 255, 0.18);
+  --border-bright:   rgba(0, 212, 255, 0.55);
+  --border-subtle:   rgba(0, 140, 200, 0.10);
+
+  /* Glow accent colours */
+  --glow-cyan:       #00d4ff;
+  --glow-cyan-dim:   rgba(0, 212, 255, 0.35);
+  --glow-green:      #00ff9f;
+  --glow-green-dim:  rgba(0, 255, 159, 0.30);
+  --glow-red:        #ff3b5c;
+  --glow-red-dim:    rgba(255, 59, 92, 0.35);
+  --glow-amber:      #ffb340;
+  --glow-amber-dim:  rgba(255, 179, 64, 0.35);
+  --glow-purple:     #b06bff;
+
+  /* Text */
+  --text-primary:    #d8ecff;
+  --text-secondary:  #6a9abf;
+  --text-muted:      #3a607f;
+  --text-bright:     #f0f8ff;
+
+  /* Fonts */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --font-ui:   'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ================================================================
+   Base reset
+   ================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================================================================
+   Scrollbar styling
+   ================================================================ */
+
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+::-webkit-scrollbar-thumb { background: var(--glow-cyan-dim); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--glow-cyan); }
+
+/* ================================================================
+   Typography utilities
+   ================================================================ */
+
+.font-mono   { font-family: var(--font-mono); }
+.text-glow   { text-shadow: 0 0 12px var(--glow-cyan); }
+.text-glow-green { text-shadow: 0 0 12px var(--glow-green); }
+.text-glow-red   { text-shadow: 0 0 12px var(--glow-red); }
+.text-glow-amber { text-shadow: 0 0 12px var(--glow-amber); }
+
+.text-cyber  {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   Panel / card glass styles
+   ================================================================ */
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+.card-glow {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: inset 0 0 20px rgba(0, 180, 255, 0.04),
+              0 0 0 1px rgba(0, 180, 255, 0.08);
+}
+
+/* ================================================================
+   Keyframe animations
+   ================================================================ */
+
+/* Scan line sweeps top → bottom every 8s */
+@keyframes scanline {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Pulse glow — red (critical/high-risk cells) */
+@keyframes pulse-glow-red {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(255, 59, 92, 0.3); }
+  50%       { box-shadow: 0 0 22px 8px rgba(255, 59, 92, 0.75); }
+}
+
+/* Pulse glow — cyan (selected cell panel border) */
+@keyframes pulse-glow-cyan {
+  0%, 100% { border-color: rgba(0, 212, 255, 0.25); box-shadow: 0 0 8px rgba(0, 212, 255, 0.1); }
+  50%       { border-color: rgba(0, 212, 255, 0.80); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+}
+
+/* Number flicker on data load */
+@keyframes flicker {
+  0%            { opacity: 0; }
+  10%           { opacity: 1; }
+  12%           { opacity: 0.6; }
+  14%           { opacity: 1; }
+  16%           { opacity: 0.8; }
+  18%           { opacity: 1; }
+  100%          { opacity: 1; }
+}
+
+/* Slide in from left */
+@keyframes slide-in-left {
+  from { transform: translateX(-110%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Slide in from bottom */
+@keyframes slide-in-bottom {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Fade in */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Dot blink — status indicator */
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Radar ring expand */
+@keyframes radar-ring {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Shimmer across a bar */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ================================================================
+   Animation utility classes
+   ================================================================ */
+
+.animate-scanline     { animation: scanline 8s linear infinite; }
+.animate-pulse-red    { animation: pulse-glow-red 2s ease-in-out infinite; }
+.animate-pulse-cyan   { animation: pulse-glow-cyan 3s ease-in-out infinite; }
+.animate-flicker      { animation: flicker 0.8s ease-out forwards; }
+.animate-slide-left   { animation: slide-in-left  0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-slide-right  { animation: slide-in-right 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-slide-bottom { animation: slide-in-bottom 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-fade-in      { animation: fade-in 0.35s ease-out forwards; }
+.animate-dot-blink    { animation: dot-blink 1.4s ease-in-out infinite; }
+.animate-radar        { animation: radar-ring 2s ease-out infinite; }
+
+/* ================================================================
+   Indicator bar
+   ================================================================ */
+
+.indicator-bar-track {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(0, 180, 255, 0.10);
+  overflow: hidden;
+  position: relative;
+}
+
+.indicator-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.indicator-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ================================================================
+   Priority badge colours
+   ================================================================ */
+
+.badge-critical { background: rgba(255,59,92,0.18);  color: #ff3b5c; border: 1px solid rgba(255,59,92,0.45); }
+.badge-high     { background: rgba(255,100,40,0.18); color: #ff6428; border: 1px solid rgba(255,100,40,0.45); }
+.badge-medium   { background: rgba(255,179,64,0.18); color: #ffb340; border: 1px solid rgba(255,179,64,0.45); }
+.badge-low      { background: rgba(0,255,159,0.12);  color: #00ff9f; border: 1px solid rgba(0,255,159,0.35); }
+.badge-verylow  { background: rgba(0,212,255,0.10);  color: #00d4ff; border: 1px solid rgba(0,212,255,0.30); }
+
+/* EHI status badge colours */
+.badge-excellent { background: rgba(0,255,159,0.15);  color: #00ff9f; border: 1px solid rgba(0,255,159,0.40); }
+.badge-good      { background: rgba(0,212,255,0.12);  color: #00d4ff; border: 1px solid rgba(0,212,255,0.35); }
+.badge-moderate  { background: rgba(255,179,64,0.15); color: #ffb340; border: 1px solid rgba(255,179,64,0.40); }
+.badge-poor      { background: rgba(255,100,40,0.15); color: #ff6428; border: 1px solid rgba(255,100,40,0.40); }
+.badge-critical-ehi { background: rgba(255,59,92,0.18); color: #ff3b5c; border: 1px solid rgba(255,59,92,0.45); }
+
+/* ================================================================
+   Tab styles
+   ================================================================ */
+
+.tab-list {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-trigger {
+  padding: 8px 14px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.tab-trigger:hover {
+  color: var(--text-secondary);
+}
+
+.tab-trigger[data-state='active'] {
+  color: var(--glow-cyan);
+  border-bottom-color: var(--glow-cyan);
+  text-shadow: 0 0 8px var(--glow-cyan-dim);
+}
+
+/* ================================================================
+   Scanline container (overlay — non-interactive)
+   ================================================================ */
+
+.scanline-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 212, 255, 0.08),
+    rgba(0, 212, 255, 0.14),
+    rgba(0, 212, 255, 0.08),
+    transparent
+  );
+}
+
+/* ================================================================
+   Radar hotspot ring (on map hotspot markers)
+   ================================================================ */
+
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 59, 92, 0.6);
+  pointer-events: none;
+}
+
+/* ================================================================
+   Deck.gl tooltip
+   ================================================================ */
+
+.deck-tooltip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-primary);
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 180, 255, 0.08);
+}
+
+/* ================================================================
+   Dividers
+   ================================================================ */
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 12px 0;
+}

@@ -17,6 +17,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from folium.plugins import Fullscreen
+from shapely.geometry import Point
 from streamlit_folium import st_folium
 
 from config_loader import load_config, project_path
@@ -178,8 +179,23 @@ m = folium.Map(
     zoom_start=CONFIG["dashboard"]["zoom_start"],
     tiles=None,
 )
-folium.TileLayer("CartoDB Positron", name="Basemap – Light", control=False).add_to(m)
-folium.TileLayer("CartoDB dark_matter", name="Basemap – Dark").add_to(m)
+
+# Base tiles
+folium.TileLayer(
+    "CartoDB Positron",
+    name="🗺️ Light Basemap",
+    control=True,
+).add_to(m)
+folium.TileLayer(
+    "CartoDB dark_matter",
+    name="🌙 Dark Basemap",
+    control=True,
+).add_to(m)
+folium.TileLayer(
+    "OpenStreetMap",
+    name="🗾 OpenStreetMap",
+    control=True,
+).add_to(m)
 
 # Optional static satellite overlays
 overlay_dir = str(project_path(CONFIG, "overlays_dir"))
@@ -190,18 +206,16 @@ if os.path.exists(overlay_dir):
         folium.raster_layers.ImageOverlay(
             image=rgb_tif,
             bounds=CONFIG["dashboard"]["overlay_bounds"],
-            name="Sentinel‑2 RGB",
+            name="🛰️ Sentinel-2 RGB",
             opacity=0.7,
         ).add_to(m)
     if os.path.exists(thermal_tif):
         folium.raster_layers.ImageOverlay(
             image=thermal_tif,
             bounds=CONFIG["dashboard"]["overlay_bounds"],
-            name="Thermal False‑Color",
+            name="🌡️ Thermal False-Color",
             opacity=0.7,
         ).add_to(m)
-else:
-    st.sidebar.info("ℹ️ Satellite overlays not found. Place .tif files in data/overlays/ to enable.")
 
 
 # ------------------------------------------------------------------------------
@@ -214,7 +228,9 @@ def add_choropleth(
     name: str,
     color_map: Callable[[float], str],
     tooltip_fields: list[str] | None = None,
+    tooltip_aliases: list[str] | None = None,
     fill_opacity: float = 0.7,
+    show: bool = False,
 ) -> folium.GeoJson | None:
     """Add a GeoJson choropleth layer to the global map *m*."""
     valid_gdf = base_gdf.dropna(subset=[column])
@@ -227,28 +243,33 @@ def add_choropleth(
     def style_function(feature: dict[str, Any]) -> dict[str, Any]:
         value = feature["properties"].get(column)
         if value is None:
-            return {"fillColor": "#cccccc", "color": "#999999", "weight": 0.5, "fillOpacity": 0}
+            return {"fillColor": "#cccccc", "color": "#aaaaaa", "weight": 0.3, "fillOpacity": 0}
         ratio = 0.5 if vmax == vmin else (value - vmin) / (vmax - vmin)
         return {
             "fillColor": color_map(ratio),
-            "color": "#555555",
-            "weight": 0.5,
+            "color": "#333333",
+            "weight": 0.3,
             "fillOpacity": fill_opacity,
         }
 
+    fields  = tooltip_fields  or ["display_name", column]
+    aliases = tooltip_aliases or ["Location", column.replace("_", " ").title()]
+
     tooltip = folium.GeoJsonTooltip(
-        fields=tooltip_fields if tooltip_fields else ["display_name", column],
-        aliases=["Location", column.replace("_", " ").title()],
+        fields=fields,
+        aliases=aliases,
         localize=True,
-    ) if tooltip_fields else None
+        sticky=True,
+        style="font-size:13px; background:rgba(255,255,255,0.9); padding:6px; border-radius:4px;",
+    )
 
     layer = folium.GeoJson(
         valid_gdf,
         name=name,
         style_function=style_function,
         tooltip=tooltip,
-        highlight_function=lambda x: {"weight": 2, "color": "black"},
-        show=False,
+        highlight_function=lambda x: {"weight": 2.5, "color": "#FFD700", "fillOpacity": 0.85},
+        show=show,
     )
     layer.add_to(m)
     return layer
@@ -317,20 +338,32 @@ def uhi_color(ratio: float) -> str:
 ehi_color = sustainability_color
 
 # Add all available choropleth layers
-col_layers: dict[str, tuple[str, Callable]] = {
-    "planning_priority_score": ("Planning Priority Score", risk_color),
-    "environmental_health":  ("Environmental Health (EHI)", ehi_color),
-    "risk_score":            ("Risk Score", risk_color),
-    "sustainability_score":  ("Sustainability Score", sustainability_color),
-    "mean_ndvi":             ("NDVI", ndvi_color),
-    "mean_lst":              ("LST (°C)", lst_color),
-    "mean_ndbi":             ("NDBI", ndbi_color),
-    "mean_dem":              ("DEM (m)", dem_color),
-    "uhi_intensity":         ("UHI Intensity", uhi_color),
-}
-for col, (label, cmap) in col_layers.items():
-    if col in gdf.columns:
-        add_choropleth(gdf, col, label, cmap)
+# show=True on the first available meaningful layer
+_first_shown = False
+
+def _add_layer(col: str, name: str, cmap: Callable, aliases: list[str], show_default: bool = False) -> None:
+    global _first_shown
+    if col not in gdf.columns:
+        return
+    show = show_default and not _first_shown
+    add_choropleth(
+        gdf, col, name, cmap,
+        tooltip_fields=["display_name", col],
+        tooltip_aliases=["📍 Location", aliases[0]],
+        show=show,
+    )
+    if show:
+        _first_shown = True
+
+_add_layer("environmental_health",   "🌿 Environmental Health (EHI 0–100)",    ehi_color,          ["🌿 Health Index"])
+_add_layer("planning_priority_score","🚨 Planning Priority Score (0–100)",      risk_color,         ["🚨 Priority Score"])
+_add_layer("risk_score",             "⚠️ Risk Score (0–100)",                   risk_color,         ["⚠️ Risk Score"])
+_add_layer("sustainability_score",   "♻️ Sustainability Score (0–100)",          sustainability_color,["♻️ Sustainability"])
+_add_layer("mean_lst",               "🌡️ Land Surface Temperature (°C)",         lst_color,          ["🌡️ LST (°C)"])
+_add_layer("mean_ndvi",              "🌿 Vegetation Index (NDVI)",               ndvi_color,         ["🌿 NDVI"])
+_add_layer("mean_ndbi",              "🏢 Built-up Density (NDBI)",               ndbi_color,         ["🏢 NDBI"])
+_add_layer("mean_dem",               "⛰️ Terrain Elevation (m)",                 dem_color,          ["⛰️ DEM (m)"])
+_add_layer("uhi_intensity",          "🔥 Urban Heat Island Intensity (°C)",      uhi_color,          ["🔥 UHI (°C)"])
 
 # Cluster layer (categorical colours)
 if "cluster" in gdf.columns:
@@ -349,38 +382,73 @@ if "cluster" in gdf.columns:
         return {
             "fillColor": cluster_color_dict.get(cl, "#cccccc"),
             "color": "#333333",
-            "weight": 0.5,
+            "weight": 0.3,
             "fillOpacity": 0.7,
         }
 
     folium.GeoJson(
         gdf,
-        name="Clusters",
+        name="🏙️ Urban Typology Clusters",
         style_function=cluster_style,
-        tooltip=folium.GeoJsonTooltip(fields=["cluster"], aliases=["Cluster"]),
+        tooltip=folium.GeoJsonTooltip(
+            fields=["display_name", "cluster"],
+            aliases=["📍 Location", "🏙️ Typology"],
+            sticky=True,
+            style="font-size:13px; background:rgba(255,255,255,0.9); padding:6px; border-radius:4px;",
+        ),
+        highlight_function=lambda x: {"weight": 2.5, "color": "#FFD700", "fillOpacity": 0.85},
         show=False,
     ).add_to(m)
 
-# Transparent interactive layer for click detection
+# Click-detection layer — NOT shown in layer control, invisible to user
 folium.GeoJson(
     gdf,
-    name="Clickable Grid (transparent)",
+    name="__click_layer__",          # prefixed so it sorts to bottom
     style_function=lambda x: {
-        "fillColor": "#000000", "color": "#000000", "weight": 0, "fillOpacity": 0,
+        "fillColor": "#000000", "color": "#000000", "weight": 0, "fillOpacity": 0.001,
     },
-    highlight_function=lambda x: {"weight": 3, "color": "#FF0000", "fillOpacity": 0.3},
-    tooltip=folium.GeoJsonTooltip(fields=["display_name"], aliases=["Location"]),
-    zoom_on_click=True,
+    highlight_function=lambda x: {"weight": 2, "color": "#FFD700", "fillOpacity": 0.25},
+    tooltip=folium.GeoJsonTooltip(
+        fields=["display_name"],
+        aliases=["📍 Click to inspect"],
+        sticky=True,
+        style="font-size:13px; background:rgba(255,255,255,0.9); padding:6px; border-radius:4px;",
+    ),
+    show=True,
+    control=False,   # hidden from LayerControl
 ).add_to(m)
 
-folium.LayerControl(collapsed=False).add_to(m)
-Fullscreen().add_to(m)
+folium.LayerControl(collapsed=True, position="topright").add_to(m)
+Fullscreen(position="topright").add_to(m)
 
 # ------------------------------------------------------------------------------
 # 5. Render map
 # ------------------------------------------------------------------------------
 st.markdown("### Interactive Map")
-map_data = st_folium(m, width=1200, height=650, returned_objects=["last_object_clicked"])
+st.caption("Click any grid cell to load its full environmental and planning profile in the sidebar.")
+map_data = st_folium(
+    m,
+    width="100%",
+    height=600,
+    returned_objects=["last_clicked"],
+)
+
+# ------------------------------------------------------------------------------
+# 6. Resolve clicked cell from lat/lng
+# ------------------------------------------------------------------------------
+def _find_cell_at_point(lat: float, lng: float) -> str | None:
+    """Return the cell_id of the grid cell containing the given lat/lng point."""
+    point = Point(lng, lat)
+    hits = gdf[gdf.geometry.contains(point)]
+    if not hits.empty:
+        return str(hits.iloc[0]["cell_id"])
+    # Fallback: nearest centroid within 0.02 degrees (~2 km)
+    gdf_copy = gdf.copy()
+    gdf_copy["_dist"] = gdf_copy.geometry.centroid.distance(point)
+    nearest = gdf_copy.nsmallest(1, "_dist")
+    if not nearest.empty and nearest.iloc[0]["_dist"] < 0.02:
+        return str(nearest.iloc[0]["cell_id"])
+    return None
 
 # ------------------------------------------------------------------------------
 # 6. Sidebar helpers
@@ -625,9 +693,12 @@ def _render_planning_profile_panel(pp: dict) -> None:
 st.sidebar.header("🔍 Cell Details")
 clicked_cell_id: str | None = None
 
-if map_data and map_data.get("last_object_clicked"):
-    props = map_data["last_object_clicked"].get("properties", {})
-    clicked_cell_id = props.get("cell_id")
+if map_data and map_data.get("last_clicked"):
+    lc = map_data["last_clicked"]
+    lat = lc.get("lat")
+    lng = lc.get("lng")
+    if lat is not None and lng is not None:
+        clicked_cell_id = _find_cell_at_point(float(lat), float(lng))
 
 if clicked_cell_id is not None:
     cell_row = gdf[gdf["cell_id"] == clicked_cell_id]

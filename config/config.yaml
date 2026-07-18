@@ -48,6 +48,13 @@ uhi:
     south: 19.18
     north: 19.25
 
+processing:
+  uhi_baseline:
+    lon_min: 72.87
+    lon_max: 72.93
+    lat_min: 19.18
+    lat_max: 19.25
+
 dashboard:
   map_center: [19.076, 72.877]
   zoom_start: 11
