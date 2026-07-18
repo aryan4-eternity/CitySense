@@ -4,6 +4,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import DeckGL from '@deck.gl/react'
+import type { MapViewState } from '@deck.gl/core'
 import { Map as MapLibreMap } from 'react-map-gl/maplibre'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -20,7 +21,7 @@ import {
 // Constants
 // ----------------------------------------------------------------
 
-const INITIAL_VIEW = {
+const INITIAL_VIEW: MapViewState = {
   longitude: 72.877,
   latitude: 19.076,
   zoom: 11,
