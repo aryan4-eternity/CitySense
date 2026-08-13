@@ -1,24 +1,53 @@
 """
 train_explainability.py
 ========================
-Week 6 – Explainability Layer
+Indicator Attribution Layer — Sensitivity Analysis of the Composite Risk Index
 
-Trains a Random Forest Regressor to reconstruct risk_score from the four
-raw indicators (mean_ndvi, mean_lst, mean_ndbi, mean_dem), then uses SHAP
-to produce:
-    • Global feature-importance bar chart
-    • SHAP summary plot
-    • Per-cell top positive / negative driver columns
-    • Human-readable explanation_text per cell
-    • A categorical map coloured by each cell's top positive driver
+PURPOSE AND SCOPE
+-----------------
+This module performs a *sensitivity analysis* of the PCA-derived composite
+risk index using a Random Forest surrogate model and SHAP (SHapley Additive
+exPlanations).
+
+IMPORTANT — what this analysis is and is not:
+
+  IS:   A decomposition of the composite risk index. The Random Forest is
+        trained to reconstruct risk_score (itself a linear PCA combination of
+        the four raw indicators). SHAP values therefore quantify how much each
+        raw indicator *contributes to the composite index* for each grid cell,
+        revealing whether heat stress (LST/UHI), vegetation loss (NDVI), or
+        built-up density (NDBI) dominates a particular cell's score.
+
+  IS NOT: An independent explainable-AI model. Because the target variable
+        (risk_score) is derived from the same four input features, the expected
+        R² is near 1.0 by construction — it confirms that the RF has
+        approximated the PCA formula, not that it has discovered hidden
+        real-world drivers of urban risk.
+
+This is analogous to the sensitivity analysis of composite indicators
+described in OECD (2008) "Handbook on Composite Indicators", §6: using
+variable-importance methods to decompose index components rather than to
+make causal or predictive claims.
+
+WHAT THE OUTPUTS MEAN
+---------------------
+  top_positive_driver   The raw indicator that most strongly *pushes a cell's
+                        risk score upward* within the composite index formula.
+  top_positive_shap     Magnitude of that contribution (SHAP units ≈ risk
+                        score points on a 0-100 scale).
+  top_negative_driver   The indicator that most strongly *suppresses* the score.
+  explanation_text      Human-readable attribution sentence, e.g.:
+                          "Risk index dominated by high LST (+16.2) and
+                           attenuated by low NDBI (-0.3)."
+                        This describes *index composition*, not causal claims.
 
 Outputs:
-    models/risk_model.pkl          – trained Random Forest
-    models/explain_scaler.pkl      – fitted StandardScaler
-    data/feature_importance.png    – global importance chart
-    data/shap_summary.png          – SHAP beeswarm / bar plot
-    data/top_driver_map.png        – spatial map of dominant driver
-    data/cells_master.geojson      – enriched with explanation columns
+    models/risk_model.pkl       – trained Random Forest surrogate
+    models/explain_scaler.pkl   – fitted StandardScaler
+    data/feature_importance.png – indicator contribution bar chart
+    data/shap_summary.png       – SHAP attribution summary plot
+    data/top_driver_map.png     – spatial map of dominant indicator per cell
+    data/cells_master.geojson   – enriched with attribution columns
 
 Usage:
     python processing/train_explainability.py   (from project root)
@@ -90,7 +119,17 @@ def _direction_phrase(feature: str, shap_val: float) -> str:
 
 
 def build_explanation_text(row: pd.Series) -> str:
-    """Compose a human-readable sentence from the top driver columns."""
+    """Compose a per-cell indicator attribution sentence.
+
+    The sentence describes which raw indicator most strongly drives this
+    cell's composite risk index score *upward* and which attenuates it.
+    This is an index-decomposition statement, not a causal explanation of
+    real-world risk.
+
+    Example output:
+        "Risk index dominated by high LST (+19.01) and attenuated by
+         low NDBI (-0.33)."
+    """
     parts = []
     if pd.notna(row.get("top_positive_driver")):
         phrase = _direction_phrase(row["top_positive_driver"],
@@ -102,20 +141,22 @@ def build_explanation_text(row: pd.Series) -> str:
         parts.append(f"{phrase} ({row['top_negative_shap']:+.2f})")
 
     if not parts:
-        return "No dominant driver identified"
+        return "No dominant indicator identified in composite index"
 
-    drivers = " and ".join(parts)
+    drivers = " and attenuated by ".join(parts) if len(parts) == 2 else parts[0]
     risk = row.get("risk_score", 0)
     level = "High" if risk >= 65 else ("Moderate" if risk >= 40 else "Low")
-    return f"{level} risk driven by {drivers}"
+    return f"{level} composite risk index — dominated by {drivers}"
 
 
 # ═══════════════════════════════════════════════════════════════════════════
 #  MAIN
 # ═══════════════════════════════════════════════════════════════════════════
 def main() -> None:
-    """Train the configured surrogate model and generate explanations."""
-    logger.info("=== City Sense – Week 6: Explainability Layer ===")
+    """Train the RF surrogate model and compute per-cell indicator attribution."""
+    logger.info("=== City Sense – Indicator Attribution (Sensitivity Analysis) ===")
+    logger.info("NOTE: RF trained to reconstruct PCA risk index from same features.")
+    logger.info("      R²~1 is expected by construction. SHAP = index decomposition.")
 
     cfg = load_config()
     model_config = cfg["model"]["explainability"]
@@ -178,16 +219,20 @@ def main() -> None:
     logger.info("[OK] Model saved → %s", model_path)
 
     # ------------------------------------------------------------------
-    # 5. Evaluate
+    # 5. Evaluate surrogate fit
+    # NOTE: R²~1 is expected because the target (risk_score) is a linear
+    # combination of the same features. This confirms the RF approximates
+    # the PCA formula accurately — it does not validate predictive power
+    # against an independent outcome.
     # ------------------------------------------------------------------
     y_pred = rf.predict(X_test_sc)
     r2 = r2_score(y_test, y_pred)
     mae = mean_absolute_error(y_test, y_pred)
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
-    logger.info("Test-set evaluation:")
-    logger.info("  R² Score             : %.4f", r2)
-    logger.info("  Mean Absolute Error  : %.4f", mae)
+    logger.info("Surrogate fit (RF reconstructing PCA index — R²~1 expected by construction):")
+    logger.info("  R² Score             : %.4f  (confirms RF≈PCA formula, not independent validation)", r2)
+    logger.info("  Mean Absolute Error  : %.4f  (index score points, 0-100 scale)", mae)
     logger.info("  Root Mean Sq Error   : %.4f", rmse)
 
     # ------------------------------------------------------------------
@@ -206,9 +251,9 @@ def main() -> None:
         edgecolor="white",
         linewidth=0.8,
     )
-    ax.set_title("Global Feature Importance (Random Forest)", fontsize=13,
+    ax.set_title("Indicator Contribution to Composite Risk Index (RF Surrogate)", fontsize=13,
                  fontweight="bold")
-    ax.set_ylabel("Importance")
+    ax.set_ylabel("Attribution Importance")
     for bar, val in zip(bars, importances[sorted_idx]):
         ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.005,
                 f"{val:.3f}", ha="center", va="bottom", fontsize=10)
@@ -219,16 +264,20 @@ def main() -> None:
     logger.info("[OK] Saved → %s", imp_path)
 
     # ------------------------------------------------------------------
-    # 7. SHAP explanations
+    # 7. SHAP attribution values
+    # SHAP here decomposes the composite index into per-indicator
+    # contributions. These values show which raw indicator explains
+    # each cell's position in the 0-100 risk index space.
+    # They do NOT identify independent causal drivers of urban risk.
     # ------------------------------------------------------------------
-    logger.info("Computing SHAP values (TreeExplainer, full dataset) …")
+    logger.info("Computing SHAP attribution values (TreeExplainer, full dataset) …")
     X_full_sc = scaler.transform(X)
     explainer = shap.TreeExplainer(rf)
     shap_values = explainer.shap_values(X_full_sc)
     logger.info("SHAP values shape: %s", shap_values.shape)
 
-    # ── SHAP summary plot ──────────────────────────────────────────────
-    logger.info("Generating SHAP summary plot …")
+    # ── SHAP attribution summary plot ─────────────────────────────────
+    logger.info("Generating SHAP attribution summary plot …")
     fig_shap, ax_shap = plt.subplots(figsize=(8, 5))
     shap.summary_plot(
         shap_values,
@@ -244,9 +293,13 @@ def main() -> None:
     logger.info("[OK] Saved → %s", shap_path)
 
     # ------------------------------------------------------------------
-    # 8. Per-cell top drivers
+    # 8. Per-cell indicator attribution
+    # top_positive_driver: indicator with the highest positive SHAP value
+    #   → most strongly drives this cell's score UPWARD in the index
+    # top_negative_driver: indicator with the most negative SHAP value
+    #   → most strongly suppresses this cell's score in the index
     # ------------------------------------------------------------------
-    logger.info("Extracting per-cell top positive / negative drivers …")
+    logger.info("Extracting per-cell indicator attribution …")
 
     top_pos_driver = []
     top_pos_shap = []
@@ -256,7 +309,7 @@ def main() -> None:
     for i in range(len(gdf)):
         sv = shap_values[i]
 
-        # ── top positive driver (pushes risk UP) ──
+        # ── dominant upward contributor (raises index score) ──
         pos_mask = sv > 0
         if pos_mask.any():
             idx_pos = np.argmax(sv)
@@ -266,7 +319,7 @@ def main() -> None:
             top_pos_driver.append(None)
             top_pos_shap.append(0.0)
 
-        # ── top negative driver (pushes risk DOWN) ──
+        # ── dominant downward contributor (suppresses index score) ──
         neg_mask = sv < 0
         if neg_mask.any():
             idx_neg = int(np.argmin(sv))
@@ -281,7 +334,7 @@ def main() -> None:
     gdf["top_negative_driver"] = top_neg_driver
     gdf["top_negative_shap"] = top_neg_shap
 
-    # ── human-readable explanation ─────────────────────────────────────
+    # ── per-cell attribution text ──────────────────────────────────────
     gdf["explanation_text"] = gdf.apply(build_explanation_text, axis=1)
 
     # ------------------------------------------------------------------
@@ -289,12 +342,13 @@ def main() -> None:
     # ------------------------------------------------------------------
     gdf.to_file(master_path, driver="GeoJSON")
     logger.info("[OK] Master GeoJSON updated → %s", master_path)
-    logger.info("New columns: top_positive_driver, top_positive_shap, top_negative_driver, top_negative_shap, explanation_text")
+    logger.info("Attribution columns added: top_positive_driver, top_positive_shap, "
+                "top_negative_driver, top_negative_shap, explanation_text")
 
     # ------------------------------------------------------------------
-    # 10. Validation – print a few example cells
+    # 10. Sample attribution outputs for log review
     # ------------------------------------------------------------------
-    logger.info("Sample cell explanations:")
+    logger.info("Sample indicator attribution outputs:")
     samples = gdf.sample(
         n=min(model_config["sample_size"], len(gdf)),
         random_state=model_config["sample_seed"],
@@ -305,23 +359,27 @@ def main() -> None:
         logger.info("           ➜ %s", row['explanation_text'])
 
     # ------------------------------------------------------------------
-    # 11. Domain-knowledge sanity checks
+    # 11. Consistency checks
+    # These checks verify internal consistency of the attribution, not
+    # external validity. LST dominating hot cells and NDVI dominating
+    # green cells is expected from the PCA formula design.
     # ------------------------------------------------------------------
-    logger.info("Sanity checks:")
+    logger.info("Internal consistency checks:")
     imp_rank = sorted(zip(FEATURE_COLS, importances),
                       key=lambda x: x[1], reverse=True)
     top_two = [f[0] for f in imp_rank[:2]]
     expected = {"mean_lst", "mean_ndvi"}
     if expected.issubset(set(top_two)):
-        logger.info("✔ LST and NDVI are the top-2 predictors – matches domain knowledge")
+        logger.info("✔ LST and NDVI are the top-2 index contributors — consistent with PCA loadings")
     else:
-        logger.warning("⚠ Top-2 predictors are %s; expected LST & NDVI. Review if needed.", top_two)
+        logger.warning("⚠ Top-2 contributors are %s; expected LST & NDVI. Review PCA loadings.", top_two)
 
     hot_cells = gdf.nlargest(20, "mean_lst")
     lst_idx = FEATURE_COLS.index("mean_lst")
     hot_shap = shap_values[hot_cells.index, lst_idx]
     frac_pos = (hot_shap > 0).mean()
-    logger.info("✔ %d%% of the 20 hottest cells have positive LST SHAP (expected ~100%%)", frac_pos*100)
+    logger.info("✔ %d%% of the 20 hottest cells have positive LST attribution "
+                "(consistent with PCA loading direction)", frac_pos * 100)
 
     # ------------------------------------------------------------------
     # 12. Top-driver categorical map
@@ -339,7 +397,7 @@ def main() -> None:
     fig_map, ax_map = plt.subplots(figsize=(10, 10))
     gdf.plot(ax=ax_map, color=gdf["_driver_colour"], edgecolor="white",
              linewidth=0.3, alpha=0.85)
-    ax_map.set_title("Top Positive Risk Driver per Cell",
+    ax_map.set_title("Dominant Index Contributor per Cell (SHAP Attribution)",
                      fontsize=14, fontweight="bold")
     ax_map.set_xlabel("Longitude")
     ax_map.set_ylabel("Latitude")
@@ -347,7 +405,7 @@ def main() -> None:
     patches = [mpatches.Patch(color=c, label=FEATURE_LABELS.get(f, f))
                for f, c in driver_colours.items()]
     ax_map.legend(handles=patches, loc="lower left", fontsize=9,
-                  title="Top Driver", title_fontsize=10)
+                  title="Dominant Contributor", title_fontsize=10)
     plt.tight_layout()
     map_path = os.path.join(PROJECT_ROOT, cfg["output_paths"]["top_driver_map"])
     fig_map.savefig(map_path, dpi=150)
@@ -360,7 +418,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     # Done
     # ------------------------------------------------------------------
-    logger.info("=== Week 6 Explainability Layer complete! ===")
+    logger.info("=== Indicator Attribution (Sensitivity Analysis) complete! ===")
 
 
 if __name__ == "__main__":

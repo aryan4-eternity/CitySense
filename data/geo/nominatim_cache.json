@@ -534,5 +534,3551 @@
   "r6_c1": {
     "primary": "Error Fetching Locality",
     "secondary": []
+  },
+  "r6_c2": {
+    "primary": "Malabar Hill",
+    "secondary": []
+  },
+  "r6_c3": {
+    "primary": "Malabar Hill",
+    "secondary": []
+  },
+  "r6_c4": {
+    "primary": "Girgaon",
+    "secondary": []
+  },
+  "r6_c5": {
+    "primary": "Girgaon",
+    "secondary": []
+  },
+  "r6_c6": {
+    "primary": "Masjid Bunder",
+    "secondary": [
+      "Khadak"
+    ]
+  },
+  "r6_c7": {
+    "primary": "Masjid Bunder",
+    "secondary": [
+      "Mumbai Port Trust"
+    ]
+  },
+  "r6_c8": {
+    "primary": "Masjid Bunder",
+    "secondary": []
+  },
+  "r6_c9": {
+    "primary": "Chinch Bunder",
+    "secondary": []
+  },
+  "r6_c10": {
+    "primary": "Darukhana",
+    "secondary": []
+  },
+  "r6_c11": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r6_c12": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r6_c13": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r6_c14": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r6_c15": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r6_c16": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r6_c17": {
+    "primary": "Sheva",
+    "secondary": [
+      "Jawaharlal Nehru Port"
+    ]
+  },
+  "r6_c18": {
+    "primary": "Sheva",
+    "secondary": [
+      "Jawaharlal Nehru Port"
+    ]
+  },
+  "r6_c19": {
+    "primary": "Sheva",
+    "secondary": [
+      "Jawaharlal Nehru Port"
+    ]
+  },
+  "r6_c20": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r6_c21": {
+    "primary": "Nhava Khadi",
+    "secondary": []
+  },
+  "r7_c0": {
+    "primary": "Malabar Hill",
+    "secondary": []
+  },
+  "r7_c1": {
+    "primary": "Malabar Hill",
+    "secondary": []
+  },
+  "r7_c2": {
+    "primary": "Malabar Hill",
+    "secondary": [
+      "Breach Candy"
+    ]
+  },
+  "r7_c3": {
+    "primary": "Cumballa Hill",
+    "secondary": [
+      "Breach Candy"
+    ]
+  },
+  "r7_c4": {
+    "primary": "Gamdevi",
+    "secondary": []
+  },
+  "r7_c5": {
+    "primary": "Nagpada",
+    "secondary": [
+      "Kamathipura"
+    ]
+  },
+  "r7_c6": {
+    "primary": "Dongri",
+    "secondary": [
+      "Umerkhadi"
+    ]
+  },
+  "r7_c7": {
+    "primary": "Chinch Bunder",
+    "secondary": [
+      "Wadi Bunder"
+    ]
+  },
+  "r7_c8": {
+    "primary": "Mazgaon",
+    "secondary": [
+      "Ekta Nagar"
+    ]
+  },
+  "r7_c9": {
+    "primary": "Cotton Green",
+    "secondary": []
+  },
+  "r7_c10": {
+    "primary": "Darukhana",
+    "secondary": []
+  },
+  "r7_c11": {
+    "primary": "Darukhana",
+    "secondary": []
+  },
+  "r7_c12": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r7_c13": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r7_c14": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r7_c15": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r7_c16": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r7_c17": {
+    "primary": "Sheva",
+    "secondary": [
+      "Jawaharlal Nehru Port"
+    ]
+  },
+  "r7_c18": {
+    "primary": "Nhava",
+    "secondary": []
+  },
+  "r7_c19": {
+    "primary": "Nhava",
+    "secondary": []
+  },
+  "r7_c20": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r7_c21": {
+    "primary": "Nhava Khadi",
+    "secondary": []
+  },
+  "r8_c0": {
+    "primary": "Cumballa Hill",
+    "secondary": []
+  },
+  "r8_c1": {
+    "primary": "Cumballa Hill",
+    "secondary": []
+  },
+  "r8_c2": {
+    "primary": "Cumballa Hill",
+    "secondary": [
+      "Haji Ali"
+    ]
+  },
+  "r8_c3": {
+    "primary": "Cumballa Hill",
+    "secondary": [
+      "Breach Candy"
+    ]
+  },
+  "r8_c4": {
+    "primary": "Tulsi Wadi",
+    "secondary": [
+      "Haji Ali"
+    ]
+  },
+  "r8_c5": {
+    "primary": "Byculla West",
+    "secondary": [
+      "Agripada"
+    ]
+  },
+  "r8_c6": {
+    "primary": "Byculla East",
+    "secondary": [
+      "Jeerbai Baug"
+    ]
+  },
+  "r8_c7": {
+    "primary": "Darukhana",
+    "secondary": [
+      "Matharpacady"
+    ]
+  },
+  "r8_c8": {
+    "primary": "Darukhana",
+    "secondary": []
+  },
+  "r8_c9": {
+    "primary": "Cotton Green",
+    "secondary": []
+  },
+  "r8_c10": {
+    "primary": "Cotton Green",
+    "secondary": []
+  },
+  "r8_c11": {
+    "primary": "Darukhana",
+    "secondary": []
+  },
+  "r8_c12": {
+    "primary": "Mahul",
+    "secondary": []
+  },
+  "r8_c13": {
+    "primary": "Mahul",
+    "secondary": []
+  },
+  "r8_c14": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r8_c15": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r8_c16": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r8_c17": {
+    "primary": "Nhava",
+    "secondary": []
+  },
+  "r8_c18": {
+    "primary": "Nhava",
+    "secondary": []
+  },
+  "r8_c19": {
+    "primary": "Nhava",
+    "secondary": []
+  },
+  "r8_c20": {
+    "primary": "Nhava",
+    "secondary": []
+  },
+  "r8_c21": {
+    "primary": "Nhava Khadi",
+    "secondary": []
+  },
+  "r9_c0": {
+    "primary": "Cumballa Hill",
+    "secondary": []
+  },
+  "r9_c1": {
+    "primary": "Cumballa Hill",
+    "secondary": []
+  },
+  "r9_c2": {
+    "primary": "Tulsi Wadi",
+    "secondary": [
+      "Haji Ali"
+    ]
+  },
+  "r9_c3": {
+    "primary": "Mahalakshmi",
+    "secondary": []
+  },
+  "r9_c4": {
+    "primary": "Mahalakshmi",
+    "secondary": []
+  },
+  "r9_c5": {
+    "primary": "Mahalakshmi",
+    "secondary": [
+      "Shantinagar"
+    ]
+  },
+  "r9_c6": {
+    "primary": "Byculla East",
+    "secondary": []
+  },
+  "r9_c7": {
+    "primary": "Cotton Green",
+    "secondary": [
+      "Dock Labour Colony"
+    ]
+  },
+  "r9_c8": {
+    "primary": "Cotton Green",
+    "secondary": [
+      "HPCL Lubricants Terminal"
+    ]
+  },
+  "r9_c9": {
+    "primary": "Sewri",
+    "secondary": [
+      "Priyadarshini Ambica Nagar"
+    ]
+  },
+  "r9_c10": {
+    "primary": "Cotton Green",
+    "secondary": []
+  },
+  "r9_c11": {
+    "primary": "Mahul",
+    "secondary": []
+  },
+  "r9_c12": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c13": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c14": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c15": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c16": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c17": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c18": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c19": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c20": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r9_c21": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r10_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r10_c1": {
+    "primary": "Mahalakshmi",
+    "secondary": []
+  },
+  "r10_c2": {
+    "primary": "Mahalakshmi",
+    "secondary": [
+      "Narayan Pujari Nagar"
+    ]
+  },
+  "r10_c3": {
+    "primary": "Mahalakshmi",
+    "secondary": []
+  },
+  "r10_c4": {
+    "primary": "Mahalakshmi",
+    "secondary": [
+      "Mariammar Nagar"
+    ]
+  },
+  "r10_c5": {
+    "primary": "Lower Parel",
+    "secondary": [
+      "BDD Chawl"
+    ]
+  },
+  "r10_c6": {
+    "primary": "Lalbaug",
+    "secondary": []
+  },
+  "r10_c7": {
+    "primary": "Lal Baug",
+    "secondary": [
+      "Dosti Belleza"
+    ]
+  },
+  "r10_c8": {
+    "primary": "Sewri",
+    "secondary": [
+      "Rajiv Gandhi Nagar"
+    ]
+  },
+  "r10_c9": {
+    "primary": "Sewri",
+    "secondary": [
+      "Rajiv Gandhi Nagar"
+    ]
+  },
+  "r10_c10": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Gavan Village"
+    ]
+  },
+  "r10_c11": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c12": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c13": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c14": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r10_c15": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r10_c16": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c17": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c18": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c19": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c20": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r10_c21": {
+    "primary": "Nhava Khadi",
+    "secondary": []
+  },
+  "r11_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r11_c1": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r11_c2": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r11_c3": {
+    "primary": "Mahalakshmi",
+    "secondary": []
+  },
+  "r11_c4": {
+    "primary": "Nehru Nagar",
+    "secondary": []
+  },
+  "r11_c5": {
+    "primary": "Nehru Nagar",
+    "secondary": [
+      "Madhusudhan Mills"
+    ]
+  },
+  "r11_c6": {
+    "primary": "Parel",
+    "secondary": [
+      "Central Railway Loco Workshop - Parel"
+    ]
+  },
+  "r11_c7": {
+    "primary": "Parel",
+    "secondary": [
+      "Bhoiwada"
+    ]
+  },
+  "r11_c8": {
+    "primary": "Sewri",
+    "secondary": [
+      "Sadbhavana Nagar"
+    ]
+  },
+  "r11_c9": {
+    "primary": "Sewri",
+    "secondary": []
+  },
+  "r11_c10": {
+    "primary": "Ulwe",
+    "secondary": [
+      "Kharkopar Village"
+    ]
+  },
+  "r11_c11": {
+    "primary": "Mahul",
+    "secondary": [
+      "Ambapada"
+    ]
+  },
+  "r11_c12": {
+    "primary": "Mahul",
+    "secondary": [
+      "Mumbai Refinery Mahul"
+    ]
+  },
+  "r11_c13": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Gavhanpada"
+    ]
+  },
+  "r11_c14": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r11_c15": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r11_c16": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r11_c17": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r11_c18": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r11_c19": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r11_c20": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r11_c21": {
+    "primary": "Seawoods West",
+    "secondary": []
+  },
+  "r12_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r12_c1": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r12_c2": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r12_c3": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r12_c4": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r12_c5": {
+    "primary": "Prabhadevi",
+    "secondary": [
+      "Avarsekar Shrushti"
+    ]
+  },
+  "r12_c6": {
+    "primary": "Dadar West",
+    "secondary": []
+  },
+  "r12_c7": {
+    "primary": "Matunga East",
+    "secondary": []
+  },
+  "r12_c8": {
+    "primary": "Matunga East",
+    "secondary": [
+      "Wadala Village"
+    ]
+  },
+  "r12_c9": {
+    "primary": "Antop Hill",
+    "secondary": [
+      "Korba Mithagar"
+    ]
+  },
+  "r12_c10": {
+    "primary": "Wadala",
+    "secondary": [
+      "Sangam Nagar"
+    ]
+  },
+  "r12_c11": {
+    "primary": "Mahul",
+    "secondary": [
+      "Mahul Koliwada"
+    ]
+  },
+  "r12_c12": {
+    "primary": "Fertilizer Colony",
+    "secondary": [
+      "Gavhanpada"
+    ]
+  },
+  "r12_c13": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Prayag Nagar"
+    ]
+  },
+  "r12_c14": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r12_c15": {
+    "primary": "M/E Ward",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r12_c16": {
+    "primary": "M/E Ward",
+    "secondary": []
+  },
+  "r12_c17": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Trombay Koliwada"
+    ]
+  },
+  "r12_c18": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Trombay Koliwada"
+    ]
+  },
+  "r12_c19": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r12_c20": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r12_c21": {
+    "primary": "Seawoods West",
+    "secondary": []
+  },
+  "r13_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r13_c1": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r13_c2": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r13_c3": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r13_c4": {
+    "primary": "Worli",
+    "secondary": [
+      "Worli Koliwada"
+    ]
+  },
+  "r13_c5": {
+    "primary": "Dadar West",
+    "secondary": []
+  },
+  "r13_c6": {
+    "primary": "Dadar West",
+    "secondary": [
+      "Bhavanishankar"
+    ]
+  },
+  "r13_c7": {
+    "primary": "Matunga West",
+    "secondary": []
+  },
+  "r13_c8": {
+    "primary": "Matunga East",
+    "secondary": []
+  },
+  "r13_c9": {
+    "primary": "Antop Hill",
+    "secondary": [
+      "CGS Colony"
+    ]
+  },
+  "r13_c10": {
+    "primary": "Wadala",
+    "secondary": [
+      "Sangam Nagar"
+    ]
+  },
+  "r13_c11": {
+    "primary": "Mahul",
+    "secondary": [
+      "Bhakti Park"
+    ]
+  },
+  "r13_c12": {
+    "primary": "Fertilizer Colony",
+    "secondary": [
+      "Anik Gaon"
+    ]
+  },
+  "r13_c13": {
+    "primary": "Fertilizer Colony",
+    "secondary": [
+      "Vishnu Nagar"
+    ]
+  },
+  "r13_c14": {
+    "primary": "Fertilizer Colony",
+    "secondary": [
+      "Vishnu Nagar"
+    ]
+  },
+  "r13_c15": {
+    "primary": "Anushakti Nagar",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r13_c16": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r13_c17": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Bhabha Atomic Research Centre - BARC"
+    ]
+  },
+  "r13_c18": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Trombay Koliwada"
+    ]
+  },
+  "r13_c19": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Sector E"
+    ]
+  },
+  "r13_c20": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r13_c21": {
+    "primary": "Nerul West",
+    "secondary": []
+  },
+  "r14_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r14_c1": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r14_c2": {
+    "primary": "Worli",
+    "secondary": []
+  },
+  "r14_c3": {
+    "primary": "H/W Ward",
+    "secondary": [
+      "Land's End"
+    ]
+  },
+  "r14_c4": {
+    "primary": "H/W Ward",
+    "secondary": [
+      "Land's End"
+    ]
+  },
+  "r14_c5": {
+    "primary": "Dadar West",
+    "secondary": [
+      "Bhavanishankar"
+    ]
+  },
+  "r14_c6": {
+    "primary": "Matunga West",
+    "secondary": [
+      "Kapad Bazar"
+    ]
+  },
+  "r14_c7": {
+    "primary": "Matunga West",
+    "secondary": [
+      "Telephone Colony"
+    ]
+  },
+  "r14_c8": {
+    "primary": "Guru Tegh Bahadur Nagar",
+    "secondary": []
+  },
+  "r14_c9": {
+    "primary": "Indira Nagar",
+    "secondary": [
+      "Rawal Camp"
+    ]
+  },
+  "r14_c10": {
+    "primary": "Wadala",
+    "secondary": [
+      "Wadala Truck Terminal"
+    ]
+  },
+  "r14_c11": {
+    "primary": "Chembur",
+    "secondary": [
+      "Rashtriya Chemicals & Fertilizers"
+    ]
+  },
+  "r14_c12": {
+    "primary": "Fertilizer Colony",
+    "secondary": [
+      "Anik Gaon"
+    ]
+  },
+  "r14_c13": {
+    "primary": "Fertilizer Colony",
+    "secondary": [
+      "Rahul Nagar Slums"
+    ]
+  },
+  "r14_c14": {
+    "primary": "Anushakti Nagar",
+    "secondary": []
+  },
+  "r14_c15": {
+    "primary": "Anushakti Nagar",
+    "secondary": []
+  },
+  "r14_c16": {
+    "primary": "Anushakti Nagar",
+    "secondary": [
+      "TIFR 96 Flats"
+    ]
+  },
+  "r14_c17": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Payalipada"
+    ]
+  },
+  "r14_c18": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Sector E"
+    ]
+  },
+  "r14_c19": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Sector E"
+    ]
+  },
+  "r14_c20": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r14_c21": {
+    "primary": "Nerul West",
+    "secondary": []
+  },
+  "r15_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r15_c1": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r15_c2": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r15_c3": {
+    "primary": "Bandra West",
+    "secondary": [
+      "Land's End"
+    ]
+  },
+  "r15_c4": {
+    "primary": "Khar",
+    "secondary": [
+      "Malla"
+    ]
+  },
+  "r15_c5": {
+    "primary": "H/W Ward",
+    "secondary": [
+      "Land's End"
+    ]
+  },
+  "r15_c6": {
+    "primary": "Mahim",
+    "secondary": [
+      "Mahim Koliwada"
+    ]
+  },
+  "r15_c7": {
+    "primary": "Mahim",
+    "secondary": [
+      "Navjivan Society"
+    ]
+  },
+  "r15_c8": {
+    "primary": "G/N Ward",
+    "secondary": [
+      "Koliwada"
+    ]
+  },
+  "r15_c9": {
+    "primary": "Sion East",
+    "secondary": [
+      "Sion Koliwada"
+    ]
+  },
+  "r15_c10": {
+    "primary": "Sion East",
+    "secondary": [
+      "Anik Nagar"
+    ]
+  },
+  "r15_c11": {
+    "primary": "Chembur",
+    "secondary": [
+      "Rashtriya Chemicals & Fertilizers"
+    ]
+  },
+  "r15_c12": {
+    "primary": "Chembur",
+    "secondary": [
+      "Navjivan Society, Chembur"
+    ]
+  },
+  "r15_c13": {
+    "primary": "Fertilizer Colony",
+    "secondary": [
+      "Wadavli Village"
+    ]
+  },
+  "r15_c14": {
+    "primary": "Govandi West",
+    "secondary": [
+      "Saras Baug"
+    ]
+  },
+  "r15_c15": {
+    "primary": "Mankhurd",
+    "secondary": [
+      "Mankhurd Village"
+    ]
+  },
+  "r15_c16": {
+    "primary": "Mankhurd",
+    "secondary": [
+      "Mandala"
+    ]
+  },
+  "r15_c17": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Maharashtra Nagar"
+    ]
+  },
+  "r15_c18": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Upper Trombay"
+    ]
+  },
+  "r15_c19": {
+    "primary": "Cheeta Camp",
+    "secondary": [
+      "Sector D"
+    ]
+  },
+  "r15_c20": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r15_c21": {
+    "primary": "Nerul West",
+    "secondary": []
+  },
+  "r16_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r16_c1": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r16_c2": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r16_c3": {
+    "primary": "H/W Ward",
+    "secondary": [
+      "Bandstand"
+    ]
+  },
+  "r16_c4": {
+    "primary": "Khar",
+    "secondary": [
+      "Malla"
+    ]
+  },
+  "r16_c5": {
+    "primary": "Khar",
+    "secondary": [
+      "Chimbai Village"
+    ]
+  },
+  "r16_c6": {
+    "primary": "Khar",
+    "secondary": [
+      "Qureshi Nagar Hutment Colony"
+    ]
+  },
+  "r16_c7": {
+    "primary": "Kherwadi",
+    "secondary": [
+      "Behram Pada"
+    ]
+  },
+  "r16_c8": {
+    "primary": "Bandra East",
+    "secondary": [
+      "Kalanagar"
+    ]
+  },
+  "r16_c9": {
+    "primary": "Sion East",
+    "secondary": [
+      "Anik Nagar"
+    ]
+  },
+  "r16_c10": {
+    "primary": "Kurla East",
+    "secondary": [
+      "Prem Nagar"
+    ]
+  },
+  "r16_c11": {
+    "primary": "Chembur",
+    "secondary": [
+      "Swastik Park"
+    ]
+  },
+  "r16_c12": {
+    "primary": "Chembur",
+    "secondary": [
+      "Ganesh Nagar"
+    ]
+  },
+  "r16_c13": {
+    "primary": "Chembur",
+    "secondary": [
+      "Khardev Nagar"
+    ]
+  },
+  "r16_c14": {
+    "primary": "Govandi West",
+    "secondary": [
+      "Samrat Ashok Nagar"
+    ]
+  },
+  "r16_c15": {
+    "primary": "Govandi East",
+    "secondary": [
+      "Deonar Colony"
+    ]
+  },
+  "r16_c16": {
+    "primary": "Mankhurd",
+    "secondary": [
+      "Bainga Wadi"
+    ]
+  },
+  "r16_c17": {
+    "primary": "Mankhurd",
+    "secondary": [
+      "Mandala"
+    ]
+  },
+  "r16_c18": {
+    "primary": "Cheeta Camp",
+    "secondary": []
+  },
+  "r16_c19": {
+    "primary": "M/E Ward",
+    "secondary": []
+  },
+  "r16_c20": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r16_c21": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r17_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r17_c1": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r17_c2": {
+    "primary": "Khar",
+    "secondary": []
+  },
+  "r17_c3": {
+    "primary": "Khar",
+    "secondary": []
+  },
+  "r17_c4": {
+    "primary": "Santacruz West",
+    "secondary": [
+      "Malla"
+    ]
+  },
+  "r17_c5": {
+    "primary": "Khar",
+    "secondary": [
+      "Malla"
+    ]
+  },
+  "r17_c6": {
+    "primary": "Khar",
+    "secondary": [
+      "Linking Road Shopping area"
+    ]
+  },
+  "r17_c7": {
+    "primary": "Kherwadi",
+    "secondary": [
+      "RPF Colony"
+    ]
+  },
+  "r17_c8": {
+    "primary": "Bandra East",
+    "secondary": [
+      "Sant Dnyaneshwar Nagar"
+    ]
+  },
+  "r17_c9": {
+    "primary": "Bandra Kurla Complex",
+    "secondary": [
+      "G Block"
+    ]
+  },
+  "r17_c10": {
+    "primary": "Kurla West",
+    "secondary": [
+      "Ram Manohar Lohia Nagar"
+    ]
+  },
+  "r17_c11": {
+    "primary": "Kurla East",
+    "secondary": [
+      "Naware Baug Jagruti Nagar"
+    ]
+  },
+  "r17_c12": {
+    "primary": "Chembur",
+    "secondary": [
+      "Shell Colony"
+    ]
+  },
+  "r17_c13": {
+    "primary": "Chheda Nagar",
+    "secondary": [
+      "Rahul Nagar"
+    ]
+  },
+  "r17_c14": {
+    "primary": "Shivaji Nagar",
+    "secondary": [
+      "New Gautam Nagar"
+    ]
+  },
+  "r17_c15": {
+    "primary": "Shivaji Nagar",
+    "secondary": [
+      "Shashtri Nagar"
+    ]
+  },
+  "r17_c16": {
+    "primary": "Shivaji Nagar",
+    "secondary": [
+      "Bharat Nagar"
+    ]
+  },
+  "r17_c17": {
+    "primary": "N Ward",
+    "secondary": []
+  },
+  "r17_c18": {
+    "primary": "M/E Ward",
+    "secondary": []
+  },
+  "r17_c19": {
+    "primary": "M/E Ward",
+    "secondary": []
+  },
+  "r17_c20": {
+    "primary": "M/E Ward",
+    "secondary": []
+  },
+  "r17_c21": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r18_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r18_c1": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r18_c2": {
+    "primary": "Khar",
+    "secondary": []
+  },
+  "r18_c3": {
+    "primary": "Versova",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r18_c4": {
+    "primary": "Santacruz West",
+    "secondary": [
+      "Malla"
+    ]
+  },
+  "r18_c5": {
+    "primary": "Khar",
+    "secondary": [
+      "Chuim Village"
+    ]
+  },
+  "r18_c6": {
+    "primary": "Khar",
+    "secondary": [
+      "Ram Krishna Nagar"
+    ]
+  },
+  "r18_c7": {
+    "primary": "Golibar",
+    "secondary": []
+  },
+  "r18_c8": {
+    "primary": "Golibar",
+    "secondary": [
+      "Sant Dnyaneshwar Nagar"
+    ]
+  },
+  "r18_c9": {
+    "primary": "Kalina",
+    "secondary": [
+      "Sundar Nagar"
+    ]
+  },
+  "r18_c10": {
+    "primary": "Kurla West",
+    "secondary": [
+      "Kismat Nagar"
+    ]
+  },
+  "r18_c11": {
+    "primary": "Kurla West",
+    "secondary": [
+      "Netaji Nagar"
+    ]
+  },
+  "r18_c12": {
+    "primary": "Vidya Vihar West",
+    "secondary": [
+      "Sai Sagar"
+    ]
+  },
+  "r18_c13": {
+    "primary": "Vidya Vihar East",
+    "secondary": [
+      "Neelkanth Colony"
+    ]
+  },
+  "r18_c14": {
+    "primary": "Ghatkopar East",
+    "secondary": [
+      "Nalanda Nagar"
+    ]
+  },
+  "r18_c15": {
+    "primary": "Shivaji Nagar",
+    "secondary": [
+      "Bharat Nagar"
+    ]
+  },
+  "r18_c16": {
+    "primary": "Shivaji Nagar",
+    "secondary": [
+      "Bharat Nagar"
+    ]
+  },
+  "r18_c17": {
+    "primary": "N Ward",
+    "secondary": []
+  },
+  "r18_c18": {
+    "primary": "N Ward",
+    "secondary": []
+  },
+  "r18_c19": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r18_c20": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r18_c21": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r19_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r19_c1": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r19_c2": {
+    "primary": "Juhu",
+    "secondary": []
+  },
+  "r19_c3": {
+    "primary": "Khar",
+    "secondary": []
+  },
+  "r19_c4": {
+    "primary": "Khar",
+    "secondary": []
+  },
+  "r19_c5": {
+    "primary": "Juhu",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r19_c6": {
+    "primary": "Santacruz West",
+    "secondary": [
+      "Bajaj Wadi"
+    ]
+  },
+  "r19_c7": {
+    "primary": "Golibar",
+    "secondary": [
+      "Prabhat Colony"
+    ]
+  },
+  "r19_c8": {
+    "primary": "Kalina",
+    "secondary": [
+      "Madraswadi"
+    ]
+  },
+  "r19_c9": {
+    "primary": "K/E Ward",
+    "secondary": []
+  },
+  "r19_c10": {
+    "primary": "K/E Ward",
+    "secondary": []
+  },
+  "r19_c11": {
+    "primary": "Asalpha",
+    "secondary": [
+      "Sunder Baug"
+    ]
+  },
+  "r19_c12": {
+    "primary": "Ghatkopar West",
+    "secondary": [
+      "Kapol Wadi"
+    ]
+  },
+  "r19_c13": {
+    "primary": "Ghatkopar West",
+    "secondary": [
+      "Kapol Wadi"
+    ]
+  },
+  "r19_c14": {
+    "primary": "Ghatkopar",
+    "secondary": [
+      "Naidu Colony"
+    ]
+  },
+  "r19_c15": {
+    "primary": "Ghatkopar",
+    "secondary": [
+      "Naidu Colony"
+    ]
+  },
+  "r19_c16": {
+    "primary": "Ghatkopar",
+    "secondary": [
+      "Naidu Colony"
+    ]
+  },
+  "r19_c17": {
+    "primary": "N Ward",
+    "secondary": []
+  },
+  "r19_c18": {
+    "primary": "N Ward",
+    "secondary": []
+  },
+  "r19_c19": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r19_c20": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r19_c21": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r20_c0": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r20_c1": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r20_c2": {
+    "primary": "Juhu",
+    "secondary": []
+  },
+  "r20_c3": {
+    "primary": "Juhu",
+    "secondary": []
+  },
+  "r20_c4": {
+    "primary": "Versova",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r20_c5": {
+    "primary": "Juhu",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r20_c6": {
+    "primary": "Juhu",
+    "secondary": [
+      "Ashok Nagar"
+    ]
+  },
+  "r20_c7": {
+    "primary": "K/E Ward",
+    "secondary": []
+  },
+  "r20_c8": {
+    "primary": "K/E Ward",
+    "secondary": [
+      "Shastri Nagar"
+    ]
+  },
+  "r20_c9": {
+    "primary": "Golibar",
+    "secondary": [
+      "Anand Nagar"
+    ]
+  },
+  "r20_c10": {
+    "primary": "Saki Naka",
+    "secondary": []
+  },
+  "r20_c11": {
+    "primary": "Asalpha",
+    "secondary": [
+      "Sathi D Souza Nagar"
+    ]
+  },
+  "r20_c12": {
+    "primary": "Asalpha",
+    "secondary": [
+      "Narayan Nagar"
+    ]
+  },
+  "r20_c13": {
+    "primary": "Ghatkopar West",
+    "secondary": [
+      "Varsha Nagar"
+    ]
+  },
+  "r20_c14": {
+    "primary": "Ghatkopar",
+    "secondary": [
+      "Damodar Park"
+    ]
+  },
+  "r20_c15": {
+    "primary": "Pirojsha Godrej Nagar",
+    "secondary": [
+      "Godrej Estate (East)"
+    ]
+  },
+  "r20_c16": {
+    "primary": "Ghatkopar",
+    "secondary": [
+      "Naidu Colony"
+    ]
+  },
+  "r20_c17": {
+    "primary": "Pirojsha Godrej Nagar",
+    "secondary": [
+      "Godrej Creek Side Colony"
+    ]
+  },
+  "r20_c18": {
+    "primary": "N Ward",
+    "secondary": []
+  },
+  "r20_c19": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r20_c20": {
+    "primary": "Vashi",
+    "secondary": []
+  },
+  "r20_c21": {
+    "primary": "Kopar Khairne",
+    "secondary": []
+  },
+  "r21_c0": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r21_c1": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r21_c2": {
+    "primary": "Versova",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r21_c3": {
+    "primary": "Versova",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r21_c4": {
+    "primary": "Versova",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r21_c5": {
+    "primary": "Juhu",
+    "secondary": [
+      "Ashok Nagar"
+    ]
+  },
+  "r21_c6": {
+    "primary": "Vile Parle West",
+    "secondary": [
+      "JVPD Scheme"
+    ]
+  },
+  "r21_c7": {
+    "primary": "Andheri East",
+    "secondary": []
+  },
+  "r21_c8": {
+    "primary": "Andheri East",
+    "secondary": [
+      "New Airport Colony"
+    ]
+  },
+  "r21_c9": {
+    "primary": "Andheri East",
+    "secondary": [
+      "Chakala Village"
+    ]
+  },
+  "r21_c10": {
+    "primary": "Saki Naka",
+    "secondary": [
+      "Navpada"
+    ]
+  },
+  "r21_c11": {
+    "primary": "Chandivali",
+    "secondary": [
+      "Navajeevan Society"
+    ]
+  },
+  "r21_c12": {
+    "primary": "Chandivali",
+    "secondary": [
+      "Mohli Village"
+    ]
+  },
+  "r21_c13": {
+    "primary": "Chandivali",
+    "secondary": []
+  },
+  "r21_c14": {
+    "primary": "Pirojsha Godrej Nagar",
+    "secondary": [
+      "Anandgadh"
+    ]
+  },
+  "r21_c15": {
+    "primary": "Pirojsha Godrej Nagar",
+    "secondary": [
+      "Godrej Estate (West)"
+    ]
+  },
+  "r21_c16": {
+    "primary": "Pirojsha Godrej Nagar",
+    "secondary": [
+      "Godrej Creek Side Colony"
+    ]
+  },
+  "r21_c17": {
+    "primary": "Pirojsha Godrej Nagar",
+    "secondary": [
+      "Godrej Creek Side Colony"
+    ]
+  },
+  "r21_c18": {
+    "primary": "Vikhroli East",
+    "secondary": [
+      "Kannamwar Nagar II"
+    ]
+  },
+  "r21_c19": {
+    "primary": "Vikhroli East",
+    "secondary": []
+  },
+  "r21_c20": {
+    "primary": "Ghansoli",
+    "secondary": []
+  },
+  "r21_c21": {
+    "primary": "Kopar Khairne",
+    "secondary": []
+  },
+  "r22_c0": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r22_c1": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r22_c2": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r22_c3": {
+    "primary": "Juhu",
+    "secondary": []
+  },
+  "r22_c4": {
+    "primary": "Versova",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r22_c5": {
+    "primary": "Juhu",
+    "secondary": [
+      "Mora Gaon"
+    ]
+  },
+  "r22_c6": {
+    "primary": "Andheri West",
+    "secondary": [
+      "Dhangar Wadi"
+    ]
+  },
+  "r22_c7": {
+    "primary": "Vile Parle West",
+    "secondary": []
+  },
+  "r22_c8": {
+    "primary": "Andheri East",
+    "secondary": [
+      "Malpa Dongri"
+    ]
+  },
+  "r22_c9": {
+    "primary": "MIDC",
+    "secondary": [
+      "Chakala"
+    ]
+  },
+  "r22_c10": {
+    "primary": "Saki Naka",
+    "secondary": [
+      "Marol Village"
+    ]
+  },
+  "r22_c11": {
+    "primary": "Saki Naka",
+    "secondary": [
+      "Vasant Oasis"
+    ]
+  },
+  "r22_c12": {
+    "primary": "Chandivali",
+    "secondary": [
+      "Lumbini Buddha Vihar"
+    ]
+  },
+  "r22_c13": {
+    "primary": "Chandivali",
+    "secondary": [
+      "Lumbini Buddha Vihar"
+    ]
+  },
+  "r22_c14": {
+    "primary": "Vikhroli West",
+    "secondary": [
+      "Swami Narayan Nagar"
+    ]
+  },
+  "r22_c15": {
+    "primary": "Vikhroli West",
+    "secondary": [
+      "Surya Nagar"
+    ]
+  },
+  "r22_c16": {
+    "primary": "Vikhroli East",
+    "secondary": [
+      "Kannamwar Nagar I"
+    ]
+  },
+  "r22_c17": {
+    "primary": "Vikhroli East",
+    "secondary": [
+      "Kannamwar Nagar II"
+    ]
+  },
+  "r22_c18": {
+    "primary": "Vikhroli East",
+    "secondary": [
+      "Kannamwar Nagar II"
+    ]
+  },
+  "r22_c19": {
+    "primary": "S Ward",
+    "secondary": []
+  },
+  "r22_c20": {
+    "primary": "Ghansoli",
+    "secondary": []
+  },
+  "r22_c21": {
+    "primary": "Ghansoli",
+    "secondary": [
+      "Sector 12"
+    ]
+  },
+  "r23_c0": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r23_c1": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r23_c2": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r23_c3": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r23_c4": {
+    "primary": "Versova",
+    "secondary": [
+      "Joseph Patel Wadi"
+    ]
+  },
+  "r23_c5": {
+    "primary": "Dadabhai Naoroji Nagar",
+    "secondary": [
+      "Four Bungalows"
+    ]
+  },
+  "r23_c6": {
+    "primary": "Dadabhai Naoroji Nagar",
+    "secondary": [
+      "Jeevan Nagar"
+    ]
+  },
+  "r23_c7": {
+    "primary": "Dadabhai Naoroji Nagar",
+    "secondary": [
+      "Gaondevi Dongri"
+    ]
+  },
+  "r23_c8": {
+    "primary": "Andheri East",
+    "secondary": [
+      "Aghadi Nagar"
+    ]
+  },
+  "r23_c9": {
+    "primary": "MIDC",
+    "secondary": [
+      "Sher e Punjab Colony"
+    ]
+  },
+  "r23_c10": {
+    "primary": "MIDC",
+    "secondary": [
+      "Sriput Nagar"
+    ]
+  },
+  "r23_c11": {
+    "primary": "Saki Naka",
+    "secondary": [
+      "Vijay Nagar"
+    ]
+  },
+  "r23_c12": {
+    "primary": "Powai",
+    "secondary": []
+  },
+  "r23_c13": {
+    "primary": "Powai",
+    "secondary": []
+  },
+  "r23_c14": {
+    "primary": "Kanjur West",
+    "secondary": [
+      "Tirandaz Village"
+    ]
+  },
+  "r23_c15": {
+    "primary": "Vikhroli West",
+    "secondary": [
+      "Chandan Nagar"
+    ]
+  },
+  "r23_c16": {
+    "primary": "Vikhroli East",
+    "secondary": []
+  },
+  "r23_c17": {
+    "primary": "Vikhroli East",
+    "secondary": []
+  },
+  "r23_c18": {
+    "primary": "Vikhroli East",
+    "secondary": [
+      "Kannamwar Nagar II"
+    ]
+  },
+  "r23_c19": {
+    "primary": "S Ward",
+    "secondary": []
+  },
+  "r23_c20": {
+    "primary": "Ghansoli",
+    "secondary": []
+  },
+  "r23_c21": {
+    "primary": "Ghansoli",
+    "secondary": [
+      "Sector 13"
+    ]
+  },
+  "r24_c0": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r24_c1": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r24_c2": {
+    "primary": "Madh",
+    "secondary": []
+  },
+  "r24_c3": {
+    "primary": "K/W Ward",
+    "secondary": [
+      "Mangal Nagar"
+    ]
+  },
+  "r24_c4": {
+    "primary": "K/W Ward",
+    "secondary": [
+      "Gulshan"
+    ]
+  },
+  "r24_c5": {
+    "primary": "Versova",
+    "secondary": [
+      "Suresh Nagar"
+    ]
+  },
+  "r24_c6": {
+    "primary": "K/W Ward",
+    "secondary": []
+  },
+  "r24_c7": {
+    "primary": "Jogeshwari West",
+    "secondary": []
+  },
+  "r24_c8": {
+    "primary": "Andheri East",
+    "secondary": [
+      "Aghadi Nagar"
+    ]
+  },
+  "r24_c9": {
+    "primary": "MIDC",
+    "secondary": [
+      "Poonam Nagar"
+    ]
+  },
+  "r24_c10": {
+    "primary": "MIDC",
+    "secondary": [
+      "Poonam Nagar"
+    ]
+  },
+  "r24_c11": {
+    "primary": "K/E Ward",
+    "secondary": []
+  },
+  "r24_c12": {
+    "primary": "Powai",
+    "secondary": [
+      "Gautam Nagar"
+    ]
+  },
+  "r24_c13": {
+    "primary": "Kanjur West",
+    "secondary": [
+      "Peru Baug"
+    ]
+  },
+  "r24_c14": {
+    "primary": "Kanjur West",
+    "secondary": [
+      "Jyotiba Phule Nagar"
+    ]
+  },
+  "r24_c15": {
+    "primary": "Kanjur West",
+    "secondary": [
+      "Farid Nagar"
+    ]
+  },
+  "r24_c16": {
+    "primary": "Bhandup East",
+    "secondary": [
+      "Kanjur Gaon"
+    ]
+  },
+  "r24_c17": {
+    "primary": "Bhandup East",
+    "secondary": [
+      "Kanjur Gaon"
+    ]
+  },
+  "r24_c18": {
+    "primary": "Bhandup East",
+    "secondary": []
+  },
+  "r24_c19": {
+    "primary": "Ghansoli",
+    "secondary": []
+  },
+  "r24_c20": {
+    "primary": "Airoli",
+    "secondary": [
+      "Airoli Sector 10"
+    ]
+  },
+  "r24_c21": {
+    "primary": "Ghansoli",
+    "secondary": [
+      "Sector 13"
+    ]
+  },
+  "r25_c0": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Fazalbhoy Wadi"
+    ]
+  },
+  "r25_c1": {
+    "primary": "Madh",
+    "secondary": [
+      "Christian Wada"
+    ]
+  },
+  "r25_c2": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Pascal Wadi"
+    ]
+  },
+  "r25_c3": {
+    "primary": "Madh",
+    "secondary": [
+      "Versova Koliwada"
+    ]
+  },
+  "r25_c4": {
+    "primary": "K/W Ward",
+    "secondary": []
+  },
+  "r25_c5": {
+    "primary": "Oshiwara",
+    "secondary": [
+      "Lokhandwala Complex"
+    ]
+  },
+  "r25_c6": {
+    "primary": "Oshiwara",
+    "secondary": [
+      "New Shakti Nagar"
+    ]
+  },
+  "r25_c7": {
+    "primary": "Goregaon West",
+    "secondary": []
+  },
+  "r25_c8": {
+    "primary": "Aarey Milk Colony",
+    "secondary": []
+  },
+  "r25_c9": {
+    "primary": "Aarey Milk Colony",
+    "secondary": [
+      "Ketli Pada"
+    ]
+  },
+  "r25_c10": {
+    "primary": "Aarey Milk Colony",
+    "secondary": []
+  },
+  "r25_c11": {
+    "primary": "Film City",
+    "secondary": []
+  },
+  "r25_c12": {
+    "primary": "Film City",
+    "secondary": [
+      "Sai Bangoda Adivasi Gaothan"
+    ]
+  },
+  "r25_c13": {
+    "primary": "Powai",
+    "secondary": [
+      "Paspoli Village"
+    ]
+  },
+  "r25_c14": {
+    "primary": "Bhandup West",
+    "secondary": [
+      "Santoshi Mata Hill"
+    ]
+  },
+  "r25_c15": {
+    "primary": "Bhandup West",
+    "secondary": [
+      "Samarath Nagar"
+    ]
+  },
+  "r25_c16": {
+    "primary": "Bhandup West",
+    "secondary": [
+      "Bhattipada"
+    ]
+  },
+  "r25_c17": {
+    "primary": "Bhandup West",
+    "secondary": []
+  },
+  "r25_c18": {
+    "primary": "Bhandup East",
+    "secondary": []
+  },
+  "r25_c19": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r25_c20": {
+    "primary": "Airoli",
+    "secondary": [
+      "Airoli Sector 10"
+    ]
+  },
+  "r25_c21": {
+    "primary": "Ghansoli",
+    "secondary": [
+      "Sector 13"
+    ]
+  },
+  "r26_c0": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Fazalbhoy Wadi"
+    ]
+  },
+  "r26_c1": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Gabriel Wadi"
+    ]
+  },
+  "r26_c2": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Hiradevi Nagar"
+    ]
+  },
+  "r26_c3": {
+    "primary": "P/N Ward",
+    "secondary": []
+  },
+  "r26_c4": {
+    "primary": "Goregaon West",
+    "secondary": [
+      "Bhagat Singh Nagar"
+    ]
+  },
+  "r26_c5": {
+    "primary": "Bangur Nagar",
+    "secondary": []
+  },
+  "r26_c6": {
+    "primary": "Goregaon West",
+    "secondary": [
+      "Bhagat Singh Nagar"
+    ]
+  },
+  "r26_c7": {
+    "primary": "Goregaon West",
+    "secondary": []
+  },
+  "r26_c8": {
+    "primary": "Goregaon East",
+    "secondary": []
+  },
+  "r26_c9": {
+    "primary": "Aarey Milk Colony",
+    "secondary": []
+  },
+  "r26_c10": {
+    "primary": "Aarey Milk Colony",
+    "secondary": [
+      "Navjeevan Nagar"
+    ]
+  },
+  "r26_c11": {
+    "primary": "Film City",
+    "secondary": [
+      "Royal Palms Estate"
+    ]
+  },
+  "r26_c12": {
+    "primary": "Film City",
+    "secondary": [
+      "Royal Palms Estate"
+    ]
+  },
+  "r26_c13": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r26_c14": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Tembhipada"
+    ]
+  },
+  "r26_c15": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Lok Rachna"
+    ]
+  },
+  "r26_c16": {
+    "primary": "Bhandup West",
+    "secondary": [
+      "Milind Nagar"
+    ]
+  },
+  "r26_c17": {
+    "primary": "Nahur",
+    "secondary": [
+      "RCF Colony"
+    ]
+  },
+  "r26_c18": {
+    "primary": "Nahur",
+    "secondary": [
+      "RCF Colony"
+    ]
+  },
+  "r26_c19": {
+    "primary": "Mulund East",
+    "secondary": []
+  },
+  "r26_c20": {
+    "primary": "Mulund East",
+    "secondary": []
+  },
+  "r26_c21": {
+    "primary": "Airoli",
+    "secondary": [
+      "Airoli Sector 10"
+    ]
+  },
+  "r27_c0": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Erangal"
+    ]
+  },
+  "r27_c1": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Erangal"
+    ]
+  },
+  "r27_c2": {
+    "primary": "P/N Ward",
+    "secondary": []
+  },
+  "r27_c3": {
+    "primary": "P/N Ward",
+    "secondary": []
+  },
+  "r27_c4": {
+    "primary": "P/N Ward",
+    "secondary": []
+  },
+  "r27_c5": {
+    "primary": "Bangur Nagar",
+    "secondary": [
+      "Ram Nagar"
+    ]
+  },
+  "r27_c6": {
+    "primary": "Bangur Nagar",
+    "secondary": [
+      "Motilal Nagar II"
+    ]
+  },
+  "r27_c7": {
+    "primary": "Goregaon West",
+    "secondary": [
+      "Unnat Nagar"
+    ]
+  },
+  "r27_c8": {
+    "primary": "Goregaon East",
+    "secondary": []
+  },
+  "r27_c9": {
+    "primary": "Goregaon East",
+    "secondary": []
+  },
+  "r27_c10": {
+    "primary": "Aarey Milk Colony",
+    "secondary": [
+      "Mali Nagar"
+    ]
+  },
+  "r27_c11": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Adivasi Nagar"
+    ]
+  },
+  "r27_c12": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r27_c13": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r27_c14": {
+    "primary": "Mulund Colony",
+    "secondary": []
+  },
+  "r27_c15": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Adivasi Colony"
+    ]
+  },
+  "r27_c16": {
+    "primary": "Nahur",
+    "secondary": [
+      "Rajiv Gandhi Nagar"
+    ]
+  },
+  "r27_c17": {
+    "primary": "Mulund West",
+    "secondary": [
+      "Gavni Pada"
+    ]
+  },
+  "r27_c18": {
+    "primary": "Mulund West",
+    "secondary": [
+      "LIC Housing Colony"
+    ]
+  },
+  "r27_c19": {
+    "primary": "Mulund East",
+    "secondary": [
+      "MHADA Colony"
+    ]
+  },
+  "r27_c20": {
+    "primary": "Mulund East",
+    "secondary": [
+      "MHADA Colony"
+    ]
+  },
+  "r27_c21": {
+    "primary": "Airoli",
+    "secondary": [
+      "Airoli Gaon"
+    ]
+  },
+  "r28_c0": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Fazalbhoy Wadi"
+    ]
+  },
+  "r28_c1": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r28_c2": {
+    "primary": "P/N Ward",
+    "secondary": []
+  },
+  "r28_c3": {
+    "primary": "Malwani",
+    "secondary": [
+      "Ambhojwadi"
+    ]
+  },
+  "r28_c4": {
+    "primary": "Malwani",
+    "secondary": []
+  },
+  "r28_c5": {
+    "primary": "Bangur Nagar",
+    "secondary": [
+      "Ram Nagar"
+    ]
+  },
+  "r28_c6": {
+    "primary": "Bangur Nagar",
+    "secondary": [
+      "Ram Nagar"
+    ]
+  },
+  "r28_c7": {
+    "primary": "Goregaon West",
+    "secondary": [
+      "Udyog Nagar"
+    ]
+  },
+  "r28_c8": {
+    "primary": "Goregaon East",
+    "secondary": [
+      "Yashodham"
+    ]
+  },
+  "r28_c9": {
+    "primary": "Dindoshi",
+    "secondary": [
+      "Gokuldham"
+    ]
+  },
+  "r28_c10": {
+    "primary": "Malad East",
+    "secondary": []
+  },
+  "r28_c11": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Nagari Niwara Colony"
+    ]
+  },
+  "r28_c12": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Adivasi Colony"
+    ]
+  },
+  "r28_c13": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Adivasi Colony"
+    ]
+  },
+  "r28_c14": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Adivasi Colony"
+    ]
+  },
+  "r28_c15": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Adivasi Colony"
+    ]
+  },
+  "r28_c16": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Ganesh Pada"
+    ]
+  },
+  "r28_c17": {
+    "primary": "Mulund West",
+    "secondary": [
+      "Keshav Pada"
+    ]
+  },
+  "r28_c18": {
+    "primary": "Mulund West",
+    "secondary": [
+      "Narayan Nagar"
+    ]
+  },
+  "r28_c19": {
+    "primary": "Mulund East",
+    "secondary": [
+      "Neelam Nagar"
+    ]
+  },
+  "r28_c20": {
+    "primary": "Hariom Nagar",
+    "secondary": []
+  },
+  "r28_c21": {
+    "primary": "Digha",
+    "secondary": []
+  },
+  "r29_c0": {
+    "primary": "Manori",
+    "secondary": []
+  },
+  "r29_c1": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r29_c2": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r29_c3": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r29_c4": {
+    "primary": "Malwani",
+    "secondary": [
+      "Kharodi"
+    ]
+  },
+  "r29_c5": {
+    "primary": "Malwani",
+    "secondary": []
+  },
+  "r29_c6": {
+    "primary": "Malad West",
+    "secondary": []
+  },
+  "r29_c7": {
+    "primary": "Malad West",
+    "secondary": [
+      "Rai Pada"
+    ]
+  },
+  "r29_c8": {
+    "primary": "Malad East",
+    "secondary": []
+  },
+  "r29_c9": {
+    "primary": "Malad East",
+    "secondary": [
+      "Kurar"
+    ]
+  },
+  "r29_c10": {
+    "primary": "Kandivali East",
+    "secondary": [
+      "Water Reservoir"
+    ]
+  },
+  "r29_c11": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Nagari Niwara Colony"
+    ]
+  },
+  "r29_c12": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Nagari Niwara Colony"
+    ]
+  },
+  "r29_c13": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r29_c14": {
+    "primary": "Mulund Colony",
+    "secondary": []
+  },
+  "r29_c15": {
+    "primary": "Mulund Colony",
+    "secondary": []
+  },
+  "r29_c16": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Yogi Hills"
+    ]
+  },
+  "r29_c17": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Mandakini CHS"
+    ]
+  },
+  "r29_c18": {
+    "primary": "Shree Nagar",
+    "secondary": []
+  },
+  "r29_c19": {
+    "primary": "Naupada",
+    "secondary": [
+      "Anand Nagar"
+    ]
+  },
+  "r29_c20": {
+    "primary": "Kopri",
+    "secondary": [
+      "Parshi Wadi"
+    ]
+  },
+  "r29_c21": {
+    "primary": "Jambli Naka",
+    "secondary": [
+      "Vitawa Koliwada"
+    ]
+  },
+  "r30_c0": {
+    "primary": "Manori",
+    "secondary": []
+  },
+  "r30_c1": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r30_c2": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r30_c3": {
+    "primary": "Marve",
+    "secondary": [
+      "Malvani Koliwada"
+    ]
+  },
+  "r30_c4": {
+    "primary": "Malwani",
+    "secondary": [
+      "Kharodi"
+    ]
+  },
+  "r30_c5": {
+    "primary": "Malwani",
+    "secondary": [
+      "Janakalyan Nagar"
+    ]
+  },
+  "r30_c6": {
+    "primary": "Orlem",
+    "secondary": []
+  },
+  "r30_c7": {
+    "primary": "Orlem",
+    "secondary": []
+  },
+  "r30_c8": {
+    "primary": "Kandivali East",
+    "secondary": []
+  },
+  "r30_c9": {
+    "primary": "Kandivali East",
+    "secondary": []
+  },
+  "r30_c10": {
+    "primary": "Kandivali East",
+    "secondary": []
+  },
+  "r30_c11": {
+    "primary": "Thakur Village",
+    "secondary": []
+  },
+  "r30_c12": {
+    "primary": "Thakur Village",
+    "secondary": []
+  },
+  "r30_c13": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r30_c14": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r30_c15": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Yogi Hills"
+    ]
+  },
+  "r30_c16": {
+    "primary": "Mulund Colony",
+    "secondary": [
+      "Ganesh Pada"
+    ]
+  },
+  "r30_c17": {
+    "primary": "Wagle Industrial Estate",
+    "secondary": [
+      "Varkhande Chawl"
+    ]
+  },
+  "r30_c18": {
+    "primary": "Wagle Industrial Estate",
+    "secondary": [
+      "Kisan Nagar"
+    ]
+  },
+  "r30_c19": {
+    "primary": "Panch Pakadi",
+    "secondary": []
+  },
+  "r30_c20": {
+    "primary": "Jambli Naka",
+    "secondary": [
+      "Charai"
+    ]
+  },
+  "r30_c21": {
+    "primary": "Jambli Naka",
+    "secondary": []
+  },
+  "r31_c0": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r31_c1": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r31_c2": {
+    "primary": "Marve",
+    "secondary": []
+  },
+  "r31_c3": {
+    "primary": "Marve",
+    "secondary": [
+      "Malvani Koliwada"
+    ]
+  },
+  "r31_c4": {
+    "primary": "Charkop",
+    "secondary": [
+      "Charkop Village"
+    ]
+  },
+  "r31_c5": {
+    "primary": "Charkop",
+    "secondary": []
+  },
+  "r31_c6": {
+    "primary": "Kandivali West",
+    "secondary": [
+      "Renuka Nagar"
+    ]
+  },
+  "r31_c7": {
+    "primary": "Kandivali West",
+    "secondary": [
+      "Renuka Nagar"
+    ]
+  },
+  "r31_c8": {
+    "primary": "Kandivali East",
+    "secondary": [
+      "Chanakya Nagar"
+    ]
+  },
+  "r31_c9": {
+    "primary": "Kandivali East",
+    "secondary": []
+  },
+  "r31_c10": {
+    "primary": "Thakur Village",
+    "secondary": []
+  },
+  "r31_c11": {
+    "primary": "Thakur Village",
+    "secondary": []
+  },
+  "r31_c12": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r31_c13": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r31_c14": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r31_c15": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r31_c16": {
+    "primary": "Lokmanya Nagar",
+    "secondary": []
+  },
+  "r31_c17": {
+    "primary": "Wagle Industrial Estate",
+    "secondary": [
+      "Hanuman Nagar"
+    ]
+  },
+  "r31_c18": {
+    "primary": "Wagle Industrial Estate",
+    "secondary": [
+      "Dnyaneshwar Nagar"
+    ]
+  },
+  "r31_c19": {
+    "primary": "Panch Pakadi",
+    "secondary": [
+      "Wimbledon Park"
+    ]
+  },
+  "r31_c20": {
+    "primary": "Uthalsar",
+    "secondary": [
+      "Manorpada"
+    ]
+  },
+  "r31_c21": {
+    "primary": "Uthalsar",
+    "secondary": [
+      "Rabodi"
+    ]
+  },
+  "r32_c0": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Om Wadi"
+    ]
+  },
+  "r32_c1": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Om Wadi"
+    ]
+  },
+  "r32_c2": {
+    "primary": "P/N Ward",
+    "secondary": []
+  },
+  "r32_c3": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r32_c4": {
+    "primary": "R/S Ward",
+    "secondary": []
+  },
+  "r32_c5": {
+    "primary": "Charkop",
+    "secondary": []
+  },
+  "r32_c6": {
+    "primary": "R/S Ward",
+    "secondary": [
+      "Bunder Pakhadi Gaon"
+    ]
+  },
+  "r32_c7": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Boraspada"
+    ]
+  },
+  "r32_c8": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Sumer Nagar"
+    ]
+  },
+  "r32_c9": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Thakur Complex"
+    ]
+  },
+  "r32_c10": {
+    "primary": "Borivali East",
+    "secondary": []
+  },
+  "r32_c11": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Navapada"
+    ]
+  },
+  "r32_c12": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r32_c13": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r32_c14": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r32_c15": {
+    "primary": "T Ward",
+    "secondary": []
+  },
+  "r32_c16": {
+    "primary": "Lokmanya Nagar",
+    "secondary": []
+  },
+  "r32_c17": {
+    "primary": "Shivai Nagar",
+    "secondary": []
+  },
+  "r32_c18": {
+    "primary": "Shivai Nagar",
+    "secondary": []
+  },
+  "r32_c19": {
+    "primary": "Vartak Nagar",
+    "secondary": []
+  },
+  "r32_c20": {
+    "primary": "Majiwada",
+    "secondary": [
+      "Oswal Park"
+    ]
+  },
+  "r32_c21": {
+    "primary": "Kapur Bawadi",
+    "secondary": [
+      "Majiwada Gaon"
+    ]
+  },
+  "r33_c0": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r33_c1": {
+    "primary": "Marve",
+    "secondary": [
+      "Motempada"
+    ]
+  },
+  "r33_c2": {
+    "primary": "P/N Ward",
+    "secondary": [
+      "Motempada"
+    ]
+  },
+  "r33_c3": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r33_c4": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r33_c5": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r33_c6": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Charkop Sector 7"
+    ]
+  },
+  "r33_c7": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Haridas Nagar"
+    ]
+  },
+  "r33_c8": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Dattapada"
+    ]
+  },
+  "r33_c9": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Devipada"
+    ]
+  },
+  "r33_c10": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Mallapada"
+    ]
+  },
+  "r33_c11": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r33_c12": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r33_c13": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r33_c14": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r33_c15": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r33_c16": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r33_c17": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r33_c18": {
+    "primary": "Pawar Nagar",
+    "secondary": []
+  },
+  "r33_c19": {
+    "primary": "Vasant Vihar",
+    "secondary": []
+  },
+  "r33_c20": {
+    "primary": "Manpada",
+    "secondary": []
+  },
+  "r33_c21": {
+    "primary": "Dhokali",
+    "secondary": []
+  },
+  "r34_c0": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Kajori Wadi"
+    ]
+  },
+  "r34_c1": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r34_c2": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Kajori Wadi"
+    ]
+  },
+  "r34_c3": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r34_c4": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Juipada"
+    ]
+  },
+  "r34_c5": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r34_c6": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Ashtavinayak Nagar"
+    ]
+  },
+  "r34_c7": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Govind Nagar"
+    ]
+  },
+  "r34_c8": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Govind Nagar"
+    ]
+  },
+  "r34_c9": {
+    "primary": "Borivali East",
+    "secondary": []
+  },
+  "r34_c10": {
+    "primary": "Borivali East",
+    "secondary": [
+      "Mafco Colony"
+    ]
+  },
+  "r34_c11": {
+    "primary": "Borivali East",
+    "secondary": []
+  },
+  "r34_c12": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r34_c13": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r34_c14": {
+    "primary": "Chena",
+    "secondary": []
+  },
+  "r34_c15": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r34_c16": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r34_c17": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r34_c18": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r34_c19": {
+    "primary": "Kokanipada",
+    "secondary": []
+  },
+  "r34_c20": {
+    "primary": "Manpada",
+    "secondary": []
+  },
+  "r34_c21": {
+    "primary": "Dhokali",
+    "secondary": [
+      "Lodha Sterling"
+    ]
+  },
+  "r35_c0": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Kajori Wadi"
+    ]
+  },
+  "r35_c1": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Kajori Wadi"
+    ]
+  },
+  "r35_c2": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Juipada"
+    ]
+  },
+  "r35_c3": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r35_c4": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r35_c5": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r35_c6": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r35_c7": {
+    "primary": "Dahisar West",
+    "secondary": [
+      "I C Colony"
+    ]
+  },
+  "r35_c8": {
+    "primary": "Dahisar West",
+    "secondary": [
+      "HARE KRISHNA APPARTMENT"
+    ]
+  },
+  "r35_c9": {
+    "primary": "Dahisar East",
+    "secondary": [
+      "Ovaripada"
+    ]
+  },
+  "r35_c10": {
+    "primary": "Dahisar East",
+    "secondary": [
+      "Ashokvan"
+    ]
+  },
+  "r35_c11": {
+    "primary": "Borivali East",
+    "secondary": []
+  },
+  "r35_c12": {
+    "primary": "Borivali East",
+    "secondary": []
+  },
+  "r35_c13": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r35_c14": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r35_c15": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r35_c16": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r35_c17": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r35_c18": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r35_c19": {
+    "primary": "Kokanipada",
+    "secondary": []
+  },
+  "r35_c20": {
+    "primary": "Brahmand Nagar",
+    "secondary": [
+      "Patlipada"
+    ]
+  },
+  "r35_c21": {
+    "primary": "Brahmand Nagar",
+    "secondary": [
+      "Swastik Park"
+    ]
+  },
+  "r36_c0": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Kajori Wadi"
+    ]
+  },
+  "r36_c1": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r36_c2": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r36_c3": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r36_c4": {
+    "primary": "Morva",
+    "secondary": []
+  },
+  "r36_c5": {
+    "primary": "Morva",
+    "secondary": []
+  },
+  "r36_c6": {
+    "primary": "Unknown",
+    "secondary": []
+  },
+  "r36_c7": {
+    "primary": "Dahisar West",
+    "secondary": []
+  },
+  "r36_c8": {
+    "primary": "Dahisar West",
+    "secondary": [
+      "Kandarpada"
+    ]
+  },
+  "r36_c9": {
+    "primary": "Dahisar East",
+    "secondary": [
+      "Anand Nagar"
+    ]
+  },
+  "r36_c10": {
+    "primary": "Dahisar East",
+    "secondary": [
+      "Ketkipada"
+    ]
+  },
+  "r36_c11": {
+    "primary": "Kashimira",
+    "secondary": [
+      "Kashigaon"
+    ]
+  },
+  "r36_c12": {
+    "primary": "Kashimira",
+    "secondary": []
+  },
+  "r36_c13": {
+    "primary": "Chena",
+    "secondary": []
+  },
+  "r36_c14": {
+    "primary": "Chena",
+    "secondary": []
+  },
+  "r36_c15": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r36_c16": {
+    "primary": "Yeoor",
+    "secondary": []
+  },
+  "r36_c17": {
+    "primary": "Owale",
+    "secondary": []
+  },
+  "r36_c18": {
+    "primary": "Anand Nagar",
+    "secondary": [
+      "Raunak Heights"
+    ]
+  },
+  "r36_c19": {
+    "primary": "Anand Nagar",
+    "secondary": []
+  },
+  "r36_c20": {
+    "primary": "Dongaripada",
+    "secondary": [
+      "Vijay Nagari"
+    ]
+  },
+  "r36_c21": {
+    "primary": "Hiranandani Estate",
+    "secondary": []
+  },
+  "r37_c0": {
+    "primary": "Uttan",
+    "secondary": []
+  },
+  "r37_c1": {
+    "primary": "R/C Ward",
+    "secondary": []
+  },
+  "r37_c2": {
+    "primary": "R/C Ward",
+    "secondary": [
+      "Kajori Wadi"
+    ]
+  },
+  "r37_c3": {
+    "primary": "Uttan",
+    "secondary": []
+  },
+  "r37_c4": {
+    "primary": "Morva",
+    "secondary": []
+  },
+  "r37_c5": {
+    "primary": "Morva",
+    "secondary": []
+  },
+  "r37_c6": {
+    "primary": "Morva",
+    "secondary": []
+  },
+  "r37_c7": {
+    "primary": "Dahisar West",
+    "secondary": []
+  },
+  "r37_c8": {
+    "primary": "Dahisar West",
+    "secondary": [
+      "Gaondevi"
+    ]
+  },
+  "r37_c9": {
+    "primary": "R/N Ward",
+    "secondary": [
+      "Penkarpada Gaon"
+    ]
+  },
+  "r37_c10": {
+    "primary": "Kashimira",
+    "secondary": []
+  },
+  "r37_c11": {
+    "primary": "Kashimira",
+    "secondary": [
+      "Kashigaon"
+    ]
+  },
+  "r37_c12": {
+    "primary": "Kashimira",
+    "secondary": []
+  },
+  "r37_c13": {
+    "primary": "Kashimira",
+    "secondary": []
+  },
+  "r37_c14": {
+    "primary": "Chena",
+    "secondary": []
+  },
+  "r37_c15": {
+    "primary": "Chena",
+    "secondary": []
+  },
+  "r37_c16": {
+    "primary": "Gaimukh",
+    "secondary": []
+  },
+  "r37_c17": {
+    "primary": "Bhayander Pada",
+    "secondary": []
+  },
+  "r37_c18": {
+    "primary": "Anand Nagar",
+    "secondary": []
+  },
+  "r37_c19": {
+    "primary": "Anand Nagar",
+    "secondary": []
+  },
+  "r37_c20": {
+    "primary": "Anand Nagar",
+    "secondary": []
+  },
+  "r37_c21": {
+    "primary": "Waghbil",
+    "secondary": []
   }
 }

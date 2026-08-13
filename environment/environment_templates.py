@@ -13,12 +13,41 @@ from __future__ import annotations
 # ---------------------------------------------------------------------------
 # Environmental Health Index weights
 # ---------------------------------------------------------------------------
-# Rationale (Mumbai domain context):
-#   Heat stress (LST + UHI) is the dominant urban environmental risk → 50 %
-#   Vegetation loss is the primary ecological driver            → 25 %
-#   Built-up density amplifies heat and reduces permeability   → 15 %
-#   Elevation is a secondary flood-risk proxy                  → 10 %
-# All weights sum to 1.0.
+# WEIGHTING METHODOLOGY
+# ---------------------
+# Weights are domain-expert values justified for Mumbai's coastal tropical
+# urban context, following the expert-judgment weighting approach described in:
+#
+#   OECD/JRC (2008). Handbook on Constructing Composite Indicators:
+#   Methodology and User Guide. OECD Publishing, Paris. §5.3 (Expert opinion).
+#   https://doi.org/10.1787/9789264043466-en
+#
+# The indicator set and direction of influence (LST/UHI as primary heat stressors,
+# NDVI as cooling buffer, NDBI as heat amplifier, DEM as flood-risk proxy) is
+# consistent with the composite UHI index used in:
+#
+#   Ranagalage et al. (2018). Spatial Changes of Urban Heat Island Formation
+#   in the Colombo District, Sri Lanka: Implications for Sustainability Planning.
+#   Sustainability, 10(5), 1367. https://doi.org/10.3390/su10051367
+#
+# That study uses four indicators (LST, inverted NDVI, NDBI, population density)
+# with equal weights (25% each) for a coastal South Asian city. CitySense departs
+# from equal weighting by applying higher weights to thermal indicators (LST 30%,
+# UHI 20%) because Mumbai's pre-monsoon heat stress is the dominant and most
+# spatially variable environmental risk in the study window. Elevation (DEM 10%)
+# replaces population density as the fourth sub-component, serving as a flood-
+# susceptibility proxy appropriate for Mumbai's low-lying coastal topography.
+#
+# No sensitivity analysis across alternative weight configurations has been
+# performed. See CITYSENSE_TECHNICAL_DOCUMENTATION.md §15.3 for the full
+# limitations statement on this point.
+#
+# Weight summary (all sum to 1.0):
+#   mean_lst      0.30  – primary heat stress indicator (Landsat thermal)
+#   mean_ndvi     0.25  – vegetation/cooling buffer (Sentinel-2 optical)
+#   uhi_intensity 0.20  – Urban Heat Island relative to SGNP baseline
+#   mean_ndbi     0.15  – built-up density / impervious surface coverage
+#   mean_dem      0.10  – terrain elevation (SRTM flood-susceptibility proxy)
 EHI_WEIGHTS: dict[str, float] = {
     "mean_lst":      0.30,
     "mean_ndvi":     0.25,

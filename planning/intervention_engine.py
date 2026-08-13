@@ -228,8 +228,8 @@ def build_evidence_text(
             top_positive_driver.replace("mean_", "").replace("_", " "),
         )
         sentences.append(
-            f"SHAP analysis identifies {driver_label} as the strongest "
-            f"contributor to risk (SHAP value: +{abs(top_positive_shap):.2f})."
+            f"SHAP attribution identifies {driver_label} as the dominant contributor "
+            f"to the composite risk index for this cell (SHAP value: +{abs(top_positive_shap):.2f})."
         )
 
     # ── 4. Conclusion ────────────────────────────────────────────────────────

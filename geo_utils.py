@@ -31,16 +31,55 @@ def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
     r = EARTH_RADIUS_KM
     return c * r
 
-def query_overpass(query_string: str) -> Optional[Dict[str, Any]]:
+import time as _time
+
+_last_overpass_call = 0.0
+_OVERPASS_MIN_INTERVAL = 1.0  # seconds between calls
+_consecutive_failures = 0
+_CIRCUIT_BREAKER_THRESHOLD = 5  # skip all calls after this many consecutive failures
+_circuit_open = False
+
+def query_overpass(query_string: str, max_retries: int = 1) -> Optional[Dict[str, Any]]:
     """
     Send a query to the Overpass API and return the JSON response.
-    Returns None if the request fails.
+    Includes rate limiting, retry logic, and a circuit breaker that
+    skips calls after too many consecutive failures.
+    Returns None if the circuit is open or all retries are exhausted.
     """
-    overpass_url = "http://overpass-api.de/api/interpreter"
-    try:
-        response = requests.get(overpass_url, params={'data': query_string}, timeout=30)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Overpass API request failed: {e}")
+    global _last_overpass_call, _consecutive_failures, _circuit_open
+    
+    # Circuit breaker: if too many consecutive failures, skip immediately
+    if _circuit_open:
         return None
+    
+    overpass_url = "http://overpass-api.de/api/interpreter"
+
+    for attempt in range(max_retries):
+        # Rate limiting: ensure minimum interval between calls
+        elapsed = _time.time() - _last_overpass_call
+        if elapsed < _OVERPASS_MIN_INTERVAL:
+            _time.sleep(_OVERPASS_MIN_INTERVAL - elapsed)
+
+        try:
+            _last_overpass_call = _time.time()
+            response = requests.get(overpass_url, params={'data': query_string}, timeout=5)
+            response.raise_for_status()
+            _consecutive_failures = 0  # Reset on success
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            _consecutive_failures += 1
+            if _consecutive_failures >= _CIRCUIT_BREAKER_THRESHOLD:
+                _circuit_open = True
+                logger.warning(
+                    f"Circuit breaker OPEN after {_consecutive_failures} consecutive failures. "
+                    "Skipping remaining Overpass API calls."
+                )
+                return None
+            if attempt < max_retries - 1:
+                wait = 2 ** attempt * 2
+                logger.warning(f"Overpass API attempt {attempt+1}/{max_retries} failed: {e}. Retrying in {wait}s...")
+                _time.sleep(wait)
+            else:
+                logger.error(f"Overpass API request failed after {max_retries} attempts: {e}")
+                return None
+

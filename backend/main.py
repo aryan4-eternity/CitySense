@@ -54,6 +54,13 @@ _cells_geojson: dict = _load("cells_master.geojson")
 _env_intel: dict     = _load("environmental_intelligence.json")
 _plans: dict         = _load("planning_profiles.json")
 
+# ward_profiles.json — loaded with graceful fallback if not yet generated
+_ward_profiles: dict = {}
+_ward_profiles_path  = _DATA / "ward_profiles.json"
+if _ward_profiles_path.exists():
+    _ward_profiles = json.loads(_ward_profiles_path.read_text(encoding="utf-8"))
+    print(f"[CitySense API] Ward profiles: {len(_ward_profiles)} wards loaded")
+
 # cell_explanations.json can be a list or dict depending on pipeline version
 _explanations_raw = _load("cell_explanations.json")
 if isinstance(_explanations_raw, list):
@@ -246,6 +253,61 @@ def get_stats() -> dict:
         "top_issues":        [{"issue": k, "count": v} for k, v in top_issues],
         "top_interventions": [{"intervention": k, "count": v} for k, v in top_interventions],
     }
+
+
+@app.get("/api/wards")
+def get_wards() -> dict:
+    """Ward-level aggregated planning summaries.
+
+    Returns a dict keyed by ward name, each containing:
+      - dominant_intervention, dominant_issue, dominant_priority
+      - priority_score_mean, priority_score_max
+      - priority_distribution, intervention_counts, issue_counts
+      - avg_ehi, avg_risk_score
+      - total_cells, high_priority_cells
+      - ward_population, zone, planning_summary
+
+    Sorted by priority_score_mean descending so the highest-priority
+    wards appear first.
+
+    Returns 503 if ward_profiles.json has not been generated yet.
+    """
+    if not _ward_profiles:
+        from fastapi import HTTPException
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Ward profiles not yet generated. "
+                "Run: python -m metadata.ward_aggregation"
+            ),
+        )
+    sorted_wards = dict(
+        sorted(
+            _ward_profiles.items(),
+            key=lambda x: x[1].get("priority_score_mean", 0),
+            reverse=True,
+        )
+    )
+    return sorted_wards
+
+
+@app.get("/api/wards/{ward_name}")
+def get_ward(ward_name: str) -> dict:
+    """Planning summary for a single ward by name (e.g. 'L Ward').
+
+    Ward names are case-sensitive and match the keys in ward_profiles.json.
+    """
+    if not _ward_profiles:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=503, detail="Ward profiles not yet generated.")
+    if ward_name not in _ward_profiles:
+        from fastapi import HTTPException
+        available = list(_ward_profiles.keys())
+        raise HTTPException(
+            status_code=404,
+            detail=f"Ward '{ward_name}' not found. Available: {available}",
+        )
+    return _ward_profiles[ward_name]
 
 
 @app.get("/health")

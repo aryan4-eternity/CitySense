@@ -4,9 +4,6 @@ geopandas
 shapely
 pyyaml
 pandas
-folium
-streamlit
-streamlit-folium
 scikit-learn
 xgboost
 shap
@@ -16,3 +13,5 @@ rasterio
 requests
 geopy
 pyproj
+fastapi
+uvicorn[standard]
