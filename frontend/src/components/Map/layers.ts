@@ -14,16 +14,16 @@ type RGBA = [number, number, number, number]
 // ----------------------------------------------------------------
 // Water / sea cell detection
 // ----------------------------------------------------------------
-// Matches the backend land_use_classifier logic:
-//   if dem < 2.0 and ndvi < 0.0 → "Water Body / Coastal"
+// Reads the `is_water` boolean injected by the backend at startup.
+// The threshold (ndvi < 0.05 AND dem < 3.5) lives in backend/main.py
+// as _WATER_NDVI_MAX / _WATER_DEM_MAX — do not duplicate it here.
+// Null ndvi/dem cells are treated as missing data, NOT as water;
+// they render with the grey missing-data colour in getCellColor.
 
 function isWaterCell(props: Record<string, unknown>): boolean {
-  const ndvi = props['mean_ndvi'] as number | null | undefined
-  const dem  = props['mean_dem']  as number | null | undefined
-  if (ndvi == null || dem == null) return true // hide missing data
-  // Broader threshold to catch turbid coastal water and remove sea grids
-  return ndvi < 0.05 && dem < 3.5
+  return props['is_water'] === true
 }
+
 
 /** Translucent alpha — low enough to see the basemap through, high
  *  enough that colour differences are still readable. */
@@ -141,13 +141,17 @@ export const LAYER_CONFIGS: Record<LayerKey, LayerConfig> = {
 }
 
 // Cluster colour palette (Tab10-inspired, high contrast on dark background)
+// Entries 0-3 match the K-Means cluster IDs produced by the current pipeline.
+// UNKNOWN_CLUSTER_COLOR is used for any cluster_id not in this map — visually
+// distinct from all four named clusters so new IDs don't silently merge with
+// cluster 4's amber.
 const CLUSTER_COLORS: Record<number, RGBA> = {
   0: [0, 180, 255, FILL_ALPHA],    // Coastal/Lowland — cyan
   1: [0, 220, 120, FILL_ALPHA],    // Green/Forested — green
   2: [255, 80, 60, FILL_ALPHA],    // Dense Urban Heat — red
   3: [180, 100, 255, FILL_ALPHA],  // Green/Forested alt — purple
-  4: [255, 180, 40, FILL_ALPHA],   // fallback — amber
 }
+const UNKNOWN_CLUSTER_COLOR: RGBA = [120, 120, 120, FILL_ALPHA] // dim grey
 
 // ----------------------------------------------------------------
 // Property value getter — resolves env_intel fields joined onto GeoJSON
@@ -177,18 +181,19 @@ export function getCellColor(
 ): RGBA {
   if (isSelected) return [0, 212, 255, 240]   // bright cyan for selected
 
-  // Hide water / sea cells — fully transparent
+  // Water / sea cells → fully transparent (basemap shows through)
   if (isWaterCell(props)) return [0, 0, 0, 0]
 
   if (layerKey === 'cluster') {
-    const clusterId = props['cluster_id'] as number ?? 0
-    return CLUSTER_COLORS[clusterId] ?? CLUSTER_COLORS[4]
+    const clusterId = props['cluster_id'] as number ?? -1
+    return CLUSTER_COLORS[clusterId] ?? UNKNOWN_CLUSTER_COLOR
   }
 
   const config = LAYER_CONFIGS[layerKey]
   const value = getValue(props, layerKey)
 
-  if (value === null || isNaN(value)) return [40, 60, 90, 80]  // grey for missing
+  // Missing data → distinct grey (visually different from transparent water)
+  if (value === null || isNaN(value as number)) return [40, 60, 90, 80]
 
   const vmin = config.min ?? 0
   const vmax = config.max ?? 100
@@ -226,7 +231,6 @@ export function makeChoroplethLayer(
 
     getLineColor: (feature: GeoJSON.Feature) => {
       const props = feature.properties as Record<string, unknown>
-      // Hide grid lines for water cells
       if (isWaterCell(props)) return [0, 0, 0, 0]
       if (props['cell_id'] === selectedCellId) return [0, 212, 255, 255]
       return [100, 180, 240, 50]

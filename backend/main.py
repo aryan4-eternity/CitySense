@@ -81,25 +81,50 @@ else:
 def _is_land_cell(props: dict) -> bool:
     """Return True if the cell is on land, False if it is water/sea.
 
-    Uses broadened thresholds that catch turbid coastal water, open ocean,
-    and low-elevation tidal flats that the pipeline's grid covers but that
-    are not meaningful for urban environmental analysis.
+    Reads the `is_water` boolean pre-computed at startup rather than
+    re-deriving from raw ndvi/dem values, so the threshold is authoritative
+    in one place (_WATER_NDVI_MAX / _WATER_DEM_MAX above).
     """
+    # Fast path: use the pre-computed flag if available
+    if "is_water" in props:
+        return not props["is_water"]
+    # Fallback for cells that somehow lack the flag (should not occur)
     ndvi = props.get("mean_ndvi")
     dem  = props.get("mean_dem")
-    # Missing data → treat as water (these are typically empty ocean cells)
     if ndvi is None or dem is None:
         return False
     import math
     if math.isnan(ndvi) or math.isnan(dem):
         return False
-    # Ocean / coastal water: very low vegetation AND very low elevation
-    if ndvi < 0.05 and dem < 3.5:
+    if ndvi < _WATER_NDVI_MAX and dem < _WATER_DEM_MAX:
         return False
     return True
 
 
 _total_before = len(_cells_geojson["features"])
+
+# Annotate every feature with is_water so the frontend has a single
+# authoritative boolean rather than re-deriving from ndvi/dem thresholds.
+# Threshold: ndvi < 0.05 AND dem < 3.5 — catches open ocean, turbid coastal
+# water, and tidal flats that are meaningless for urban environmental analysis.
+# This is the loosened threshold validated during dashboard development
+# (original land_use_classifier uses dem < 2.0 and ndvi < 0.0; the broader
+# values here reduce false negatives for turbid nearshore pixels).
+_WATER_NDVI_MAX = 0.05
+_WATER_DEM_MAX  = 3.5
+
+for _feat in _cells_geojson["features"]:
+    _p = _feat.get("properties", {})
+    _ndvi = _p.get("mean_ndvi")
+    _dem  = _p.get("mean_dem")
+    import math as _math
+    _is_water = (
+        _ndvi is None or _dem is None
+        or (_math.isnan(float(_ndvi)) if isinstance(_ndvi, float) else False)
+        or (_math.isnan(float(_dem))  if isinstance(_dem,  float) else False)
+        or (float(_ndvi) < _WATER_NDVI_MAX and float(_dem) < _WATER_DEM_MAX)
+    )
+    _feat["properties"]["is_water"] = _is_water
 
 # Build a land-only GeoJSON for the map endpoint
 _cells_land_geojson: dict = {
@@ -146,16 +171,26 @@ def get_cell(cell_id: str) -> dict:
     """Complete data bundle for the sidebar detail panel.
 
     Merges master properties, environmental intelligence, planning profile,
-    and SHAP explanation into a single response object.
+    SHAP explanation, and the cell's GeoJSON geometry into a single response.
+    The geometry is included so the frontend can render the cell boundary
+    on the mini-map without a separate request.
     """
     if cell_id not in _cell_props:
         raise HTTPException(status_code=404, detail=f"Cell '{cell_id}' not found")
+
+    # Find the matching feature to include its geometry
+    geometry = None
+    for feat in _cells_geojson["features"]:
+        if feat.get("properties", {}).get("cell_id") == cell_id:
+            geometry = feat.get("geometry")
+            break
 
     return {
         "master":      _cell_props[cell_id],
         "environment": _env_intel.get(cell_id, {}),
         "planning":    _plans.get(cell_id, {}),
         "explanation": _explanations.get(cell_id, {}),
+        "geometry":    geometry,
     }
 
 

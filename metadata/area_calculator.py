@@ -16,16 +16,18 @@ def compute_geometry_stats(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
     """
     # Create a copy with projected CRS (UTM Zone 43N for Mumbai) to get accurate metric areas
     projected = gdf.to_crs(epsg=32643)
-    
+
     # Area in sq km
     gdf["grid_area_km2"] = projected.geometry.area / 1_000_000
-    
+
     # Perimeter in km
     gdf["perimeter_km"] = projected.geometry.length / 1000
-    
-    # Centroid (in original EPSG:4326 for geocoding)
-    centroids = gdf.geometry.centroid
-    gdf["centroid_lon"] = centroids.x
-    gdf["centroid_lat"] = centroids.y
-    
+
+    # Centroid: compute in the projected CRS (UTM 43N) for geometric accuracy,
+    # then reproject back to EPSG:4326 for lat/lon output expected by downstream code.
+    centroids_projected = projected.geometry.centroid
+    centroids_geo = centroids_projected.to_crs(epsg=4326)
+    gdf["centroid_lon"] = centroids_geo.x
+    gdf["centroid_lat"] = centroids_geo.y
+
     return gdf

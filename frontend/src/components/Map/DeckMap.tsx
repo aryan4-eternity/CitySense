@@ -4,7 +4,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import DeckGL from '@deck.gl/react'
-import type { MapViewState } from '@deck.gl/core'
+import type { MapViewState, Layer } from '@deck.gl/core'
 import { Map as MapLibreMap } from 'react-map-gl/maplibre'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -74,7 +74,9 @@ function extractHotspots(geojson: GeoJSON.FeatureCollection) {
     .slice(0, 10)
 
   return features.map((f) => {
-    // Compute centroid of polygon
+    // Vertex-average centroid: acceptable here because CitySense grid cells are
+    // near-square with evenly spaced vertices (5 pts including closing repeat).
+    // Do not reuse this helper for irregular or non-convex polygons.
     const coords = (f.geometry as GeoJSON.Polygon).coordinates[0]
     const n = coords.length
     const lng = coords.reduce((s, c) => s + c[0], 0) / n
@@ -97,6 +99,8 @@ function extractClusterCentroids(geojson: GeoJSON.FeatureCollection) {
     if (!p || !p.cluster || f.geometry.type !== 'Polygon') continue
     const key = String(p.cluster_id ?? p.cluster)
     if (!buckets[key]) buckets[key] = { lngs: [], lats: [], label: String(p.cluster) }
+    // Vertex-average centroid per cell, then average of cell centroids per cluster.
+    // Acceptable because grid cells are near-square — see extractHotspots comment.
     const coords = (f.geometry as GeoJSON.Polygon).coordinates[0]
     const n = coords.length
     buckets[key].lngs.push(coords.reduce((s, c) => s + c[0], 0) / n)
@@ -121,7 +125,6 @@ export function DeckMap() {
   const activeLayer = useStore((s) => s.activeLayer)
   const selectedCellId = useStore((s) => s.selectedCellId)
   const setSelectedCellId = useStore((s) => s.setSelectedCellId)
-  const setTooltip = useStore((s) => s.setTooltip)
   const animTime = useAnimationFrame(2000)
 
   // Derived data
@@ -135,14 +138,14 @@ export function DeckMap() {
     [geojson],
   )
 
-  // Tooltip state (local — only coordinates, not global store)
+  // Tooltip is local to this component — nothing outside DeckMap reads hover state.
   const [localTooltip, setLocalTooltip] = useState<TooltipInfo | null>(null)
 
   const onHover = useCallback(
     (info: { object?: GeoJSON.Feature; x: number; y: number }) => {
       if (info.object) {
         const props = info.object.properties as Record<string, unknown>
-        const tip: TooltipInfo = {
+        setLocalTooltip({
           x: info.x,
           y: info.y,
           cellId: (props.cell_id as string) ?? '',
@@ -150,15 +153,12 @@ export function DeckMap() {
           priorityLabel: (props.planning_priority as string) ?? null,
           lst: (props.mean_lst as number) ?? null,
           cluster: (props.cluster as string) ?? null,
-        }
-        setLocalTooltip(tip)
-        setTooltip(tip)
+        })
       } else {
         setLocalTooltip(null)
-        setTooltip(null)
       }
     },
-    [setTooltip],
+    [],
   )
 
   const onClick = useCallback(
@@ -172,15 +172,15 @@ export function DeckMap() {
     [setSelectedCellId],
   )
 
-  // Build layers
-  const layers = useMemo(() => {
+  // Build layers — typed as Layer[] to avoid as-any casts
+  const layers = useMemo((): Layer[] => {
     if (!geojson) return []
-    const result = [
+    const result: Layer[] = [
       makeChoroplethLayer(geojson, activeLayer, selectedCellId, onHover, onClick),
       makeHotspotLayer(hotspots, animTime),
     ]
     if (activeLayer === 'cluster') {
-      result.push(makeClusterLabelLayer(clusterCentroids) as any)
+      result.push(makeClusterLabelLayer(clusterCentroids))
     }
     return result
   }, [geojson, activeLayer, selectedCellId, hotspots, animTime, clusterCentroids, onHover, onClick])

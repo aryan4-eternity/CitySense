@@ -125,7 +125,6 @@ export function StatsPanel() {
         <SectionTitle>Priority Cells</SectionTitle>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           {top5.map((row, i) => {
-            const priorityColor = PRIORITY_COLORS[row.planning_priority] ?? 'var(--text-secondary)'
             const badgeClass = `badge-${row.planning_priority.toLowerCase().replace(/\s+/g, '')}`
             return (
               <button

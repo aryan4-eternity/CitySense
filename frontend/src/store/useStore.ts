@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { LayerKey, TooltipInfo } from '@/types'
+import type { LayerKey } from '@/types'
 
 interface CitySenseStore {
   // Selected cell (null = nothing selected)
@@ -9,10 +9,6 @@ interface CitySenseStore {
   // Active map layer
   activeLayer: LayerKey
   setActiveLayer: (layer: LayerKey) => void
-
-  // Hover tooltip
-  tooltip: TooltipInfo | null
-  setTooltip: (info: TooltipInfo | null) => void
 
   // Panel visibility
   statsPanelOpen: boolean
@@ -29,9 +25,6 @@ export const useStore = create<CitySenseStore>((set) => ({
 
   activeLayer: 'environmental_health',
   setActiveLayer: (layer) => set({ activeLayer: layer }),
-
-  tooltip: null,
-  setTooltip: (info) => set({ tooltip: info }),
 
   statsPanelOpen: true,
   setStatsPanelOpen: (open) => set({ statsPanelOpen: open }),

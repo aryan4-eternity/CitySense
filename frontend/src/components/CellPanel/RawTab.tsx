@@ -18,9 +18,7 @@ export function RawTab({ bundle }: { bundle: CellBundle }) {
   const master = bundle.master
   const explanation = bundle.explanation
 
-  // Try to derive coordinates from the cell_id or geometry
-  // cell_id format is typically "cell_LAT_LNG" or similar
-  const cellId = master.cell_id
+  // cell_id available on master if needed for future deep-link
   const lat = 19.076 // fallback (Mumbai)
   const lng = 72.877
 

@@ -94,6 +94,7 @@ export interface CellBundle {
   environment: Partial<EnvIntelligence>
   planning: Partial<PlanningProfile>
   explanation: Partial<CellExplanation>
+  geometry: GeoJSON.Polygon | null
 }
 
 // ------------------------------------------------------------------

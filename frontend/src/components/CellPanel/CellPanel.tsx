@@ -8,13 +8,15 @@ import { useCell } from '@/api/citysense'
 import { EnvTab } from './EnvTab'
 import { PlanningTab } from './PlanningTab'
 import { RawTab } from './RawTab'
+import { CellMiniMap } from './CellMiniMap'
 
-type TabKey = 'env' | 'planning' | 'raw'
+type TabKey = 'env' | 'planning' | 'raw' | 'map'
 
 const TABS: { key: TabKey; label: string }[] = [
-  { key: 'env', label: 'Environment' },
+  { key: 'env',      label: 'Environment' },
   { key: 'planning', label: 'Planning' },
-  { key: 'raw', label: 'Raw Data' },
+  { key: 'map',      label: '🗺️ Location' },
+  { key: 'raw',      label: 'Raw Data' },
 ]
 
 const PRIORITY_BADGE: Record<string, string> = {
@@ -199,9 +201,21 @@ export function CellPanel() {
 
         {bundle && !isLoading && (
           <div className="animate-fade-in">
-            {activeTab === 'env' && <EnvTab bundle={bundle} />}
+            {activeTab === 'env'      && <EnvTab bundle={bundle} />}
             {activeTab === 'planning' && <PlanningTab bundle={bundle} />}
-            {activeTab === 'raw' && <RawTab bundle={bundle} />}
+            {activeTab === 'raw'      && <RawTab bundle={bundle} />}
+            {activeTab === 'map'      && bundle.geometry && (
+              <CellMiniMap
+                geometry={bundle.geometry}
+                cellId={bundle.master.cell_id}
+                ehi={bundle.environment?.environmental_health ?? null}
+              />
+            )}
+            {activeTab === 'map' && !bundle.geometry && (
+              <div style={{ padding: 20, fontSize: 12, color: 'var(--text-secondary)', textAlign: 'center' }}>
+                No geometry available for this cell.
+              </div>
+            )}
           </div>
         )}
       </div>
