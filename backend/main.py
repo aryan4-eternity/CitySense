@@ -61,6 +61,27 @@ if _ward_profiles_path.exists():
     _ward_profiles = json.loads(_ward_profiles_path.read_text(encoding="utf-8"))
     print(f"[CitySense API] Ward profiles: {len(_ward_profiles)} wards loaded")
 
+# flood_susceptibility.json — loaded with graceful fallback
+_fsi_data: dict = {}
+_fsi_path = _DATA / "flood_susceptibility.json"
+if _fsi_path.exists():
+    _fsi_data = json.loads(_fsi_path.read_text(encoding="utf-8"))
+    print(f"[CitySense API] Flood susceptibility: {len(_fsi_data)} cells loaded")
+
+# infrastructure_access_index.json — loaded with graceful fallback
+_iai_data: dict = {}
+_iai_path = _DATA / "infrastructure_access_index.json"
+if _iai_path.exists():
+    _iai_data = json.loads(_iai_path.read_text(encoding="utf-8"))
+    print(f"[CitySense API] Infrastructure access index: {len(_iai_data)} cells loaded")
+
+# composite_burden.json — loaded with graceful fallback
+_burden_data: dict = {}
+_burden_path = _DATA / "composite_burden.json"
+if _burden_path.exists():
+    _burden_data = json.loads(_burden_path.read_text(encoding="utf-8"))
+    print(f"[CitySense API] Composite burden: {len(_burden_data)} cells loaded")
+
 # cell_explanations.json can be a list or dict depending on pipeline version
 _explanations_raw = _load("cell_explanations.json")
 if isinstance(_explanations_raw, list):
@@ -126,6 +147,18 @@ for _feat in _cells_geojson["features"]:
     )
     _feat["properties"]["is_water"] = _is_water
 
+    # Merge FSI score so the frontend choropleth can colour by flood susceptibility
+    _cid = _p.get("cell_id")
+    if _cid and _cid in _fsi_data:
+        _feat["properties"]["flood_susceptibility_score"] = (
+            _fsi_data[_cid].get("flood_susceptibility_score")
+        )
+    # Merge IAI and burden scores for their choropleth layers
+    if _cid and _cid in _iai_data:
+        _feat["properties"]["iai_score"] = _iai_data[_cid].get("iai_score")
+    if _cid and _cid in _burden_data:
+        _feat["properties"]["burden_score"] = _burden_data[_cid].get("burden_score")
+
 # Build a land-only GeoJSON for the map endpoint
 _cells_land_geojson: dict = {
     "type": "FeatureCollection",
@@ -171,26 +204,19 @@ def get_cell(cell_id: str) -> dict:
     """Complete data bundle for the sidebar detail panel.
 
     Merges master properties, environmental intelligence, planning profile,
-    SHAP explanation, and the cell's GeoJSON geometry into a single response.
-    The geometry is included so the frontend can render the cell boundary
-    on the mini-map without a separate request.
+    and SHAP explanation into a single response object.
     """
     if cell_id not in _cell_props:
         raise HTTPException(status_code=404, detail=f"Cell '{cell_id}' not found")
-
-    # Find the matching feature to include its geometry
-    geometry = None
-    for feat in _cells_geojson["features"]:
-        if feat.get("properties", {}).get("cell_id") == cell_id:
-            geometry = feat.get("geometry")
-            break
 
     return {
         "master":      _cell_props[cell_id],
         "environment": _env_intel.get(cell_id, {}),
         "planning":    _plans.get(cell_id, {}),
         "explanation": _explanations.get(cell_id, {}),
-        "geometry":    geometry,
+        "flood":       _fsi_data.get(cell_id, {}),
+        "access":      _iai_data.get(cell_id, {}),
+        "burden":      _burden_data.get(cell_id, {}),
     }
 
 

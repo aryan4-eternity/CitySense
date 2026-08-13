@@ -1,0 +1,6690 @@
+{
+  "r0_c0": {
+    "burden_score": 25.79,
+    "burden_status": "Moderate",
+    "ehi_component": 42.75,
+    "iai_deficit": 8.83,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c1": {
+    "burden_score": 25.92,
+    "burden_status": "Moderate",
+    "ehi_component": 43.06,
+    "iai_deficit": 8.78,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c2": {
+    "burden_score": 25.64,
+    "burden_status": "Moderate",
+    "ehi_component": 42.99,
+    "iai_deficit": 8.28,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c3": {
+    "burden_score": 27.39,
+    "burden_status": "Moderate",
+    "ehi_component": 45.82,
+    "iai_deficit": 8.97,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c4": {
+    "burden_score": 26.56,
+    "burden_status": "Moderate",
+    "ehi_component": 45.17,
+    "iai_deficit": 7.96,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c5": {
+    "burden_score": 26.12,
+    "burden_status": "Moderate",
+    "ehi_component": 43.58,
+    "iai_deficit": 8.65,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c6": {
+    "burden_score": 26.06,
+    "burden_status": "Moderate",
+    "ehi_component": 43.19,
+    "iai_deficit": 8.93,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c7": {
+    "burden_score": 25.99,
+    "burden_status": "Moderate",
+    "ehi_component": 43.03,
+    "iai_deficit": 8.95,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c8": {
+    "burden_score": 26.41,
+    "burden_status": "Moderate",
+    "ehi_component": 43.31,
+    "iai_deficit": 9.52,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c9": {
+    "burden_score": 26.26,
+    "burden_status": "Moderate",
+    "ehi_component": 43.22,
+    "iai_deficit": 9.29,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c10": {
+    "burden_score": 25.95,
+    "burden_status": "Moderate",
+    "ehi_component": 43.3,
+    "iai_deficit": 8.6,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c11": {
+    "burden_score": 26.4,
+    "burden_status": "Moderate",
+    "ehi_component": 44.11,
+    "iai_deficit": 8.68,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c12": {
+    "burden_score": 26.0,
+    "burden_status": "Moderate",
+    "ehi_component": 43.82,
+    "iai_deficit": 8.19,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c13": {
+    "burden_score": 27.22,
+    "burden_status": "Moderate",
+    "ehi_component": 46.51,
+    "iai_deficit": 7.93,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c14": {
+    "burden_score": 27.54,
+    "burden_status": "Moderate",
+    "ehi_component": 46.52,
+    "iai_deficit": 8.57,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c15": {
+    "burden_score": 32.93,
+    "burden_status": "Moderate",
+    "ehi_component": 55.51,
+    "iai_deficit": 10.35,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c16": {
+    "burden_score": 22.66,
+    "burden_status": "Low",
+    "ehi_component": 41.0,
+    "iai_deficit": 4.32,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c17": {
+    "burden_score": 25.94,
+    "burden_status": "Moderate",
+    "ehi_component": 46.36,
+    "iai_deficit": 5.51,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r0_c18": {
+    "burden_score": 38.34,
+    "burden_status": "Moderate",
+    "ehi_component": 65.21,
+    "iai_deficit": 11.47,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r0_c19": {
+    "burden_score": 49.85,
+    "burden_status": "Moderate",
+    "ehi_component": 84.06,
+    "iai_deficit": 15.64,
+    "environmental_status": "Critical",
+    "iai_status": "Excellent"
+  },
+  "r0_c20": {
+    "burden_score": 49.62,
+    "burden_status": "Moderate",
+    "ehi_component": 73.43,
+    "iai_deficit": 25.81,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r0_c21": {
+    "burden_score": 48.34,
+    "burden_status": "Moderate",
+    "ehi_component": 73.19,
+    "iai_deficit": 23.48,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r1_c0": {
+    "burden_score": 25.71,
+    "burden_status": "Moderate",
+    "ehi_component": 42.65,
+    "iai_deficit": 8.77,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c1": {
+    "burden_score": 25.79,
+    "burden_status": "Moderate",
+    "ehi_component": 42.94,
+    "iai_deficit": 8.64,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c2": {
+    "burden_score": 25.92,
+    "burden_status": "Moderate",
+    "ehi_component": 43.38,
+    "iai_deficit": 8.46,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c3": {
+    "burden_score": 29.76,
+    "burden_status": "Moderate",
+    "ehi_component": 50.58,
+    "iai_deficit": 8.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c4": {
+    "burden_score": 31.1,
+    "burden_status": "Moderate",
+    "ehi_component": 53.21,
+    "iai_deficit": 8.99,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c5": {
+    "burden_score": 27.41,
+    "burden_status": "Moderate",
+    "ehi_component": 45.85,
+    "iai_deficit": 8.97,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c6": {
+    "burden_score": 26.31,
+    "burden_status": "Moderate",
+    "ehi_component": 43.47,
+    "iai_deficit": 9.16,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c7": {
+    "burden_score": 26.19,
+    "burden_status": "Moderate",
+    "ehi_component": 43.28,
+    "iai_deficit": 9.09,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c8": {
+    "burden_score": 26.48,
+    "burden_status": "Moderate",
+    "ehi_component": 43.59,
+    "iai_deficit": 9.38,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c9": {
+    "burden_score": 26.6,
+    "burden_status": "Moderate",
+    "ehi_component": 43.96,
+    "iai_deficit": 9.23,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c10": {
+    "burden_score": 26.33,
+    "burden_status": "Moderate",
+    "ehi_component": 43.73,
+    "iai_deficit": 8.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c11": {
+    "burden_score": 26.02,
+    "burden_status": "Moderate",
+    "ehi_component": 43.54,
+    "iai_deficit": 8.5,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c12": {
+    "burden_score": 25.06,
+    "burden_status": "Moderate",
+    "ehi_component": 42.72,
+    "iai_deficit": 7.41,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c13": {
+    "burden_score": 24.88,
+    "burden_status": "Low",
+    "ehi_component": 42.62,
+    "iai_deficit": 7.14,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c14": {
+    "burden_score": 26.0,
+    "burden_status": "Moderate",
+    "ehi_component": 44.96,
+    "iai_deficit": 7.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c15": {
+    "burden_score": 33.37,
+    "burden_status": "Moderate",
+    "ehi_component": 55.6,
+    "iai_deficit": 11.14,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c16": {
+    "burden_score": 21.41,
+    "burden_status": "Low",
+    "ehi_component": 38.38,
+    "iai_deficit": 4.44,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r1_c17": {
+    "burden_score": 30.64,
+    "burden_status": "Moderate",
+    "ehi_component": 53.41,
+    "iai_deficit": 7.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c18": {
+    "burden_score": 27.34,
+    "burden_status": "Moderate",
+    "ehi_component": 48.36,
+    "iai_deficit": 6.32,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c19": {
+    "burden_score": 32.35,
+    "burden_status": "Moderate",
+    "ehi_component": 56.33,
+    "iai_deficit": 8.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r1_c20": {
+    "burden_score": 50.43,
+    "burden_status": "High",
+    "ehi_component": 75.24,
+    "iai_deficit": 25.62,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r1_c21": {
+    "burden_score": 46.96,
+    "burden_status": "Moderate",
+    "ehi_component": 71.12,
+    "iai_deficit": 22.8,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r2_c0": {
+    "burden_score": 25.87,
+    "burden_status": "Moderate",
+    "ehi_component": 42.83,
+    "iai_deficit": 8.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c1": {
+    "burden_score": 25.78,
+    "burden_status": "Moderate",
+    "ehi_component": 42.93,
+    "iai_deficit": 8.62,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c2": {
+    "burden_score": 25.79,
+    "burden_status": "Moderate",
+    "ehi_component": 43.18,
+    "iai_deficit": 8.4,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c3": {
+    "burden_score": 27.57,
+    "burden_status": "Moderate",
+    "ehi_component": 46.24,
+    "iai_deficit": 8.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c4": {
+    "burden_score": 29.55,
+    "burden_status": "Moderate",
+    "ehi_component": 50.22,
+    "iai_deficit": 8.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c5": {
+    "burden_score": 33.5,
+    "burden_status": "Moderate",
+    "ehi_component": 56.26,
+    "iai_deficit": 10.75,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c6": {
+    "burden_score": 27.5,
+    "burden_status": "Moderate",
+    "ehi_component": 45.95,
+    "iai_deficit": 9.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c7": {
+    "burden_score": 26.27,
+    "burden_status": "Moderate",
+    "ehi_component": 43.43,
+    "iai_deficit": 9.11,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c8": {
+    "burden_score": 26.2,
+    "burden_status": "Moderate",
+    "ehi_component": 43.38,
+    "iai_deficit": 9.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c9": {
+    "burden_score": 26.43,
+    "burden_status": "Moderate",
+    "ehi_component": 43.72,
+    "iai_deficit": 9.14,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c10": {
+    "burden_score": 26.53,
+    "burden_status": "Moderate",
+    "ehi_component": 44.19,
+    "iai_deficit": 8.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c11": {
+    "burden_score": 25.77,
+    "burden_status": "Moderate",
+    "ehi_component": 43.23,
+    "iai_deficit": 8.31,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c12": {
+    "burden_score": 23.87,
+    "burden_status": "Low",
+    "ehi_component": 41.97,
+    "iai_deficit": 5.76,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c13": {
+    "burden_score": 24.89,
+    "burden_status": "Low",
+    "ehi_component": 42.73,
+    "iai_deficit": 7.06,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c14": {
+    "burden_score": 25.18,
+    "burden_status": "Moderate",
+    "ehi_component": 43.43,
+    "iai_deficit": 6.92,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c15": {
+    "burden_score": 25.15,
+    "burden_status": "Moderate",
+    "ehi_component": 43.6,
+    "iai_deficit": 6.7,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c16": {
+    "burden_score": 24.02,
+    "burden_status": "Low",
+    "ehi_component": 41.64,
+    "iai_deficit": 6.4,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c17": {
+    "burden_score": 21.27,
+    "burden_status": "Low",
+    "ehi_component": 41.51,
+    "iai_deficit": 1.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c18": {
+    "burden_score": 20.43,
+    "burden_status": "Low",
+    "ehi_component": 40.76,
+    "iai_deficit": 0.1,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c19": {
+    "burden_score": 23.22,
+    "burden_status": "Low",
+    "ehi_component": 45.53,
+    "iai_deficit": 0.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r2_c20": {
+    "burden_score": 53.15,
+    "burden_status": "High",
+    "ehi_component": 81.0,
+    "iai_deficit": 25.29,
+    "environmental_status": "Critical",
+    "iai_status": "Good"
+  },
+  "r2_c21": {
+    "burden_score": 47.06,
+    "burden_status": "Moderate",
+    "ehi_component": 71.96,
+    "iai_deficit": 22.15,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r3_c0": {
+    "burden_score": 26.12,
+    "burden_status": "Moderate",
+    "ehi_component": 43.3,
+    "iai_deficit": 8.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c1": {
+    "burden_score": 26.14,
+    "burden_status": "Moderate",
+    "ehi_component": 43.57,
+    "iai_deficit": 8.71,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c2": {
+    "burden_score": 26.26,
+    "burden_status": "Moderate",
+    "ehi_component": 43.76,
+    "iai_deficit": 8.76,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c3": {
+    "burden_score": 26.42,
+    "burden_status": "Moderate",
+    "ehi_component": 43.93,
+    "iai_deficit": 8.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c4": {
+    "burden_score": 26.93,
+    "burden_status": "Moderate",
+    "ehi_component": 44.73,
+    "iai_deficit": 9.12,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c5": {
+    "burden_score": 33.84,
+    "burden_status": "Moderate",
+    "ehi_component": 57.63,
+    "iai_deficit": 10.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c6": {
+    "burden_score": 36.78,
+    "burden_status": "Moderate",
+    "ehi_component": 62.79,
+    "iai_deficit": 10.78,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r3_c7": {
+    "burden_score": 26.73,
+    "burden_status": "Moderate",
+    "ehi_component": 44.92,
+    "iai_deficit": 8.54,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c8": {
+    "burden_score": 25.41,
+    "burden_status": "Moderate",
+    "ehi_component": 42.47,
+    "iai_deficit": 8.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c9": {
+    "burden_score": 25.94,
+    "burden_status": "Moderate",
+    "ehi_component": 43.43,
+    "iai_deficit": 8.46,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c10": {
+    "burden_score": 26.32,
+    "burden_status": "Moderate",
+    "ehi_component": 43.85,
+    "iai_deficit": 8.8,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c11": {
+    "burden_score": 25.77,
+    "burden_status": "Moderate",
+    "ehi_component": 43.31,
+    "iai_deficit": 8.22,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c12": {
+    "burden_score": 24.64,
+    "burden_status": "Low",
+    "ehi_component": 42.51,
+    "iai_deficit": 6.77,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c13": {
+    "burden_score": 24.78,
+    "burden_status": "Low",
+    "ehi_component": 42.66,
+    "iai_deficit": 6.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c14": {
+    "burden_score": 23.25,
+    "burden_status": "Low",
+    "ehi_component": 43.82,
+    "iai_deficit": 2.68,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c15": {
+    "burden_score": 23.25,
+    "burden_status": "Low",
+    "ehi_component": 44.0,
+    "iai_deficit": 2.5,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c16": {
+    "burden_score": 24.52,
+    "burden_status": "Low",
+    "ehi_component": 46.61,
+    "iai_deficit": 2.44,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c17": {
+    "burden_score": 21.72,
+    "burden_status": "Low",
+    "ehi_component": 42.1,
+    "iai_deficit": 1.34,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c18": {
+    "burden_score": 29.65,
+    "burden_status": "Moderate",
+    "ehi_component": 56.48,
+    "iai_deficit": 2.83,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r3_c19": {
+    "burden_score": 40.03,
+    "burden_status": "Moderate",
+    "ehi_component": 75.31,
+    "iai_deficit": 4.75,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r3_c20": {
+    "burden_score": 44.53,
+    "burden_status": "Moderate",
+    "ehi_component": 68.21,
+    "iai_deficit": 20.84,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r3_c21": {
+    "burden_score": 28.23,
+    "burden_status": "Moderate",
+    "ehi_component": 44.92,
+    "iai_deficit": 11.53,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c0": {
+    "burden_score": 33.45,
+    "burden_status": "Moderate",
+    "ehi_component": 43.53,
+    "iai_deficit": 23.38,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c1": {
+    "burden_score": 25.25,
+    "burden_status": "Moderate",
+    "ehi_component": 44.05,
+    "iai_deficit": 6.45,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c2": {
+    "burden_score": 26.74,
+    "burden_status": "Moderate",
+    "ehi_component": 44.53,
+    "iai_deficit": 8.96,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c3": {
+    "burden_score": 26.67,
+    "burden_status": "Moderate",
+    "ehi_component": 44.04,
+    "iai_deficit": 9.3,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c4": {
+    "burden_score": 26.95,
+    "burden_status": "Moderate",
+    "ehi_component": 44.59,
+    "iai_deficit": 9.3,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c5": {
+    "burden_score": 34.17,
+    "burden_status": "Moderate",
+    "ehi_component": 57.89,
+    "iai_deficit": 10.46,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c6": {
+    "burden_score": 40.77,
+    "burden_status": "Moderate",
+    "ehi_component": 69.55,
+    "iai_deficit": 12.0,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r4_c7": {
+    "burden_score": 29.33,
+    "burden_status": "Moderate",
+    "ehi_component": 50.48,
+    "iai_deficit": 8.19,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c8": {
+    "burden_score": 24.85,
+    "burden_status": "Low",
+    "ehi_component": 42.13,
+    "iai_deficit": 7.56,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c9": {
+    "burden_score": 25.05,
+    "burden_status": "Moderate",
+    "ehi_component": 42.92,
+    "iai_deficit": 7.18,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c10": {
+    "burden_score": 23.17,
+    "burden_status": "Low",
+    "ehi_component": 43.74,
+    "iai_deficit": 2.59,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c11": {
+    "burden_score": 23.54,
+    "burden_status": "Low",
+    "ehi_component": 44.12,
+    "iai_deficit": 2.97,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c12": {
+    "burden_score": 22.71,
+    "burden_status": "Low",
+    "ehi_component": 43.13,
+    "iai_deficit": 2.28,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c13": {
+    "burden_score": 22.7,
+    "burden_status": "Low",
+    "ehi_component": 42.85,
+    "iai_deficit": 2.55,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c14": {
+    "burden_score": 23.21,
+    "burden_status": "Low",
+    "ehi_component": 43.77,
+    "iai_deficit": 2.64,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c15": {
+    "burden_score": 22.93,
+    "burden_status": "Low",
+    "ehi_component": 43.68,
+    "iai_deficit": 2.18,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c16": {
+    "burden_score": 33.66,
+    "burden_status": "Moderate",
+    "ehi_component": 62.99,
+    "iai_deficit": 4.32,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r4_c17": {
+    "burden_score": 35.22,
+    "burden_status": "Moderate",
+    "ehi_component": 66.22,
+    "iai_deficit": 4.22,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r4_c18": {
+    "burden_score": 31.13,
+    "burden_status": "Moderate",
+    "ehi_component": 57.89,
+    "iai_deficit": 4.38,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c19": {
+    "burden_score": 29.89,
+    "burden_status": "Moderate",
+    "ehi_component": 56.85,
+    "iai_deficit": 2.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r4_c20": {
+    "burden_score": 47.64,
+    "burden_status": "Moderate",
+    "ehi_component": 45.58,
+    "iai_deficit": 49.71,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r4_c21": {
+    "burden_score": 46.83,
+    "burden_status": "Moderate",
+    "ehi_component": 44.3,
+    "iai_deficit": 49.35,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r5_c0": {
+    "burden_score": 33.5,
+    "burden_status": "Moderate",
+    "ehi_component": 43.6,
+    "iai_deficit": 23.39,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c1": {
+    "burden_score": 33.56,
+    "burden_status": "Moderate",
+    "ehi_component": 44.21,
+    "iai_deficit": 22.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c2": {
+    "burden_score": 34.73,
+    "burden_status": "Moderate",
+    "ehi_component": 46.95,
+    "iai_deficit": 22.52,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c3": {
+    "burden_score": 25.92,
+    "burden_status": "Moderate",
+    "ehi_component": 44.9,
+    "iai_deficit": 6.93,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c4": {
+    "burden_score": 26.34,
+    "burden_status": "Moderate",
+    "ehi_component": 45.63,
+    "iai_deficit": 7.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c5": {
+    "burden_score": 38.25,
+    "burden_status": "Moderate",
+    "ehi_component": 67.1,
+    "iai_deficit": 9.41,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r5_c6": {
+    "burden_score": 41.81,
+    "burden_status": "Moderate",
+    "ehi_component": 77.53,
+    "iai_deficit": 6.1,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r5_c7": {
+    "burden_score": 33.86,
+    "burden_status": "Moderate",
+    "ehi_component": 64.28,
+    "iai_deficit": 3.43,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r5_c8": {
+    "burden_score": 23.18,
+    "burden_status": "Low",
+    "ehi_component": 44.55,
+    "iai_deficit": 1.81,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c9": {
+    "burden_score": 21.74,
+    "burden_status": "Low",
+    "ehi_component": 42.67,
+    "iai_deficit": 0.81,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c10": {
+    "burden_score": 22.66,
+    "burden_status": "Low",
+    "ehi_component": 43.43,
+    "iai_deficit": 1.89,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c11": {
+    "burden_score": 21.93,
+    "burden_status": "Low",
+    "ehi_component": 42.59,
+    "iai_deficit": 1.26,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c12": {
+    "burden_score": 20.89,
+    "burden_status": "Low",
+    "ehi_component": 41.52,
+    "iai_deficit": 0.26,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c13": {
+    "burden_score": 21.59,
+    "burden_status": "Low",
+    "ehi_component": 41.49,
+    "iai_deficit": 1.69,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c14": {
+    "burden_score": 22.77,
+    "burden_status": "Low",
+    "ehi_component": 42.92,
+    "iai_deficit": 2.62,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c15": {
+    "burden_score": 22.47,
+    "burden_status": "Low",
+    "ehi_component": 42.77,
+    "iai_deficit": 2.17,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c16": {
+    "burden_score": 24.1,
+    "burden_status": "Low",
+    "ehi_component": 45.72,
+    "iai_deficit": 2.49,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r5_c17": {
+    "burden_score": 37.83,
+    "burden_status": "Moderate",
+    "ehi_component": 71.36,
+    "iai_deficit": 4.29,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r5_c18": {
+    "burden_score": 38.56,
+    "burden_status": "Moderate",
+    "ehi_component": 72.25,
+    "iai_deficit": 4.87,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r5_c19": {
+    "burden_score": 60.12,
+    "burden_status": "High",
+    "ehi_component": 54.37,
+    "iai_deficit": 65.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r5_c20": {
+    "burden_score": 45.98,
+    "burden_status": "Moderate",
+    "ehi_component": 43.25,
+    "iai_deficit": 48.7,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r5_c21": {
+    "burden_score": 43.5,
+    "burden_status": "Moderate",
+    "ehi_component": 40.53,
+    "iai_deficit": 46.47,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r6_c0": {
+    "burden_score": 33.23,
+    "burden_status": "Moderate",
+    "ehi_component": 43.45,
+    "iai_deficit": 23.0,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c1": {
+    "burden_score": 33.44,
+    "burden_status": "Moderate",
+    "ehi_component": 43.93,
+    "iai_deficit": 22.95,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c2": {
+    "burden_score": 35.08,
+    "burden_status": "Moderate",
+    "ehi_component": 47.95,
+    "iai_deficit": 22.2,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c3": {
+    "burden_score": 36.68,
+    "burden_status": "Moderate",
+    "ehi_component": 50.7,
+    "iai_deficit": 22.65,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c4": {
+    "burden_score": 37.69,
+    "burden_status": "Moderate",
+    "ehi_component": 65.98,
+    "iai_deficit": 9.4,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r6_c5": {
+    "burden_score": 43.89,
+    "burden_status": "Moderate",
+    "ehi_component": 76.33,
+    "iai_deficit": 11.45,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r6_c6": {
+    "burden_score": 43.32,
+    "burden_status": "Moderate",
+    "ehi_component": 79.75,
+    "iai_deficit": 6.89,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r6_c7": {
+    "burden_score": 38.27,
+    "burden_status": "Moderate",
+    "ehi_component": 71.34,
+    "iai_deficit": 5.21,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r6_c8": {
+    "burden_score": 22.56,
+    "burden_status": "Low",
+    "ehi_component": 43.13,
+    "iai_deficit": 1.99,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c9": {
+    "burden_score": 20.94,
+    "burden_status": "Low",
+    "ehi_component": 41.88,
+    "iai_deficit": 0.0,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c10": {
+    "burden_score": 22.45,
+    "burden_status": "Low",
+    "ehi_component": 43.09,
+    "iai_deficit": 1.82,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c11": {
+    "burden_score": 22.25,
+    "burden_status": "Low",
+    "ehi_component": 42.85,
+    "iai_deficit": 1.64,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c12": {
+    "burden_score": 21.6,
+    "burden_status": "Low",
+    "ehi_component": 42.21,
+    "iai_deficit": 0.98,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c13": {
+    "burden_score": 23.74,
+    "burden_status": "Low",
+    "ehi_component": 45.2,
+    "iai_deficit": 2.28,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c14": {
+    "burden_score": 22.56,
+    "burden_status": "Low",
+    "ehi_component": 42.44,
+    "iai_deficit": 2.68,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c15": {
+    "burden_score": 22.93,
+    "burden_status": "Low",
+    "ehi_component": 43.5,
+    "iai_deficit": 2.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c16": {
+    "burden_score": 25.67,
+    "burden_status": "Moderate",
+    "ehi_component": 48.57,
+    "iai_deficit": 2.76,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r6_c17": {
+    "burden_score": 54.34,
+    "burden_status": "High",
+    "ehi_component": 49.89,
+    "iai_deficit": 58.78,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r6_c18": {
+    "burden_score": 77.29,
+    "burden_status": "Critical",
+    "ehi_component": 78.79,
+    "iai_deficit": 75.79,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r6_c19": {
+    "burden_score": 52.53,
+    "burden_status": "High",
+    "ehi_component": 49.05,
+    "iai_deficit": 56.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r6_c20": {
+    "burden_score": 36.73,
+    "burden_status": "Moderate",
+    "ehi_component": 34.38,
+    "iai_deficit": 39.09,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r6_c21": {
+    "burden_score": 41.42,
+    "burden_status": "Moderate",
+    "ehi_component": 39.06,
+    "iai_deficit": 43.79,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r7_c0": {
+    "burden_score": 33.44,
+    "burden_status": "Moderate",
+    "ehi_component": 43.83,
+    "iai_deficit": 23.05,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c1": {
+    "burden_score": 33.76,
+    "burden_status": "Moderate",
+    "ehi_component": 44.14,
+    "iai_deficit": 23.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c2": {
+    "burden_score": 34.39,
+    "burden_status": "Moderate",
+    "ehi_component": 46.46,
+    "iai_deficit": 22.32,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c3": {
+    "burden_score": 42.54,
+    "burden_status": "Moderate",
+    "ehi_component": 59.24,
+    "iai_deficit": 25.84,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r7_c4": {
+    "burden_score": 47.95,
+    "burden_status": "Moderate",
+    "ehi_component": 66.61,
+    "iai_deficit": 29.3,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r7_c5": {
+    "burden_score": 54.11,
+    "burden_status": "High",
+    "ehi_component": 76.26,
+    "iai_deficit": 31.96,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r7_c6": {
+    "burden_score": 37.57,
+    "burden_status": "Moderate",
+    "ehi_component": 69.88,
+    "iai_deficit": 5.27,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r7_c7": {
+    "burden_score": 38.83,
+    "burden_status": "Moderate",
+    "ehi_component": 72.55,
+    "iai_deficit": 5.11,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r7_c8": {
+    "burden_score": 23.65,
+    "burden_status": "Low",
+    "ehi_component": 45.56,
+    "iai_deficit": 1.74,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c9": {
+    "burden_score": 21.58,
+    "burden_status": "Low",
+    "ehi_component": 42.51,
+    "iai_deficit": 0.66,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c10": {
+    "burden_score": 21.86,
+    "burden_status": "Low",
+    "ehi_component": 42.62,
+    "iai_deficit": 1.1,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c11": {
+    "burden_score": 20.84,
+    "burden_status": "Low",
+    "ehi_component": 40.95,
+    "iai_deficit": 0.72,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c12": {
+    "burden_score": 21.49,
+    "burden_status": "Low",
+    "ehi_component": 41.97,
+    "iai_deficit": 1.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c13": {
+    "burden_score": 23.57,
+    "burden_status": "Low",
+    "ehi_component": 44.44,
+    "iai_deficit": 2.71,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c14": {
+    "burden_score": 22.16,
+    "burden_status": "Low",
+    "ehi_component": 41.87,
+    "iai_deficit": 2.45,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c15": {
+    "burden_score": 22.25,
+    "burden_status": "Low",
+    "ehi_component": 42.15,
+    "iai_deficit": 2.35,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r7_c16": {
+    "burden_score": 60.5,
+    "burden_status": "High",
+    "ehi_component": 49.61,
+    "iai_deficit": 71.39,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r7_c17": {
+    "burden_score": 52.67,
+    "burden_status": "High",
+    "ehi_component": 45.02,
+    "iai_deficit": 60.33,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r7_c18": {
+    "burden_score": 53.44,
+    "burden_status": "High",
+    "ehi_component": 48.01,
+    "iai_deficit": 58.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r7_c19": {
+    "burden_score": 57.81,
+    "burden_status": "High",
+    "ehi_component": 52.02,
+    "iai_deficit": 63.61,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r7_c20": {
+    "burden_score": 39.56,
+    "burden_status": "Moderate",
+    "ehi_component": 37.84,
+    "iai_deficit": 41.27,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r7_c21": {
+    "burden_score": 40.25,
+    "burden_status": "Moderate",
+    "ehi_component": 39.34,
+    "iai_deficit": 41.15,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r8_c0": {
+    "burden_score": 33.3,
+    "burden_status": "Moderate",
+    "ehi_component": 43.66,
+    "iai_deficit": 22.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c1": {
+    "burden_score": 33.94,
+    "burden_status": "Moderate",
+    "ehi_component": 44.68,
+    "iai_deficit": 23.21,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c2": {
+    "burden_score": 33.92,
+    "burden_status": "Moderate",
+    "ehi_component": 44.98,
+    "iai_deficit": 22.86,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c3": {
+    "burden_score": 41.8,
+    "burden_status": "Moderate",
+    "ehi_component": 58.54,
+    "iai_deficit": 25.05,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r8_c4": {
+    "burden_score": 40.32,
+    "burden_status": "Moderate",
+    "ehi_component": 56.09,
+    "iai_deficit": 24.54,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c5": {
+    "burden_score": 51.3,
+    "burden_status": "High",
+    "ehi_component": 68.22,
+    "iai_deficit": 34.38,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r8_c6": {
+    "burden_score": 48.03,
+    "burden_status": "Moderate",
+    "ehi_component": 64.59,
+    "iai_deficit": 31.47,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r8_c7": {
+    "burden_score": 53.94,
+    "burden_status": "High",
+    "ehi_component": 74.3,
+    "iai_deficit": 33.58,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r8_c8": {
+    "burden_score": 41.47,
+    "burden_status": "Moderate",
+    "ehi_component": 56.76,
+    "iai_deficit": 26.19,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r8_c9": {
+    "burden_score": 31.75,
+    "burden_status": "Moderate",
+    "ehi_component": 42.57,
+    "iai_deficit": 20.93,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c10": {
+    "burden_score": 32.77,
+    "burden_status": "Moderate",
+    "ehi_component": 44.1,
+    "iai_deficit": 21.44,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c11": {
+    "burden_score": 31.51,
+    "burden_status": "Moderate",
+    "ehi_component": 42.33,
+    "iai_deficit": 20.68,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c12": {
+    "burden_score": 30.25,
+    "burden_status": "Moderate",
+    "ehi_component": 41.13,
+    "iai_deficit": 19.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c13": {
+    "burden_score": 32.83,
+    "burden_status": "Moderate",
+    "ehi_component": 41.29,
+    "iai_deficit": 24.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c14": {
+    "burden_score": 31.09,
+    "burden_status": "Moderate",
+    "ehi_component": 41.58,
+    "iai_deficit": 20.61,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r8_c15": {
+    "burden_score": 49.17,
+    "burden_status": "Moderate",
+    "ehi_component": 41.26,
+    "iai_deficit": 57.08,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r8_c16": {
+    "burden_score": 51.83,
+    "burden_status": "High",
+    "ehi_component": 43.71,
+    "iai_deficit": 59.95,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r8_c17": {
+    "burden_score": 51.6,
+    "burden_status": "High",
+    "ehi_component": 43.26,
+    "iai_deficit": 59.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r8_c18": {
+    "burden_score": 56.63,
+    "burden_status": "High",
+    "ehi_component": 49.29,
+    "iai_deficit": 63.97,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r8_c19": {
+    "burden_score": 50.64,
+    "burden_status": "High",
+    "ehi_component": 44.21,
+    "iai_deficit": 57.07,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r8_c20": {
+    "burden_score": 46.23,
+    "burden_status": "Moderate",
+    "ehi_component": 41.86,
+    "iai_deficit": 50.59,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r8_c21": {
+    "burden_score": 48.72,
+    "burden_status": "Moderate",
+    "ehi_component": 43.11,
+    "iai_deficit": 54.33,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c0": {
+    "burden_score": 33.56,
+    "burden_status": "Moderate",
+    "ehi_component": 44.27,
+    "iai_deficit": 22.85,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c1": {
+    "burden_score": 33.88,
+    "burden_status": "Moderate",
+    "ehi_component": 44.72,
+    "iai_deficit": 23.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c2": {
+    "burden_score": 34.09,
+    "burden_status": "Moderate",
+    "ehi_component": 45.14,
+    "iai_deficit": 23.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c3": {
+    "burden_score": 34.31,
+    "burden_status": "Moderate",
+    "ehi_component": 46.55,
+    "iai_deficit": 22.08,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c4": {
+    "burden_score": 48.17,
+    "burden_status": "Moderate",
+    "ehi_component": 64.9,
+    "iai_deficit": 31.44,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r9_c5": {
+    "burden_score": 49.16,
+    "burden_status": "Moderate",
+    "ehi_component": 65.95,
+    "iai_deficit": 32.36,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r9_c6": {
+    "burden_score": 47.73,
+    "burden_status": "Moderate",
+    "ehi_component": 64.16,
+    "iai_deficit": 31.3,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r9_c7": {
+    "burden_score": 53.66,
+    "burden_status": "High",
+    "ehi_component": 74.06,
+    "iai_deficit": 33.26,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r9_c8": {
+    "burden_score": 52.51,
+    "burden_status": "High",
+    "ehi_component": 74.61,
+    "iai_deficit": 30.4,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r9_c9": {
+    "burden_score": 31.87,
+    "burden_status": "Moderate",
+    "ehi_component": 44.0,
+    "iai_deficit": 19.74,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c10": {
+    "burden_score": 28.88,
+    "burden_status": "Moderate",
+    "ehi_component": 41.23,
+    "iai_deficit": 16.53,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c11": {
+    "burden_score": 31.69,
+    "burden_status": "Moderate",
+    "ehi_component": 43.65,
+    "iai_deficit": 19.74,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c12": {
+    "burden_score": 30.59,
+    "burden_status": "Moderate",
+    "ehi_component": 43.32,
+    "iai_deficit": 17.86,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r9_c13": {
+    "burden_score": 39.08,
+    "burden_status": "Moderate",
+    "ehi_component": 42.5,
+    "iai_deficit": 35.66,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r9_c14": {
+    "burden_score": 53.05,
+    "burden_status": "High",
+    "ehi_component": 44.85,
+    "iai_deficit": 61.24,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c15": {
+    "burden_score": 52.72,
+    "burden_status": "High",
+    "ehi_component": 44.62,
+    "iai_deficit": 60.82,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c16": {
+    "burden_score": 47.54,
+    "burden_status": "Moderate",
+    "ehi_component": 42.33,
+    "iai_deficit": 52.75,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c17": {
+    "burden_score": 47.52,
+    "burden_status": "Moderate",
+    "ehi_component": 42.62,
+    "iai_deficit": 52.43,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c18": {
+    "burden_score": 47.06,
+    "burden_status": "Moderate",
+    "ehi_component": 42.22,
+    "iai_deficit": 51.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c19": {
+    "burden_score": 49.46,
+    "burden_status": "Moderate",
+    "ehi_component": 42.41,
+    "iai_deficit": 56.51,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c20": {
+    "burden_score": 50.17,
+    "burden_status": "High",
+    "ehi_component": 43.43,
+    "iai_deficit": 56.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r9_c21": {
+    "burden_score": 54.74,
+    "burden_status": "High",
+    "ehi_component": 45.33,
+    "iai_deficit": 64.16,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c0": {
+    "burden_score": 35.24,
+    "burden_status": "Moderate",
+    "ehi_component": 44.41,
+    "iai_deficit": 26.08,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r10_c1": {
+    "burden_score": 35.04,
+    "burden_status": "Moderate",
+    "ehi_component": 44.2,
+    "iai_deficit": 25.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r10_c2": {
+    "burden_score": 35.73,
+    "burden_status": "Moderate",
+    "ehi_component": 45.0,
+    "iai_deficit": 26.47,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r10_c3": {
+    "burden_score": 35.9,
+    "burden_status": "Moderate",
+    "ehi_component": 45.97,
+    "iai_deficit": 25.83,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r10_c4": {
+    "burden_score": 48.66,
+    "burden_status": "Moderate",
+    "ehi_component": 66.24,
+    "iai_deficit": 31.07,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r10_c5": {
+    "burden_score": 48.46,
+    "burden_status": "Moderate",
+    "ehi_component": 65.62,
+    "iai_deficit": 31.29,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r10_c6": {
+    "burden_score": 46.97,
+    "burden_status": "Moderate",
+    "ehi_component": 64.9,
+    "iai_deficit": 29.03,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r10_c7": {
+    "burden_score": 47.5,
+    "burden_status": "Moderate",
+    "ehi_component": 66.48,
+    "iai_deficit": 28.52,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r10_c8": {
+    "burden_score": 51.64,
+    "burden_status": "High",
+    "ehi_component": 74.41,
+    "iai_deficit": 28.87,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r10_c9": {
+    "burden_score": 31.75,
+    "burden_status": "Moderate",
+    "ehi_component": 46.26,
+    "iai_deficit": 17.24,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r10_c10": {
+    "burden_score": 29.16,
+    "burden_status": "Moderate",
+    "ehi_component": 43.06,
+    "iai_deficit": 15.27,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r10_c11": {
+    "burden_score": 39.59,
+    "burden_status": "Moderate",
+    "ehi_component": 47.02,
+    "iai_deficit": 32.16,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r10_c12": {
+    "burden_score": 45.03,
+    "burden_status": "Moderate",
+    "ehi_component": 52.96,
+    "iai_deficit": 37.11,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r10_c13": {
+    "burden_score": 44.23,
+    "burden_status": "Moderate",
+    "ehi_component": 52.32,
+    "iai_deficit": 36.15,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r10_c14": {
+    "burden_score": 48.38,
+    "burden_status": "Moderate",
+    "ehi_component": 41.95,
+    "iai_deficit": 54.81,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c15": {
+    "burden_score": 51.33,
+    "burden_status": "High",
+    "ehi_component": 42.95,
+    "iai_deficit": 59.71,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c16": {
+    "burden_score": 50.03,
+    "burden_status": "High",
+    "ehi_component": 41.93,
+    "iai_deficit": 58.13,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c17": {
+    "burden_score": 49.52,
+    "burden_status": "Moderate",
+    "ehi_component": 43.41,
+    "iai_deficit": 55.62,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c18": {
+    "burden_score": 52.8,
+    "burden_status": "High",
+    "ehi_component": 44.68,
+    "iai_deficit": 60.92,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c19": {
+    "burden_score": 53.41,
+    "burden_status": "High",
+    "ehi_component": 44.12,
+    "iai_deficit": 62.71,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c20": {
+    "burden_score": 51.38,
+    "burden_status": "High",
+    "ehi_component": 43.43,
+    "iai_deficit": 59.32,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r10_c21": {
+    "burden_score": 52.27,
+    "burden_status": "High",
+    "ehi_component": 43.39,
+    "iai_deficit": 61.15,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r11_c0": {
+    "burden_score": 35.49,
+    "burden_status": "Moderate",
+    "ehi_component": 44.91,
+    "iai_deficit": 26.08,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r11_c1": {
+    "burden_score": 35.0,
+    "burden_status": "Moderate",
+    "ehi_component": 44.48,
+    "iai_deficit": 25.51,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r11_c2": {
+    "burden_score": 35.4,
+    "burden_status": "Moderate",
+    "ehi_component": 44.89,
+    "iai_deficit": 25.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r11_c3": {
+    "burden_score": 35.64,
+    "burden_status": "Moderate",
+    "ehi_component": 45.57,
+    "iai_deficit": 25.72,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r11_c4": {
+    "burden_score": 45.17,
+    "burden_status": "Moderate",
+    "ehi_component": 62.33,
+    "iai_deficit": 28.01,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r11_c5": {
+    "burden_score": 48.23,
+    "burden_status": "Moderate",
+    "ehi_component": 65.77,
+    "iai_deficit": 30.69,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r11_c6": {
+    "burden_score": 49.61,
+    "burden_status": "Moderate",
+    "ehi_component": 68.92,
+    "iai_deficit": 30.3,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r11_c7": {
+    "burden_score": 44.97,
+    "burden_status": "Moderate",
+    "ehi_component": 61.65,
+    "iai_deficit": 28.29,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r11_c8": {
+    "burden_score": 46.71,
+    "burden_status": "Moderate",
+    "ehi_component": 65.94,
+    "iai_deficit": 27.49,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r11_c9": {
+    "burden_score": 35.02,
+    "burden_status": "Moderate",
+    "ehi_component": 50.98,
+    "iai_deficit": 19.07,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r11_c10": {
+    "burden_score": 28.32,
+    "burden_status": "Moderate",
+    "ehi_component": 35.48,
+    "iai_deficit": 21.16,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r11_c11": {
+    "burden_score": 28.8,
+    "burden_status": "Moderate",
+    "ehi_component": 36.07,
+    "iai_deficit": 21.53,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r11_c12": {
+    "burden_score": 55.66,
+    "burden_status": "High",
+    "ehi_component": 67.29,
+    "iai_deficit": 44.04,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r11_c13": {
+    "burden_score": 58.12,
+    "burden_status": "High",
+    "ehi_component": 68.65,
+    "iai_deficit": 47.58,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r11_c14": {
+    "burden_score": 54.02,
+    "burden_status": "High",
+    "ehi_component": 48.06,
+    "iai_deficit": 59.98,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r11_c15": {
+    "burden_score": 42.13,
+    "burden_status": "Moderate",
+    "ehi_component": 38.27,
+    "iai_deficit": 45.99,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r11_c16": {
+    "burden_score": 49.65,
+    "burden_status": "Moderate",
+    "ehi_component": 41.23,
+    "iai_deficit": 58.07,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r11_c17": {
+    "burden_score": 51.33,
+    "burden_status": "High",
+    "ehi_component": 42.12,
+    "iai_deficit": 60.53,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r11_c18": {
+    "burden_score": 50.74,
+    "burden_status": "High",
+    "ehi_component": 42.29,
+    "iai_deficit": 59.19,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r11_c19": {
+    "burden_score": 51.38,
+    "burden_status": "High",
+    "ehi_component": 43.4,
+    "iai_deficit": 59.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r11_c20": {
+    "burden_score": 51.23,
+    "burden_status": "High",
+    "ehi_component": 43.6,
+    "iai_deficit": 58.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r11_c21": {
+    "burden_score": 49.05,
+    "burden_status": "Moderate",
+    "ehi_component": 43.08,
+    "iai_deficit": 55.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r12_c0": {
+    "burden_score": 35.43,
+    "burden_status": "Moderate",
+    "ehi_component": 44.86,
+    "iai_deficit": 26.0,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c1": {
+    "burden_score": 35.25,
+    "burden_status": "Moderate",
+    "ehi_component": 44.55,
+    "iai_deficit": 25.95,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c2": {
+    "burden_score": 35.0,
+    "burden_status": "Moderate",
+    "ehi_component": 44.38,
+    "iai_deficit": 25.61,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c3": {
+    "burden_score": 35.32,
+    "burden_status": "Moderate",
+    "ehi_component": 45.08,
+    "iai_deficit": 25.57,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c4": {
+    "burden_score": 41.36,
+    "burden_status": "Moderate",
+    "ehi_component": 55.74,
+    "iai_deficit": 26.97,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c5": {
+    "burden_score": 43.55,
+    "burden_status": "Moderate",
+    "ehi_component": 58.71,
+    "iai_deficit": 28.38,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c6": {
+    "burden_score": 57.33,
+    "burden_status": "High",
+    "ehi_component": 61.86,
+    "iai_deficit": 52.79,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r12_c7": {
+    "burden_score": 59.19,
+    "burden_status": "High",
+    "ehi_component": 64.88,
+    "iai_deficit": 53.51,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r12_c8": {
+    "burden_score": 51.83,
+    "burden_status": "High",
+    "ehi_component": 61.11,
+    "iai_deficit": 42.54,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r12_c9": {
+    "burden_score": 55.17,
+    "burden_status": "High",
+    "ehi_component": 66.63,
+    "iai_deficit": 43.71,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r12_c10": {
+    "burden_score": 43.77,
+    "burden_status": "Moderate",
+    "ehi_component": 55.66,
+    "iai_deficit": 31.88,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c11": {
+    "burden_score": 35.69,
+    "burden_status": "Moderate",
+    "ehi_component": 45.26,
+    "iai_deficit": 26.13,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r12_c12": {
+    "burden_score": 62.28,
+    "burden_status": "High",
+    "ehi_component": 76.96,
+    "iai_deficit": 47.59,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r12_c13": {
+    "burden_score": 75.5,
+    "burden_status": "Critical",
+    "ehi_component": 76.43,
+    "iai_deficit": 74.57,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r12_c14": {
+    "burden_score": 61.36,
+    "burden_status": "High",
+    "ehi_component": 54.7,
+    "iai_deficit": 68.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r12_c15": {
+    "burden_score": 52.95,
+    "burden_status": "High",
+    "ehi_component": 51.19,
+    "iai_deficit": 54.7,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r12_c16": {
+    "burden_score": 33.52,
+    "burden_status": "Moderate",
+    "ehi_component": 32.24,
+    "iai_deficit": 34.8,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r12_c17": {
+    "burden_score": 43.94,
+    "burden_status": "Moderate",
+    "ehi_component": 39.08,
+    "iai_deficit": 48.8,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r12_c18": {
+    "burden_score": 48.88,
+    "burden_status": "Moderate",
+    "ehi_component": 41.74,
+    "iai_deficit": 56.01,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r12_c19": {
+    "burden_score": 47.78,
+    "burden_status": "Moderate",
+    "ehi_component": 41.93,
+    "iai_deficit": 53.63,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r12_c20": {
+    "burden_score": 48.66,
+    "burden_status": "Moderate",
+    "ehi_component": 42.91,
+    "iai_deficit": 54.41,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r12_c21": {
+    "burden_score": 45.64,
+    "burden_status": "Moderate",
+    "ehi_component": 41.6,
+    "iai_deficit": 49.67,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c0": {
+    "burden_score": 35.14,
+    "burden_status": "Moderate",
+    "ehi_component": 44.52,
+    "iai_deficit": 25.76,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c1": {
+    "burden_score": 35.44,
+    "burden_status": "Moderate",
+    "ehi_component": 44.88,
+    "iai_deficit": 26.0,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c2": {
+    "burden_score": 35.1,
+    "burden_status": "Moderate",
+    "ehi_component": 44.72,
+    "iai_deficit": 25.49,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c3": {
+    "burden_score": 35.3,
+    "burden_status": "Moderate",
+    "ehi_component": 44.98,
+    "iai_deficit": 25.63,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c4": {
+    "burden_score": 38.18,
+    "burden_status": "Moderate",
+    "ehi_component": 50.02,
+    "iai_deficit": 26.34,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c5": {
+    "burden_score": 43.13,
+    "burden_status": "Moderate",
+    "ehi_component": 44.5,
+    "iai_deficit": 41.76,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c6": {
+    "burden_score": 51.89,
+    "burden_status": "High",
+    "ehi_component": 55.23,
+    "iai_deficit": 48.56,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c7": {
+    "burden_score": 59.73,
+    "burden_status": "High",
+    "ehi_component": 64.93,
+    "iai_deficit": 54.54,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r13_c8": {
+    "burden_score": 48.64,
+    "burden_status": "Moderate",
+    "ehi_component": 57.05,
+    "iai_deficit": 40.23,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c9": {
+    "burden_score": 53.67,
+    "burden_status": "High",
+    "ehi_component": 64.75,
+    "iai_deficit": 42.59,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r13_c10": {
+    "burden_score": 53.92,
+    "burden_status": "High",
+    "ehi_component": 67.09,
+    "iai_deficit": 40.76,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r13_c11": {
+    "burden_score": 50.33,
+    "burden_status": "High",
+    "ehi_component": 60.65,
+    "iai_deficit": 40.01,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r13_c12": {
+    "burden_score": 54.34,
+    "burden_status": "High",
+    "ehi_component": 73.82,
+    "iai_deficit": 34.86,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r13_c13": {
+    "burden_score": 54.16,
+    "burden_status": "High",
+    "ehi_component": 73.98,
+    "iai_deficit": 34.33,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r13_c14": {
+    "burden_score": 62.78,
+    "burden_status": "High",
+    "ehi_component": 53.87,
+    "iai_deficit": 71.69,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r13_c15": {
+    "burden_score": 55.52,
+    "burden_status": "High",
+    "ehi_component": 48.66,
+    "iai_deficit": 62.39,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r13_c16": {
+    "burden_score": 54.59,
+    "burden_status": "High",
+    "ehi_component": 48.9,
+    "iai_deficit": 60.27,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r13_c17": {
+    "burden_score": 43.34,
+    "burden_status": "Moderate",
+    "ehi_component": 39.3,
+    "iai_deficit": 47.39,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r13_c18": {
+    "burden_score": 42.59,
+    "burden_status": "Moderate",
+    "ehi_component": 38.71,
+    "iai_deficit": 46.48,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r13_c19": {
+    "burden_score": 43.95,
+    "burden_status": "Moderate",
+    "ehi_component": 40.68,
+    "iai_deficit": 47.22,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r13_c20": {
+    "burden_score": 46.14,
+    "burden_status": "Moderate",
+    "ehi_component": 41.55,
+    "iai_deficit": 50.73,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r13_c21": {
+    "burden_score": 41.69,
+    "burden_status": "Moderate",
+    "ehi_component": 41.16,
+    "iai_deficit": 42.22,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c0": {
+    "burden_score": 35.25,
+    "burden_status": "Moderate",
+    "ehi_component": 44.61,
+    "iai_deficit": 25.89,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c1": {
+    "burden_score": 35.45,
+    "burden_status": "Moderate",
+    "ehi_component": 45.21,
+    "iai_deficit": 25.69,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c2": {
+    "burden_score": 35.58,
+    "burden_status": "Moderate",
+    "ehi_component": 45.43,
+    "iai_deficit": 25.73,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c3": {
+    "burden_score": 45.2,
+    "burden_status": "Moderate",
+    "ehi_component": 45.07,
+    "iai_deficit": 45.34,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c4": {
+    "burden_score": 45.25,
+    "burden_status": "Moderate",
+    "ehi_component": 45.95,
+    "iai_deficit": 44.55,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c5": {
+    "burden_score": 45.38,
+    "burden_status": "Moderate",
+    "ehi_component": 45.79,
+    "iai_deficit": 44.96,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c6": {
+    "burden_score": 48.41,
+    "burden_status": "Moderate",
+    "ehi_component": 50.7,
+    "iai_deficit": 46.12,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c7": {
+    "burden_score": 58.59,
+    "burden_status": "High",
+    "ehi_component": 63.95,
+    "iai_deficit": 53.23,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r14_c8": {
+    "burden_score": 57.58,
+    "burden_status": "High",
+    "ehi_component": 68.59,
+    "iai_deficit": 46.57,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r14_c9": {
+    "burden_score": 54.94,
+    "burden_status": "High",
+    "ehi_component": 66.09,
+    "iai_deficit": 43.79,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r14_c10": {
+    "burden_score": 62.49,
+    "burden_status": "High",
+    "ehi_component": 77.38,
+    "iai_deficit": 47.61,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r14_c11": {
+    "burden_score": 50.6,
+    "burden_status": "High",
+    "ehi_component": 69.21,
+    "iai_deficit": 31.98,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r14_c12": {
+    "burden_score": 45.29,
+    "burden_status": "Moderate",
+    "ehi_component": 61.53,
+    "iai_deficit": 29.05,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r14_c13": {
+    "burden_score": 44.84,
+    "burden_status": "Moderate",
+    "ehi_component": 60.07,
+    "iai_deficit": 29.62,
+    "environmental_status": "Excellent",
+    "iai_status": "Good"
+  },
+  "r14_c14": {
+    "burden_score": 58.64,
+    "burden_status": "High",
+    "ehi_component": 52.1,
+    "iai_deficit": 65.18,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r14_c15": {
+    "burden_score": 58.69,
+    "burden_status": "High",
+    "ehi_component": 54.75,
+    "iai_deficit": 62.62,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r14_c16": {
+    "burden_score": 62.36,
+    "burden_status": "High",
+    "ehi_component": 55.92,
+    "iai_deficit": 68.8,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r14_c17": {
+    "burden_score": 64.47,
+    "burden_status": "High",
+    "ehi_component": 59.42,
+    "iai_deficit": 69.53,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r14_c18": {
+    "burden_score": 50.05,
+    "burden_status": "High",
+    "ehi_component": 45.84,
+    "iai_deficit": 54.25,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r14_c19": {
+    "burden_score": 45.25,
+    "burden_status": "Moderate",
+    "ehi_component": 40.1,
+    "iai_deficit": 50.39,
+    "environmental_status": "Excellent",
+    "iai_status": "Moderate"
+  },
+  "r14_c20": {
+    "burden_score": 44.73,
+    "burden_status": "Moderate",
+    "ehi_component": 40.89,
+    "iai_deficit": 48.56,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r14_c21": {
+    "burden_score": 43.26,
+    "burden_status": "Moderate",
+    "ehi_component": 41.42,
+    "iai_deficit": 45.09,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r15_c0": {
+    "burden_score": 31.98,
+    "burden_status": "Moderate",
+    "ehi_component": 44.33,
+    "iai_deficit": 19.64,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r15_c1": {
+    "burden_score": 31.98,
+    "burden_status": "Moderate",
+    "ehi_component": 44.67,
+    "iai_deficit": 19.29,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r15_c2": {
+    "burden_score": 31.4,
+    "burden_status": "Moderate",
+    "ehi_component": 44.08,
+    "iai_deficit": 18.72,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r15_c3": {
+    "burden_score": 31.82,
+    "burden_status": "Moderate",
+    "ehi_component": 44.48,
+    "iai_deficit": 19.15,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r15_c4": {
+    "burden_score": 32.52,
+    "burden_status": "Moderate",
+    "ehi_component": 46.17,
+    "iai_deficit": 18.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r15_c5": {
+    "burden_score": 39.64,
+    "burden_status": "Moderate",
+    "ehi_component": 58.38,
+    "iai_deficit": 20.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r15_c6": {
+    "burden_score": 35.95,
+    "burden_status": "Moderate",
+    "ehi_component": 55.27,
+    "iai_deficit": 16.63,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r15_c7": {
+    "burden_score": 53.72,
+    "burden_status": "High",
+    "ehi_component": 61.06,
+    "iai_deficit": 46.37,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r15_c8": {
+    "burden_score": 65.2,
+    "burden_status": "High",
+    "ehi_component": 78.38,
+    "iai_deficit": 52.03,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r15_c9": {
+    "burden_score": 55.84,
+    "burden_status": "High",
+    "ehi_component": 67.9,
+    "iai_deficit": 43.78,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r15_c10": {
+    "burden_score": 59.08,
+    "burden_status": "High",
+    "ehi_component": 72.56,
+    "iai_deficit": 45.59,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r15_c11": {
+    "burden_score": 48.26,
+    "burden_status": "Moderate",
+    "ehi_component": 65.42,
+    "iai_deficit": 31.09,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r15_c12": {
+    "burden_score": 47.91,
+    "burden_status": "Moderate",
+    "ehi_component": 65.33,
+    "iai_deficit": 30.5,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r15_c13": {
+    "burden_score": 41.4,
+    "burden_status": "Moderate",
+    "ehi_component": 55.3,
+    "iai_deficit": 27.5,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r15_c14": {
+    "burden_score": 63.55,
+    "burden_status": "High",
+    "ehi_component": 61.58,
+    "iai_deficit": 65.52,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r15_c15": {
+    "burden_score": 62.61,
+    "burden_status": "High",
+    "ehi_component": 61.32,
+    "iai_deficit": 63.89,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r15_c16": {
+    "burden_score": 56.69,
+    "burden_status": "High",
+    "ehi_component": 55.36,
+    "iai_deficit": 58.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r15_c17": {
+    "burden_score": 61.95,
+    "burden_status": "High",
+    "ehi_component": 59.32,
+    "iai_deficit": 64.58,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r15_c18": {
+    "burden_score": 47.27,
+    "burden_status": "Moderate",
+    "ehi_component": 44.57,
+    "iai_deficit": 49.96,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r15_c19": {
+    "burden_score": 42.7,
+    "burden_status": "Moderate",
+    "ehi_component": 38.23,
+    "iai_deficit": 47.18,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r15_c20": {
+    "burden_score": 48.44,
+    "burden_status": "Moderate",
+    "ehi_component": 42.04,
+    "iai_deficit": 54.83,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r15_c21": {
+    "burden_score": 46.51,
+    "burden_status": "Moderate",
+    "ehi_component": 41.79,
+    "iai_deficit": 51.23,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r16_c0": {
+    "burden_score": 31.77,
+    "burden_status": "Moderate",
+    "ehi_component": 44.29,
+    "iai_deficit": 19.25,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r16_c1": {
+    "burden_score": 31.79,
+    "burden_status": "Moderate",
+    "ehi_component": 44.21,
+    "iai_deficit": 19.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r16_c2": {
+    "burden_score": 31.3,
+    "burden_status": "Moderate",
+    "ehi_component": 44.03,
+    "iai_deficit": 18.56,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r16_c3": {
+    "burden_score": 31.4,
+    "burden_status": "Moderate",
+    "ehi_component": 44.13,
+    "iai_deficit": 18.67,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r16_c4": {
+    "burden_score": 30.72,
+    "burden_status": "Moderate",
+    "ehi_component": 44.15,
+    "iai_deficit": 17.3,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r16_c5": {
+    "burden_score": 39.33,
+    "burden_status": "Moderate",
+    "ehi_component": 57.92,
+    "iai_deficit": 20.73,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r16_c6": {
+    "burden_score": 44.94,
+    "burden_status": "Moderate",
+    "ehi_component": 66.95,
+    "iai_deficit": 22.92,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r16_c7": {
+    "burden_score": 42.79,
+    "burden_status": "Moderate",
+    "ehi_component": 63.97,
+    "iai_deficit": 21.61,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r16_c8": {
+    "burden_score": 33.3,
+    "burden_status": "Moderate",
+    "ehi_component": 50.81,
+    "iai_deficit": 15.78,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r16_c9": {
+    "burden_score": 69.86,
+    "burden_status": "High",
+    "ehi_component": 63.75,
+    "iai_deficit": 75.97,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r16_c10": {
+    "burden_score": 72.69,
+    "burden_status": "High",
+    "ehi_component": 64.92,
+    "iai_deficit": 80.45,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r16_c11": {
+    "burden_score": 49.15,
+    "burden_status": "Moderate",
+    "ehi_component": 66.77,
+    "iai_deficit": 31.53,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r16_c12": {
+    "burden_score": 45.42,
+    "burden_status": "Moderate",
+    "ehi_component": 60.93,
+    "iai_deficit": 29.9,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r16_c13": {
+    "burden_score": 47.5,
+    "burden_status": "Moderate",
+    "ehi_component": 63.99,
+    "iai_deficit": 31.02,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r16_c14": {
+    "burden_score": 76.25,
+    "burden_status": "Critical",
+    "ehi_component": 75.31,
+    "iai_deficit": 77.19,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r16_c15": {
+    "burden_score": 78.31,
+    "burden_status": "Critical",
+    "ehi_component": 79.06,
+    "iai_deficit": 77.56,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r16_c16": {
+    "burden_score": 78.79,
+    "burden_status": "Critical",
+    "ehi_component": 80.1,
+    "iai_deficit": 77.48,
+    "environmental_status": "Critical",
+    "iai_status": "Low"
+  },
+  "r16_c17": {
+    "burden_score": 47.56,
+    "burden_status": "Moderate",
+    "ehi_component": 48.34,
+    "iai_deficit": 46.79,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r16_c18": {
+    "burden_score": 52.95,
+    "burden_status": "High",
+    "ehi_component": 51.3,
+    "iai_deficit": 54.59,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r16_c19": {
+    "burden_score": 46.23,
+    "burden_status": "Moderate",
+    "ehi_component": 43.78,
+    "iai_deficit": 48.67,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r16_c20": {
+    "burden_score": 48.77,
+    "burden_status": "Moderate",
+    "ehi_component": 42.68,
+    "iai_deficit": 54.85,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r16_c21": {
+    "burden_score": 47.59,
+    "burden_status": "Moderate",
+    "ehi_component": 43.26,
+    "iai_deficit": 51.92,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r17_c0": {
+    "burden_score": 31.89,
+    "burden_status": "Moderate",
+    "ehi_component": 44.99,
+    "iai_deficit": 18.8,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r17_c1": {
+    "burden_score": 31.74,
+    "burden_status": "Moderate",
+    "ehi_component": 44.18,
+    "iai_deficit": 19.29,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r17_c2": {
+    "burden_score": 31.5,
+    "burden_status": "Moderate",
+    "ehi_component": 44.26,
+    "iai_deficit": 18.73,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r17_c3": {
+    "burden_score": 31.28,
+    "burden_status": "Moderate",
+    "ehi_component": 44.28,
+    "iai_deficit": 18.28,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r17_c4": {
+    "burden_score": 30.66,
+    "burden_status": "Moderate",
+    "ehi_component": 44.21,
+    "iai_deficit": 17.11,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r17_c5": {
+    "burden_score": 34.74,
+    "burden_status": "Moderate",
+    "ehi_component": 51.44,
+    "iai_deficit": 18.05,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r17_c6": {
+    "burden_score": 41.97,
+    "burden_status": "Moderate",
+    "ehi_component": 61.57,
+    "iai_deficit": 22.38,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r17_c7": {
+    "burden_score": 47.39,
+    "burden_status": "Moderate",
+    "ehi_component": 70.76,
+    "iai_deficit": 24.02,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r17_c8": {
+    "burden_score": 57.13,
+    "burden_status": "High",
+    "ehi_component": 66.72,
+    "iai_deficit": 47.54,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r17_c9": {
+    "burden_score": 79.92,
+    "burden_status": "Critical",
+    "ehi_component": 72.06,
+    "iai_deficit": 87.78,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r17_c10": {
+    "burden_score": 78.92,
+    "burden_status": "Critical",
+    "ehi_component": 71.16,
+    "iai_deficit": 86.68,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r17_c11": {
+    "burden_score": 73.81,
+    "burden_status": "High",
+    "ehi_component": 65.8,
+    "iai_deficit": 81.81,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r17_c12": {
+    "burden_score": 49.14,
+    "burden_status": "Moderate",
+    "ehi_component": 66.09,
+    "iai_deficit": 32.18,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r17_c13": {
+    "burden_score": 46.53,
+    "burden_status": "Moderate",
+    "ehi_component": 63.6,
+    "iai_deficit": 29.45,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r17_c14": {
+    "burden_score": 70.41,
+    "burden_status": "High",
+    "ehi_component": 68.8,
+    "iai_deficit": 72.01,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r17_c15": {
+    "burden_score": 87.54,
+    "burden_status": "Critical",
+    "ehi_component": 87.65,
+    "iai_deficit": 87.43,
+    "environmental_status": "Critical",
+    "iai_status": "Low"
+  },
+  "r17_c16": {
+    "burden_score": 71.84,
+    "burden_status": "High",
+    "ehi_component": 71.8,
+    "iai_deficit": 71.87,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r17_c17": {
+    "burden_score": 51.27,
+    "burden_status": "High",
+    "ehi_component": 48.39,
+    "iai_deficit": 54.16,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r17_c18": {
+    "burden_score": 37.27,
+    "burden_status": "Moderate",
+    "ehi_component": 35.77,
+    "iai_deficit": 38.76,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r17_c19": {
+    "burden_score": 45.75,
+    "burden_status": "Moderate",
+    "ehi_component": 41.39,
+    "iai_deficit": 50.11,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r17_c20": {
+    "burden_score": 49.42,
+    "burden_status": "Moderate",
+    "ehi_component": 44.13,
+    "iai_deficit": 54.72,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r17_c21": {
+    "burden_score": 45.44,
+    "burden_status": "Moderate",
+    "ehi_component": 43.41,
+    "iai_deficit": 47.48,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r18_c0": {
+    "burden_score": 31.97,
+    "burden_status": "Moderate",
+    "ehi_component": 44.71,
+    "iai_deficit": 19.24,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r18_c1": {
+    "burden_score": 31.82,
+    "burden_status": "Moderate",
+    "ehi_component": 44.21,
+    "iai_deficit": 19.44,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r18_c2": {
+    "burden_score": 31.61,
+    "burden_status": "Moderate",
+    "ehi_component": 44.04,
+    "iai_deficit": 19.18,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r18_c3": {
+    "burden_score": 30.82,
+    "burden_status": "Moderate",
+    "ehi_component": 43.95,
+    "iai_deficit": 17.68,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r18_c4": {
+    "burden_score": 30.72,
+    "burden_status": "Moderate",
+    "ehi_component": 43.97,
+    "iai_deficit": 17.47,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r18_c5": {
+    "burden_score": 43.31,
+    "burden_status": "Moderate",
+    "ehi_component": 63.24,
+    "iai_deficit": 23.37,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r18_c6": {
+    "burden_score": 50.53,
+    "burden_status": "High",
+    "ehi_component": 56.59,
+    "iai_deficit": 44.47,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r18_c7": {
+    "burden_score": 60.92,
+    "burden_status": "High",
+    "ehi_component": 71.28,
+    "iai_deficit": 50.56,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r18_c8": {
+    "burden_score": 54.39,
+    "burden_status": "High",
+    "ehi_component": 63.42,
+    "iai_deficit": 45.37,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r18_c9": {
+    "burden_score": 74.39,
+    "burden_status": "High",
+    "ehi_component": 65.81,
+    "iai_deficit": 82.97,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r18_c10": {
+    "burden_score": 82.84,
+    "burden_status": "Critical",
+    "ehi_component": 76.62,
+    "iai_deficit": 89.05,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r18_c11": {
+    "burden_score": 81.39,
+    "burden_status": "Critical",
+    "ehi_component": 73.23,
+    "iai_deficit": 89.55,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r18_c12": {
+    "burden_score": 73.22,
+    "burden_status": "High",
+    "ehi_component": 65.37,
+    "iai_deficit": 81.07,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r18_c13": {
+    "burden_score": 53.92,
+    "burden_status": "High",
+    "ehi_component": 57.73,
+    "iai_deficit": 50.12,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r18_c14": {
+    "burden_score": 62.12,
+    "burden_status": "High",
+    "ehi_component": 69.23,
+    "iai_deficit": 55.01,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r18_c15": {
+    "burden_score": 58.58,
+    "burden_status": "High",
+    "ehi_component": 67.07,
+    "iai_deficit": 50.1,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r18_c16": {
+    "burden_score": 54.46,
+    "burden_status": "High",
+    "ehi_component": 52.73,
+    "iai_deficit": 56.19,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r18_c17": {
+    "burden_score": 47.61,
+    "burden_status": "Moderate",
+    "ehi_component": 44.84,
+    "iai_deficit": 50.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r18_c18": {
+    "burden_score": 29.81,
+    "burden_status": "Moderate",
+    "ehi_component": 28.36,
+    "iai_deficit": 31.26,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r18_c19": {
+    "burden_score": 43.68,
+    "burden_status": "Moderate",
+    "ehi_component": 40.33,
+    "iai_deficit": 47.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r18_c20": {
+    "burden_score": 44.09,
+    "burden_status": "Moderate",
+    "ehi_component": 42.33,
+    "iai_deficit": 45.85,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r18_c21": {
+    "burden_score": 47.85,
+    "burden_status": "Moderate",
+    "ehi_component": 45.97,
+    "iai_deficit": 49.73,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r19_c0": {
+    "burden_score": 32.28,
+    "burden_status": "Moderate",
+    "ehi_component": 45.2,
+    "iai_deficit": 19.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r19_c1": {
+    "burden_score": 32.06,
+    "burden_status": "Moderate",
+    "ehi_component": 44.88,
+    "iai_deficit": 19.25,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r19_c2": {
+    "burden_score": 31.55,
+    "burden_status": "Moderate",
+    "ehi_component": 44.08,
+    "iai_deficit": 19.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r19_c3": {
+    "burden_score": 31.36,
+    "burden_status": "Moderate",
+    "ehi_component": 44.09,
+    "iai_deficit": 18.63,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r19_c4": {
+    "burden_score": 31.13,
+    "burden_status": "Moderate",
+    "ehi_component": 44.46,
+    "iai_deficit": 17.8,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r19_c5": {
+    "burden_score": 51.28,
+    "burden_status": "High",
+    "ehi_component": 57.17,
+    "iai_deficit": 45.38,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r19_c6": {
+    "burden_score": 53.02,
+    "burden_status": "High",
+    "ehi_component": 60.74,
+    "iai_deficit": 45.29,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r19_c7": {
+    "burden_score": 62.48,
+    "burden_status": "High",
+    "ehi_component": 73.01,
+    "iai_deficit": 51.95,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r19_c8": {
+    "burden_score": 65.8,
+    "burden_status": "High",
+    "ehi_component": 77.9,
+    "iai_deficit": 53.7,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r19_c9": {
+    "burden_score": 66.67,
+    "burden_status": "High",
+    "ehi_component": 79.96,
+    "iai_deficit": 53.38,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r19_c10": {
+    "burden_score": 90.69,
+    "burden_status": "Critical",
+    "ehi_component": 84.8,
+    "iai_deficit": 96.58,
+    "environmental_status": "Critical",
+    "iai_status": "Low"
+  },
+  "r19_c11": {
+    "burden_score": 82.69,
+    "burden_status": "Critical",
+    "ehi_component": 74.51,
+    "iai_deficit": 90.86,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r19_c12": {
+    "burden_score": 61.81,
+    "burden_status": "High",
+    "ehi_component": 67.9,
+    "iai_deficit": 55.71,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r19_c13": {
+    "burden_score": 56.61,
+    "burden_status": "High",
+    "ehi_component": 61.17,
+    "iai_deficit": 52.04,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r19_c14": {
+    "burden_score": 56.52,
+    "burden_status": "High",
+    "ehi_component": 61.9,
+    "iai_deficit": 51.13,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r19_c15": {
+    "burden_score": 38.28,
+    "burden_status": "Moderate",
+    "ehi_component": 43.12,
+    "iai_deficit": 33.43,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r19_c16": {
+    "burden_score": 45.27,
+    "burden_status": "Moderate",
+    "ehi_component": 49.43,
+    "iai_deficit": 41.11,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r19_c17": {
+    "burden_score": 39.2,
+    "burden_status": "Moderate",
+    "ehi_component": 41.95,
+    "iai_deficit": 36.44,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r19_c18": {
+    "burden_score": 21.91,
+    "burden_status": "Low",
+    "ehi_component": 24.63,
+    "iai_deficit": 19.19,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r19_c19": {
+    "burden_score": 40.87,
+    "burden_status": "Moderate",
+    "ehi_component": 40.01,
+    "iai_deficit": 41.73,
+    "environmental_status": "Excellent",
+    "iai_status": "Good"
+  },
+  "r19_c20": {
+    "burden_score": 36.15,
+    "burden_status": "Moderate",
+    "ehi_component": 39.09,
+    "iai_deficit": 33.21,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r19_c21": {
+    "burden_score": 31.83,
+    "burden_status": "Moderate",
+    "ehi_component": 32.53,
+    "iai_deficit": 31.13,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r20_c0": {
+    "burden_score": 52.41,
+    "burden_status": "High",
+    "ehi_component": 44.85,
+    "iai_deficit": 59.96,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r20_c1": {
+    "burden_score": 52.31,
+    "burden_status": "High",
+    "ehi_component": 45.26,
+    "iai_deficit": 59.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r20_c2": {
+    "burden_score": 51.27,
+    "burden_status": "High",
+    "ehi_component": 44.81,
+    "iai_deficit": 57.73,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r20_c3": {
+    "burden_score": 50.75,
+    "burden_status": "High",
+    "ehi_component": 44.0,
+    "iai_deficit": 57.49,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r20_c4": {
+    "burden_score": 50.77,
+    "burden_status": "High",
+    "ehi_component": 44.25,
+    "iai_deficit": 57.29,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r20_c5": {
+    "burden_score": 55.95,
+    "burden_status": "High",
+    "ehi_component": 51.32,
+    "iai_deficit": 60.58,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r20_c6": {
+    "burden_score": 61.2,
+    "burden_status": "High",
+    "ehi_component": 69.97,
+    "iai_deficit": 52.44,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r20_c7": {
+    "burden_score": 55.61,
+    "burden_status": "High",
+    "ehi_component": 64.48,
+    "iai_deficit": 46.74,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r20_c8": {
+    "burden_score": 66.9,
+    "burden_status": "High",
+    "ehi_component": 81.5,
+    "iai_deficit": 52.3,
+    "environmental_status": "Critical",
+    "iai_status": "Moderate"
+  },
+  "r20_c9": {
+    "burden_score": 87.95,
+    "burden_status": "Critical",
+    "ehi_component": 88.52,
+    "iai_deficit": 87.38,
+    "environmental_status": "Critical",
+    "iai_status": "Low"
+  },
+  "r20_c10": {
+    "burden_score": 87.88,
+    "burden_status": "Critical",
+    "ehi_component": 89.07,
+    "iai_deficit": 86.68,
+    "environmental_status": "Critical",
+    "iai_status": "Low"
+  },
+  "r20_c11": {
+    "burden_score": 72.03,
+    "burden_status": "High",
+    "ehi_component": 80.18,
+    "iai_deficit": 63.88,
+    "environmental_status": "Critical",
+    "iai_status": "Moderate"
+  },
+  "r20_c12": {
+    "burden_score": 73.06,
+    "burden_status": "High",
+    "ehi_component": 80.83,
+    "iai_deficit": 65.3,
+    "environmental_status": "Critical",
+    "iai_status": "Moderate"
+  },
+  "r20_c13": {
+    "burden_score": 64.22,
+    "burden_status": "High",
+    "ehi_component": 70.62,
+    "iai_deficit": 57.82,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r20_c14": {
+    "burden_score": 61.47,
+    "burden_status": "High",
+    "ehi_component": 67.39,
+    "iai_deficit": 55.54,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r20_c15": {
+    "burden_score": 61.81,
+    "burden_status": "High",
+    "ehi_component": 68.95,
+    "iai_deficit": 54.67,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r20_c16": {
+    "burden_score": 42.86,
+    "burden_status": "Moderate",
+    "ehi_component": 46.29,
+    "iai_deficit": 39.43,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r20_c17": {
+    "burden_score": 23.7,
+    "burden_status": "Low",
+    "ehi_component": 27.46,
+    "iai_deficit": 19.93,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r20_c18": {
+    "burden_score": 20.84,
+    "burden_status": "Low",
+    "ehi_component": 24.39,
+    "iai_deficit": 17.29,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r20_c19": {
+    "burden_score": 36.28,
+    "burden_status": "Moderate",
+    "ehi_component": 39.63,
+    "iai_deficit": 32.92,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r20_c20": {
+    "burden_score": 32.28,
+    "burden_status": "Moderate",
+    "ehi_component": 37.88,
+    "iai_deficit": 26.67,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r20_c21": {
+    "burden_score": 28.41,
+    "burden_status": "Moderate",
+    "ehi_component": 30.66,
+    "iai_deficit": 26.17,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r21_c0": {
+    "burden_score": 52.19,
+    "burden_status": "High",
+    "ehi_component": 44.91,
+    "iai_deficit": 59.47,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c1": {
+    "burden_score": 51.89,
+    "burden_status": "High",
+    "ehi_component": 45.06,
+    "iai_deficit": 58.72,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c2": {
+    "burden_score": 52.11,
+    "burden_status": "High",
+    "ehi_component": 45.34,
+    "iai_deficit": 58.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c3": {
+    "burden_score": 51.42,
+    "burden_status": "High",
+    "ehi_component": 44.58,
+    "iai_deficit": 58.26,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c4": {
+    "burden_score": 50.47,
+    "burden_status": "High",
+    "ehi_component": 43.9,
+    "iai_deficit": 57.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c5": {
+    "burden_score": 53.2,
+    "burden_status": "High",
+    "ehi_component": 49.59,
+    "iai_deficit": 56.82,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c6": {
+    "burden_score": 60.53,
+    "burden_status": "High",
+    "ehi_component": 57.43,
+    "iai_deficit": 63.63,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c7": {
+    "burden_score": 61.05,
+    "burden_status": "High",
+    "ehi_component": 58.22,
+    "iai_deficit": 63.89,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r21_c8": {
+    "burden_score": 66.89,
+    "burden_status": "High",
+    "ehi_component": 62.62,
+    "iai_deficit": 71.15,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r21_c9": {
+    "burden_score": 67.86,
+    "burden_status": "High",
+    "ehi_component": 63.26,
+    "iai_deficit": 72.46,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r21_c10": {
+    "burden_score": 74.76,
+    "burden_status": "High",
+    "ehi_component": 71.99,
+    "iai_deficit": 77.53,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r21_c11": {
+    "burden_score": 74.31,
+    "burden_status": "High",
+    "ehi_component": 69.96,
+    "iai_deficit": 78.65,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r21_c12": {
+    "burden_score": 73.14,
+    "burden_status": "High",
+    "ehi_component": 82.36,
+    "iai_deficit": 63.92,
+    "environmental_status": "Critical",
+    "iai_status": "Moderate"
+  },
+  "r21_c13": {
+    "burden_score": 62.33,
+    "burden_status": "High",
+    "ehi_component": 67.07,
+    "iai_deficit": 57.6,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r21_c14": {
+    "burden_score": 64.91,
+    "burden_status": "High",
+    "ehi_component": 71.44,
+    "iai_deficit": 58.39,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r21_c15": {
+    "burden_score": 59.31,
+    "burden_status": "High",
+    "ehi_component": 67.38,
+    "iai_deficit": 51.25,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r21_c16": {
+    "burden_score": 54.38,
+    "burden_status": "High",
+    "ehi_component": 60.69,
+    "iai_deficit": 48.08,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r21_c17": {
+    "burden_score": 37.66,
+    "burden_status": "Moderate",
+    "ehi_component": 38.07,
+    "iai_deficit": 37.25,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r21_c18": {
+    "burden_score": 18.84,
+    "burden_status": "Low",
+    "ehi_component": 20.47,
+    "iai_deficit": 17.21,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r21_c19": {
+    "burden_score": 34.98,
+    "burden_status": "Moderate",
+    "ehi_component": 35.64,
+    "iai_deficit": 34.31,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r21_c20": {
+    "burden_score": 33.31,
+    "burden_status": "Moderate",
+    "ehi_component": 36.44,
+    "iai_deficit": 30.18,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r21_c21": {
+    "burden_score": 24.7,
+    "burden_status": "Low",
+    "ehi_component": 27.34,
+    "iai_deficit": 22.05,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r22_c0": {
+    "burden_score": 51.62,
+    "burden_status": "High",
+    "ehi_component": 44.42,
+    "iai_deficit": 58.81,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r22_c1": {
+    "burden_score": 50.74,
+    "burden_status": "High",
+    "ehi_component": 44.29,
+    "iai_deficit": 57.19,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r22_c2": {
+    "burden_score": 52.81,
+    "burden_status": "High",
+    "ehi_component": 45.31,
+    "iai_deficit": 60.31,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r22_c3": {
+    "burden_score": 52.42,
+    "burden_status": "High",
+    "ehi_component": 44.8,
+    "iai_deficit": 60.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r22_c4": {
+    "burden_score": 51.23,
+    "burden_status": "High",
+    "ehi_component": 44.82,
+    "iai_deficit": 57.63,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r22_c5": {
+    "burden_score": 59.04,
+    "burden_status": "High",
+    "ehi_component": 56.54,
+    "iai_deficit": 61.54,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r22_c6": {
+    "burden_score": 66.36,
+    "burden_status": "High",
+    "ehi_component": 62.96,
+    "iai_deficit": 69.76,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c7": {
+    "burden_score": 63.48,
+    "burden_status": "High",
+    "ehi_component": 60.86,
+    "iai_deficit": 66.11,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c8": {
+    "burden_score": 68.03,
+    "burden_status": "High",
+    "ehi_component": 62.8,
+    "iai_deficit": 73.27,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c9": {
+    "burden_score": 68.88,
+    "burden_status": "High",
+    "ehi_component": 63.36,
+    "iai_deficit": 74.4,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c10": {
+    "burden_score": 72.04,
+    "burden_status": "High",
+    "ehi_component": 66.8,
+    "iai_deficit": 77.29,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r22_c11": {
+    "burden_score": 66.7,
+    "burden_status": "High",
+    "ehi_component": 61.91,
+    "iai_deficit": 71.49,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c12": {
+    "burden_score": 57.25,
+    "burden_status": "High",
+    "ehi_component": 62.07,
+    "iai_deficit": 52.43,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c13": {
+    "burden_score": 53.2,
+    "burden_status": "High",
+    "ehi_component": 57.63,
+    "iai_deficit": 48.76,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r22_c14": {
+    "burden_score": 61.89,
+    "burden_status": "High",
+    "ehi_component": 66.9,
+    "iai_deficit": 56.88,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c15": {
+    "burden_score": 68.88,
+    "burden_status": "High",
+    "ehi_component": 71.85,
+    "iai_deficit": 65.9,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c16": {
+    "burden_score": 66.34,
+    "burden_status": "High",
+    "ehi_component": 71.01,
+    "iai_deficit": 61.67,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r22_c17": {
+    "burden_score": 35.53,
+    "burden_status": "Moderate",
+    "ehi_component": 39.9,
+    "iai_deficit": 31.16,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r22_c18": {
+    "burden_score": 22.79,
+    "burden_status": "Low",
+    "ehi_component": 24.8,
+    "iai_deficit": 20.78,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r22_c19": {
+    "burden_score": 26.76,
+    "burden_status": "Moderate",
+    "ehi_component": 29.62,
+    "iai_deficit": 23.9,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r22_c20": {
+    "burden_score": 33.2,
+    "burden_status": "Moderate",
+    "ehi_component": 36.45,
+    "iai_deficit": 29.95,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r22_c21": {
+    "burden_score": 25.5,
+    "burden_status": "Moderate",
+    "ehi_component": 27.9,
+    "iai_deficit": 23.1,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r23_c0": {
+    "burden_score": 50.46,
+    "burden_status": "High",
+    "ehi_component": 44.22,
+    "iai_deficit": 56.7,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c1": {
+    "burden_score": 51.47,
+    "burden_status": "High",
+    "ehi_component": 44.44,
+    "iai_deficit": 58.51,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c2": {
+    "burden_score": 52.78,
+    "burden_status": "High",
+    "ehi_component": 44.74,
+    "iai_deficit": 60.82,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c3": {
+    "burden_score": 52.61,
+    "burden_status": "High",
+    "ehi_component": 44.51,
+    "iai_deficit": 60.7,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c4": {
+    "burden_score": 54.92,
+    "burden_status": "High",
+    "ehi_component": 50.02,
+    "iai_deficit": 59.83,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c5": {
+    "burden_score": 57.89,
+    "burden_status": "High",
+    "ehi_component": 55.8,
+    "iai_deficit": 59.99,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c6": {
+    "burden_score": 66.36,
+    "burden_status": "High",
+    "ehi_component": 64.13,
+    "iai_deficit": 68.59,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r23_c7": {
+    "burden_score": 68.43,
+    "burden_status": "High",
+    "ehi_component": 66.14,
+    "iai_deficit": 70.71,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r23_c8": {
+    "burden_score": 72.27,
+    "burden_status": "High",
+    "ehi_component": 66.93,
+    "iai_deficit": 77.61,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r23_c9": {
+    "burden_score": 68.08,
+    "burden_status": "High",
+    "ehi_component": 61.59,
+    "iai_deficit": 74.57,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r23_c10": {
+    "burden_score": 68.14,
+    "burden_status": "High",
+    "ehi_component": 62.46,
+    "iai_deficit": 73.82,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r23_c11": {
+    "burden_score": 67.47,
+    "burden_status": "High",
+    "ehi_component": 62.68,
+    "iai_deficit": 72.25,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r23_c12": {
+    "burden_score": 59.57,
+    "burden_status": "High",
+    "ehi_component": 55.82,
+    "iai_deficit": 63.32,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c13": {
+    "burden_score": 29.65,
+    "burden_status": "Moderate",
+    "ehi_component": 32.43,
+    "iai_deficit": 26.87,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r23_c14": {
+    "burden_score": 45.5,
+    "burden_status": "Moderate",
+    "ehi_component": 45.86,
+    "iai_deficit": 45.13,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r23_c15": {
+    "burden_score": 66.84,
+    "burden_status": "High",
+    "ehi_component": 70.15,
+    "iai_deficit": 63.53,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r23_c16": {
+    "burden_score": 55.16,
+    "burden_status": "High",
+    "ehi_component": 59.4,
+    "iai_deficit": 50.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c17": {
+    "burden_score": 57.34,
+    "burden_status": "High",
+    "ehi_component": 60.14,
+    "iai_deficit": 54.55,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r23_c18": {
+    "burden_score": 54.14,
+    "burden_status": "High",
+    "ehi_component": 57.31,
+    "iai_deficit": 50.96,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r23_c19": {
+    "burden_score": 25.3,
+    "burden_status": "Moderate",
+    "ehi_component": 26.52,
+    "iai_deficit": 24.08,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r23_c20": {
+    "burden_score": 29.41,
+    "burden_status": "Moderate",
+    "ehi_component": 35.81,
+    "iai_deficit": 23.0,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r23_c21": {
+    "burden_score": 27.02,
+    "burden_status": "Moderate",
+    "ehi_component": 29.98,
+    "iai_deficit": 24.06,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r24_c0": {
+    "burden_score": 49.28,
+    "burden_status": "Moderate",
+    "ehi_component": 43.3,
+    "iai_deficit": 55.27,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c1": {
+    "burden_score": 54.88,
+    "burden_status": "High",
+    "ehi_component": 50.61,
+    "iai_deficit": 59.14,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c2": {
+    "burden_score": 63.12,
+    "burden_status": "High",
+    "ehi_component": 58.31,
+    "iai_deficit": 67.93,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c3": {
+    "burden_score": 54.78,
+    "burden_status": "High",
+    "ehi_component": 48.22,
+    "iai_deficit": 61.35,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c4": {
+    "burden_score": 56.45,
+    "burden_status": "High",
+    "ehi_component": 53.54,
+    "iai_deficit": 59.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c5": {
+    "burden_score": 64.46,
+    "burden_status": "High",
+    "ehi_component": 62.08,
+    "iai_deficit": 66.84,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r24_c6": {
+    "burden_score": 68.77,
+    "burden_status": "High",
+    "ehi_component": 68.82,
+    "iai_deficit": 68.71,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r24_c7": {
+    "burden_score": 68.11,
+    "burden_status": "High",
+    "ehi_component": 67.7,
+    "iai_deficit": 68.52,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r24_c8": {
+    "burden_score": 73.13,
+    "burden_status": "High",
+    "ehi_component": 67.4,
+    "iai_deficit": 78.86,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r24_c9": {
+    "burden_score": 73.23,
+    "burden_status": "High",
+    "ehi_component": 67.56,
+    "iai_deficit": 78.91,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r24_c10": {
+    "burden_score": 66.95,
+    "burden_status": "High",
+    "ehi_component": 61.54,
+    "iai_deficit": 72.36,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r24_c11": {
+    "burden_score": 63.97,
+    "burden_status": "High",
+    "ehi_component": 58.54,
+    "iai_deficit": 69.41,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c12": {
+    "burden_score": 57.99,
+    "burden_status": "High",
+    "ehi_component": 57.96,
+    "iai_deficit": 58.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c13": {
+    "burden_score": 38.95,
+    "burden_status": "Moderate",
+    "ehi_component": 37.2,
+    "iai_deficit": 40.71,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r24_c14": {
+    "burden_score": 46.25,
+    "burden_status": "Moderate",
+    "ehi_component": 43.84,
+    "iai_deficit": 48.65,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r24_c15": {
+    "burden_score": 58.86,
+    "burden_status": "High",
+    "ehi_component": 58.73,
+    "iai_deficit": 59.0,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r24_c16": {
+    "burden_score": 67.97,
+    "burden_status": "High",
+    "ehi_component": 70.75,
+    "iai_deficit": 65.2,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r24_c17": {
+    "burden_score": 49.66,
+    "burden_status": "Moderate",
+    "ehi_component": 54.16,
+    "iai_deficit": 45.16,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r24_c18": {
+    "burden_score": 25.88,
+    "burden_status": "Moderate",
+    "ehi_component": 28.31,
+    "iai_deficit": 23.46,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r24_c19": {
+    "burden_score": 18.86,
+    "burden_status": "Low",
+    "ehi_component": 22.19,
+    "iai_deficit": 15.53,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r24_c20": {
+    "burden_score": 26.12,
+    "burden_status": "Moderate",
+    "ehi_component": 31.52,
+    "iai_deficit": 20.72,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r24_c21": {
+    "burden_score": 20.62,
+    "burden_status": "Low",
+    "ehi_component": 32.06,
+    "iai_deficit": 9.17,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r25_c0": {
+    "burden_score": 47.41,
+    "burden_status": "Moderate",
+    "ehi_component": 42.78,
+    "iai_deficit": 52.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c1": {
+    "burden_score": 53.14,
+    "burden_status": "High",
+    "ehi_component": 48.25,
+    "iai_deficit": 58.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c2": {
+    "burden_score": 61.15,
+    "burden_status": "High",
+    "ehi_component": 57.44,
+    "iai_deficit": 64.86,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c3": {
+    "burden_score": 53.3,
+    "burden_status": "High",
+    "ehi_component": 51.01,
+    "iai_deficit": 55.6,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c4": {
+    "burden_score": 33.91,
+    "burden_status": "Moderate",
+    "ehi_component": 42.8,
+    "iai_deficit": 25.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r25_c5": {
+    "burden_score": 41.77,
+    "burden_status": "Moderate",
+    "ehi_component": 52.22,
+    "iai_deficit": 31.33,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r25_c6": {
+    "burden_score": 58.24,
+    "burden_status": "High",
+    "ehi_component": 73.05,
+    "iai_deficit": 43.43,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r25_c7": {
+    "burden_score": 56.69,
+    "burden_status": "High",
+    "ehi_component": 71.17,
+    "iai_deficit": 42.21,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r25_c8": {
+    "burden_score": 56.34,
+    "burden_status": "High",
+    "ehi_component": 72.36,
+    "iai_deficit": 40.31,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r25_c9": {
+    "burden_score": 45.39,
+    "burden_status": "Moderate",
+    "ehi_component": 56.19,
+    "iai_deficit": 34.6,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r25_c10": {
+    "burden_score": 60.14,
+    "burden_status": "High",
+    "ehi_component": 51.3,
+    "iai_deficit": 68.99,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c11": {
+    "burden_score": 65.3,
+    "burden_status": "High",
+    "ehi_component": 57.24,
+    "iai_deficit": 73.35,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c12": {
+    "burden_score": 67.91,
+    "burden_status": "High",
+    "ehi_component": 66.34,
+    "iai_deficit": 69.47,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r25_c13": {
+    "burden_score": 42.05,
+    "burden_status": "Moderate",
+    "ehi_component": 39.87,
+    "iai_deficit": 44.22,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r25_c14": {
+    "burden_score": 50.01,
+    "burden_status": "High",
+    "ehi_component": 47.64,
+    "iai_deficit": 52.38,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c15": {
+    "burden_score": 72.47,
+    "burden_status": "High",
+    "ehi_component": 72.79,
+    "iai_deficit": 72.14,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r25_c16": {
+    "burden_score": 65.33,
+    "burden_status": "High",
+    "ehi_component": 68.14,
+    "iai_deficit": 62.51,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r25_c17": {
+    "burden_score": 53.16,
+    "burden_status": "High",
+    "ehi_component": 54.61,
+    "iai_deficit": 51.71,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r25_c18": {
+    "burden_score": 29.37,
+    "burden_status": "Moderate",
+    "ehi_component": 31.96,
+    "iai_deficit": 26.78,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r25_c19": {
+    "burden_score": 30.49,
+    "burden_status": "Moderate",
+    "ehi_component": 45.76,
+    "iai_deficit": 15.22,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r25_c20": {
+    "burden_score": 17.2,
+    "burden_status": "Low",
+    "ehi_component": 28.71,
+    "iai_deficit": 5.68,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r25_c21": {
+    "burden_score": 33.98,
+    "burden_status": "Moderate",
+    "ehi_component": 51.17,
+    "iai_deficit": 16.8,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r26_c0": {
+    "burden_score": 34.12,
+    "burden_status": "Moderate",
+    "ehi_component": 41.59,
+    "iai_deficit": 26.64,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r26_c1": {
+    "burden_score": 44.09,
+    "burden_status": "Moderate",
+    "ehi_component": 54.01,
+    "iai_deficit": 34.17,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r26_c2": {
+    "burden_score": 26.2,
+    "burden_status": "Moderate",
+    "ehi_component": 34.69,
+    "iai_deficit": 17.7,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r26_c3": {
+    "burden_score": 29.06,
+    "burden_status": "Moderate",
+    "ehi_component": 37.78,
+    "iai_deficit": 20.34,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r26_c4": {
+    "burden_score": 22.93,
+    "burden_status": "Low",
+    "ehi_component": 31.01,
+    "iai_deficit": 14.84,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r26_c5": {
+    "burden_score": 56.41,
+    "burden_status": "High",
+    "ehi_component": 66.57,
+    "iai_deficit": 46.25,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r26_c6": {
+    "burden_score": 56.35,
+    "burden_status": "High",
+    "ehi_component": 71.4,
+    "iai_deficit": 41.3,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r26_c7": {
+    "burden_score": 50.14,
+    "burden_status": "High",
+    "ehi_component": 63.06,
+    "iai_deficit": 37.22,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r26_c8": {
+    "burden_score": 50.78,
+    "burden_status": "High",
+    "ehi_component": 64.7,
+    "iai_deficit": 36.85,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r26_c9": {
+    "burden_score": 37.93,
+    "burden_status": "Moderate",
+    "ehi_component": 45.32,
+    "iai_deficit": 30.54,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r26_c10": {
+    "burden_score": 37.48,
+    "burden_status": "Moderate",
+    "ehi_component": 44.55,
+    "iai_deficit": 30.42,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r26_c11": {
+    "burden_score": 47.66,
+    "burden_status": "Moderate",
+    "ehi_component": 58.5,
+    "iai_deficit": 36.81,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r26_c12": {
+    "burden_score": 60.49,
+    "burden_status": "High",
+    "ehi_component": 55.2,
+    "iai_deficit": 65.79,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r26_c13": {
+    "burden_score": 47.26,
+    "burden_status": "Moderate",
+    "ehi_component": 41.5,
+    "iai_deficit": 53.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r26_c14": {
+    "burden_score": 39.84,
+    "burden_status": "Moderate",
+    "ehi_component": 38.18,
+    "iai_deficit": 41.49,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r26_c15": {
+    "burden_score": 61.59,
+    "burden_status": "High",
+    "ehi_component": 59.66,
+    "iai_deficit": 63.53,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r26_c16": {
+    "burden_score": 69.69,
+    "burden_status": "High",
+    "ehi_component": 72.45,
+    "iai_deficit": 66.92,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r26_c17": {
+    "burden_score": 64.49,
+    "burden_status": "High",
+    "ehi_component": 68.21,
+    "iai_deficit": 60.77,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r26_c18": {
+    "burden_score": 38.41,
+    "burden_status": "Moderate",
+    "ehi_component": 56.47,
+    "iai_deficit": 20.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r26_c19": {
+    "burden_score": 30.07,
+    "burden_status": "Moderate",
+    "ehi_component": 47.82,
+    "iai_deficit": 12.33,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r26_c20": {
+    "burden_score": 27.78,
+    "burden_status": "Moderate",
+    "ehi_component": 42.69,
+    "iai_deficit": 12.88,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r26_c21": {
+    "burden_score": 24.24,
+    "burden_status": "Low",
+    "ehi_component": 38.47,
+    "iai_deficit": 10.02,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r27_c0": {
+    "burden_score": 35.11,
+    "burden_status": "Moderate",
+    "ehi_component": 42.43,
+    "iai_deficit": 27.78,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r27_c1": {
+    "burden_score": 41.05,
+    "burden_status": "Moderate",
+    "ehi_component": 49.41,
+    "iai_deficit": 32.7,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r27_c2": {
+    "burden_score": 31.24,
+    "burden_status": "Moderate",
+    "ehi_component": 39.36,
+    "iai_deficit": 23.13,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r27_c3": {
+    "burden_score": 48.61,
+    "burden_status": "Moderate",
+    "ehi_component": 59.79,
+    "iai_deficit": 37.44,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r27_c4": {
+    "burden_score": 21.48,
+    "burden_status": "Low",
+    "ehi_component": 29.41,
+    "iai_deficit": 13.54,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r27_c5": {
+    "burden_score": 40.87,
+    "burden_status": "Moderate",
+    "ehi_component": 50.89,
+    "iai_deficit": 30.84,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r27_c6": {
+    "burden_score": 52.67,
+    "burden_status": "High",
+    "ehi_component": 66.08,
+    "iai_deficit": 39.26,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r27_c7": {
+    "burden_score": 49.3,
+    "burden_status": "Moderate",
+    "ehi_component": 61.24,
+    "iai_deficit": 37.36,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r27_c8": {
+    "burden_score": 46.04,
+    "burden_status": "Moderate",
+    "ehi_component": 57.69,
+    "iai_deficit": 34.39,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r27_c9": {
+    "burden_score": 31.38,
+    "burden_status": "Moderate",
+    "ehi_component": 38.2,
+    "iai_deficit": 24.55,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r27_c10": {
+    "burden_score": 41.7,
+    "burden_status": "Moderate",
+    "ehi_component": 50.51,
+    "iai_deficit": 32.89,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r27_c11": {
+    "burden_score": 46.93,
+    "burden_status": "Moderate",
+    "ehi_component": 55.8,
+    "iai_deficit": 38.06,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r27_c12": {
+    "burden_score": 53.55,
+    "burden_status": "High",
+    "ehi_component": 47.38,
+    "iai_deficit": 59.72,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r27_c13": {
+    "burden_score": 46.19,
+    "burden_status": "Moderate",
+    "ehi_component": 40.27,
+    "iai_deficit": 52.1,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r27_c14": {
+    "burden_score": 42.09,
+    "burden_status": "Moderate",
+    "ehi_component": 38.74,
+    "iai_deficit": 45.44,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r27_c15": {
+    "burden_score": 59.4,
+    "burden_status": "High",
+    "ehi_component": 57.36,
+    "iai_deficit": 61.44,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r27_c16": {
+    "burden_score": 51.59,
+    "burden_status": "High",
+    "ehi_component": 74.78,
+    "iai_deficit": 28.4,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r27_c17": {
+    "burden_score": 44.32,
+    "burden_status": "Moderate",
+    "ehi_component": 64.09,
+    "iai_deficit": 24.54,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r27_c18": {
+    "burden_score": 43.52,
+    "burden_status": "Moderate",
+    "ehi_component": 62.65,
+    "iai_deficit": 24.39,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r27_c19": {
+    "burden_score": 36.94,
+    "burden_status": "Moderate",
+    "ehi_component": 53.45,
+    "iai_deficit": 20.43,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r27_c20": {
+    "burden_score": 31.06,
+    "burden_status": "Moderate",
+    "ehi_component": 45.24,
+    "iai_deficit": 16.88,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r27_c21": {
+    "burden_score": 20.17,
+    "burden_status": "Low",
+    "ehi_component": 33.3,
+    "iai_deficit": 7.05,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r28_c0": {
+    "burden_score": 54.89,
+    "burden_status": "High",
+    "ehi_component": 42.85,
+    "iai_deficit": 66.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r28_c1": {
+    "burden_score": 37.17,
+    "burden_status": "Moderate",
+    "ehi_component": 43.99,
+    "iai_deficit": 30.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r28_c2": {
+    "burden_score": 44.97,
+    "burden_status": "Moderate",
+    "ehi_component": 54.15,
+    "iai_deficit": 35.8,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r28_c3": {
+    "burden_score": 58.77,
+    "burden_status": "High",
+    "ehi_component": 71.86,
+    "iai_deficit": 45.69,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r28_c4": {
+    "burden_score": 35.47,
+    "burden_status": "Moderate",
+    "ehi_component": 45.49,
+    "iai_deficit": 25.45,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r28_c5": {
+    "burden_score": 20.78,
+    "burden_status": "Low",
+    "ehi_component": 28.82,
+    "iai_deficit": 12.74,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r28_c6": {
+    "burden_score": 45.87,
+    "burden_status": "Moderate",
+    "ehi_component": 57.68,
+    "iai_deficit": 34.06,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r28_c7": {
+    "burden_score": 49.72,
+    "burden_status": "Moderate",
+    "ehi_component": 62.29,
+    "iai_deficit": 37.15,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r28_c8": {
+    "burden_score": 51.9,
+    "burden_status": "High",
+    "ehi_component": 66.19,
+    "iai_deficit": 37.61,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r28_c9": {
+    "burden_score": 50.42,
+    "burden_status": "High",
+    "ehi_component": 62.76,
+    "iai_deficit": 38.08,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r28_c10": {
+    "burden_score": 52.43,
+    "burden_status": "High",
+    "ehi_component": 65.11,
+    "iai_deficit": 39.75,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r28_c11": {
+    "burden_score": 56.98,
+    "burden_status": "High",
+    "ehi_component": 67.58,
+    "iai_deficit": 46.39,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r28_c12": {
+    "burden_score": 42.49,
+    "burden_status": "Moderate",
+    "ehi_component": 34.44,
+    "iai_deficit": 50.54,
+    "environmental_status": "Good",
+    "iai_status": "Moderate"
+  },
+  "r28_c13": {
+    "burden_score": 48.0,
+    "burden_status": "Moderate",
+    "ehi_component": 41.32,
+    "iai_deficit": 54.68,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r28_c14": {
+    "burden_score": 32.88,
+    "burden_status": "Moderate",
+    "ehi_component": 42.25,
+    "iai_deficit": 23.52,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r28_c15": {
+    "burden_score": 32.31,
+    "burden_status": "Moderate",
+    "ehi_component": 42.49,
+    "iai_deficit": 22.12,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r28_c16": {
+    "burden_score": 44.4,
+    "burden_status": "Moderate",
+    "ehi_component": 62.84,
+    "iai_deficit": 25.95,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r28_c17": {
+    "burden_score": 37.65,
+    "burden_status": "Moderate",
+    "ehi_component": 54.39,
+    "iai_deficit": 20.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r28_c18": {
+    "burden_score": 42.23,
+    "burden_status": "Moderate",
+    "ehi_component": 60.28,
+    "iai_deficit": 24.19,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r28_c19": {
+    "burden_score": 42.3,
+    "burden_status": "Moderate",
+    "ehi_component": 61.25,
+    "iai_deficit": 23.34,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r28_c20": {
+    "burden_score": 42.79,
+    "burden_status": "Moderate",
+    "ehi_component": 63.56,
+    "iai_deficit": 22.02,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r28_c21": {
+    "burden_score": 37.32,
+    "burden_status": "Moderate",
+    "ehi_component": 56.19,
+    "iai_deficit": 18.46,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r29_c0": {
+    "burden_score": 55.15,
+    "burden_status": "High",
+    "ehi_component": 42.96,
+    "iai_deficit": 67.34,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r29_c1": {
+    "burden_score": 56.48,
+    "burden_status": "High",
+    "ehi_component": 43.28,
+    "iai_deficit": 69.67,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r29_c2": {
+    "burden_score": 66.58,
+    "burden_status": "High",
+    "ehi_component": 52.51,
+    "iai_deficit": 80.66,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r29_c3": {
+    "burden_score": 79.8,
+    "burden_status": "Critical",
+    "ehi_component": 65.14,
+    "iai_deficit": 94.46,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r29_c4": {
+    "burden_score": 88.1,
+    "burden_status": "Critical",
+    "ehi_component": 76.2,
+    "iai_deficit": 100.0,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r29_c5": {
+    "burden_score": 63.94,
+    "burden_status": "High",
+    "ehi_component": 57.31,
+    "iai_deficit": 70.57,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r29_c6": {
+    "burden_score": 78.29,
+    "burden_status": "Critical",
+    "ehi_component": 66.87,
+    "iai_deficit": 89.71,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r29_c7": {
+    "burden_score": 74.66,
+    "burden_status": "High",
+    "ehi_component": 63.38,
+    "iai_deficit": 85.94,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r29_c8": {
+    "burden_score": 75.86,
+    "burden_status": "Critical",
+    "ehi_component": 65.04,
+    "iai_deficit": 86.69,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r29_c9": {
+    "burden_score": 70.86,
+    "burden_status": "High",
+    "ehi_component": 74.69,
+    "iai_deficit": 67.03,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r29_c10": {
+    "burden_score": 63.83,
+    "burden_status": "High",
+    "ehi_component": 63.71,
+    "iai_deficit": 63.94,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r29_c11": {
+    "burden_score": 56.34,
+    "burden_status": "High",
+    "ehi_component": 50.6,
+    "iai_deficit": 62.08,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r29_c12": {
+    "burden_score": 37.83,
+    "burden_status": "Moderate",
+    "ehi_component": 29.17,
+    "iai_deficit": 46.48,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r29_c13": {
+    "burden_score": 25.96,
+    "burden_status": "Moderate",
+    "ehi_component": 32.43,
+    "iai_deficit": 19.48,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r29_c14": {
+    "burden_score": 31.66,
+    "burden_status": "Moderate",
+    "ehi_component": 40.39,
+    "iai_deficit": 22.92,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r29_c15": {
+    "burden_score": 29.15,
+    "burden_status": "Moderate",
+    "ehi_component": 36.87,
+    "iai_deficit": 21.43,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r29_c16": {
+    "burden_score": 33.39,
+    "burden_status": "Moderate",
+    "ehi_component": 44.32,
+    "iai_deficit": 22.47,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r29_c17": {
+    "burden_score": 41.55,
+    "burden_status": "Moderate",
+    "ehi_component": 59.29,
+    "iai_deficit": 23.8,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r29_c18": {
+    "burden_score": 46.74,
+    "burden_status": "Moderate",
+    "ehi_component": 67.85,
+    "iai_deficit": 25.64,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r29_c19": {
+    "burden_score": 41.39,
+    "burden_status": "Moderate",
+    "ehi_component": 60.92,
+    "iai_deficit": 21.86,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r29_c20": {
+    "burden_score": 48.4,
+    "burden_status": "Moderate",
+    "ehi_component": 69.11,
+    "iai_deficit": 27.68,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r29_c21": {
+    "burden_score": 38.24,
+    "burden_status": "Moderate",
+    "ehi_component": 57.43,
+    "iai_deficit": 19.05,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r30_c0": {
+    "burden_score": 55.81,
+    "burden_status": "High",
+    "ehi_component": 43.01,
+    "iai_deficit": 68.61,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r30_c1": {
+    "burden_score": 77.37,
+    "burden_status": "Critical",
+    "ehi_component": 59.78,
+    "iai_deficit": 94.95,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r30_c2": {
+    "burden_score": 71.98,
+    "burden_status": "High",
+    "ehi_component": 56.71,
+    "iai_deficit": 87.26,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r30_c3": {
+    "burden_score": 62.88,
+    "burden_status": "High",
+    "ehi_component": 53.5,
+    "iai_deficit": 72.26,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r30_c4": {
+    "burden_score": 78.65,
+    "burden_status": "Critical",
+    "ehi_component": 68.09,
+    "iai_deficit": 89.21,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r30_c5": {
+    "burden_score": 79.36,
+    "burden_status": "Critical",
+    "ehi_component": 69.7,
+    "iai_deficit": 89.01,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r30_c6": {
+    "burden_score": 73.93,
+    "burden_status": "High",
+    "ehi_component": 62.82,
+    "iai_deficit": 85.04,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r30_c7": {
+    "burden_score": 69.19,
+    "burden_status": "High",
+    "ehi_component": 57.86,
+    "iai_deficit": 80.52,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r30_c8": {
+    "burden_score": 59.03,
+    "burden_status": "High",
+    "ehi_component": 59.88,
+    "iai_deficit": 58.18,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r30_c9": {
+    "burden_score": 71.64,
+    "burden_status": "High",
+    "ehi_component": 74.48,
+    "iai_deficit": 68.8,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r30_c10": {
+    "burden_score": 67.33,
+    "burden_status": "High",
+    "ehi_component": 69.81,
+    "iai_deficit": 64.84,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r30_c11": {
+    "burden_score": 58.77,
+    "burden_status": "High",
+    "ehi_component": 55.49,
+    "iai_deficit": 62.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r30_c12": {
+    "burden_score": 48.36,
+    "burden_status": "Moderate",
+    "ehi_component": 41.71,
+    "iai_deficit": 55.0,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r30_c13": {
+    "burden_score": 36.31,
+    "burden_status": "Moderate",
+    "ehi_component": 45.82,
+    "iai_deficit": 26.81,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r30_c14": {
+    "burden_score": 33.27,
+    "burden_status": "Moderate",
+    "ehi_component": 42.06,
+    "iai_deficit": 24.49,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r30_c15": {
+    "burden_score": 30.79,
+    "burden_status": "Moderate",
+    "ehi_component": 38.65,
+    "iai_deficit": 22.92,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r30_c16": {
+    "burden_score": 26.71,
+    "burden_status": "Moderate",
+    "ehi_component": 34.62,
+    "iai_deficit": 18.79,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r30_c17": {
+    "burden_score": 46.28,
+    "burden_status": "Moderate",
+    "ehi_component": 65.85,
+    "iai_deficit": 26.71,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r30_c18": {
+    "burden_score": 47.54,
+    "burden_status": "Moderate",
+    "ehi_component": 69.01,
+    "iai_deficit": 26.07,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r30_c19": {
+    "burden_score": 43.87,
+    "burden_status": "Moderate",
+    "ehi_component": 64.0,
+    "iai_deficit": 23.73,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r30_c20": {
+    "burden_score": 46.06,
+    "burden_status": "Moderate",
+    "ehi_component": 66.34,
+    "iai_deficit": 25.78,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r30_c21": {
+    "burden_score": 42.53,
+    "burden_status": "Moderate",
+    "ehi_component": 62.33,
+    "iai_deficit": 22.74,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r31_c0": {
+    "burden_score": 52.09,
+    "burden_status": "High",
+    "ehi_component": 42.84,
+    "iai_deficit": 61.35,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r31_c1": {
+    "burden_score": 70.17,
+    "burden_status": "High",
+    "ehi_component": 56.48,
+    "iai_deficit": 83.86,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r31_c2": {
+    "burden_score": 56.21,
+    "burden_status": "High",
+    "ehi_component": 44.33,
+    "iai_deficit": 68.1,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r31_c3": {
+    "burden_score": 47.48,
+    "burden_status": "Moderate",
+    "ehi_component": 39.84,
+    "iai_deficit": 55.12,
+    "environmental_status": "Good",
+    "iai_status": "Moderate"
+  },
+  "r31_c4": {
+    "burden_score": 63.05,
+    "burden_status": "High",
+    "ehi_component": 53.06,
+    "iai_deficit": 73.03,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r31_c5": {
+    "burden_score": 79.68,
+    "burden_status": "Critical",
+    "ehi_component": 68.11,
+    "iai_deficit": 91.25,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r31_c6": {
+    "burden_score": 80.78,
+    "burden_status": "Critical",
+    "ehi_component": 69.64,
+    "iai_deficit": 91.92,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r31_c7": {
+    "burden_score": 60.27,
+    "burden_status": "High",
+    "ehi_component": 60.52,
+    "iai_deficit": 60.01,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r31_c8": {
+    "burden_score": 63.62,
+    "burden_status": "High",
+    "ehi_component": 64.65,
+    "iai_deficit": 62.6,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r31_c9": {
+    "burden_score": 63.71,
+    "burden_status": "High",
+    "ehi_component": 67.34,
+    "iai_deficit": 60.08,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r31_c10": {
+    "burden_score": 68.61,
+    "burden_status": "High",
+    "ehi_component": 72.89,
+    "iai_deficit": 64.33,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r31_c11": {
+    "burden_score": 64.78,
+    "burden_status": "High",
+    "ehi_component": 62.33,
+    "iai_deficit": 67.24,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r31_c12": {
+    "burden_score": 50.7,
+    "burden_status": "High",
+    "ehi_component": 45.02,
+    "iai_deficit": 56.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r31_c13": {
+    "burden_score": 62.3,
+    "burden_status": "High",
+    "ehi_component": 55.03,
+    "iai_deficit": 69.58,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r31_c14": {
+    "burden_score": 34.74,
+    "burden_status": "Moderate",
+    "ehi_component": 44.03,
+    "iai_deficit": 25.45,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r31_c15": {
+    "burden_score": 33.15,
+    "burden_status": "Moderate",
+    "ehi_component": 42.19,
+    "iai_deficit": 24.11,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r31_c16": {
+    "burden_score": 30.89,
+    "burden_status": "Moderate",
+    "ehi_component": 39.64,
+    "iai_deficit": 22.14,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r31_c17": {
+    "burden_score": 44.9,
+    "burden_status": "Moderate",
+    "ehi_component": 63.11,
+    "iai_deficit": 26.69,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r31_c18": {
+    "burden_score": 51.01,
+    "burden_status": "High",
+    "ehi_component": 73.44,
+    "iai_deficit": 28.58,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r31_c19": {
+    "burden_score": 46.79,
+    "burden_status": "Moderate",
+    "ehi_component": 69.4,
+    "iai_deficit": 24.17,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r31_c20": {
+    "burden_score": 47.96,
+    "burden_status": "Moderate",
+    "ehi_component": 70.35,
+    "iai_deficit": 25.57,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r31_c21": {
+    "burden_score": 46.76,
+    "burden_status": "Moderate",
+    "ehi_component": 68.03,
+    "iai_deficit": 25.48,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r32_c0": {
+    "burden_score": 55.12,
+    "burden_status": "High",
+    "ehi_component": 43.81,
+    "iai_deficit": 66.43,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r32_c1": {
+    "burden_score": 72.56,
+    "burden_status": "High",
+    "ehi_component": 56.54,
+    "iai_deficit": 88.58,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r32_c2": {
+    "burden_score": 71.13,
+    "burden_status": "High",
+    "ehi_component": 55.33,
+    "iai_deficit": 86.93,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r32_c3": {
+    "burden_score": 46.74,
+    "burden_status": "Moderate",
+    "ehi_component": 37.08,
+    "iai_deficit": 56.4,
+    "environmental_status": "Good",
+    "iai_status": "Moderate"
+  },
+  "r32_c4": {
+    "burden_score": 55.2,
+    "burden_status": "High",
+    "ehi_component": 45.31,
+    "iai_deficit": 65.1,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r32_c5": {
+    "burden_score": 74.72,
+    "burden_status": "High",
+    "ehi_component": 61.73,
+    "iai_deficit": 87.71,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r32_c6": {
+    "burden_score": 64.85,
+    "burden_status": "High",
+    "ehi_component": 66.19,
+    "iai_deficit": 63.51,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r32_c7": {
+    "burden_score": 61.27,
+    "burden_status": "High",
+    "ehi_component": 63.62,
+    "iai_deficit": 58.93,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r32_c8": {
+    "burden_score": 67.98,
+    "burden_status": "High",
+    "ehi_component": 72.17,
+    "iai_deficit": 63.8,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r32_c9": {
+    "burden_score": 57.23,
+    "burden_status": "High",
+    "ehi_component": 65.78,
+    "iai_deficit": 48.67,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r32_c10": {
+    "burden_score": 57.81,
+    "burden_status": "High",
+    "ehi_component": 64.55,
+    "iai_deficit": 51.08,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r32_c11": {
+    "burden_score": 57.36,
+    "burden_status": "High",
+    "ehi_component": 59.79,
+    "iai_deficit": 54.94,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r32_c12": {
+    "burden_score": 40.2,
+    "burden_status": "Moderate",
+    "ehi_component": 39.72,
+    "iai_deficit": 40.67,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r32_c13": {
+    "burden_score": 46.25,
+    "burden_status": "Moderate",
+    "ehi_component": 44.97,
+    "iai_deficit": 47.52,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r32_c14": {
+    "burden_score": 23.14,
+    "burden_status": "Low",
+    "ehi_component": 28.36,
+    "iai_deficit": 17.92,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r32_c15": {
+    "burden_score": 28.91,
+    "burden_status": "Moderate",
+    "ehi_component": 36.66,
+    "iai_deficit": 21.15,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r32_c16": {
+    "burden_score": 36.46,
+    "burden_status": "Moderate",
+    "ehi_component": 46.22,
+    "iai_deficit": 26.71,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r32_c17": {
+    "burden_score": 40.27,
+    "burden_status": "Moderate",
+    "ehi_component": 55.42,
+    "iai_deficit": 25.13,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r32_c18": {
+    "burden_score": 52.79,
+    "burden_status": "High",
+    "ehi_component": 76.83,
+    "iai_deficit": 28.75,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r32_c19": {
+    "burden_score": 46.63,
+    "burden_status": "Moderate",
+    "ehi_component": 68.78,
+    "iai_deficit": 24.49,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r32_c20": {
+    "burden_score": 49.82,
+    "burden_status": "Moderate",
+    "ehi_component": 73.9,
+    "iai_deficit": 25.73,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r32_c21": {
+    "burden_score": 47.61,
+    "burden_status": "Moderate",
+    "ehi_component": 70.66,
+    "iai_deficit": 24.57,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r33_c0": {
+    "burden_score": 62.84,
+    "burden_status": "High",
+    "ehi_component": 49.32,
+    "iai_deficit": 76.36,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r33_c1": {
+    "burden_score": 68.16,
+    "burden_status": "High",
+    "ehi_component": 53.41,
+    "iai_deficit": 82.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r33_c2": {
+    "burden_score": 39.06,
+    "burden_status": "Moderate",
+    "ehi_component": 33.22,
+    "iai_deficit": 44.9,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r33_c3": {
+    "burden_score": 46.95,
+    "burden_status": "Moderate",
+    "ehi_component": 37.75,
+    "iai_deficit": 56.14,
+    "environmental_status": "Good",
+    "iai_status": "Moderate"
+  },
+  "r33_c4": {
+    "burden_score": 42.78,
+    "burden_status": "Moderate",
+    "ehi_component": 33.5,
+    "iai_deficit": 52.07,
+    "environmental_status": "Good",
+    "iai_status": "Moderate"
+  },
+  "r33_c5": {
+    "burden_score": 45.57,
+    "burden_status": "Moderate",
+    "ehi_component": 50.71,
+    "iai_deficit": 40.43,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c6": {
+    "burden_score": 56.39,
+    "burden_status": "High",
+    "ehi_component": 61.72,
+    "iai_deficit": 51.06,
+    "environmental_status": "Poor",
+    "iai_status": "Moderate"
+  },
+  "r33_c7": {
+    "burden_score": 52.32,
+    "burden_status": "High",
+    "ehi_component": 59.08,
+    "iai_deficit": 45.56,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c8": {
+    "burden_score": 55.9,
+    "burden_status": "High",
+    "ehi_component": 64.24,
+    "iai_deficit": 47.56,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r33_c9": {
+    "burden_score": 55.64,
+    "burden_status": "High",
+    "ehi_component": 63.99,
+    "iai_deficit": 47.29,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r33_c10": {
+    "burden_score": 54.43,
+    "burden_status": "High",
+    "ehi_component": 59.99,
+    "iai_deficit": 48.87,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c11": {
+    "burden_score": 53.22,
+    "burden_status": "High",
+    "ehi_component": 54.8,
+    "iai_deficit": 51.65,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r33_c12": {
+    "burden_score": 43.28,
+    "burden_status": "Moderate",
+    "ehi_component": 42.76,
+    "iai_deficit": 43.81,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c13": {
+    "burden_score": 47.86,
+    "burden_status": "Moderate",
+    "ehi_component": 46.7,
+    "iai_deficit": 49.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c14": {
+    "burden_score": 29.05,
+    "burden_status": "Moderate",
+    "ehi_component": 30.66,
+    "iai_deficit": 27.44,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r33_c15": {
+    "burden_score": 35.58,
+    "burden_status": "Moderate",
+    "ehi_component": 45.06,
+    "iai_deficit": 26.09,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c16": {
+    "burden_score": 42.37,
+    "burden_status": "Moderate",
+    "ehi_component": 54.7,
+    "iai_deficit": 30.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c17": {
+    "burden_score": 38.78,
+    "burden_status": "Moderate",
+    "ehi_component": 51.37,
+    "iai_deficit": 26.19,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r33_c18": {
+    "burden_score": 39.62,
+    "burden_status": "Moderate",
+    "ehi_component": 54.96,
+    "iai_deficit": 24.29,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r33_c19": {
+    "burden_score": 44.31,
+    "burden_status": "Moderate",
+    "ehi_component": 63.07,
+    "iai_deficit": 25.54,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r33_c20": {
+    "burden_score": 43.31,
+    "burden_status": "Moderate",
+    "ehi_component": 62.96,
+    "iai_deficit": 23.66,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r33_c21": {
+    "burden_score": 47.35,
+    "burden_status": "Moderate",
+    "ehi_component": 69.13,
+    "iai_deficit": 25.58,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r34_c0": {
+    "burden_score": 51.73,
+    "burden_status": "High",
+    "ehi_component": 42.33,
+    "iai_deficit": 61.13,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r34_c1": {
+    "burden_score": 79.06,
+    "burden_status": "Critical",
+    "ehi_component": 62.49,
+    "iai_deficit": 95.62,
+    "environmental_status": "Poor",
+    "iai_status": "Low"
+  },
+  "r34_c2": {
+    "burden_score": 34.66,
+    "burden_status": "Moderate",
+    "ehi_component": 39.0,
+    "iai_deficit": 30.31,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r34_c3": {
+    "burden_score": 39.57,
+    "burden_status": "Moderate",
+    "ehi_component": 43.14,
+    "iai_deficit": 36.0,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c4": {
+    "burden_score": 29.05,
+    "burden_status": "Moderate",
+    "ehi_component": 33.13,
+    "iai_deficit": 24.98,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r34_c5": {
+    "burden_score": 43.23,
+    "burden_status": "Moderate",
+    "ehi_component": 48.17,
+    "iai_deficit": 38.28,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c6": {
+    "burden_score": 45.06,
+    "burden_status": "Moderate",
+    "ehi_component": 49.53,
+    "iai_deficit": 40.59,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c7": {
+    "burden_score": 53.66,
+    "burden_status": "High",
+    "ehi_component": 60.82,
+    "iai_deficit": 46.49,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r34_c8": {
+    "burden_score": 53.6,
+    "burden_status": "High",
+    "ehi_component": 60.84,
+    "iai_deficit": 46.36,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r34_c9": {
+    "burden_score": 55.06,
+    "burden_status": "High",
+    "ehi_component": 62.51,
+    "iai_deficit": 47.62,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r34_c10": {
+    "burden_score": 53.2,
+    "burden_status": "High",
+    "ehi_component": 56.22,
+    "iai_deficit": 50.18,
+    "environmental_status": "Moderate",
+    "iai_status": "Moderate"
+  },
+  "r34_c11": {
+    "burden_score": 41.57,
+    "burden_status": "Moderate",
+    "ehi_component": 49.16,
+    "iai_deficit": 33.99,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c12": {
+    "burden_score": 34.43,
+    "burden_status": "Moderate",
+    "ehi_component": 39.63,
+    "iai_deficit": 29.23,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r34_c13": {
+    "burden_score": 35.14,
+    "burden_status": "Moderate",
+    "ehi_component": 39.07,
+    "iai_deficit": 31.22,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r34_c14": {
+    "burden_score": 39.09,
+    "burden_status": "Moderate",
+    "ehi_component": 43.41,
+    "iai_deficit": 34.77,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c15": {
+    "burden_score": 45.38,
+    "burden_status": "Moderate",
+    "ehi_component": 53.1,
+    "iai_deficit": 37.66,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c16": {
+    "burden_score": 44.7,
+    "burden_status": "Moderate",
+    "ehi_component": 58.43,
+    "iai_deficit": 30.97,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c17": {
+    "burden_score": 43.03,
+    "burden_status": "Moderate",
+    "ehi_component": 60.87,
+    "iai_deficit": 25.18,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r34_c18": {
+    "burden_score": 37.46,
+    "burden_status": "Moderate",
+    "ehi_component": 49.01,
+    "iai_deficit": 25.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r34_c19": {
+    "burden_score": 41.4,
+    "burden_status": "Moderate",
+    "ehi_component": 58.26,
+    "iai_deficit": 24.54,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r34_c20": {
+    "burden_score": 45.43,
+    "burden_status": "Moderate",
+    "ehi_component": 64.97,
+    "iai_deficit": 25.89,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r34_c21": {
+    "burden_score": 47.27,
+    "burden_status": "Moderate",
+    "ehi_component": 68.23,
+    "iai_deficit": 26.3,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r35_c0": {
+    "burden_score": 36.8,
+    "burden_status": "Moderate",
+    "ehi_component": 41.15,
+    "iai_deficit": 32.46,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c1": {
+    "burden_score": 49.66,
+    "burden_status": "Moderate",
+    "ehi_component": 52.53,
+    "iai_deficit": 46.79,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c2": {
+    "burden_score": 48.45,
+    "burden_status": "Moderate",
+    "ehi_component": 50.0,
+    "iai_deficit": 46.9,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c3": {
+    "burden_score": 34.78,
+    "burden_status": "Moderate",
+    "ehi_component": 36.66,
+    "iai_deficit": 32.91,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r35_c4": {
+    "burden_score": 21.76,
+    "burden_status": "Low",
+    "ehi_component": 24.87,
+    "iai_deficit": 18.65,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r35_c5": {
+    "burden_score": 23.2,
+    "burden_status": "Low",
+    "ehi_component": 28.13,
+    "iai_deficit": 18.28,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r35_c6": {
+    "burden_score": 30.64,
+    "burden_status": "Moderate",
+    "ehi_component": 34.44,
+    "iai_deficit": 26.84,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r35_c7": {
+    "burden_score": 43.69,
+    "burden_status": "Moderate",
+    "ehi_component": 49.6,
+    "iai_deficit": 37.78,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c8": {
+    "burden_score": 43.63,
+    "burden_status": "Moderate",
+    "ehi_component": 55.94,
+    "iai_deficit": 31.33,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c9": {
+    "burden_score": 53.14,
+    "burden_status": "High",
+    "ehi_component": 68.93,
+    "iai_deficit": 37.35,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r35_c10": {
+    "burden_score": 51.41,
+    "burden_status": "High",
+    "ehi_component": 64.17,
+    "iai_deficit": 38.65,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r35_c11": {
+    "burden_score": 36.2,
+    "burden_status": "Moderate",
+    "ehi_component": 41.64,
+    "iai_deficit": 30.75,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c12": {
+    "burden_score": 34.17,
+    "burden_status": "Moderate",
+    "ehi_component": 39.08,
+    "iai_deficit": 29.26,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r35_c13": {
+    "burden_score": 29.31,
+    "burden_status": "Moderate",
+    "ehi_component": 32.3,
+    "iai_deficit": 26.33,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r35_c14": {
+    "burden_score": 37.61,
+    "burden_status": "Moderate",
+    "ehi_component": 43.4,
+    "iai_deficit": 31.83,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c15": {
+    "burden_score": 41.21,
+    "burden_status": "Moderate",
+    "ehi_component": 47.88,
+    "iai_deficit": 34.54,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c16": {
+    "burden_score": 38.26,
+    "burden_status": "Moderate",
+    "ehi_component": 44.42,
+    "iai_deficit": 32.1,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c17": {
+    "burden_score": 36.4,
+    "burden_status": "Moderate",
+    "ehi_component": 48.64,
+    "iai_deficit": 24.15,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r35_c18": {
+    "burden_score": 44.45,
+    "burden_status": "Moderate",
+    "ehi_component": 58.18,
+    "iai_deficit": 30.73,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r35_c19": {
+    "burden_score": 35.38,
+    "burden_status": "Moderate",
+    "ehi_component": 48.01,
+    "iai_deficit": 22.74,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r35_c20": {
+    "burden_score": 41.05,
+    "burden_status": "Moderate",
+    "ehi_component": 58.75,
+    "iai_deficit": 23.35,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r35_c21": {
+    "burden_score": 39.53,
+    "burden_status": "Moderate",
+    "ehi_component": 57.01,
+    "iai_deficit": 22.04,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r36_c0": {
+    "burden_score": 38.09,
+    "burden_status": "Moderate",
+    "ehi_component": 41.77,
+    "iai_deficit": 34.41,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r36_c1": {
+    "burden_score": 43.2,
+    "burden_status": "Moderate",
+    "ehi_component": 44.34,
+    "iai_deficit": 42.07,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r36_c2": {
+    "burden_score": 46.0,
+    "burden_status": "Moderate",
+    "ehi_component": 46.84,
+    "iai_deficit": 45.16,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r36_c3": {
+    "burden_score": 33.58,
+    "burden_status": "Moderate",
+    "ehi_component": 34.22,
+    "iai_deficit": 32.93,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r36_c4": {
+    "burden_score": 20.4,
+    "burden_status": "Low",
+    "ehi_component": 23.39,
+    "iai_deficit": 17.4,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r36_c5": {
+    "burden_score": 16.39,
+    "burden_status": "Low",
+    "ehi_component": 22.83,
+    "iai_deficit": 9.95,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r36_c6": {
+    "burden_score": 16.82,
+    "burden_status": "Low",
+    "ehi_component": 23.49,
+    "iai_deficit": 10.15,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r36_c7": {
+    "burden_score": 34.56,
+    "burden_status": "Moderate",
+    "ehi_component": 46.12,
+    "iai_deficit": 23.01,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r36_c8": {
+    "burden_score": 45.31,
+    "burden_status": "Moderate",
+    "ehi_component": 57.98,
+    "iai_deficit": 32.64,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r36_c9": {
+    "burden_score": 45.98,
+    "burden_status": "Moderate",
+    "ehi_component": 59.57,
+    "iai_deficit": 32.4,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r36_c10": {
+    "burden_score": 52.04,
+    "burden_status": "High",
+    "ehi_component": 67.28,
+    "iai_deficit": 36.8,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r36_c11": {
+    "burden_score": 42.34,
+    "burden_status": "Moderate",
+    "ehi_component": 50.31,
+    "iai_deficit": 34.37,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r36_c12": {
+    "burden_score": 36.92,
+    "burden_status": "Moderate",
+    "ehi_component": 42.59,
+    "iai_deficit": 31.25,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r36_c13": {
+    "burden_score": 32.12,
+    "burden_status": "Moderate",
+    "ehi_component": 37.14,
+    "iai_deficit": 27.09,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r36_c14": {
+    "burden_score": 31.39,
+    "burden_status": "Moderate",
+    "ehi_component": 36.91,
+    "iai_deficit": 25.88,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r36_c15": {
+    "burden_score": 25.83,
+    "burden_status": "Moderate",
+    "ehi_component": 28.9,
+    "iai_deficit": 22.75,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r36_c16": {
+    "burden_score": 17.65,
+    "burden_status": "Low",
+    "ehi_component": 19.09,
+    "iai_deficit": 16.2,
+    "environmental_status": "Excellent",
+    "iai_status": "Excellent"
+  },
+  "r36_c17": {
+    "burden_score": 27.22,
+    "burden_status": "Moderate",
+    "ehi_component": 31.87,
+    "iai_deficit": 22.57,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r36_c18": {
+    "burden_score": 48.84,
+    "burden_status": "Moderate",
+    "ehi_component": 67.64,
+    "iai_deficit": 30.05,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r36_c19": {
+    "burden_score": 41.33,
+    "burden_status": "Moderate",
+    "ehi_component": 57.62,
+    "iai_deficit": 25.05,
+    "environmental_status": "Moderate",
+    "iai_status": "Low"
+  },
+  "r36_c20": {
+    "burden_score": 43.91,
+    "burden_status": "Moderate",
+    "ehi_component": 63.9,
+    "iai_deficit": 23.91,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r36_c21": {
+    "burden_score": 46.16,
+    "burden_status": "Moderate",
+    "ehi_component": 67.93,
+    "iai_deficit": 24.38,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r37_c0": {
+    "burden_score": 36.61,
+    "burden_status": "Moderate",
+    "ehi_component": 41.29,
+    "iai_deficit": 31.92,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r37_c1": {
+    "burden_score": 44.47,
+    "burden_status": "Moderate",
+    "ehi_component": 46.62,
+    "iai_deficit": 42.32,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r37_c2": {
+    "burden_score": 38.67,
+    "burden_status": "Moderate",
+    "ehi_component": 46.32,
+    "iai_deficit": 31.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r37_c3": {
+    "burden_score": 41.02,
+    "burden_status": "Moderate",
+    "ehi_component": 47.47,
+    "iai_deficit": 34.58,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r37_c4": {
+    "burden_score": 18.17,
+    "burden_status": "Low",
+    "ehi_component": 24.88,
+    "iai_deficit": 11.46,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r37_c5": {
+    "burden_score": 14.37,
+    "burden_status": "Low",
+    "ehi_component": 20.72,
+    "iai_deficit": 8.01,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r37_c6": {
+    "burden_score": 14.4,
+    "burden_status": "Low",
+    "ehi_component": 21.39,
+    "iai_deficit": 7.41,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r37_c7": {
+    "burden_score": 12.99,
+    "burden_status": "Low",
+    "ehi_component": 19.9,
+    "iai_deficit": 6.08,
+    "environmental_status": "Excellent",
+    "iai_status": "Excellent"
+  },
+  "r37_c8": {
+    "burden_score": 28.09,
+    "burden_status": "Moderate",
+    "ehi_component": 37.48,
+    "iai_deficit": 18.7,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r37_c9": {
+    "burden_score": 33.07,
+    "burden_status": "Moderate",
+    "ehi_component": 43.74,
+    "iai_deficit": 22.4,
+    "environmental_status": "Moderate",
+    "iai_status": "Excellent"
+  },
+  "r37_c10": {
+    "burden_score": 52.53,
+    "burden_status": "High",
+    "ehi_component": 68.5,
+    "iai_deficit": 36.57,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r37_c11": {
+    "burden_score": 49.66,
+    "burden_status": "Moderate",
+    "ehi_component": 62.46,
+    "iai_deficit": 36.86,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r37_c12": {
+    "burden_score": 56.02,
+    "burden_status": "High",
+    "ehi_component": 70.86,
+    "iai_deficit": 41.18,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r37_c13": {
+    "burden_score": 39.05,
+    "burden_status": "Moderate",
+    "ehi_component": 45.2,
+    "iai_deficit": 32.91,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r37_c14": {
+    "burden_score": 39.25,
+    "burden_status": "Moderate",
+    "ehi_component": 47.48,
+    "iai_deficit": 31.02,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r37_c15": {
+    "burden_score": 31.06,
+    "burden_status": "Moderate",
+    "ehi_component": 36.58,
+    "iai_deficit": 25.55,
+    "environmental_status": "Good",
+    "iai_status": "Good"
+  },
+  "r37_c16": {
+    "burden_score": 20.66,
+    "burden_status": "Low",
+    "ehi_component": 22.38,
+    "iai_deficit": 18.95,
+    "environmental_status": "Good",
+    "iai_status": "Excellent"
+  },
+  "r37_c17": {
+    "burden_score": 35.39,
+    "burden_status": "Moderate",
+    "ehi_component": 41.92,
+    "iai_deficit": 28.86,
+    "environmental_status": "Moderate",
+    "iai_status": "Good"
+  },
+  "r37_c18": {
+    "burden_score": 51.88,
+    "burden_status": "High",
+    "ehi_component": 66.25,
+    "iai_deficit": 37.5,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r37_c19": {
+    "burden_score": 48.38,
+    "burden_status": "Moderate",
+    "ehi_component": 70.08,
+    "iai_deficit": 26.68,
+    "environmental_status": "Poor",
+    "iai_status": "Good"
+  },
+  "r37_c20": {
+    "burden_score": 43.61,
+    "burden_status": "Moderate",
+    "ehi_component": 63.02,
+    "iai_deficit": 24.2,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  },
+  "r37_c21": {
+    "burden_score": 42.78,
+    "burden_status": "Moderate",
+    "ehi_component": 62.56,
+    "iai_deficit": 23.0,
+    "environmental_status": "Poor",
+    "iai_status": "Excellent"
+  }
+}

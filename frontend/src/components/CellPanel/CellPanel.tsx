@@ -8,14 +8,12 @@ import { useCell } from '@/api/citysense'
 import { EnvTab } from './EnvTab'
 import { PlanningTab } from './PlanningTab'
 import { RawTab } from './RawTab'
-import { CellMiniMap } from './CellMiniMap'
 
-type TabKey = 'env' | 'planning' | 'raw' | 'map'
+type TabKey = 'env' | 'planning' | 'raw'
 
 const TABS: { key: TabKey; label: string }[] = [
   { key: 'env',      label: 'Environment' },
   { key: 'planning', label: 'Planning' },
-  { key: 'map',      label: '🗺️ Location' },
   { key: 'raw',      label: 'Raw Data' },
 ]
 
@@ -204,18 +202,6 @@ export function CellPanel() {
             {activeTab === 'env'      && <EnvTab bundle={bundle} />}
             {activeTab === 'planning' && <PlanningTab bundle={bundle} />}
             {activeTab === 'raw'      && <RawTab bundle={bundle} />}
-            {activeTab === 'map'      && bundle.geometry && (
-              <CellMiniMap
-                geometry={bundle.geometry}
-                cellId={bundle.master.cell_id}
-                ehi={bundle.environment?.environmental_health ?? null}
-              />
-            )}
-            {activeTab === 'map' && !bundle.geometry && (
-              <div style={{ padding: 20, fontSize: 12, color: 'var(--text-secondary)', textAlign: 'center' }}>
-                No geometry available for this cell.
-              </div>
-            )}
           </div>
         )}
       </div>

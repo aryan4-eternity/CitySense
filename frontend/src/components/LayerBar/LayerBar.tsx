@@ -51,6 +51,21 @@ const LAYERS: { key: LayerKey; label: string; gradient: string }[] = [
     label: 'Priority',
     gradient: 'linear-gradient(90deg, #00ff9f, #ffb340, #ff3b5c)',
   },
+  {
+    key: 'flood_susceptibility_score',
+    label: 'Flood',
+    gradient: 'linear-gradient(90deg, #1e78dc, #b06bff, #ff3b5c)',
+  },
+  {
+    key: 'iai_score',
+    label: 'Access',
+    gradient: 'linear-gradient(90deg, #ff3b5c, #ffb340, #00ff9f)',
+  },
+  {
+    key: 'burden_score',
+    label: 'Burden',
+    gradient: 'linear-gradient(90deg, #00ff9f, #ffb340, #ff3b5c)',
+  },
 ]
 
 // ----------------------------------------------------------------

@@ -94,7 +94,6 @@ export interface CellBundle {
   environment: Partial<EnvIntelligence>
   planning: Partial<PlanningProfile>
   explanation: Partial<CellExplanation>
-  geometry: GeoJSON.Polygon | null
 }
 
 // ------------------------------------------------------------------
@@ -139,6 +138,9 @@ export type LayerKey =
   | 'mean_ndbi'
   | 'uhi_intensity'
   | 'planning_priority_score'
+  | 'flood_susceptibility_score'
+  | 'iai_score'
+  | 'burden_score'
   | 'cluster'
 
 export interface LayerConfig {

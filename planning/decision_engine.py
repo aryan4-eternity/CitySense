@@ -43,20 +43,26 @@ def run(
     env_intel: dict[str, dict[str, Any]],
     geo_meta: dict[str, dict[str, Any]],
     explanations: dict[str, dict[str, Any]],
+    fsi_data: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, dict[str, Any]]:
     """Compute Planning Profiles for every cell in *gdf*.
 
     Parameters
     ----------
     gdf : gpd.GeoDataFrame
-        Master dataset (must contain at least ``cell_id``, ``risk_score``,
-        ``top_positive_driver``, ``top_positive_shap``).
+        Master dataset.
     env_intel : dict
         Phase 2 environmental intelligence keyed by ``cell_id``.
     geo_meta : dict
         Geographic metadata keyed by ``cell_id`` (may be ``{}``).
     explanations : dict
         SHAP explanation records keyed by ``cell_id`` (may be ``{}``).
+    fsi_data : dict, optional
+        Flood Susceptibility Index data keyed by ``cell_id``.  When provided,
+        cells with FSI status "High" or "Severe" have "Flood Susceptibility"
+        injected into their detected_conditions list if not already present —
+        this ensures drainage-specific interventions fire for flood-prone cells
+        even when the EHI-based condition detection didn't catch them.
 
     Returns
     -------
@@ -64,6 +70,9 @@ def run(
         Planning Profiles keyed by ``cell_id``.
     """
     logger.info("Decision engine: processing %d cells …", len(gdf))
+    if fsi_data:
+        logger.info("FSI data available: %d cells. Flood conditions will be injected "
+                    "for High/Severe FSI cells.", len(fsi_data))
 
     # ── 1. City-wide SHAP max (for confidence normalisation) ──────────────
     city_max_shap = _compute_city_max_shap(gdf)
@@ -86,8 +95,21 @@ def run(
         ei = env_intel.get(cell_id, {})
         ehi        = float(ei.get("environmental_health", 50.0) or 50.0)
         risk_score = float(row.get("risk_score", 50.0) or 50.0)
-        conditions: list[str] = ei.get("detected_conditions", [])
+        conditions: list[str] = list(ei.get("detected_conditions", []))
         primary_issue: str | None = ei.get("primary_issue")
+
+        # FSI injection: if FSI is High or Severe and Flood Susceptibility
+        # is not already in detected_conditions, add it so the knowledge base
+        # can select drainage-specific interventions.
+        if fsi_data:
+            fsi_entry  = fsi_data.get(cell_id, {})
+            fsi_status = fsi_entry.get("flood_susceptibility_status", "")
+            if fsi_status in ("High", "Severe") and "Flood Susceptibility" not in conditions:
+                conditions = ["Flood Susceptibility"] + conditions
+                if primary_issue is None:
+                    primary_issue = "Flood Susceptibility"
+                logger.debug("FSI injection: %s → Flood Susceptibility added (FSI=%s)",
+                             cell_id, fsi_status)
         cell_comparisons: dict[str, Any] = {
             k: ei.get(k) for k in ei if k.startswith("city_rank_")
         }

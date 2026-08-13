@@ -93,9 +93,13 @@ def main() -> None:
     geo_meta   = _load_json(geo_meta_path, "Geographic metadata")
     explanations = _load_json(explain_path, "Cell explanations")
 
+    # Load FSI data — optional, degrades gracefully if not yet generated
+    fsi_path = project_path(cfg, "flood_susceptibility")
+    fsi_data = _load_json(fsi_path, "Flood susceptibility") if fsi_path.exists() else {}
+
     logger.info(
-        "Inputs: env_intel=%d  geo_meta=%d  explanations=%d",
-        len(env_intel), len(geo_meta), len(explanations),
+        "Inputs: env_intel=%d  geo_meta=%d  explanations=%d  fsi=%d",
+        len(env_intel), len(geo_meta), len(explanations), len(fsi_data),
     )
 
     # ── 4. Run decision engine ────────────────────────────────────────────
@@ -104,6 +108,7 @@ def main() -> None:
         env_intel=env_intel,
         geo_meta=geo_meta,
         explanations=explanations,
+        fsi_data=fsi_data if fsi_data else None,
     )
 
     # ── 5. Write output JSON ──────────────────────────────────────────────

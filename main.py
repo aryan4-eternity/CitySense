@@ -57,7 +57,13 @@ def main() -> None:
     )
     from metadata import geo_enrichment
     from environment import generate_environmental_intelligence
+    from environment import generate_flood_susceptibility
+    from environment import generate_infrastructure_access
+    from environment import composite_burden as generate_composite_burden
     from planning import generate_planning_profiles
+    from ingestion import fetch_precipitation
+    from metadata import drainage_proxy
+    from metadata import infrastructure_access
 
     stages: list[tuple[str, Callable[[], None], Path | None]] = [
         ("Generate grid", generate_grid.main, project_path(config, "grid")),
@@ -73,6 +79,12 @@ def main() -> None:
         ("Train explainability model", train_explainability.main, None),
         ("Create dashboard explanations", generate_explanations_json.main, None),
         ("Generate environmental intelligence", generate_environmental_intelligence.main, project_path(config, "environmental_intelligence")),
+        ("Fetch monsoon precipitation (CHIRPS)", fetch_precipitation.main, project_path(config, "precipitation_grid")),
+        ("Compute drainage proxy (OSM)", drainage_proxy.main, project_path(config, "drainage_proxy")),
+        ("Generate flood susceptibility index", generate_flood_susceptibility.main, project_path(config, "flood_susceptibility")),
+        ("Compute infrastructure access (OSM)", infrastructure_access.main, project_path(config, "infrastructure_access")),
+        ("Generate infrastructure access index", generate_infrastructure_access.main, project_path(config, "infrastructure_access_index")),
+        ("Generate composite burden score", generate_composite_burden.main, project_path(config, "composite_burden")),
         ("Generate planning profiles", generate_planning_profiles.main, project_path(config, "planning_profiles")),
         ("Enrich geographic metadata", geo_enrichment.main, project_path(config, "geographic_metadata")),
         ("Generate validation plots", validate_scores.main, None),

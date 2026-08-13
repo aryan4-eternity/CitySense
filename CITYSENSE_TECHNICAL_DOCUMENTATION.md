@@ -24,6 +24,8 @@
 14. [How to Run Everything](#14-how-to-run-everything)
 15. [Limitations & Validity](#15-limitations--validity)
 16. [Public Health Co-location Check](#16-public-health-co-location-check)
+17. [Flood Susceptibility Index (FSI)](#17-flood-susceptibility-index-fsi)
+18. [Infrastructure Access Index (IAI) and Composite Burden](#18-infrastructure-access-index-iai-and-composite-burden)
 
 ---
 
@@ -1379,4 +1381,177 @@ The CitySense composite risk index is a heat-and-ecology stress indicator, not a
 
 ---
 
+---
+
 *Generated: August 2026 | CitySense Phase 3 | Mumbai Environmental Intelligence*
+
+## 17. Flood Susceptibility Index (FSI)
+
+### 17.1 Why FSI Exists Separately from EHI
+
+The validation work in §15.2 showed that inverted DEM alone achieves AUC 0.333 against documented flood points — worse than random — and the existing `risk_score` reaches AUC ~0.72 only incidentally, because it is dominated by heat/vegetation indicators (LST 30%, NDVI 25%, UHI 20%). CitySense had no flood-specific mechanism. FSI is a genuinely separate sub-model: **EHI's job is heat/ecology, FSI's job is flood/drainage susceptibility**. Conflating them would make both harder to validate and explain.
+
+---
+
+### 17.2 Inputs and Data Sources
+
+| Indicator | Weight | Source | Notes |
+|---|---|---|---|
+| Inverted DEM | 30% | SRTM via GEE (`USGS/SRTMGL1_003`) | Low elevation → higher susceptibility |
+| Monsoon cumulative rainfall | 30% | CHIRPS daily via GEE (`UCSB-CHG/CHIRPS/DAILY`) | **Jun–Sep 2023** — separate from dry-season pipeline window |
+| Inverted drainage distance | 25% | OSM waterway tags via Overpass API | Far from mapped drains → higher susceptibility |
+| NDBI (imperviousness) | 15% | Sentinel-2 (existing pipeline) | Higher built-up → less infiltration |
+
+**Seasonal note:** The main pipeline imagery (March–May 2023) covers Mumbai's dry/pre-monsoon season. Precipitation as a flood driver must be measured during the monsoon (June–September). The precipitation fetch in `ingestion/fetch_precipitation.py` uses a fixed monsoon window independent of `config.yaml`'s `time_window`. The other inputs (DEM, NDBI, drainage proxy) are season-independent.
+
+**Drainage proxy caveat:** OSM drainage-tagging completeness varies across Mumbai. Formal canals and rivers are well-mapped; small residential drains and informal channels are not. `drain_distance_km` measures proximity to *mapped* infrastructure, not actual municipal drainage capacity.
+
+---
+
+### 17.3 FSI Formula
+
+```
+FSI = 0.30 × norm(inv_dem)
+    + 0.30 × norm(cumul_precip)
+    + 0.25 × norm(inv_drain_distance)
+    + 0.15 × norm(ndbi)
+```
+
+Each component is MinMax-normalised to [0, 1] using city-wide min/max. Indicators where higher raw value means lower susceptibility (`mean_dem`, `drain_distance_km`) are inverted before weighting. Result is scaled to [0, 100] and clamped.
+
+**Weights are domain-expert values, not fitted to ground truth.** This is deliberate — fitting to the 25 flood points would produce inflated validation numbers. See §17.5.
+
+**FSI Status labels:** Low (0–24) · Moderate (25–49) · High (50–74) · Severe (75–100)
+
+---
+
+### 17.4 New Files
+
+| File | Purpose |
+|---|---|
+| `ingestion/fetch_precipitation.py` | GEE CHIRPS pull for monsoon window → `data/precipitation_grid.geojson` |
+| `metadata/drainage_proxy.py` | Overpass waterway queries → `data/drainage_proxy.json` |
+| `environment/flood_susceptibility.py` | FSI computation, status labels, narrative generator |
+| `environment/generate_flood_susceptibility.py` | Pipeline stage → `data/flood_susceptibility.json` |
+| `validation/statistical_validation.py` | AUC/AP/F1 comparison of inv-DEM, risk_score, and FSI |
+
+**Pipeline integration:** Three new stages added to `main.py` after "Generate environmental intelligence":
+1. `Fetch monsoon precipitation (CHIRPS)` — cached on `data/precipitation_grid.geojson`
+2. `Compute drainage proxy (OSM)` — cached on `data/drainage_proxy.json`
+3. `Generate flood susceptibility index` — cached on `data/flood_susceptibility.json`
+
+**Planning engine integration:** `planning/decision_engine.py` now accepts `fsi_data`. Cells with FSI status "High" or "Severe" have "Flood Susceptibility" injected into their detected conditions list, enabling the knowledge base to select drainage-specific interventions (e.g. "Drainage Infrastructure Upgrade", "Integrated Drainage and Green Infrastructure") for flood-prone cells even when EHI-based condition detection did not flag them.
+
+**Frontend:** `flood_susceptibility_score` added as a new map layer ("Flood") in `LayerBar.tsx` with a blue→red colour scale. Served via `GET /api/cell/{cell_id}` under the `flood` key.
+
+---
+
+### 17.5 Validation — Avoiding Circularity
+
+FSI weights were set by domain reasoning only and **were not fitted to the 25 ground-truth flood points**. All three classifiers (inverted DEM, risk_score, FSI) are therefore evaluated out-of-sample against those 25 points in `validation/statistical_validation.py`.
+
+**Methodology:** n=25 is too small for a train/holdout split — performing one would leave only ~7 holdout points, yielding AUC estimates with extremely wide uncertainty. Instead, all 25 points are used for evaluation with the explicit acknowledgement that this is a small, convenience-sampled, non-random dataset. Treat results as directional evidence.
+
+**To run the validation** (requires `data/flood_susceptibility.json`):
+```bash
+python validation/statistical_validation.py
+```
+Outputs: `validation/statistical_results.txt` and `validation/roc_curves.png`.
+
+---
+
+### 17.6 What FSI Is and Is Not
+
+**FSI is appropriate for:**
+- First-pass city-wide flood susceptibility screening and area prioritisation
+- Comparative ward-level planning triage (identifying which wards warrant drainage investment)
+- Contextualising EHI heat risk with complementary flood risk information
+
+**FSI is NOT appropriate for:**
+- Engineering-grade drainage infrastructure sizing or storm-sewer capacity decisions
+- Hydrodynamic flood routing or inundation depth estimation
+- Historical flood frequency or return-period analysis
+- Site-level flood risk certification
+
+**FSI does not model:**
+- Actual municipal drainage network capacity (data not publicly available)
+- Real-time rainfall-runoff dynamics
+- Soil saturation or antecedent moisture conditions
+- Sea-level rise or tidal flooding
+
+FSI is a proxy susceptibility index built from available public data. Its results should always be accompanied by this scope statement when presented to decision-makers.
+
+---
+
+*Generated: August 2026 | CitySense Phase 3 | Mumbai Environmental Intelligence*
+
+---
+
+## 18. Infrastructure Access Index (IAI) and Composite Burden
+
+### 18.1 Rationale and Framing
+
+Environmental risk does not affect all communities equally. A cell with high heat stress and limited healthcare proximity faces a different planning reality than one with the same EHI score but a hospital nearby. The IAI quantifies infrastructure proximity as an objective, defensible planning signal. Combined with EHI, it identifies "double-disadvantaged" areas where environmental burden and infrastructure gaps co-occur.
+
+**Framing principle:** All labels describe what infrastructure is absent, not the residents. "Low infrastructure access" is a factual statement about facility proximity. This is consistent with the planning literature on environmental justice and infrastructure equity — the goal is to flag areas for investment, not to stigmatize communities.
+
+---
+
+### 18.2 Infrastructure Access Index (IAI)
+
+**What it measures:** Proximity to four essential urban facility types, weighted by planning importance.
+
+| Component | Weight | OSM Tags | Interpretation |
+|---|---|---|---|
+| Hospital / clinic | 25% | `amenity=hospital`, `amenity=clinic` | Healthcare access |
+| School | 20% | `amenity=school`, `amenity=college` | Education access |
+| Park / green space | 20% | `leisure=park`, `landuse=recreation_ground` | Recreational access |
+| Transit station | 20% | `railway=station`, `station=subway` | Mobility access |
+| Population density | 15% | From `geographic_metadata.json` | Crowding proxy |
+
+**Formula:** Each distance is MinMax-normalised and inverted (closer = higher score). Population density is also inverted (lower crowding relative to services = better access). Weighted sum scaled to [0, 100].
+
+**IAI Status labels:** Low (0–24) · Moderate (25–49) · Good (50–74) · Excellent (75–100)
+
+**OSM completeness caveat:** Formal hospitals, schools, and railway stations are reliably mapped in Mumbai. Small clinics, informal community parks, and local bus stops may be under-mapped in some areas. IAI measures proximity to *mapped* infrastructure.
+
+---
+
+### 18.3 Composite Burden Score
+
+**What it measures:** Combined environmental health deficit and infrastructure access gap — identifies cells that face both problems simultaneously.
+
+```
+burden_score = 0.50 × (100 − EHI)   +   0.50 × (100 − IAI)
+```
+
+Higher burden_score = area has worse environmental conditions AND lower infrastructure access. These are the highest-priority cells for integrated urban investment.
+
+**Burden Status labels:** Low (0–24) · Moderate (25–49) · High (50–74) · Critical (75–100)
+
+---
+
+### 18.4 New Files
+
+| File | Purpose |
+|---|---|
+| `metadata/infrastructure_access.py` | Overpass queries for 4 facility types → `data/infrastructure_access.json` |
+| `environment/infrastructure_access_index.py` | IAI computation, status labels, narrative |
+| `environment/generate_infrastructure_access.py` | Pipeline stage → `data/infrastructure_access_index.json` |
+| `environment/composite_burden.py` | Burden score → `data/composite_burden.json` |
+
+**Pipeline stages added to `main.py`** (after FSI):
+1. `Compute infrastructure access (OSM)` — cached on `data/infrastructure_access.json`
+2. `Generate infrastructure access index` — cached on `data/infrastructure_access_index.json`
+3. `Generate composite burden score` — cached on `data/composite_burden.json`
+
+**Frontend layers added:** `Access` (IAI, red→green) and `Burden` (combined score, green→red) in the layer bar. Both served via `GET /api/cell/{cell_id}` under the `access` and `burden` keys.
+
+---
+
+### 18.5 Limitations
+
+1. **OSM completeness:** Unmapped facilities are invisible to IAI. Areas with less OSM coverage will have artificially inflated distance scores.
+2. **Distance ≠ accessibility:** IAI measures straight-line proximity, not walking time, transit routes, or affordability. A hospital 800m away but across a highway is treated identically to one with a direct footpath.
+3. **Static snapshot:** IAI reflects OSM data at the time of query. New facilities added after the query date are not reflected.
+4. **Equal weighting of burden components:** The 50/50 split between EHI deficit and IAI deficit in the burden score is a domain-expert choice. The relative weight of environmental vs. access burdens may differ depending on the planning question being asked.

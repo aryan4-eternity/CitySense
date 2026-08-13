@@ -2441,3 +2441,1535 @@ max      0.523807   48.929549    0.124413  363.190029
 2026-08-12 00:44:32,253 - CitySense.processing.generate_explanations_json - INFO - Extracting indicator attribution data …
 2026-08-12 00:44:32,288 - CitySense.processing.generate_explanations_json - INFO - Saved attribution data for 836 cells → D:\Clg\Major Project\CitySense\city_sense\data/cell_explanations.json
 2026-08-12 00:44:32,289 - CitySense.processing.generate_explanations_json - INFO - === Indicator attribution JSON complete! ===
+2026-08-13 17:07:49,812 - CitySense.planning.generate_planning_profiles - INFO - === City Sense – Phase 3: Generate Planning Profiles ===
+2026-08-13 17:07:49,818 - CitySense.planning.generate_planning_profiles - INFO - Master dataset            : D:\Clg\Major Project\CitySense\city_sense\data\cells_master.geojson
+2026-08-13 17:07:49,818 - CitySense.planning.generate_planning_profiles - INFO - Environmental intelligence: D:\Clg\Major Project\CitySense\city_sense\data\environmental_intelligence.json
+2026-08-13 17:07:49,818 - CitySense.planning.generate_planning_profiles - INFO - Output path               : D:\Clg\Major Project\CitySense\city_sense\data\planning_profiles.json
+2026-08-13 17:07:49,819 - CitySense.planning.generate_planning_profiles - INFO - Loading master dataset …
+2026-08-13 17:07:49,924 - CitySense.planning.generate_planning_profiles - INFO - Loaded 836 cells.
+2026-08-13 17:07:49,956 - CitySense.planning.generate_planning_profiles - INFO - Inputs: env_intel=836  geo_meta=836  explanations=836  fsi=836
+2026-08-13 17:07:49,956 - CitySense.planning.decision_engine - INFO - Decision engine: processing 836 cells …
+2026-08-13 17:07:49,956 - CitySense.planning.decision_engine - INFO - FSI data available: 836 cells. Flood conditions will be injected for High/Severe FSI cells.
+2026-08-13 17:07:49,957 - CitySense.planning.decision_engine - DEBUG - City-wide max |SHAP| = 36.3469
+2026-08-13 17:07:49,957 - CitySense.planning.priority_engine - DEBUG - Priority batch: 836 cells | max_population=50523
+2026-08-13 17:07:50,028 - CitySense.planning.priority_engine - DEBUG - Priority distribution: {'Low': 306, 'High': 264, 'Medium': 249, 'Very Low': 12, 'Critical': 5}
+2026-08-13 17:07:50,046 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,058 - CitySense.planning.knowledge_base - DEBUG - Intervention catalog loaded from D:\Clg\Major Project\CitySense\city_sense\planning\intervention_catalog.yaml
+2026-08-13 17:07:50,058 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,058 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,058 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,058 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,059 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,059 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,059 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,059 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,059 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,059 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,059 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,059 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,059 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,059 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,059 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,059 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,059 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,059 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,060 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,060 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,060 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,060 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,060 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,060 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,060 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,060 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,060 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,060 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,060 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,061 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,061 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,061 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,061 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,061 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,061 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,061 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,061 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,061 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,061 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,061 - CitySense.planning.decision_engine - DEBUG - FSI injection: r0_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,061 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,061 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,061 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,062 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,062 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,062 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,062 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,062 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,062 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,062 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,062 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,062 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,062 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,062 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,062 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,062 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,063 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,063 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,063 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,063 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,063 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,063 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,063 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,063 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,063 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,063 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,063 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,063 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,063 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,063 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,064 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,064 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,064 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,064 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,064 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,064 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,064 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,064 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,064 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,064 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,064 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,064 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,064 - CitySense.planning.decision_engine - DEBUG - FSI injection: r1_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,065 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,065 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,066 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,066 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,067 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,067 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,067 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,067 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,067 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,067 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,067 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,067 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,067 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,067 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,068 - CitySense.planning.decision_engine - DEBUG - FSI injection: r2_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,068 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,068 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,068 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,068 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,068 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,069 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,069 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,069 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,069 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,069 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,069 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,069 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,069 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,069 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,069 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,069 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,069 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,069 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,069 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,070 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,070 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,070 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,070 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,070 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,070 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,070 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,070 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,070 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,070 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,070 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,071 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,071 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,071 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,071 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,071 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,071 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,071 - CitySense.planning.decision_engine - DEBUG - FSI injection: r3_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,071 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,072 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,072 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,072 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,072 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,072 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,072 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,072 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,072 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,073 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,073 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,074 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,074 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,074 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,074 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,074 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,074 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,074 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,074 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,074 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,074 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,074 - CitySense.planning.decision_engine - DEBUG - FSI injection: r4_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,074 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,074 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,074 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,075 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,075 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,075 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,075 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,076 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,076 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,076 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,076 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,076 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,076 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,076 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,076 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,076 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,076 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,077 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,077 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,077 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,077 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,077 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,077 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,077 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,077 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,077 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,077 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,077 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,077 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,077 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,077 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,078 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,078 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,078 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,078 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,078 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,078 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,078 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,078 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,078 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,078 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,078 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,078 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,078 - CitySense.planning.decision_engine - DEBUG - FSI injection: r5_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,078 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,079 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,079 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,079 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,079 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,079 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,079 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,079 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,079 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,080 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,080 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,081 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,081 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,081 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,081 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,081 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,081 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,081 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,081 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,081 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,081 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,081 - CitySense.planning.decision_engine - DEBUG - FSI injection: r6_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,081 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,081 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,081 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,082 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,082 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,082 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,082 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,082 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,083 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,083 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,083 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,083 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,083 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,083 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,083 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,083 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,083 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,083 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,083 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,083 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,083 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,083 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,084 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,084 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,084 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,084 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,084 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,084 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,084 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,084 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,084 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,084 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,084 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,085 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,085 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,085 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,085 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,085 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,085 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,085 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,085 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,085 - CitySense.planning.decision_engine - DEBUG - FSI injection: r7_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,085 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,085 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,085 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,085 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,085 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,086 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,086 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,086 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,086 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,086 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,086 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,086 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,086 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,086 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,086 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,086 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,086 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,086 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,086 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,087 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,087 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,088 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,088 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,088 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,088 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,088 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,088 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,088 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,088 - CitySense.planning.decision_engine - DEBUG - FSI injection: r8_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,088 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,088 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,088 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,089 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,089 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,089 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,089 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,089 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,090 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,090 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,090 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,090 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,090 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,090 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,090 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,090 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,090 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,090 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,090 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,091 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,091 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,091 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,091 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,091 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,091 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,091 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,091 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,091 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,091 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,092 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,092 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,092 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,092 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,092 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,092 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,092 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,092 - CitySense.planning.decision_engine - DEBUG - FSI injection: r9_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,093 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,093 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,093 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,093 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,093 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,093 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,093 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,093 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,093 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,093 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,093 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,093 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,093 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,094 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,094 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,094 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,094 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,094 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,094 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,094 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,094 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,094 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,094 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,094 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,094 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,095 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,095 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,095 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,095 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,095 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,095 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,095 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,095 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,095 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,095 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,095 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,095 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,095 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,096 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,096 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,096 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,096 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,096 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,096 - CitySense.planning.decision_engine - DEBUG - FSI injection: r10_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,096 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,097 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,097 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,097 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,097 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,097 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,097 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,097 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,097 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,097 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,097 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,097 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,097 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,097 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,098 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,098 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,098 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,098 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,098 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,098 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,098 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,098 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c10 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,098 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,098 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c11 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,098 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,098 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,098 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,098 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,099 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,099 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,099 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,099 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,099 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,099 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,099 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,099 - CitySense.planning.decision_engine - DEBUG - FSI injection: r11_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,100 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,100 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,101 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,101 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,101 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,101 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,101 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,101 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,101 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,101 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,101 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,101 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,101 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,101 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,102 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,102 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,102 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,102 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c16 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,102 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,102 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,103 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,103 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,103 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,103 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,103 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,103 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,103 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,103 - CitySense.planning.decision_engine - DEBUG - FSI injection: r12_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,103 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,104 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,104 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,104 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,104 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,104 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,104 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,104 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,104 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,104 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,104 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,104 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,104 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,104 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,105 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,105 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,105 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,105 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,105 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,105 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,105 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,105 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,105 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,105 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,105 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,105 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,105 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,106 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,106 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,106 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,106 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,106 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,106 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r13_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,107 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,107 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,108 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,108 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,108 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,108 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,108 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,108 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,109 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,109 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,109 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,109 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,109 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,109 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,109 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,109 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,110 - CitySense.planning.decision_engine - DEBUG - FSI injection: r14_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,110 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,110 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,111 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,111 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,111 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,111 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,111 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,111 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,111 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,111 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,111 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,112 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,112 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,112 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,112 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,112 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,112 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,112 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,112 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,112 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,113 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,113 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,113 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,113 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,113 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,113 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,113 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r15_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,114 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,114 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,115 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,115 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,116 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,116 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,116 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,116 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,116 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,116 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,116 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,116 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,116 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,116 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,116 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,116 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,117 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,117 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,117 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,117 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,117 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,117 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,117 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,117 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,118 - CitySense.planning.decision_engine - DEBUG - FSI injection: r16_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,118 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,118 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,118 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,118 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,118 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,118 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,118 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,118 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,118 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,119 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,119 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,119 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,119 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,119 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,119 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,119 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,119 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,119 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,119 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,119 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,120 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,120 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,120 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,120 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,120 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,120 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,120 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,120 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r17_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,121 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,121 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,122 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,122 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,122 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,122 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,122 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,122 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,122 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,122 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,122 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,122 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,122 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,122 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,123 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,123 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,123 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,123 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,123 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,123 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,124 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,124 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,124 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,124 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,124 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,124 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,124 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,124 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,124 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,124 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,125 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,125 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,125 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c18 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,125 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,125 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,125 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,125 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,125 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,125 - CitySense.planning.decision_engine - DEBUG - FSI injection: r18_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,125 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,125 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,125 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,125 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,125 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,126 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,126 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,126 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,126 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,126 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,126 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,126 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,126 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,126 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,126 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,126 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,126 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,127 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,127 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,127 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,127 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,127 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,127 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,127 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,127 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,127 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,127 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,127 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c13 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,127 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c18 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c20 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,128 - CitySense.planning.decision_engine - DEBUG - FSI injection: r19_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,128 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,129 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,129 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,129 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,129 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,129 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,129 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,129 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,129 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,129 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,129 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,129 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,129 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,129 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,129 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,130 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,130 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,130 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,130 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,130 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,130 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,130 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,130 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,130 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,130 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,131 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,131 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,131 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c14 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,131 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,131 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,131 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,131 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,131 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,131 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c17 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,131 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,132 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c18 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,132 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,132 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,132 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,132 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c20 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,132 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,132 - CitySense.planning.decision_engine - DEBUG - FSI injection: r20_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,132 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,132 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,132 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,132 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,132 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,132 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,132 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,133 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,133 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,133 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,133 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,133 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,133 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,133 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,133 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,133 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,133 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,133 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,133 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,133 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,133 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,134 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,134 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,134 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c12 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,134 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,134 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,134 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,134 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c18 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,135 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,135 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c20 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,135 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r21_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,135 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,135 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,135 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,135 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,135 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,136 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,136 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,136 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,136 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,136 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,136 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c11 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,136 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,137 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,137 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,137 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,137 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,137 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,137 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,138 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c17 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,138 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,138 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c18 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,138 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,138 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c19 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,139 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,139 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c20 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,139 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,139 - CitySense.planning.decision_engine - DEBUG - FSI injection: r22_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,139 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,139 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,139 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,140 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,140 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,140 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,140 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,140 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,140 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,140 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,140 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,140 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,140 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,141 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,141 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,141 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,141 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,141 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,141 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,141 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,141 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,141 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-08-13 17:07:50,142 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,142 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,142 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,142 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c15 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,143 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,143 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,143 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,143 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,143 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,144 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,144 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,145 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c19 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,145 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,145 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c20 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,145 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,146 - CitySense.planning.decision_engine - DEBUG - FSI injection: r23_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,146 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,146 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,146 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,146 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,146 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,146 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,146 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,147 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,147 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,147 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,147 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,147 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,147 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,147 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,147 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,147 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,147 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,148 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,148 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,148 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,148 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,148 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,149 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,149 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,149 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,149 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,149 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,149 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,149 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,149 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c18 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,149 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,150 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c19 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,150 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,150 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c20 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,150 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,150 - CitySense.planning.decision_engine - DEBUG - FSI injection: r24_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,150 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,151 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,151 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,151 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,151 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,152 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,152 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,152 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,152 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,152 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,152 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,152 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,153 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,153 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,153 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,153 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,153 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,153 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,153 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,153 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,154 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,154 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,154 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,154 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,155 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,155 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,155 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,155 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,155 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,155 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,155 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c18 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,155 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,156 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,156 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,156 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c20 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,156 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,156 - CitySense.planning.decision_engine - DEBUG - FSI injection: r25_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,156 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,156 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,156 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,157 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,157 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,157 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c2 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,157 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,157 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,157 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,158 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c4 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,158 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,158 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,158 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,159 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,159 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,159 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,159 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,159 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,160 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,160 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,160 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,160 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,160 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,160 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,160 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,161 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,161 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c16 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,161 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,161 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,161 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,161 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,161 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,161 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,161 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,162 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,162 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,162 - CitySense.planning.decision_engine - DEBUG - FSI injection: r26_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,162 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,162 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,162 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,162 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,162 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,163 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,163 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,163 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,163 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,163 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c4 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,163 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,163 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,163 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,163 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,163 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,163 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,163 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,164 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,164 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,164 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,165 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,165 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c17 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,166 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,166 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,166 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,166 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,167 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,167 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,167 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,167 - CitySense.planning.decision_engine - DEBUG - FSI injection: r27_c21 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,167 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,167 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,167 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,167 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,167 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,167 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,167 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,168 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,168 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,168 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,168 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,168 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c5 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,168 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,168 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,168 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,168 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,168 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,168 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-08-13 17:07:50,168 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,169 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,169 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,169 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,169 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,169 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,169 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,170 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,170 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,170 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,170 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,170 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,170 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,170 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,170 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,171 - CitySense.planning.decision_engine - DEBUG - FSI injection: r28_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,171 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,171 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,171 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,171 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,171 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,172 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,172 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,172 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,173 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,173 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,173 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,173 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,173 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,174 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,174 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,174 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,174 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,175 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,175 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,175 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,175 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,175 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,176 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,176 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,176 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,176 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,176 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,176 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c18 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,176 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,177 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,177 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,177 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,177 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,177 - CitySense.planning.decision_engine - DEBUG - FSI injection: r29_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,177 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,177 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,177 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,177 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,177 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,177 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,177 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,178 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,178 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,178 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,178 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,178 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,178 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,178 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,178 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,178 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,178 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,178 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,178 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,178 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,179 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,179 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,179 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,179 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,180 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,180 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,180 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,180 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,181 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,181 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,181 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,181 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,181 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,181 - CitySense.planning.decision_engine - DEBUG - FSI injection: r30_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,181 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,182 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,182 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,182 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,182 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,182 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,182 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,182 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,182 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,183 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,183 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,183 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,183 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,183 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,183 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,183 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,183 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,184 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,184 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,184 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,184 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,184 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,184 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,185 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,185 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,185 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,185 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,186 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,186 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,186 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,186 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,187 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,187 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,187 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,187 - CitySense.planning.decision_engine - DEBUG - FSI injection: r31_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,187 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,188 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,188 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,188 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,188 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,188 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,188 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,188 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,189 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,189 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,189 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,189 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,189 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,189 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,189 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,189 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,189 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,190 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,190 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,190 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,190 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,190 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,190 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,190 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,190 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,190 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,191 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,191 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,191 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,191 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,191 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-08-13 17:07:50,191 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,191 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,191 - CitySense.planning.decision_engine - DEBUG - FSI injection: r32_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,192 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,192 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,192 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,192 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,192 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,192 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c2 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,192 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,192 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,192 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,192 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,192 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,192 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,193 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,193 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,193 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,194 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,194 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,194 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,195 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,195 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-08-13 17:07:50,195 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,195 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,196 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,196 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,196 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,196 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,196 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,197 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,197 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,197 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,197 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Urban Heat Island'
+2026-08-13 17:07:50,197 - CitySense.planning.decision_engine - DEBUG - FSI injection: r33_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,197 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,197 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,197 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,197 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,197 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,198 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,198 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,198 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,198 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,198 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c4 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,198 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,198 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c5 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,198 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,198 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,198 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,198 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,199 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,199 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,199 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,199 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,199 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,199 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,199 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,200 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,200 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,201 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,201 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,201 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,201 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,201 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,201 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,202 - CitySense.planning.decision_engine - DEBUG - FSI injection: r34_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,202 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,202 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,202 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,202 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,202 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,202 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c2 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,202 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,202 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,202 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,202 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c4 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,203 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,203 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c5 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,203 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,203 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c6 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,203 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,203 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,203 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,203 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,203 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,203 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,203 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,203 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,204 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,205 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,205 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,205 - CitySense.planning.decision_engine - DEBUG - FSI injection: r35_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,205 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,205 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,205 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,205 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,205 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,205 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,205 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c3 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,205 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,206 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c4 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,206 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,206 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c5 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,206 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,206 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c6 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,206 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,206 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c7 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,206 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,206 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,207 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,207 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,207 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,207 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,207 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,208 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,208 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,208 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,208 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,208 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,208 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,208 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,209 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,209 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,209 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,209 - CitySense.planning.decision_engine - DEBUG - FSI injection: r36_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,209 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,209 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c0 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,209 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,209 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c1 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,209 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,209 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,209 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Integrated Drainage and Green Infrastructure
+2026-08-13 17:07:50,209 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c4 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,210 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,210 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c5 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,210 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,210 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c6 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,210 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,210 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c7 → Flood Susceptibility added (FSI=High)
+2026-08-13 17:07:50,210 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,210 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c8 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,210 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,210 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c9 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,210 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,210 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c10 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,210 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Low Vegetation'
+2026-08-13 17:07:50,211 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (3 conditions): Urban Forest
+2026-08-13 17:07:50,212 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c19 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,212 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Cool Roof Program
+2026-08-13 17:07:50,212 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c20 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,212 - CitySense.planning.knowledge_base - DEBUG - Single-condition match: 'Flood Susceptibility'
+2026-08-13 17:07:50,212 - CitySense.planning.decision_engine - DEBUG - FSI injection: r37_c21 → Flood Susceptibility added (FSI=Severe)
+2026-08-13 17:07:50,212 - CitySense.planning.knowledge_base - DEBUG - Multi-condition override matched (2 conditions): Urban Forest
+2026-08-13 17:07:50,212 - CitySense.planning.decision_engine - INFO - Decision engine complete: 836 profiles generated.
+2026-08-13 17:07:50,239 - CitySense.planning.generate_planning_profiles - INFO - Wrote planning profiles for 836 cells → D:\Clg\Major Project\CitySense\city_sense\data\planning_profiles.json (0.43s)
+2026-08-13 17:07:50,239 - CitySense.planning.generate_planning_profiles - INFO - Planning Priority distribution:
+2026-08-13 17:07:50,240 - CitySense.planning.generate_planning_profiles - INFO -   Critical   :    5 cells  (0.6%)
+2026-08-13 17:07:50,240 - CitySense.planning.generate_planning_profiles - INFO -   High       :  264 cells  (31.6%)
+2026-08-13 17:07:50,240 - CitySense.planning.generate_planning_profiles - INFO -   Medium     :  249 cells  (29.8%)
+2026-08-13 17:07:50,240 - CitySense.planning.generate_planning_profiles - INFO -   Low        :  306 cells  (36.6%)
+2026-08-13 17:07:50,240 - CitySense.planning.generate_planning_profiles - INFO -   Very Low   :   12 cells  (1.4%)
+2026-08-13 17:07:50,240 - CitySense.planning.generate_planning_profiles - INFO - Top 5 recommended interventions:
+2026-08-13 17:07:50,240 - CitySense.planning.generate_planning_profiles - INFO -   Drainage Infrastructure Upgrade               : 539 cells
+2026-08-13 17:07:50,241 - CitySense.planning.generate_planning_profiles - INFO -   Cool Roof Program                             : 143 cells
+2026-08-13 17:07:50,241 - CitySense.planning.generate_planning_profiles - INFO -   Afforestation Program                         : 70 cells
+2026-08-13 17:07:50,241 - CitySense.planning.generate_planning_profiles - INFO -   Integrated Drainage and Green Infrastructure  : 57 cells
+2026-08-13 17:07:50,241 - CitySense.planning.generate_planning_profiles - INFO -   Urban Forest                                  : 27 cells
+2026-08-13 17:07:50,241 - CitySense.planning.generate_planning_profiles - INFO - === Planning Profiles generation complete! ===
