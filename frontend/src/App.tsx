@@ -9,6 +9,7 @@ import { StatsPanel } from '@/components/StatsPanel/StatsPanel'
 import { CellPanel } from '@/components/CellPanel/CellPanel'
 import { LayerBar } from '@/components/LayerBar/LayerBar'
 import { ScanLine } from '@/components/ui/ScanLine'
+import { ChatPanel, ChatToggleButton } from '@/components/ChatPanel/ChatPanel'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,6 +47,12 @@ function App() {
 
         {/* Bottom layer switcher (z-index: 150) */}
         <LayerBar />
+
+        {/* AI Chat panel — slides in from bottom-right (z-index: 110) */}
+        <ChatPanel />
+
+        {/* Chat toggle button — fixed bottom-right (z-index: 200) */}
+        <ChatToggleButton />
 
         {/* Scanline animation overlay (z-index: 9999) */}
         <ScanLine />

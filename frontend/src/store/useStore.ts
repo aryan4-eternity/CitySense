@@ -14,6 +14,10 @@ interface CitySenseStore {
   statsPanelOpen: boolean
   setStatsPanelOpen: (open: boolean) => void
 
+  // Chat panel visibility
+  chatOpen: boolean
+  setChatOpen: (open: boolean) => void
+
   // API health
   apiConnected: boolean
   setApiConnected: (connected: boolean) => void
@@ -28,6 +32,9 @@ export const useStore = create<CitySenseStore>((set) => ({
 
   statsPanelOpen: true,
   setStatsPanelOpen: (open) => set({ statsPanelOpen: open }),
+
+  chatOpen: false,
+  setChatOpen: (open) => set({ chatOpen: open }),
 
   apiConnected: false,
   setApiConnected: (connected) => set({ apiConnected: connected }),

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import type { CellBundle, CityStats, RankingRow } from '@/types'
+import type { CellBundle, CityStats, RankingRow, ChatRequest, ChatResponse } from '@/types'
 
 const BASE = '/api'
 
@@ -71,4 +71,20 @@ export async function checkHealth(): Promise<boolean> {
   } catch {
     return false
   }
+}
+
+// ------------------------------------------------------------------
+// Chat  (streaming-style: single POST, returns full reply)
+// ------------------------------------------------------------------
+export async function sendChatMessage(request: ChatRequest): Promise<ChatResponse> {
+  const res = await fetch(`${BASE}/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(request),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err?.detail ?? `Chat API error: ${res.status}`)
+  }
+  return res.json() as Promise<ChatResponse>
 }

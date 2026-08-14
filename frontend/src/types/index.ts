@@ -164,3 +164,21 @@ export interface TooltipInfo {
   lst: number | null
   cluster: string | null
 }
+
+// ------------------------------------------------------------------
+// Chat types
+// ------------------------------------------------------------------
+export interface ChatMessage {
+  role: 'user' | 'assistant'
+  content: string
+  cell_id?: string | null  // if set, the map should highlight this cell
+}
+
+export interface ChatRequest {
+  messages: Array<{ role: string; content: string }>
+}
+
+export interface ChatResponse {
+  reply: string
+  cell_id: string | null
+}

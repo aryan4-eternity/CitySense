@@ -4264,3 +4264,217 @@ max      0.523807   48.929549    0.124413  363.190029
 2026-08-13 17:24:49,780 - CitySense.processing.validate_scores - INFO - === Validation plots complete! ===
 2026-08-13 17:24:49,780 - CitySense - INFO - Completed stage: Generate validation plots (0.59s)
 2026-08-13 17:24:49,780 - CitySense - INFO - === City Sense Pipeline Finished ===
+2026-08-14 01:34:46,664 - CitySense - INFO - === City Sense Pipeline Started ===
+2026-08-14 01:34:46,672 - CitySense - INFO - Validating configuration...
+2026-08-14 01:34:46,681 - CitySense - INFO - Configuration is valid.
+2026-08-14 01:34:52,480 - CitySense - INFO - Skipping stage 'Generate grid'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\grid.geojson
+2026-08-14 01:34:52,480 - CitySense - INFO - Skipping stage 'Fetch NDVI'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\ndvi_grid.geojson
+2026-08-14 01:34:52,480 - CitySense - INFO - Skipping stage 'Fetch land-surface temperature'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\lst_grid.geojson
+2026-08-14 01:34:52,481 - CitySense - INFO - Skipping stage 'Fetch NDBI'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\ndbi_grid.geojson
+2026-08-14 01:34:52,481 - CitySense - INFO - Skipping stage 'Fetch DEM'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\dem_grid.geojson
+2026-08-14 01:34:52,481 - CitySense - INFO - Running stage: Merge indicators
+2026-08-14 01:34:52,481 - CitySense.processing.merge_indicators - INFO - === City Sense -- Week 4: Merge Indicators ===
+2026-08-14 01:34:52,486 - CitySense.processing.merge_indicators - INFO - Loading indicator layers...
+2026-08-14 01:34:52,653 - CitySense.processing.merge_indicators - INFO - [NDVI] 836 cells, column: mean_ndvi
+2026-08-14 01:34:52,667 - CitySense.processing.merge_indicators - INFO - [LST] 836 cells, column: mean_lst
+2026-08-14 01:34:52,690 - CitySense.processing.merge_indicators - INFO - [NDBI] 836 cells, column: mean_ndbi
+2026-08-14 01:34:52,708 - CitySense.processing.merge_indicators - INFO - [DEM] 836 cells, column: mean_dem
+2026-08-14 01:34:52,711 - CitySense.processing.merge_indicators - INFO - Merged dataset: 836 rows x 6 columns
+2026-08-14 01:34:52,711 - CitySense.processing.merge_indicators - INFO - Columns: ['cell_id', 'mean_ndvi', 'mean_lst', 'mean_ndbi', 'mean_dem', 'geometry']
+2026-08-14 01:34:52,715 - CitySense.processing.merge_indicators - DEBUG - First 5 rows:
+cell_id  mean_ndvi  mean_lst  mean_ndbi  mean_dem
+  r0_c0  -0.143165 30.243749  -0.052936  0.000000
+  r0_c1  -0.151584 30.268030  -0.054288  0.000000
+  r0_c2  -0.161391 30.272786  -0.067398  0.000000
+  r0_c3  -0.013260 33.068555  -0.049276  1.899245
+  r0_c4  -0.006067 33.255702  -0.075647  3.256442
+2026-08-14 01:34:52,723 - CitySense.processing.merge_indicators - DEBUG - Basic statistics:
+        mean_ndvi    mean_lst   mean_ndbi    mean_dem
+count  836.000000  836.000000  836.000000  836.000000
+mean     0.095393   37.205626   -0.067646   22.427618
+std      0.182677    5.150374    0.076193   49.434387
+min     -0.202734   30.017884   -0.335785   -0.505823
+25%     -0.118259   31.395320   -0.103111    0.000000
+50%      0.152285   37.768269   -0.056164    3.802165
+75%      0.224524   41.910599   -0.016208   15.012170
+max      0.523807   48.929549    0.124413  363.190029
+2026-08-14 01:34:52,724 - CitySense.processing.merge_indicators - INFO - No missing values in any column.
+2026-08-14 01:34:52,757 - CitySense.processing.merge_indicators - INFO - Saved master dataset to: D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:52,757 - CitySense.processing.merge_indicators - INFO - === Merge complete! ===
+2026-08-14 01:34:52,757 - CitySense - INFO - Completed stage: Merge indicators (0.28s)
+2026-08-14 01:34:52,758 - CitySense - INFO - Running stage: Compute UHI
+2026-08-14 01:34:52,758 - CitySense.processing.compute_uhi - INFO - === City Sense -- Week 5: Compute UHI Intensity ===
+2026-08-14 01:34:52,795 - CitySense.processing.compute_uhi - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:52,796 - CitySense.processing.compute_uhi - INFO - Baseline zone defined as: lon [72.87, 72.93], lat [19.18, 19.25]
+2026-08-14 01:34:53,174 - CitySense.processing.compute_uhi - INFO - Selected 42 cells as the baseline reference.
+2026-08-14 01:34:53,174 - CitySense.processing.compute_uhi - INFO - Rural/Green reference temperature (mean): 39.01 C
+2026-08-14 01:34:53,178 - CitySense.processing.compute_uhi - INFO - UHI Intensity stats:
+2026-08-14 01:34:53,179 - CitySense.processing.compute_uhi - INFO -   Min : -8.99 C
+2026-08-14 01:34:53,179 - CitySense.processing.compute_uhi - INFO -   Max : 9.92 C
+2026-08-14 01:34:53,180 - CitySense.processing.compute_uhi - INFO -   Mean: -1.80 C
+2026-08-14 01:34:53,181 - CitySense.processing.compute_uhi - INFO - Number of cells with UHI > +5 C: 70
+2026-08-14 01:34:53,181 - CitySense.processing.compute_uhi - INFO - Mean NDBI of these hot cells: 0.028 (expect positive/high)
+2026-08-14 01:34:53,210 - CitySense.processing.compute_uhi - INFO - Updated master dataset with 'uhi_intensity' column.
+2026-08-14 01:34:53,210 - CitySense.processing.compute_uhi - INFO - Generating UHI map...
+2026-08-14 01:34:53,552 - CitySense.processing.compute_uhi - INFO - Saved UHI map to: D:\Clg\Major Project\CitySense\city_sense\data\uhi_map.png
+2026-08-14 01:34:53,552 - CitySense.processing.compute_uhi - INFO - === UHI computation complete! ===
+2026-08-14 01:34:53,552 - CitySense - INFO - Completed stage: Compute UHI (0.79s)
+2026-08-14 01:34:53,552 - CitySense - INFO - Running stage: Analyze LST and NDVI
+2026-08-14 01:34:53,552 - CitySense.processing.lst_ndvi_analysis - INFO - === City Sense -- Week 5: LST-NDVI Correlation Analysis ===
+2026-08-14 01:34:53,583 - CitySense.processing.lst_ndvi_analysis - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:53,585 - CitySense.processing.lst_ndvi_analysis - INFO - Cells with both valid NDVI and LST: 836
+2026-08-14 01:34:53,587 - CitySense.processing.lst_ndvi_analysis - INFO - --- Pearson Correlation ---
+2026-08-14 01:34:53,587 - CitySense.processing.lst_ndvi_analysis - INFO - r       = 0.6386
+2026-08-14 01:34:53,587 - CitySense.processing.lst_ndvi_analysis - INFO - p-value = 5.68e-97
+2026-08-14 01:34:53,587 - CitySense.processing.lst_ndvi_analysis - INFO - Result: Statistically significant correlation.
+2026-08-14 01:34:53,589 - CitySense.processing.lst_ndvi_analysis - INFO - --- Linear Regression (LST ~ NDVI) ---
+2026-08-14 01:34:53,589 - CitySense.processing.lst_ndvi_analysis - INFO - Equation: LST = 18.00 * NDVI + 35.49
+2026-08-14 01:34:53,589 - CitySense.processing.lst_ndvi_analysis - INFO - R-squared: 0.4078
+2026-08-14 01:34:53,589 - CitySense.processing.lst_ndvi_analysis - INFO - --- Interpretation ---
+2026-08-14 01:34:53,590 - CitySense.processing.lst_ndvi_analysis - WARNING - Unexpected positive slope. Vegetation does not appear to have a cooling effect here.
+2026-08-14 01:34:53,590 - CitySense.processing.lst_ndvi_analysis - INFO - Generating scatter plot...
+2026-08-14 01:34:53,965 - CitySense.processing.lst_ndvi_analysis - INFO - Saved scatter plot to: D:\Clg\Major Project\CitySense\city_sense\data\lst_ndvi_scatter.png
+2026-08-14 01:34:53,966 - CitySense.processing.lst_ndvi_analysis - INFO - === LST-NDVI analysis complete! ===
+2026-08-14 01:34:53,966 - CitySense - INFO - Completed stage: Analyze LST and NDVI (0.41s)
+2026-08-14 01:34:53,966 - CitySense - INFO - Running stage: Score cells with PCA
+2026-08-14 01:34:53,966 - CitySense.processing.pca_scoring - INFO - === City Sense -- Week 6: PCA Scoring ===
+2026-08-14 01:34:53,989 - CitySense.processing.pca_scoring - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:53,991 - CitySense.processing.pca_scoring - INFO - Normalising features to [0, 1] range...
+2026-08-14 01:34:53,994 - CitySense.processing.pca_scoring - INFO - Saved MinMaxScaler to D:\Clg\Major Project\CitySense\city_sense\models\scaler.pkl
+2026-08-14 01:34:53,994 - CitySense.processing.pca_scoring - INFO - Scaled data ranges:
+2026-08-14 01:34:53,994 - CitySense.processing.pca_scoring - INFO -   mean_lst: min=0.00, max=1.00
+2026-08-14 01:34:53,995 - CitySense.processing.pca_scoring - INFO -   mean_ndvi: min=0.00, max=1.00
+2026-08-14 01:34:53,995 - CitySense.processing.pca_scoring - INFO -   mean_ndbi: min=0.00, max=1.00
+2026-08-14 01:34:53,995 - CitySense.processing.pca_scoring - INFO -   mean_dem: min=0.00, max=1.00
+2026-08-14 01:34:53,995 - CitySense.processing.pca_scoring - INFO - Aligning feature directions towards RISK...
+2026-08-14 01:34:53,995 - CitySense.processing.pca_scoring - INFO -   - Inverting mean_ndvi (less greenery = higher risk)
+2026-08-14 01:34:53,995 - CitySense.processing.pca_scoring - INFO -   - Inverting mean_dem (lower elevation = higher flood risk)
+2026-08-14 01:34:53,996 - CitySense.processing.pca_scoring - INFO - Fitting PCA (n_components=1)...
+2026-08-14 01:34:54,002 - CitySense.processing.pca_scoring - INFO - PCA Explained Variance Ratio: 0.6537 (65.4%)
+2026-08-14 01:34:54,002 - CitySense.processing.pca_scoring - INFO - Feature Loadings for PC1:
+2026-08-14 01:34:54,002 - CitySense.processing.pca_scoring - INFO -   mean_lst: 0.7418
+2026-08-14 01:34:54,002 - CitySense.processing.pca_scoring - INFO -   mean_ndvi: -0.6151
+2026-08-14 01:34:54,002 - CitySense.processing.pca_scoring - INFO -   mean_ndbi: 0.2146
+2026-08-14 01:34:54,002 - CitySense.processing.pca_scoring - INFO -   mean_dem: -0.1593
+2026-08-14 01:34:54,004 - CitySense.processing.pca_scoring - INFO - --- Risk Score Stats ---
+2026-08-14 01:34:54,005 - CitySense.processing.pca_scoring - INFO -   Min: 0.00
+2026-08-14 01:34:54,005 - CitySense.processing.pca_scoring - INFO -   Max: 100.00
+2026-08-14 01:34:54,005 - CitySense.processing.pca_scoring - INFO -   Mean: 51.78
+2026-08-14 01:34:54,005 - CitySense.processing.pca_scoring - INFO -   Median: 63.97
+2026-08-14 01:34:54,006 - CitySense.processing.pca_scoring - INFO - --- Sustainability Score Stats ---
+2026-08-14 01:34:54,006 - CitySense.processing.pca_scoring - INFO -   Min: 0.00
+2026-08-14 01:34:54,006 - CitySense.processing.pca_scoring - INFO -   Max: 100.00
+2026-08-14 01:34:54,006 - CitySense.processing.pca_scoring - INFO -   Mean: 48.22
+2026-08-14 01:34:54,006 - CitySense.processing.pca_scoring - INFO -   Median: 36.03
+2026-08-14 01:34:54,040 - CitySense.processing.pca_scoring - INFO - Updated master dataset with 'risk_score' and 'sustainability_score'.
+2026-08-14 01:34:54,041 - CitySense.processing.pca_scoring - INFO - Saved PCA model to D:\Clg\Major Project\CitySense\city_sense\models\pca_model.pkl
+2026-08-14 01:34:54,041 - CitySense.processing.pca_scoring - INFO - === PCA Scoring complete! ===
+2026-08-14 01:34:54,041 - CitySense - INFO - Completed stage: Score cells with PCA (0.08s)
+2026-08-14 01:34:54,041 - CitySense - INFO - Running stage: Cluster urban typologies
+2026-08-14 01:34:54,041 - CitySense.processing.kmeans_clustering - INFO - === City Sense -- Week 6: K-Means Clustering ===
+2026-08-14 01:34:54,076 - CitySense.processing.kmeans_clustering - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:54,078 - CitySense.processing.kmeans_clustering - INFO - Normalising features for clustering...
+2026-08-14 01:34:54,079 - CitySense.processing.kmeans_clustering - INFO - Running silhouette analysis to evaluate k (2 to 6)...
+2026-08-14 01:34:57,681 - CitySense.processing.kmeans_clustering - INFO -   k=2 | Silhouette Score = 0.5666
+2026-08-14 01:34:57,697 - CitySense.processing.kmeans_clustering - INFO -   k=3 | Silhouette Score = 0.5607
+2026-08-14 01:34:57,745 - CitySense.processing.kmeans_clustering - INFO -   k=4 | Silhouette Score = 0.5911
+2026-08-14 01:34:57,778 - CitySense.processing.kmeans_clustering - INFO -   k=5 | Silhouette Score = 0.4924
+2026-08-14 01:34:57,805 - CitySense.processing.kmeans_clustering - INFO -   k=6 | Silhouette Score = 0.4513
+2026-08-14 01:34:57,805 - CitySense.processing.kmeans_clustering - INFO - Best k by silhouette score: 4
+2026-08-14 01:34:57,901 - CitySense.processing.kmeans_clustering - INFO - Saved silhouette plot to D:\Clg\Major Project\CitySense\city_sense\data\kmeans_silhouette.png
+2026-08-14 01:34:57,901 - CitySense.processing.kmeans_clustering - INFO - Fitting final K-Means model with k=4...
+2026-08-14 01:34:57,908 - CitySense.processing.kmeans_clustering - INFO - Cluster Centroids (Scaled 0-1):
+2026-08-14 01:34:57,913 - CitySense.processing.kmeans_clustering - INFO -    mean_lst  mean_ndvi  mean_ndbi  mean_dem
+2026-08-14 01:34:57,913 - CitySense.processing.kmeans_clustering - INFO - 0  0.072943   0.107249   0.532396  0.004021
+2026-08-14 01:34:57,913 - CitySense.processing.kmeans_clustering - INFO - 1  0.442968   0.740041   0.622675  0.456473
+2026-08-14 01:34:57,913 - CitySense.processing.kmeans_clustering - INFO - 2  0.644395   0.516023   0.702010  0.050269
+2026-08-14 01:34:57,914 - CitySense.processing.kmeans_clustering - INFO - 3  0.303690   0.664508   0.310278  0.017573
+2026-08-14 01:34:57,914 - CitySense.processing.kmeans_clustering - INFO - Assigned typologies:
+2026-08-14 01:34:57,914 - CitySense.processing.kmeans_clustering - INFO -   Cluster 0: Coastal/Lowland Urban
+2026-08-14 01:34:57,915 - CitySense.processing.kmeans_clustering - INFO -   Cluster 1: Green/Forested
+2026-08-14 01:34:57,915 - CitySense.processing.kmeans_clustering - INFO -   Cluster 2: Dense Urban Heat
+2026-08-14 01:34:57,915 - CitySense.processing.kmeans_clustering - INFO -   Cluster 3: Green/Forested
+2026-08-14 01:34:57,954 - CitySense.processing.kmeans_clustering - INFO - Updated master dataset with 'cluster' assignments.
+2026-08-14 01:34:57,955 - CitySense.processing.kmeans_clustering - INFO - Cluster distribution:
+2026-08-14 01:34:57,957 - CitySense.processing.kmeans_clustering - INFO -   Cluster 2: Dense Urban Heat: 359 cells
+2026-08-14 01:34:57,957 - CitySense.processing.kmeans_clustering - INFO -   Cluster 0: Coastal/Lowland Urban: 295 cells
+2026-08-14 01:34:57,957 - CitySense.processing.kmeans_clustering - INFO -   Cluster 3: Green/Forested: 113 cells
+2026-08-14 01:34:57,958 - CitySense.processing.kmeans_clustering - INFO -   Cluster 1: Green/Forested: 69 cells
+2026-08-14 01:34:57,958 - CitySense.processing.kmeans_clustering - INFO - === K-Means Clustering complete! ===
+2026-08-14 01:34:57,958 - CitySense - INFO - Completed stage: Cluster urban typologies (3.92s)
+2026-08-14 01:34:57,958 - CitySense - INFO - Running stage: Train explainability model
+2026-08-14 01:34:57,959 - CitySense.processing.train_explainability - INFO - === City Sense – Indicator Attribution (Sensitivity Analysis) ===
+2026-08-14 01:34:57,959 - CitySense.processing.train_explainability - INFO - NOTE: RF trained to reconstruct PCA risk index from same features.
+2026-08-14 01:34:57,959 - CitySense.processing.train_explainability - INFO -       R²~1 is expected by construction. SHAP = index decomposition.
+2026-08-14 01:34:57,965 - CitySense.processing.train_explainability - INFO - Loading master dataset …
+2026-08-14 01:34:58,003 - CitySense.processing.train_explainability - INFO - Loaded 836 cells  |  columns: ['cell_id', 'mean_ndvi', 'mean_lst', 'mean_ndbi', 'mean_dem', 'uhi_intensity', 'risk_score', 'sustainability_score', 'cluster_id', 'cluster', 'geometry']
+2026-08-14 01:34:58,004 - CitySense.processing.train_explainability - INFO - Features shape: (836, 4)  |  Target range: [0.00, 100.00]
+2026-08-14 01:34:58,005 - CitySense.processing.train_explainability - INFO - Splitting data (test_size=0.2, random_seed=42) …
+2026-08-14 01:34:58,006 - CitySense.processing.train_explainability - INFO - Train: 668  |  Test: 168
+2026-08-14 01:34:58,006 - CitySense.processing.train_explainability - INFO - Fitting StandardScaler on training set …
+2026-08-14 01:34:58,008 - CitySense.processing.train_explainability - INFO - [OK] Scaler saved → D:\Clg\Major Project\CitySense\city_sense\models/explain_scaler.pkl
+2026-08-14 01:34:58,008 - CitySense.processing.train_explainability - INFO - Training RandomForestRegressor (n_estimators=200, max_depth=5) …
+2026-08-14 01:34:58,202 - CitySense.processing.train_explainability - INFO - [OK] Model saved → D:\Clg\Major Project\CitySense\city_sense\models/risk_model.pkl
+2026-08-14 01:34:58,250 - CitySense.processing.train_explainability - INFO - Surrogate fit (RF reconstructing PCA index — R²~1 expected by construction):
+2026-08-14 01:34:58,251 - CitySense.processing.train_explainability - INFO -   R² Score             : 0.9934  (confirms RF≈PCA formula, not independent validation)
+2026-08-14 01:34:58,251 - CitySense.processing.train_explainability - INFO -   Mean Absolute Error  : 1.8507  (index score points, 0-100 scale)
+2026-08-14 01:34:58,251 - CitySense.processing.train_explainability - INFO -   Root Mean Sq Error   : 2.5785
+2026-08-14 01:34:58,251 - CitySense.processing.train_explainability - INFO - Generating feature importance chart …
+2026-08-14 01:34:58,372 - CitySense.processing.train_explainability - INFO - [OK] Saved → D:\Clg\Major Project\CitySense\city_sense\data/feature_importance.png
+2026-08-14 01:34:58,373 - CitySense.processing.train_explainability - INFO - Computing SHAP attribution values (TreeExplainer, full dataset) …
+2026-08-14 01:34:58,621 - CitySense.processing.train_explainability - INFO - SHAP values shape: (836, 4)
+2026-08-14 01:34:58,622 - CitySense.processing.train_explainability - INFO - Generating SHAP attribution summary plot …
+2026-08-14 01:34:58,809 - CitySense.processing.train_explainability - INFO - [OK] Saved → D:\Clg\Major Project\CitySense\city_sense\data/shap_summary.png
+2026-08-14 01:34:58,809 - CitySense.processing.train_explainability - INFO - Extracting per-cell indicator attribution …
+2026-08-14 01:34:58,859 - CitySense.processing.train_explainability - INFO - [OK] Master GeoJSON updated → D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:58,859 - CitySense.processing.train_explainability - INFO - Attribution columns added: top_positive_driver, top_positive_shap, top_negative_driver, top_negative_shap, explanation_text
+2026-08-14 01:34:58,859 - CitySense.processing.train_explainability - INFO - Sample indicator attribution outputs:
+2026-08-14 01:34:58,861 - CitySense.processing.train_explainability - INFO -   r10_c19  risk= 13.3  cluster=Cluster 0: Coastal/Lowland Urban
+2026-08-14 01:34:58,861 - CitySense.processing.train_explainability - INFO -            ➜ Low composite risk index — dominated by low LST (temperature) (-33.05)
+2026-08-14 01:34:58,861 - CitySense.processing.train_explainability - INFO -   r35_c19  risk= 83.2  cluster=Cluster 1: Green/Forested
+2026-08-14 01:34:58,861 - CitySense.processing.train_explainability - INFO -            ➜ High composite risk index — dominated by high LST (temperature) (+16.21) and attenuated by low NDBI (built-up) (-0.33)
+2026-08-14 01:34:58,862 - CitySense.processing.train_explainability - INFO -   r2_c17  risk= 16.1  cluster=Cluster 0: Coastal/Lowland Urban
+2026-08-14 01:34:58,862 - CitySense.processing.train_explainability - INFO -            ➜ Low composite risk index — dominated by low LST (temperature) (-30.88)
+2026-08-14 01:34:58,862 - CitySense.processing.train_explainability - INFO -   r17_c1  risk=  8.4  cluster=Cluster 0: Coastal/Lowland Urban
+2026-08-14 01:34:58,862 - CitySense.processing.train_explainability - INFO -            ➜ Low composite risk index — dominated by high NDBI (built-up) (+0.41) and attenuated by low LST (temperature) (-35.01)
+2026-08-14 01:34:58,862 - CitySense.processing.train_explainability - INFO -   r37_c13  risk= 76.4  cluster=Cluster 1: Green/Forested
+2026-08-14 01:34:58,862 - CitySense.processing.train_explainability - INFO -            ➜ High composite risk index — dominated by high LST (temperature) (+10.39)
+2026-08-14 01:34:58,862 - CitySense.processing.train_explainability - INFO -   r8_c12  risk=  1.5  cluster=Cluster 0: Coastal/Lowland Urban
+2026-08-14 01:34:58,863 - CitySense.processing.train_explainability - INFO -            ➜ Low composite risk index — dominated by low LST (temperature) (-36.05)
+2026-08-14 01:34:58,863 - CitySense.processing.train_explainability - INFO - Internal consistency checks:
+2026-08-14 01:34:58,863 - CitySense.processing.train_explainability - INFO - ✔ LST and NDVI are the top-2 index contributors — consistent with PCA loadings
+2026-08-14 01:34:58,865 - CitySense.processing.train_explainability - INFO - ✔ 100% of the 20 hottest cells have positive LST attribution (consistent with PCA loading direction)
+2026-08-14 01:34:58,865 - CitySense.processing.train_explainability - INFO - Generating top-driver map …
+2026-08-14 01:34:59,074 - CitySense.processing.train_explainability - INFO - [OK] Saved → D:\Clg\Major Project\CitySense\city_sense\data/top_driver_map.png
+2026-08-14 01:34:59,075 - CitySense.processing.train_explainability - INFO - === Indicator Attribution (Sensitivity Analysis) complete! ===
+2026-08-14 01:34:59,075 - CitySense - INFO - Completed stage: Train explainability model (1.12s)
+2026-08-14 01:34:59,076 - CitySense - INFO - Running stage: Create dashboard explanations
+2026-08-14 01:34:59,076 - CitySense.processing.generate_explanations_json - INFO - === City Sense -- Generate Indicator Attribution JSON ===
+2026-08-14 01:34:59,081 - CitySense.processing.generate_explanations_json - INFO - Loading master dataset from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:59,125 - CitySense.processing.generate_explanations_json - INFO - Extracting indicator attribution data …
+2026-08-14 01:34:59,191 - CitySense.processing.generate_explanations_json - INFO - Saved attribution data for 836 cells → D:\Clg\Major Project\CitySense\city_sense\data/cell_explanations.json
+2026-08-14 01:34:59,191 - CitySense.processing.generate_explanations_json - INFO - === Indicator attribution JSON complete! ===
+2026-08-14 01:34:59,192 - CitySense - INFO - Completed stage: Create dashboard explanations (0.12s)
+2026-08-14 01:34:59,192 - CitySense - INFO - Skipping stage 'Generate environmental intelligence'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\environmental_intelligence.json
+2026-08-14 01:34:59,192 - CitySense - INFO - Skipping stage 'Fetch monsoon precipitation (CHIRPS)'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\precipitation_grid.geojson
+2026-08-14 01:34:59,192 - CitySense - INFO - Skipping stage 'Compute drainage proxy (OSM)'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\drainage_proxy.json
+2026-08-14 01:34:59,193 - CitySense - INFO - Skipping stage 'Generate flood susceptibility index'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\flood_susceptibility.json
+2026-08-14 01:34:59,193 - CitySense - INFO - Skipping stage 'Compute infrastructure access (OSM)'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\infrastructure_access.json
+2026-08-14 01:34:59,193 - CitySense - INFO - Skipping stage 'Generate infrastructure access index'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\infrastructure_access_index.json
+2026-08-14 01:34:59,193 - CitySense - INFO - Skipping stage 'Generate composite burden score'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\composite_burden.json
+2026-08-14 01:34:59,194 - CitySense - INFO - Skipping stage 'Generate planning profiles'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\planning_profiles.json
+2026-08-14 01:34:59,194 - CitySense - INFO - Skipping stage 'Enrich geographic metadata'; output already exists: D:\Clg\Major Project\CitySense\city_sense\data\geo\geographic_metadata.json
+2026-08-14 01:34:59,194 - CitySense - INFO - Running stage: Generate validation plots
+2026-08-14 01:34:59,194 - CitySense.processing.validate_scores - INFO - === City Sense -- Score & Cluster Validation ===
+2026-08-14 01:34:59,237 - CitySense.processing.validate_scores - INFO - Loaded 836 cells from D:\Clg\Major Project\CitySense\city_sense\data/cells_master.geojson
+2026-08-14 01:34:59,238 - CitySense.processing.validate_scores - INFO - Generating Risk Score distribution plot...
+2026-08-14 01:34:59,417 - CitySense.processing.validate_scores - INFO -   -> Saved D:\Clg\Major Project\CitySense\city_sense\data\val_risk_distribution.png
+2026-08-14 01:34:59,417 - CitySense.processing.validate_scores - INFO - Generating Risk vs LST scatter plot...
+2026-08-14 01:34:59,561 - CitySense.processing.validate_scores - INFO -   -> Saved D:\Clg\Major Project\CitySense\city_sense\data\val_risk_vs_lst.png
+2026-08-14 01:34:59,561 - CitySense.processing.validate_scores - INFO - Generating Risk by Cluster boxplot...
+2026-08-14 01:34:59,694 - CitySense.processing.validate_scores - INFO -   -> Saved D:\Clg\Major Project\CitySense\city_sense\data\val_risk_by_cluster.png
+2026-08-14 01:34:59,695 - CitySense.processing.validate_scores - INFO - Generating Indicator Profiles by Cluster...
+2026-08-14 01:34:59,856 - CitySense.processing.validate_scores - INFO -   -> Saved D:\Clg\Major Project\CitySense\city_sense\data\val_cluster_profiles.png
+2026-08-14 01:34:59,856 - CitySense.processing.validate_scores - INFO - === Validation plots complete! ===
+2026-08-14 01:34:59,856 - CitySense - INFO - Completed stage: Generate validation plots (0.66s)
+2026-08-14 01:34:59,856 - CitySense - INFO - === City Sense Pipeline Finished ===

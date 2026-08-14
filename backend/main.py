@@ -11,11 +11,16 @@ Run:
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Any
 
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+# Load .env from the backend directory (GEMINI_API_KEY lives here)
+load_dotenv(Path(__file__).parent / ".env")
 
 # ---------------------------------------------------------------------------
 # App setup
@@ -375,3 +380,85 @@ def get_ward(ward_name: str) -> dict:
 def health() -> dict:
     """Simple health check for the frontend to verify the API is reachable."""
     return {"status": "ok", "cells": len(_cell_props)}
+
+
+# ---------------------------------------------------------------------------
+# Chat endpoint
+# ---------------------------------------------------------------------------
+
+from backend.chat import ChatRequest, ChatResponse, handle_chat
+
+
+def _build_app_data() -> dict:
+    """Bundle all in-memory data into a single dict for the chat handler."""
+    # Build stats inline (same logic as get_stats) so we don't repeat HTTP calls
+    ehi_vals = [
+        v["environmental_health"]
+        for v in _env_intel.values()
+        if isinstance(v.get("environmental_health"), (int, float))
+    ]
+    avg_ehi = round(sum(ehi_vals) / len(ehi_vals), 1) if ehi_vals else 0.0
+
+    priority_counts: dict[str, int] = {}
+    for v in _plans.values():
+        p = v.get("planning_priority", "Unknown")
+        priority_counts[p] = priority_counts.get(p, 0) + 1
+
+    issue_counts: dict[str, int] = {}
+    for v in _env_intel.values():
+        issue = v.get("primary_issue")
+        if issue:
+            issue_counts[issue] = issue_counts.get(issue, 0) + 1
+    top_issues = sorted(issue_counts.items(), key=lambda x: x[1], reverse=True)[:6]
+
+    intervention_counts: dict[str, int] = {}
+    for v in _plans.values():
+        iv = v.get("recommended_intervention", "")
+        if iv:
+            intervention_counts[iv] = intervention_counts.get(iv, 0) + 1
+    top_interventions = sorted(
+        intervention_counts.items(), key=lambda x: x[1], reverse=True
+    )[:5]
+
+    risk_vals = [
+        p.get("risk_score", 0.0)
+        for p in _cell_props.values()
+        if isinstance(p.get("risk_score"), (int, float))
+    ]
+    avg_risk = round(sum(risk_vals) / len(risk_vals), 1) if risk_vals else 0.0
+
+    stats = {
+        "total_cells":       len(_cell_props),
+        "avg_ehi":           avg_ehi,
+        "avg_risk":          avg_risk,
+        "priority_counts":   priority_counts,
+        "top_issues":        [{"issue": k, "count": v} for k, v in top_issues],
+        "top_interventions": [{"intervention": k, "count": v} for k, v in top_interventions],
+    }
+
+    return {
+        "cell_props":   _cell_props,
+        "env_intel":    _env_intel,
+        "plans":        _plans,
+        "explanations": _explanations,
+        "fsi_data":     _fsi_data,
+        "iai_data":     _iai_data,
+        "burden_data":  _burden_data,
+        "ward_profiles": _ward_profiles,
+        "stats":        stats,
+    }
+
+
+@app.post("/api/chat", response_model=ChatResponse)
+async def chat_endpoint(request: ChatRequest) -> ChatResponse:
+    """
+    LLM-powered chat endpoint for CitySense.
+
+    Accepts a conversation history and returns the assistant's reply.
+    Optionally returns a cell_id to highlight on the map when a location
+    is resolved from a Google Maps URL or coordinates.
+
+    Requires GEMINI_API_KEY environment variable (or backend/.env file).
+    """
+    app_data = _build_app_data()
+    return handle_chat(request, app_data)
