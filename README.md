@@ -40,11 +40,11 @@ graph TD
     P2 & IAI --> CB(Composite Burden Score)
     P2 & FSI --> P3(Phase 3: Planning Decision Engine)
     
-    P3 & CB & FSI & IAI & P1 --> API(FastAPI REST Server)
+    P3 & CB & FSI & IAI & P1 --> API[backend/main.py<br>FastAPI REST Server]
     
-    LLM[Agentic Gemini LLM Engine<br>Function Calling & Maps Resolver] <-->|Tool Dispatch / API| API
+    CHAT[backend/chat.py<br>Agentic Gemini LLM Chatbot Engine<br>Function Calling & Maps Resolver] <-->|Tool Dispatch / POST /api/chat| API
     
-    API <--> DASH[React + Deck.gl Dashboard<br>11 Choropleth Layers + AI Chat Panel]
+    API <--> DASH[frontend/src/<br>React + Deck.gl Dashboard<br>11 Choropleth Layers + ChatPanel.tsx]
 ```
 
 ---
@@ -96,7 +96,8 @@ city_sense/
 │   ├── decision_engine.py
 │   └── generate_planning_profiles.py
 ├── backend/
-│   └── main.py                      # FastAPI — 6 REST endpoints
+│   ├── main.py                      # FastAPI REST server (6 REST endpoints)
+│   └── chat.py                      # OpenRouter/Gemini LLM Chatbot Engine with tool calling
 ├── frontend/                        # React + Deck.gl dashboard
 │   └── src/
 │       ├── components/Map/          # WebGL choropleth + hotspot layers
