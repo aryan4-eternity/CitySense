@@ -1,10 +1,9 @@
 services:
-  # FastAPI Backend Service (Optimized for Render Free Tier 512MB RAM)
+  # FastAPI Backend Service (Render Free Tier)
   - type: web
     name: citysense-backend
     env: python
     plan: free
-    rootDir: city_sense
     buildCommand: pip install -r requirements.txt && pip install -r backend/requirements.txt uvicorn
     startCommand: python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     envVars:
