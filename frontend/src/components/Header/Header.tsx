@@ -155,15 +155,6 @@ export function Header() {
           CELLS
         </span>
 
-        {/* Phase */}
-        <span
-          style={{
-            color: 'var(--glow-cyan)',
-            textShadow: '0 0 6px rgba(0, 212, 255, 0.3)',
-          }}
-        >
-          PHASE 3
-        </span>
       </div>
     </header>
   )

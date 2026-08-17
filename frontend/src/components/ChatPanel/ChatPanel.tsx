@@ -4,6 +4,7 @@
 // ============================================================
 
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { Bot, Sparkles, X, RotateCcw, Send, MapPin } from 'lucide-react'
 import { sendChatMessage } from '@/api/citysense'
 import { useStore } from '@/store/useStore'
 import type { ChatMessage } from '@/types'
@@ -215,32 +216,43 @@ function MessageBubble({ msg }: { msg: ChatMessage }) {
       {/* Role label */}
       <div
         style={{
-          fontSize: 9,
+          fontSize: 9.5,
           fontFamily: 'var(--font-mono)',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          color: isUser ? 'var(--glow-cyan-dim)' : 'rgba(0,255,159,0.4)',
+          color: isUser ? 'var(--glow-cyan-dim)' : 'rgba(0,255,159,0.7)',
           marginBottom: 4,
           paddingInline: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 4,
         }}
       >
-        {isUser ? 'You' : '⬡ CitySense AI'}
+        {isUser ? (
+          'You'
+        ) : (
+          <>
+            <Bot size={11} color="var(--glow-cyan)" />
+            <span>CitySense AI</span>
+          </>
+        )}
       </div>
 
       {/* Bubble */}
       <div
         style={{
-          maxWidth: '88%',
-          padding: '9px 12px',
-          borderRadius: isUser ? '10px 10px 2px 10px' : '10px 10px 10px 2px',
+          maxWidth: '92%',
+          padding: '12px 16px',
+          borderRadius: isUser ? '12px 12px 2px 12px' : '12px 12px 12px 2px',
           background: isUser
-            ? 'rgba(0, 212, 255, 0.10)'
-            : 'rgba(8, 22, 48, 0.92)',
-          border: `1px solid ${isUser ? 'rgba(0,212,255,0.25)' : 'rgba(0,180,255,0.12)'}`,
-          fontSize: 12.5,
+            ? 'rgba(0, 212, 255, 0.14)'
+            : 'rgba(8, 22, 48, 0.95)',
+          border: `1px solid ${isUser ? 'rgba(0,212,255,0.32)' : 'rgba(0,180,255,0.18)'}`,
+          fontSize: 13.5,
           lineHeight: 1.6,
           color: 'var(--text-primary)',
           wordBreak: 'break-word',
+          boxShadow: isUser ? '0 2px 10px rgba(0,212,255,0.10)' : '0 4px 16px rgba(0,0,0,0.4)',
         }}
       >
         {isUser ? (
@@ -257,27 +269,30 @@ function MessageBubble({ msg }: { msg: ChatMessage }) {
           onClick={() => setSelectedCellId(msg.cell_id!)}
           style={{
             marginTop: 6,
-            padding: '4px 10px',
-            fontSize: 10,
+            padding: '5px 12px',
+            fontSize: 11,
             fontFamily: 'var(--font-mono)',
             letterSpacing: '0.06em',
-            background: 'rgba(0,212,255,0.10)',
-            border: '1px solid rgba(0,212,255,0.35)',
-            borderRadius: 4,
+            background: 'rgba(0,212,255,0.12)',
+            border: '1px solid rgba(0,212,255,0.4)',
+            borderRadius: 5,
             color: 'var(--glow-cyan)',
             cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 5,
             transition: 'all 0.2s',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(0,212,255,0.18)'
-            e.currentTarget.style.boxShadow = '0 0 8px var(--glow-cyan-dim)'
+            e.currentTarget.style.background = 'rgba(0,212,255,0.22)'
+            e.currentTarget.style.boxShadow = '0 0 10px var(--glow-cyan-dim)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(0,212,255,0.10)'
+            e.currentTarget.style.background = 'rgba(0,212,255,0.12)'
             e.currentTarget.style.boxShadow = 'none'
           }}
         >
-          📍 View {msg.cell_id} on map
+          <MapPin size={12} /> View {msg.cell_id} on map
         </button>
       )}
     </div>
@@ -346,13 +361,29 @@ export function ChatPanel() {
         setSelectedCellId(response.cell_id)
       }
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Unknown error'
-      setError(msg)
+      const rawMsg = err instanceof Error ? err.message : 'Unknown error'
+      console.error('[CitySense AI Chat Error]:', err)
+
+      let cleanMsg = rawMsg
+      if (
+        rawMsg.includes('{') ||
+        rawMsg.includes('RESOURCE_EXHAUSTED') ||
+        rawMsg.includes('QuotaFailure') ||
+        rawMsg.includes('500') ||
+        rawMsg.includes('503') ||
+        rawMsg.includes('429') ||
+        rawMsg.includes('Traceback')
+      ) {
+        cleanMsg =
+          'The AI assistant is temporarily rate-limited or experiencing high demand. Please wait a few seconds and try again.'
+      }
+
+      setError(cleanMsg)
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          content: `⚠️ Error: ${msg}\n\nMake sure the backend is running and GEMINI_API_KEY is set in \`backend/.env\`.`,
+          content: `⚠️ ${cleanMsg}`,
         },
       ])
     } finally {
@@ -385,16 +416,17 @@ export function ChatPanel() {
       className="panel animate-slide-right"
       style={{
         position: 'fixed',
-        right: 16,
-        bottom: 70,
-        width: 380,
-        height: 560,
+        right: 18,
+        bottom: 74,
+        width: 'min(540px, calc(100vw - 32px))',
+        height: 'min(720px, calc(100vh - 85px))',
         zIndex: 110,
-        borderRadius: 10,
+        borderRadius: 14,
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        boxShadow: '0 8px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,255,0.15)',
+        boxShadow: '0 16px 56px rgba(0,0,0,0.85), 0 0 0 1px rgba(0,212,255,0.25)',
+        backdropFilter: 'blur(16px)',
       }}
       role="dialog"
       aria-label="CitySense AI Chat"
@@ -402,56 +434,57 @@ export function ChatPanel() {
       {/* ── Header ── */}
       <div
         style={{
-          padding: '10px 14px',
+          padding: '12px 16px',
           borderBottom: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexShrink: 0,
-          background: 'rgba(0,20,45,0.6)',
+          background: 'rgba(0,20,45,0.75)',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          {/* Animated AI indicator */}
-          <div style={{ position: 'relative', width: 28, height: 28 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          {/* Animated AI bot icon indicator */}
+          <div style={{ position: 'relative', width: 32, height: 32 }}>
             <div
               style={{
-                width: 28,
-                height: 28,
+                width: 32,
+                height: 32,
                 borderRadius: '50%',
-                background: 'rgba(0,212,255,0.10)',
-                border: '1px solid rgba(0,212,255,0.35)',
+                background: 'linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,120,255,0.1))',
+                border: '1px solid rgba(0,212,255,0.45)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: 14,
+                color: 'var(--glow-cyan)',
+                boxShadow: '0 0 12px rgba(0,212,255,0.25)',
               }}
             >
-              ⬡
+              <Bot size={18} />
             </div>
             <span
               className="animate-dot-blink"
               style={{
                 position: 'absolute',
-                top: 0,
-                right: 0,
-                width: 7,
-                height: 7,
+                top: -1,
+                right: -1,
+                width: 8,
+                height: 8,
                 borderRadius: '50%',
                 background: 'var(--glow-green)',
-                boxShadow: '0 0 6px var(--glow-green)',
+                boxShadow: '0 0 8px var(--glow-green)',
               }}
             />
           </div>
           <div>
             <div
               className="font-mono text-glow"
-              style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.06em' }}
+              style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', display: 'flex', alignItems: 'center', gap: 6 }}
             >
-              CITYSENSE AI
+              CITYSENSE AI <Sparkles size={12} color="var(--glow-amber)" />
             </div>
             <div
-              style={{ fontSize: 9, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
+              style={{ fontSize: 9.5, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
             >
               Urban Intelligence Assistant
             </div>
@@ -475,7 +508,7 @@ export function ChatPanel() {
               e.currentTarget.style.color = 'var(--text-secondary)'
             }}
           >
-            ↺
+            <RotateCcw size={13} />
           </button>
           {/* Close button */}
           <button
@@ -493,7 +526,7 @@ export function ChatPanel() {
               e.currentTarget.style.color = 'var(--text-secondary)'
             }}
           >
-            ×
+            <X size={14} />
           </button>
         </div>
       </div>
@@ -630,29 +663,28 @@ export function ChatPanel() {
             disabled={loading || !input.trim()}
             aria-label="Send message"
             style={{
-              width: 36,
-              height: 36,
+              width: 38,
+              height: 38,
               borderRadius: 6,
               border: '1px solid var(--border)',
               background: input.trim() && !loading
-                ? 'rgba(0,212,255,0.15)'
+                ? 'rgba(0,212,255,0.20)'
                 : 'transparent',
               color: input.trim() && !loading
                 ? 'var(--glow-cyan)'
                 : 'var(--text-muted)',
               cursor: input.trim() && !loading ? 'pointer' : 'not-allowed',
-              fontSize: 16,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               flexShrink: 0,
               transition: 'all 0.2s',
               boxShadow: input.trim() && !loading
-                ? '0 0 8px rgba(0,212,255,0.15)'
+                ? '0 0 10px rgba(0,212,255,0.25)'
                 : 'none',
             }}
           >
-            {loading ? '…' : '▶'}
+            {loading ? '…' : <Send size={15} />}
           </button>
         </div>
 
@@ -684,45 +716,46 @@ export function ChatToggleButton() {
       type="button"
       onClick={() => setChatOpen(!chatOpen)}
       aria-label={chatOpen ? 'Close AI chat' : 'Open AI chat'}
-      title={chatOpen ? 'Close AI chat' : 'Open CitySense AI'}
+      title={chatOpen ? 'Close AI chat' : 'Open CitySense AI Assistant'}
       style={{
         position: 'fixed',
-        right: 16,
-        bottom: 16,
-        width: 46,
-        height: 46,
+        right: 18,
+        bottom: 18,
+        width: 50,
+        height: 50,
         borderRadius: '50%',
-        border: `1px solid ${chatOpen ? 'rgba(0,212,255,0.6)' : 'rgba(0,212,255,0.3)'}`,
+        border: `1px solid ${chatOpen ? 'rgba(0,212,255,0.7)' : 'rgba(0,212,255,0.4)'}`,
         background: chatOpen
-          ? 'rgba(0,212,255,0.18)'
-          : 'rgba(5,16,35,0.90)',
+          ? 'rgba(0,212,255,0.22)'
+          : 'linear-gradient(135deg, rgba(8,24,52,0.95), rgba(2,12,30,0.95))',
         color: 'var(--glow-cyan)',
-        fontSize: 20,
         cursor: 'pointer',
         zIndex: 200,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         boxShadow: chatOpen
-          ? '0 0 20px rgba(0,212,255,0.35), 0 4px 16px rgba(0,0,0,0.5)'
-          : '0 0 10px rgba(0,212,255,0.15), 0 4px 16px rgba(0,0,0,0.5)',
+          ? '0 0 24px rgba(0,212,255,0.45), 0 4px 20px rgba(0,0,0,0.6)'
+          : '0 0 16px rgba(0,212,255,0.25), 0 4px 20px rgba(0,0,0,0.6)',
         transition: 'all 0.25s cubic-bezier(0.22,1,0.36,1)',
         backdropFilter: 'blur(12px)',
       }}
       onMouseEnter={(e) => {
         if (!chatOpen) {
-          e.currentTarget.style.background = 'rgba(0,212,255,0.14)'
-          e.currentTarget.style.boxShadow = '0 0 18px rgba(0,212,255,0.30), 0 4px 16px rgba(0,0,0,0.5)'
+          e.currentTarget.style.background = 'rgba(0,212,255,0.18)'
+          e.currentTarget.style.boxShadow = '0 0 22px rgba(0,212,255,0.40), 0 4px 20px rgba(0,0,0,0.6)'
+          e.currentTarget.style.transform = 'scale(1.06)'
         }
       }}
       onMouseLeave={(e) => {
         if (!chatOpen) {
-          e.currentTarget.style.background = 'rgba(5,16,35,0.90)'
-          e.currentTarget.style.boxShadow = '0 0 10px rgba(0,212,255,0.15), 0 4px 16px rgba(0,0,0,0.5)'
+          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(8,24,52,0.95), rgba(2,12,30,0.95))'
+          e.currentTarget.style.boxShadow = '0 0 16px rgba(0,212,255,0.25), 0 4px 20px rgba(0,0,0,0.6)'
+          e.currentTarget.style.transform = 'scale(1)'
         }
       }}
     >
-      {chatOpen ? '×' : '⬡'}
+      {chatOpen ? <X size={22} /> : <Bot size={24} />}
     </button>
   )
 }

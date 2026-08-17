@@ -1,7 +1,8 @@
 """
-CitySense Chat Backend
-======================
-LLM-powered chat endpoint using Gemini (google-genai SDK) with function-calling.
+CitySense Chat Backend — OpenRouter Edition
+===========================================
+LLM-powered chat endpoint using OpenRouter API (OpenAI-compatible)
+with function-calling and location resolution.
 
 Tools available to the model:
   - get_city_stats            → city-wide aggregates
@@ -20,6 +21,7 @@ Google Maps URL formats handled:
 
 from __future__ import annotations
 
+import json
 import math
 import os
 import re
@@ -58,9 +60,11 @@ Flood Susceptibility Index (FSI), and Infrastructure Access Index (IAI).
 Your job:
 - Answer questions about Mumbai's environment, urban heat, flood risk, vegetation, and planning.
 - When given a Google Maps URL or coordinates, find the matching cell and give a detailed analysis.
-- Use the provided tools to fetch real data — never invent numbers.
+- Use the provided tools to fetch real data — never invent or guess numbers under any circumstances.
+- Grounding Rule: Always query system tools before stating numbers, ranks, or cell statistics.
+- Out-of-Scope Rule: If a user asks non-environmental/non-urban questions (e.g., coding, recipes, general trivia, politics) or asks about locations outside Mumbai, politely decline and clarify your specific role as Mumbai's CitySense AI analyst.
 - Be concise but insightful. Use clear structure with short paragraphs.
-- Mumbai bounding box: lon 72.77–72.99°E, lat 18.89–19.27°N. If a location is outside this, say so.
+- Mumbai bounding box: lon 72.77–72.99°E, lat 18.89–19.27°N. If a location is outside this, state that it falls outside the system's 836-cell coverage area.
 - When quoting scores, always explain what they mean (e.g. "EHI 34/100 — Poor environmental health").
 - Use emoji sparingly for readability (🔥 heat, 🌿 vegetation, 🌊 flood, 🏗️ built-up, ⚠️ risk).
 
@@ -158,7 +162,7 @@ def _tool_get_cell_details(cell_id: str, data: dict) -> dict:
     }
 
 
-def _tool_get_top_cells(limit: int, priority_filter: str | None, data: dict) -> list[dict]:
+def _tool_get_top_cells(limit: int = 5, priority_filter: str | None = None, data: dict = {}) -> list[dict]:
     rows = []
     for cell_id, plan in data["plans"].items():
         if priority_filter and plan.get("planning_priority", "").lower() != priority_filter.lower():
@@ -196,7 +200,7 @@ def _tool_find_cell_by_coordinates(lat: float, lon: float, data: dict) -> dict:
     return {"cell_id": cell_id, "lat": lat, "lon": lon, **_tool_get_cell_details(cell_id, data)}
 
 
-def _tool_search_cells_by_condition(condition: str, limit: int, data: dict) -> list[dict]:
+def _tool_search_cells_by_condition(condition: str, limit: int = 10, data: dict = {}) -> list[dict]:
     cond_lower = condition.lower()
     matched = []
     for cell_id, ei in data["env_intel"].items():
@@ -226,117 +230,166 @@ def dispatch_tool(name: str, args: dict, data: dict) -> Any:
     if name == "get_city_stats":
         return _tool_get_city_stats(data)
     if name == "get_cell_details":
-        return _tool_get_cell_details(args["cell_id"], data)
+        return _tool_get_cell_details(args.get("cell_id", ""), data)
     if name == "get_top_cells":
         return _tool_get_top_cells(args.get("limit", 5), args.get("priority_filter"), data)
     if name == "get_ward_summary":
-        return _tool_get_ward_summary(args["ward_name"], data)
+        return _tool_get_ward_summary(args.get("ward_name", ""), data)
     if name == "find_cell_by_coordinates":
-        return _tool_find_cell_by_coordinates(args["lat"], args["lon"], data)
+        return _tool_find_cell_by_coordinates(float(args.get("lat", 0)), float(args.get("lon", 0)), data)
     if name == "search_cells_by_condition":
-        return _tool_search_cells_by_condition(args["condition"], args.get("limit", 10), data)
+        return _tool_search_cells_by_condition(args.get("condition", ""), args.get("limit", 10), data)
     return {"error": f"Unknown tool: {name}"}
 
 
 # ---------------------------------------------------------------------------
-# Tool schemas for the new google-genai SDK
+# OpenAI-compatible tool schemas for OpenRouter
 # ---------------------------------------------------------------------------
 
-from google.genai import types as genai_types
-
 TOOLS = [
-    genai_types.Tool(
-        function_declarations=[
-            genai_types.FunctionDeclaration(
-                name="get_city_stats",
-                description="Get city-wide aggregate statistics for Mumbai: average EHI, risk score, priority distribution, top environmental issues and interventions.",
-                parameters=genai_types.Schema(type=genai_types.Type.OBJECT, properties={}),
-            ),
-            genai_types.FunctionDeclaration(
-                name="get_cell_details",
-                description="Get the complete data bundle for a specific grid cell by cell_id (format r{row}_c{col}, e.g. r15_c8). Returns environmental health, planning profile, flood susceptibility, infrastructure access, and SHAP explanation.",
-                parameters=genai_types.Schema(
-                    type=genai_types.Type.OBJECT,
-                    properties={
-                        "cell_id": genai_types.Schema(type=genai_types.Type.STRING, description="Cell ID in format r{row}_c{col}"),
+    {
+        "type": "function",
+        "function": {
+            "name": "get_city_stats",
+            "description": "Get city-wide aggregate statistics for Mumbai: average EHI, risk score, priority distribution, top environmental issues and interventions.",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_cell_details",
+            "description": "Get the complete data bundle for a specific grid cell by cell_id (format r{row}_c{col}, e.g. r15_c8). Returns environmental health, planning profile, flood susceptibility, infrastructure access, and SHAP explanation.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "cell_id": {
+                        "type": "string",
+                        "description": "Cell ID in format r{row}_c{col}",
                     },
-                    required=["cell_id"],
-                ),
-            ),
-            genai_types.FunctionDeclaration(
-                name="get_top_cells",
-                description="Get top N cells ranked by priority score, optionally filtered by planning priority level.",
-                parameters=genai_types.Schema(
-                    type=genai_types.Type.OBJECT,
-                    properties={
-                        "limit": genai_types.Schema(type=genai_types.Type.INTEGER, description="Number of cells (max 20, default 5)"),
-                        "priority_filter": genai_types.Schema(type=genai_types.Type.STRING, description="Optional: 'Critical', 'High', 'Medium', 'Low', or 'Very Low'"),
+                },
+                "required": ["cell_id"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_top_cells",
+            "description": "Get top N cells ranked by priority score, optionally filtered by planning priority level.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "type": "integer",
+                        "description": "Number of cells (max 20, default 5)",
                     },
-                    required=["limit"],
-                ),
-            ),
-            genai_types.FunctionDeclaration(
-                name="get_ward_summary",
-                description="Get aggregated planning summary for a Mumbai ward by name.",
-                parameters=genai_types.Schema(
-                    type=genai_types.Type.OBJECT,
-                    properties={
-                        "ward_name": genai_types.Schema(type=genai_types.Type.STRING, description="Name of the Mumbai ward"),
+                    "priority_filter": {
+                        "type": "string",
+                        "description": "Optional: 'Critical', 'High', 'Medium', 'Low', or 'Very Low'",
                     },
-                    required=["ward_name"],
-                ),
-            ),
-            genai_types.FunctionDeclaration(
-                name="find_cell_by_coordinates",
-                description="Find the CitySense grid cell at given geographic coordinates and return its full analysis. Use this when the user provides a Google Maps link or any lat/lng coordinates.",
-                parameters=genai_types.Schema(
-                    type=genai_types.Type.OBJECT,
-                    properties={
-                        "lat": genai_types.Schema(type=genai_types.Type.NUMBER, description="Latitude in decimal degrees"),
-                        "lon": genai_types.Schema(type=genai_types.Type.NUMBER, description="Longitude in decimal degrees"),
+                },
+                "required": ["limit"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_ward_summary",
+            "description": "Get aggregated planning summary for a Mumbai ward by name.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "ward_name": {
+                        "type": "string",
+                        "description": "Name of the Mumbai ward",
                     },
-                    required=["lat", "lon"],
-                ),
-            ),
-            genai_types.FunctionDeclaration(
-                name="search_cells_by_condition",
-                description="Find all cells matching a specific environmental condition (e.g. 'Urban Heat Island', 'Low Vegetation', 'Flood Susceptibility', 'High Built-up Density').",
-                parameters=genai_types.Schema(
-                    type=genai_types.Type.OBJECT,
-                    properties={
-                        "condition": genai_types.Schema(type=genai_types.Type.STRING, description="Environmental condition to search for"),
-                        "limit": genai_types.Schema(type=genai_types.Type.INTEGER, description="Max results (default 10, max 20)"),
+                },
+                "required": ["ward_name"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "find_cell_by_coordinates",
+            "description": "Find the CitySense grid cell at given geographic coordinates and return its full analysis. Use this when the user provides a Google Maps link or any lat/lng coordinates.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "lat": {
+                        "type": "number",
+                        "description": "Latitude in decimal degrees",
                     },
-                    required=["condition", "limit"],
-                ),
-            ),
-        ]
-    )
+                    "lon": {
+                        "type": "number",
+                        "description": "Longitude in decimal degrees",
+                    },
+                },
+                "required": ["lat", "lon"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "search_cells_by_condition",
+            "description": "Find all cells matching a specific environmental condition (e.g. 'Urban Heat Island', 'Low Vegetation', 'Flood Susceptibility', 'High Built-up Density').",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "condition": {
+                        "type": "string",
+                        "description": "Environmental condition to search for",
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "Max results (default 10, max 20)",
+                    },
+                },
+                "required": ["condition", "limit"],
+            },
+        },
+    },
 ]
 
 
 # ---------------------------------------------------------------------------
-# Main chat handler — uses new google-genai SDK
+# Main chat handler — OpenRouter / OpenAI SDK
 # ---------------------------------------------------------------------------
 
 def handle_chat(request: ChatRequest, app_data: dict) -> ChatResponse:
     """
-    Process a chat request using the new google-genai SDK with function-calling.
+    Process a chat request using OpenRouter with OpenAI-compatible function-calling.
     """
-    import google.genai as genai
+    from openai import OpenAI
 
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise HTTPException(
-            status_code=503,
-            detail="GEMINI_API_KEY not set. Add it to backend/.env",
+    api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("GEMINI_API_KEY")
+    
+    # Check for missing or placeholder keys
+    if not api_key or "your-openrouter-key-here" in api_key or "your-key-here" in api_key:
+        return ChatResponse(
+            reply="⚠️ **OpenRouter API Key is not configured yet.**\n\nPlease open `backend/.env` and replace `OPENROUTER_API_KEY=sk-or-v1-your-openrouter-key-here` with your actual API key from [OpenRouter.ai](https://openrouter.ai/keys)."
         )
 
-    client = genai.Client(api_key=api_key)
+    model_name = os.getenv("OPENROUTER_MODEL", "google/gemini-2.5-flash")
+
+    client = OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=api_key,
+        default_headers={
+            "HTTP-Referer": "https://citysense.app",
+            "X-Title": "CitySense AI",
+        },
+    )
 
     # Pre-process last user message: extract coords from Maps URLs
-    messages = request.messages
-    last_msg_content = messages[-1].content
+    messages_input = request.messages
+    last_msg_content = messages_input[-1].content
     coords = extract_coords_from_text(last_msg_content)
 
     if coords:
@@ -353,108 +406,88 @@ def handle_chat(request: ChatRequest, app_data: dict) -> ChatResponse:
                 f"Mumbai's coverage area. Inform the user.]"
             )
 
-    # Build conversation history for the new SDK
-    # New SDK uses Content objects with role "user" / "model"
-    history = []
-    for msg in messages[:-1]:
-        role = "user" if msg.role == "user" else "model"
-        history.append(
-            genai_types.Content(
-                role=role,
-                parts=[genai_types.Part(text=msg.content)],
-            )
-        )
-
-    # Add the (possibly augmented) last user message
-    history.append(
-        genai_types.Content(
-            role="user",
-            parts=[genai_types.Part(text=last_msg_content)],
-        )
-    )
-
-    config = genai_types.GenerateContentConfig(
-        system_instruction=SYSTEM_PROMPT,
-        tools=TOOLS,
-        temperature=0.3,
-    )
+    # Build OpenAI message history
+    history: list[dict[str, Any]] = [{"role": "system", "content": SYSTEM_PROMPT}]
+    for msg in messages_input[:-1]:
+        history.append({"role": msg.role, "content": msg.content})
+    history.append({"role": "user", "content": last_msg_content})
 
     resolved_cell_id: str | None = None
 
-    # Agentic loop — keep calling until we get a text response
+    # Agentic loop — keep calling until text response
     for _ in range(8):
-        # Retry up to 3 times on 503 (model overloaded)
-        import time
-        last_exc = None
-        for attempt in range(3):
-            try:
-                response = client.models.generate_content(
-                    model="gemini-flash-latest",
-                    contents=history,
-                    config=config,
+        try:
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=history,
+                tools=TOOLS,
+                temperature=0.3,
+                max_tokens=1500,
+            )
+        except Exception as exc:
+            err_str = str(exc)
+            if "402" in err_str or "credits" in err_str.lower() or "payment" in err_str.lower():
+                return ChatResponse(
+                    reply="⚠️ **OpenRouter Credit Limit Reached (402)**\n\nYour OpenRouter account requires credits. Please check your balance or upgrade at [OpenRouter.ai Settings](https://openrouter.ai/settings/credits)."
                 )
-                last_exc = None
-                break
-            except Exception as exc:
-                if "503" in str(exc) and attempt < 2:
-                    time.sleep(4)
-                    last_exc = exc
-                else:
-                    raise
-        if last_exc:
-            raise last_exc
+            if "429" in err_str or "quota" in err_str.lower() or "rate" in err_str.lower() or "resource_exhausted" in err_str.lower():
+                return ChatResponse(
+                    reply="⚠️ The AI assistant is currently experiencing a rate limit or high demand. Please wait a few seconds and try again."
+                )
+            if "401" in err_str or "unauthorized" in err_str.lower() or "invalid" in err_str.lower():
+                return ChatResponse(
+                    reply="⚠️ Invalid OpenRouter API Key. Please verify `OPENROUTER_API_KEY` in `backend/.env`."
+                )
+            return ChatResponse(
+                reply="⚠️ The AI assistant service is temporarily unavailable. Please try your request again in a moment."
+            )
 
-        candidate = response.candidates[0] if response.candidates else None
-        if candidate is None:
-            break
+        choice = response.choices[0]
+        msg = choice.message
 
-        parts = candidate.content.parts if candidate.content else []
+        # Append assistant message to history
+        msg_dict = msg.model_dump(exclude_none=True)
+        history.append(msg_dict)
 
-        # Check for function calls
-        fn_calls = [p for p in parts if p.function_call is not None]
-        if not fn_calls:
-            break  # Text response — done
+        # Check for tool calls
+        if not msg.tool_calls:
+            break  # Final text reply
 
-        # Append model's function-call turn to history
-        history.append(candidate.content)
+        # Execute tool calls and collect results
+        for tc in msg.tool_calls:
+            fn_name = tc.function.name
+            try:
+                fn_args = json.loads(tc.function.arguments) if tc.function.arguments else {}
+            except Exception:
+                fn_args = {}
 
-        # Execute all function calls and collect results
-        result_parts = []
-        for part in fn_calls:
-            fc   = part.function_call
-            name = fc.name
-            args = dict(fc.args) if fc.args else {}
-
-            result = dispatch_tool(name, args, app_data)
+            result = dispatch_tool(fn_name, fn_args, app_data)
 
             # Track resolved cell
-            if name in ("find_cell_by_coordinates", "get_cell_details"):
+            if fn_name in ("find_cell_by_coordinates", "get_cell_details"):
                 cid = result.get("cell_id") if isinstance(result, dict) else None
                 if cid and "error" not in result:
                     resolved_cell_id = cid
+            elif fn_name in ("get_top_cells", "search_cells_by_condition"):
+                if isinstance(result, list) and len(result) > 0 and isinstance(result[0], dict):
+                    cid = result[0].get("cell_id")
+                    if cid and not resolved_cell_id:
+                        resolved_cell_id = cid
 
-            result_parts.append(
-                genai_types.Part(
-                    function_response=genai_types.FunctionResponse(
-                        name=name,
-                        response={"result": result},
-                    )
-                )
-            )
+            history.append({
+                "role": "tool",
+                "tool_call_id": tc.id,
+                "content": json.dumps(result),
+            })
 
-        # Append function results as a "user" turn (tool role)
-        history.append(
-            genai_types.Content(role="user", parts=result_parts)
-        )
-
-    # Extract final text reply
-    reply_text = ""
-    if response.candidates:
-        for part in response.candidates[0].content.parts:
-            if part.text:
-                reply_text += part.text
-
+    reply_text = msg.content or ""
     if not reply_text:
         reply_text = "I encountered an issue generating a response. Please try again."
+
+    # Fallback: if no resolved cell ID yet, check if reply mentions a cell ID like r16_c10
+    if not resolved_cell_id and reply_text:
+        cell_match = re.search(r"\br\d+_c\d+\b", reply_text)
+        if cell_match:
+            resolved_cell_id = cell_match.group(0)
 
     return ChatResponse(reply=reply_text, cell_id=resolved_cell_id)

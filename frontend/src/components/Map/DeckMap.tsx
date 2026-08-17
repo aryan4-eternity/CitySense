@@ -127,6 +127,29 @@ export function DeckMap() {
   const setSelectedCellId = useStore((s) => s.setSelectedCellId)
   const animTime = useAnimationFrame(2000)
 
+  const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW)
+
+  // Fly to selected cell when selectedCellId changes
+  useEffect(() => {
+    if (!selectedCellId || !geojson) return
+    const feature = geojson.features.find(
+      (f) => f.properties && f.properties.cell_id === selectedCellId,
+    )
+    if (feature && feature.geometry.type === 'Polygon') {
+      const coords = feature.geometry.coordinates[0]
+      const n = coords.length
+      const lng = coords.reduce((s, c) => s + c[0], 0) / n
+      const lat = coords.reduce((s, c) => s + c[1], 0) / n
+      setViewState((prev) => ({
+        ...prev,
+        longitude: lng,
+        latitude: lat,
+        zoom: 13,
+        transitionDuration: 1200,
+      }))
+    }
+  }, [selectedCellId, geojson])
+
   // Derived data
   const hotspots = useMemo(
     () => (geojson ? extractHotspots(geojson) : []),
@@ -188,7 +211,8 @@ export function DeckMap() {
   return (
     <div id="deck-map-container" style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
       <DeckGL
-        initialViewState={INITIAL_VIEW}
+        viewState={viewState}
+        onViewStateChange={({ viewState }) => setViewState(viewState as unknown as MapViewState)}
         controller={true}
         layers={layers}
         getCursor={({ isHovering }: { isHovering: boolean }) =>

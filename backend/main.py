@@ -461,4 +461,14 @@ async def chat_endpoint(request: ChatRequest) -> ChatResponse:
     Requires GEMINI_API_KEY environment variable (or backend/.env file).
     """
     app_data = _build_app_data()
-    return handle_chat(request, app_data)
+    try:
+        return handle_chat(request, app_data)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        err_msg = str(exc)
+        if "503" in err_msg or "UNAVAILABLE" in err_msg:
+            return ChatResponse(
+                reply="⚠️ The Gemini API is currently experiencing temporary high demand (503). Please wait a few seconds and try your request again."
+            )
+        raise HTTPException(status_code=500, detail=f"Chat error: {err_msg}")
