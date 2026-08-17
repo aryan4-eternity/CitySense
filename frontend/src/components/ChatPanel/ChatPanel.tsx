@@ -413,7 +413,7 @@ export function ChatPanel() {
 
   return (
     <div
-      className="panel animate-slide-right"
+      className="panel chat-panel-container animate-slide-right"
       style={{
         position: 'fixed',
         right: 18,

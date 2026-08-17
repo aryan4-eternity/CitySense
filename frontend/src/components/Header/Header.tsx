@@ -3,13 +3,15 @@
 // ============================================================
 
 import { useEffect, useState } from 'react'
-import { Activity, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
+import { Activity, BarChart3, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import { checkHealth, useCityStats } from '@/api/citysense'
 
 export function Header() {
   const apiConnected = useStore((s) => s.apiConnected)
   const setApiConnected = useStore((s) => s.setApiConnected)
+  const statsPanelOpen = useStore((s) => s.statsPanelOpen)
+  const setStatsPanelOpen = useStore((s) => s.setStatsPanelOpen)
   const { data: stats } = useCityStats()
 
   // Live clock (IST)
@@ -59,40 +61,65 @@ export function Header() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 24px',
+        padding: '0 16px',
         borderBottom: '1px solid var(--border)',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(0, 212, 255, 0.15)',
         backdropFilter: 'blur(20px) saturate(1.6)',
       }}
     >
-      {/* Left — Brand */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+      {/* Left — Brand & Mobile Stats Toggle */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 8,
-            padding: '5px 12px',
+            gap: 7,
+            padding: '4px 10px',
             borderRadius: 6,
             background: 'linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(0, 180, 255, 0.04))',
             border: '1px solid rgba(0, 212, 255, 0.3)',
             boxShadow: 'inset 0 0 12px rgba(0, 212, 255, 0.08)',
           }}
         >
-          <Activity size={17} color="var(--glow-cyan)" />
+          <Activity size={16} color="var(--glow-cyan)" />
           <span
             className="font-mono text-glow"
             style={{
-              fontSize: 15,
+              fontSize: 14,
               fontWeight: 800,
-              letterSpacing: '0.12em',
+              letterSpacing: '0.1em',
               color: 'var(--glow-cyan)',
             }}
           >
             CITYSENSE
           </span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+
+        {/* Mobile Stats Drawer Toggle */}
+        <button
+          type="button"
+          onClick={() => setStatsPanelOpen(!statsPanelOpen)}
+          className="header-mobile-overview-btn"
+          style={{
+            display: 'none',
+            alignItems: 'center',
+            gap: 5,
+            padding: '5px 10px',
+            borderRadius: 6,
+            border: statsPanelOpen ? '1px solid var(--glow-cyan)' : '1px solid var(--border)',
+            background: statsPanelOpen ? 'rgba(0, 212, 255, 0.16)' : 'rgba(0, 180, 255, 0.05)',
+            color: statsPanelOpen ? 'var(--glow-cyan)' : 'var(--text-secondary)',
+            fontFamily: 'var(--font-mono)',
+            fontSize: 11,
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          <BarChart3 size={13} />
+          <span>Stats</span>
+        </button>
+
+        <div className="header-subtitle" style={{ display: 'flex', flexDirection: 'column' }}>
           <span
             style={{
               fontSize: 11,
@@ -118,7 +145,7 @@ export function Header() {
 
       {/* Centre — Clock */}
       <div
-        className="font-mono"
+        className="header-clock font-mono"
         style={{
           fontSize: 13,
           letterSpacing: '0.18em',

@@ -36,7 +36,7 @@ export function CellPanel() {
   return (
     <aside
       id="cell-panel"
-      className="panel animate-slide-right"
+      className="panel cell-panel-container animate-slide-right"
       style={{
         position: 'fixed',
         right: 16,

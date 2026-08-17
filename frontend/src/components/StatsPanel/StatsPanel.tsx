@@ -3,7 +3,7 @@
 // ============================================================
 
 import { useEffect, useState } from 'react'
-import { Flame, Trees, Building2, Waves, AlertTriangle, ShieldCheck } from 'lucide-react'
+import { Flame, Trees, Building2, Waves, AlertTriangle, ShieldCheck, X } from 'lucide-react'
 import { useCityStats, useRankings } from '@/api/citysense'
 import { useStore } from '@/store/useStore'
 
@@ -90,11 +90,15 @@ export function StatsPanel() {
   const { data: rankings } = useRankings()
   const setSelectedCellId = useStore((s) => s.setSelectedCellId)
   const selectedCellId = useStore((s) => s.selectedCellId)
+  const statsPanelOpen = useStore((s) => s.statsPanelOpen)
+  const setStatsPanelOpen = useStore((s) => s.setStatsPanelOpen)
+
+  if (!statsPanelOpen) return null
 
   if (statsLoading || !stats) {
     return (
       <aside
-        className="panel animate-slide-left"
+        className="panel stats-panel-container animate-slide-left"
         style={panelStyle}
       >
         <div
@@ -117,23 +121,48 @@ export function StatsPanel() {
   return (
     <aside
       id="stats-panel"
-      className="panel animate-slide-left"
+      className="panel stats-panel-container animate-slide-left"
       style={panelStyle}
     >
       {/* ── Big numbers ── */}
       <div style={{ padding: '16px 14px 0' }}>
         <div
-          className="text-cyber"
           style={{
-            fontSize: 9,
-            color: 'var(--text-muted)',
-            marginBottom: 10,
             display: 'flex',
             alignItems: 'center',
-            gap: 6,
+            justifyContent: 'space-between',
+            marginBottom: 10,
           }}
         >
-          <span style={{ color: 'var(--glow-cyan)' }}>◈</span> City Overview
+          <div
+            className="text-cyber"
+            style={{
+              fontSize: 9,
+              color: 'var(--text-muted)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+            }}
+          >
+            <span style={{ color: 'var(--glow-cyan)' }}>◈</span> City Overview
+          </div>
+          <button
+            type="button"
+            onClick={() => setStatsPanelOpen(false)}
+            title="Close overview"
+            aria-label="Close overview panel"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              padding: 2,
+            }}
+          >
+            <X size={14} />
+          </button>
         </div>
 
         <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
