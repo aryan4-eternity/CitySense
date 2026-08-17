@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 .env
 data/raw/
-*.geojson
+data/geo/
 IMPLEMENTATION.md
 CITYSENSE_TECHNICAL_DOCUMENTATION.md
+node_modules/
+frontend/dist/
