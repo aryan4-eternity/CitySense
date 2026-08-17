@@ -1,10 +1,11 @@
 services:
-  # FastAPI Backend Service
+  # FastAPI Backend Service (Optimized for Render Free Tier 512MB RAM)
   - type: web
     name: citysense-backend
     env: python
-    buildCommand: cd city_sense && pip install -r requirements.txt && pip install -r backend/requirements.txt uvicorn gunicorn
-    startCommand: cd city_sense && gunicorn -w 2 -k uvicorn.workers.UvicornWorker backend.main:app --bind 0.0.0.0:$PORT
+    plan: free
+    buildCommand: cd city_sense && pip install -r backend/requirements.txt uvicorn
+    startCommand: cd city_sense && python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.12
