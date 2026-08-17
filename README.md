@@ -23,25 +23,28 @@ CitySense fuses satellite Earth observation, OpenStreetMap infrastructure data, 
 
 ```mermaid
 graph TD
-    GEE[Google Earth Engine] -->|Sentinel-2, Landsat, SRTM| ING(Ingestion & Gridding)
+    GEE[Google Earth Engine<br>Sentinel-2, Landsat, SRTM] --> ING(Phase 0: Ingestion & Gridding)
     CHIRPS[CHIRPS Precipitation] --> ING
-    ING --> PROC(Indicator Processing)
+    OSM[OpenStreetMap<br>Waterways & Facilities] --> META(Metadata & Proximity Extractor)
+    
+    ING --> PROC(Phase 1: Indicator Processing)
     PROC -->|NDVI, LST, NDBI, DEM, UHI| ML(PCA + K-Means + SHAP)
     ML --> MASTER[cells_master.geojson]
-    MASTER --> P1(Phase 1: Geographic Intelligence)
-    MASTER --> P2(Phase 2: Environmental Intelligence)
-    MASTER --> FSI(Flood Susceptibility Index)
-    P2 --> P3(Phase 3: Planning Decision Engine)
-    FSI --> P3
-    MASTER --> IAI(Infrastructure Access Index)
-    IAI --> CB(Composite Burden Score)
-    P2 --> CB
-    P3 --> API(FastAPI Backend)
-    CB --> API
-    FSI --> API
-    IAI --> API
-    API --> DASH[React + Deck.gl Dashboard]
-    P1 --> API
+    
+    MASTER --> P1(Geographic Intelligence)
+    MASTER --> P2(Phase 2: Environmental Intelligence - EHI)
+    
+    MASTER & CHIRPS & META --> FSI(Flood Susceptibility Index - FSI)
+    MASTER & META --> IAI(Infrastructure Access Index - IAI)
+    
+    P2 & IAI --> CB(Composite Burden Score)
+    P2 & FSI --> P3(Phase 3: Planning Decision Engine)
+    
+    P3 & CB & FSI & IAI & P1 --> API(FastAPI REST Server)
+    
+    LLM[Agentic Gemini LLM Engine<br>Function Calling & Maps Resolver] <-->|Tool Dispatch / API| API
+    
+    API <--> DASH[React + Deck.gl Dashboard<br>11 Choropleth Layers + AI Chat Panel]
 ```
 
 ---
