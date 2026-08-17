@@ -1,0 +1,16 @@
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: citysense-backend
+    env: python
+    buildCommand: cd city_sense && pip install -r requirements.txt && pip install -r backend/requirements.txt uvicorn gunicorn
+    startCommand: cd city_sense && gunicorn -w 2 -k uvicorn.workers.UvicornWorker backend.main:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: google/gemini-2.5-flash

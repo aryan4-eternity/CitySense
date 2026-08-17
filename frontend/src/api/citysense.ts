@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import type { CellBundle, CityStats, RankingRow, ChatRequest, ChatResponse } from '@/types'
 
-const BASE = '/api'
+const BASE = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace(/\/$/, '') : '/api'
 
 // ------------------------------------------------------------------
 // Fetch helpers
@@ -66,7 +66,8 @@ export function useRankings() {
 // ------------------------------------------------------------------
 export async function checkHealth(): Promise<boolean> {
   try {
-    const res = await fetch(`${BASE.replace('/api', '')}/health`)
+    const healthUrl = BASE.endsWith('/api') ? `${BASE.slice(0, -4)}/health` : `${BASE}/health`
+    const res = await fetch(healthUrl)
     return res.ok
   } catch {
     return false
