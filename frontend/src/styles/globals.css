@@ -167,9 +167,15 @@ html, body, #root {
   to   { transform: translateX(0);    opacity: 1; }
 }
 
+/* Slide in from bottom (centered) */
+@keyframes slide-in-bottom-center {
+  from { transform: translate(-50%, 40px); opacity: 0; }
+  to   { transform: translate(-50%, 0);    opacity: 1; }
+}
+
 /* Slide in from bottom */
 @keyframes slide-in-bottom {
-  from { transform: translateY(60px); opacity: 0; }
+  from { transform: translateY(40px); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
 
@@ -207,7 +213,7 @@ html, body, #root {
 .animate-flicker      { animation: flicker 0.8s ease-out forwards; }
 .animate-slide-left   { animation: slide-in-left  0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
 .animate-slide-right  { animation: slide-in-right 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
-.animate-slide-bottom { animation: slide-in-bottom 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-slide-bottom { animation: slide-in-bottom-center 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
 .animate-fade-in      { animation: fade-in 0.35s ease-out forwards; }
 .animate-dot-blink    { animation: dot-blink 1.4s ease-in-out infinite; }
 .animate-radar        { animation: radar-ring 2s ease-out infinite; }
