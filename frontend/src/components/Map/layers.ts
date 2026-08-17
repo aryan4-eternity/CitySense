@@ -206,7 +206,7 @@ export function getCellColor(
   layerKey: LayerKey,
   isSelected: boolean,
 ): RGBA {
-  if (isSelected) return [0, 212, 255, 240]   // bright cyan for selected
+  if (isSelected) return [0, 212, 255, 65]   // translucent cyan highlight (preserves visibility of roads & terrain)
 
   // Water / sea cells → fully transparent (basemap shows through)
   if (isWaterCell(props)) return [0, 0, 0, 0]
@@ -248,7 +248,7 @@ export function makeChoroplethLayer(
     filled: true,
     extruded: false,
     lineWidthMinPixels: 0,
-    lineWidthMaxPixels: 1,
+    lineWidthMaxPixels: 3,
 
     getFillColor: (feature: GeoJSON.Feature) => {
       const props = feature.properties as Record<string, unknown>
@@ -259,14 +259,14 @@ export function makeChoroplethLayer(
     getLineColor: (feature: GeoJSON.Feature) => {
       const props = feature.properties as Record<string, unknown>
       if (isWaterCell(props)) return [0, 0, 0, 0]
-      if (props['cell_id'] === selectedCellId) return [0, 212, 255, 255]
+      if (props['cell_id'] === selectedCellId) return [0, 230, 255, 255]
       return [100, 180, 240, 50]
     },
 
     getLineWidth: (feature: GeoJSON.Feature) => {
       const props = feature.properties as Record<string, unknown>
       if (isWaterCell(props)) return 0
-      return props['cell_id'] === selectedCellId ? 2 : 0.5
+      return props['cell_id'] === selectedCellId ? 2.5 : 0.5
     },
 
     updateTriggers: {
