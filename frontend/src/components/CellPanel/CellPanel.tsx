@@ -42,38 +42,50 @@ export function CellPanel() {
         right: 16,
         top: 64,
         bottom: 64,
-        width: 340,
+        width: 350,
         zIndex: 100,
-        borderRadius: 8,
+        borderRadius: 10,
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        border: '1px solid rgba(0, 200, 255, 0.22)',
+        boxShadow: '0 16px 48px rgba(0, 4, 16, 0.7), 0 0 24px rgba(0, 212, 255, 0.08)',
       }}
     >
       {/* ── Header ── */}
       <div
         style={{
-          padding: '12px 14px',
+          padding: '14px 16px',
           borderBottom: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexShrink: 0,
+          background: 'rgba(0, 180, 255, 0.03)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span
-            className="font-mono"
+          <div
             style={{
-              fontSize: 13,
-              fontWeight: 700,
-              color: 'var(--glow-cyan)',
-              letterSpacing: '0.06em',
-              textShadow: '0 0 8px var(--glow-cyan-dim)',
+              padding: '3px 8px',
+              borderRadius: 5,
+              background: 'rgba(0, 212, 255, 0.1)',
+              border: '1px solid rgba(0, 212, 255, 0.3)',
             }}
           >
-            {selectedCellId}
-          </span>
+            <span
+              className="font-mono"
+              style={{
+                fontSize: 13,
+                fontWeight: 800,
+                color: 'var(--glow-cyan)',
+                letterSpacing: '0.06em',
+                textShadow: '0 0 8px var(--glow-cyan-dim)',
+              }}
+            >
+              {selectedCellId}
+            </span>
+          </div>
           {bundle?.environment?.environmental_status && (
             <span
               className={
@@ -89,10 +101,10 @@ export function CellPanel() {
               }
               style={{
                 fontSize: 9,
-                padding: '1px 6px',
-                borderRadius: 3,
+                padding: '2px 7px',
+                borderRadius: 4,
                 fontFamily: 'var(--font-mono)',
-                fontWeight: 600,
+                fontWeight: 700,
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
               }}
@@ -109,10 +121,10 @@ export function CellPanel() {
               }`}
               style={{
                 fontSize: 9,
-                padding: '1px 6px',
-                borderRadius: 3,
+                padding: '2px 7px',
+                borderRadius: 4,
                 fontFamily: 'var(--font-mono)',
-                fontWeight: 600,
+                fontWeight: 700,
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
               }}
@@ -132,21 +144,25 @@ export function CellPanel() {
             alignItems: 'center',
             justifyContent: 'center',
             border: '1px solid var(--border)',
-            borderRadius: 4,
-            background: 'transparent',
+            borderRadius: 5,
+            background: 'rgba(0, 180, 255, 0.04)',
             color: 'var(--text-secondary)',
             cursor: 'pointer',
             fontSize: 14,
-            fontWeight: 300,
-            transition: 'all 0.2s',
+            fontWeight: 400,
+            transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.borderColor = 'var(--glow-red)'
             e.currentTarget.style.color = 'var(--glow-red)'
+            e.currentTarget.style.background = 'rgba(255, 59, 92, 0.1)'
+            e.currentTarget.style.transform = 'scale(1.05)'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.borderColor = 'var(--border)'
             e.currentTarget.style.color = 'var(--text-secondary)'
+            e.currentTarget.style.background = 'rgba(0, 180, 255, 0.04)'
+            e.currentTarget.style.transform = 'scale(1)'
           }}
         >
           ×
@@ -154,7 +170,7 @@ export function CellPanel() {
       </div>
 
       {/* ── Tabs ── */}
-      <div className="tab-list" style={{ flexShrink: 0 }}>
+      <div className="tab-list" style={{ flexShrink: 0, padding: '0 8px', background: 'rgba(2, 8, 20, 0.4)' }}>
         {TABS.map((tab) => (
           <button
             key={tab.key}
@@ -162,6 +178,12 @@ export function CellPanel() {
             className="tab-trigger"
             data-state={activeTab === tab.key ? 'active' : 'inactive'}
             onClick={() => setActiveTab(tab.key)}
+            style={{
+              padding: '9px 16px',
+              fontSize: 11,
+              fontWeight: activeTab === tab.key ? 700 : 500,
+              letterSpacing: '0.08em',
+            }}
           >
             {tab.label}
           </button>
@@ -169,7 +191,7 @@ export function CellPanel() {
       </div>
 
       {/* ── Content ── */}
-      <div style={{ flex: 1, overflow: 'auto', padding: '0 14px' }}>
+      <div style={{ flex: 1, overflow: 'auto', padding: '0 16px 16px' }}>
         {isLoading && (
           <div
             className="font-mono text-glow"
@@ -198,7 +220,7 @@ export function CellPanel() {
         )}
 
         {bundle && !isLoading && (
-          <div className="animate-fade-in">
+          <div className="animate-fade-in" key={activeTab}>
             {activeTab === 'env'      && <EnvTab bundle={bundle} />}
             {activeTab === 'planning' && <PlanningTab bundle={bundle} />}
             {activeTab === 'raw'      && <RawTab bundle={bundle} />}

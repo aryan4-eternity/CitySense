@@ -53,62 +53,100 @@ export function Header() {
         top: 0,
         left: 0,
         right: 0,
-        height: 48,
+        height: 52,
         zIndex: 200,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 20px',
+        padding: '0 24px',
         borderBottom: '1px solid var(--border)',
-        boxShadow: '0 2px 16px rgba(0, 180, 255, 0.06)',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(0, 212, 255, 0.15)',
+        backdropFilter: 'blur(20px) saturate(1.6)',
       }}
     >
       {/* Left — Brand */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-        <span
-          className="font-mono text-glow"
+        <div
           style={{
-            fontSize: 16,
-            fontWeight: 700,
-            letterSpacing: '0.12em',
-            color: 'var(--glow-cyan)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            padding: '4px 10px',
+            borderRadius: 6,
+            background: 'rgba(0, 212, 255, 0.06)',
+            border: '1px solid rgba(0, 212, 255, 0.25)',
+            boxShadow: 'inset 0 0 12px rgba(0, 212, 255, 0.08)',
           }}
         >
-          🌆 CITYSENSE
-        </span>
-        <span
-          className="font-mono"
-          style={{
-            fontSize: 10,
-            letterSpacing: '0.15em',
-            color: 'var(--text-secondary)',
-            textTransform: 'uppercase',
-            opacity: 0.8,
-          }}
-        >
-          MUMBAI ENVIRONMENTAL INTELLIGENCE
-        </span>
+          <span style={{ fontSize: 16 }}>🌆</span>
+          <span
+            className="font-mono text-glow"
+            style={{
+              fontSize: 15,
+              fontWeight: 800,
+              letterSpacing: '0.14em',
+              color: 'var(--glow-cyan)',
+            }}
+          >
+            CITYSENSE
+          </span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span
+            className="font-mono"
+            style={{
+              fontSize: 10,
+              fontWeight: 600,
+              letterSpacing: '0.16em',
+              color: 'var(--text-primary)',
+              textTransform: 'uppercase',
+            }}
+          >
+            Mumbai Environmental Intelligence
+          </span>
+          <span
+            className="font-mono"
+            style={{
+              fontSize: 8,
+              letterSpacing: '0.10em',
+              color: 'var(--text-muted)',
+              textTransform: 'uppercase',
+            }}
+          >
+            836 Grid Cells • 1 km² Resolution
+          </span>
+        </div>
       </div>
 
       {/* Centre — Clock */}
       <div
         className="font-mono"
         style={{
-          fontSize: 15,
+          fontSize: 13,
           letterSpacing: '0.18em',
           color: 'var(--text-primary)',
-          textShadow: '0 0 6px rgba(0, 212, 255, 0.3)',
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          padding: '4px 14px',
+          borderRadius: 20,
+          background: 'rgba(0, 180, 255, 0.04)',
+          border: '1px solid rgba(0, 180, 255, 0.15)',
+          boxShadow: '0 0 12px rgba(0, 212, 255, 0.04)',
         }}
       >
-        {clock}{' '}
+        <span style={{ color: 'var(--glow-cyan)', textShadow: '0 0 8px var(--glow-cyan-dim)', fontWeight: 600 }}>
+          {clock}
+        </span>
         <span
           style={{
             fontSize: 9,
             color: 'var(--text-muted)',
-            letterSpacing: '0.1em',
+            letterSpacing: '0.12em',
+            fontWeight: 500,
           }}
         >
           IST
@@ -120,15 +158,25 @@ export function Header() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 18,
+          gap: 14,
           fontSize: 11,
           fontFamily: 'var(--font-mono)',
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
         }}
       >
-        {/* Connection */}
-        <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        {/* Connection pill */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 7,
+            padding: '3px 10px',
+            borderRadius: 16,
+            background: apiConnected ? 'rgba(0, 255, 159, 0.08)' : 'rgba(255, 59, 92, 0.08)',
+            border: apiConnected ? '1px solid rgba(0, 255, 159, 0.3)' : '1px solid rgba(255, 59, 92, 0.3)',
+          }}
+        >
           <span
             className={apiConnected ? 'animate-dot-blink' : ''}
             style={{
@@ -137,24 +185,34 @@ export function Header() {
               borderRadius: '50%',
               background: apiConnected ? '#00ff9f' : '#ff3b5c',
               boxShadow: apiConnected
-                ? '0 0 8px rgba(0,255,159,0.6)'
-                : '0 0 8px rgba(255,59,92,0.6)',
+                ? '0 0 10px rgba(0,255,159,0.8)'
+                : '0 0 10px rgba(255,59,92,0.8)',
               display: 'inline-block',
             }}
           />
-          <span style={{ color: apiConnected ? 'var(--glow-green)' : 'var(--glow-red)' }}>
-            {apiConnected ? 'LIVE' : 'OFFLINE'}
+          <span style={{ color: apiConnected ? 'var(--glow-green)' : 'var(--glow-red)', fontWeight: 600 }}>
+            {apiConnected ? 'ONLINE' : 'OFFLINE'}
           </span>
-        </span>
+        </div>
 
-        {/* Cell count */}
-        <span style={{ color: 'var(--text-secondary)' }}>
-          <span style={{ color: 'var(--text-bright)', fontWeight: 600 }}>
+        {/* Cell count pill */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            padding: '3px 10px',
+            borderRadius: 16,
+            background: 'rgba(0, 180, 255, 0.05)',
+            border: '1px solid rgba(0, 180, 255, 0.18)',
+            color: 'var(--text-secondary)',
+          }}
+        >
+          <span style={{ color: 'var(--glow-cyan)', fontWeight: 700 }}>
             {cellCount}
-          </span>{' '}
-          CELLS
-        </span>
-
+          </span>
+          <span>CELLS</span>
+        </div>
       </div>
     </header>
   )

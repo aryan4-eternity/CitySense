@@ -82,15 +82,19 @@ export function LayerBar() {
       className="panel animate-slide-bottom"
       style={{
         position: 'fixed',
-        bottom: 16,
+        bottom: 20,
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 150,
         display: 'flex',
         alignItems: 'center',
-        gap: 4,
-        padding: '5px 8px',
-        borderRadius: 10,
+        gap: 5,
+        padding: '6px 10px',
+        borderRadius: 14,
+        background: 'rgba(4, 14, 32, 0.85)',
+        border: '1px solid rgba(0, 200, 255, 0.22)',
+        boxShadow: '0 12px 40px rgba(0, 4, 16, 0.7), 0 0 20px rgba(0, 212, 255, 0.08)',
+        backdropFilter: 'blur(20px) saturate(1.6)',
       }}
     >
       {LAYERS.map(({ key, label, gradient }) => {
@@ -105,42 +109,54 @@ export function LayerBar() {
               display: 'flex',
               alignItems: 'center',
               gap: 6,
-              padding: '6px 12px',
-              borderRadius: 6,
+              padding: '6px 13px',
+              borderRadius: 8,
               border: isActive
                 ? '1px solid var(--glow-cyan)'
                 : '1px solid transparent',
-              background: isActive ? 'var(--bg-card)' : 'transparent',
+              background: isActive
+                ? 'linear-gradient(180deg, rgba(0, 212, 255, 0.16) 0%, rgba(0, 180, 255, 0.06) 100%)'
+                : 'transparent',
               cursor: 'pointer',
               fontFamily: 'var(--font-mono)',
               fontSize: 11,
-              fontWeight: isActive ? 700 : 400,
-              letterSpacing: '0.06em',
+              fontWeight: isActive ? 700 : 500,
+              letterSpacing: '0.08em',
               color: isActive ? 'var(--glow-cyan)' : 'var(--text-secondary)',
-              textShadow: isActive ? '0 0 8px var(--glow-cyan-dim)' : 'none',
+              textShadow: isActive ? '0 0 10px var(--glow-cyan-dim)' : 'none',
               boxShadow: isActive
-                ? '0 0 10px rgba(0, 212, 255, 0.15), inset 0 0 8px rgba(0, 212, 255, 0.06)'
+                ? '0 0 14px rgba(0, 212, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                 : 'none',
-              transition: 'all 0.2s ease',
+              transform: isActive ? 'scale(1.04)' : 'scale(1)',
+              transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
               textTransform: 'uppercase',
             }}
             onMouseEnter={(e) => {
-              if (!isActive)
-                e.currentTarget.style.background = 'var(--bg-card-hover)'
+              if (!isActive) {
+                e.currentTarget.style.background = 'rgba(10, 28, 58, 0.65)'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.color = 'var(--text-primary)'
+              }
             }}
             onMouseLeave={(e) => {
-              if (!isActive) e.currentTarget.style.background = 'transparent'
+              if (!isActive) {
+                e.currentTarget.style.background = 'transparent'
+                e.currentTarget.style.transform = 'scale(1)'
+                e.currentTarget.style.color = 'var(--text-secondary)'
+              }
             }}
           >
             {/* Colour swatch */}
             <span
               style={{
-                width: 14,
-                height: 8,
+                width: 12,
+                height: 7,
                 borderRadius: 2,
                 background: gradient,
                 flexShrink: 0,
-                opacity: isActive ? 1 : 0.6,
+                boxShadow: isActive ? '0 0 6px rgba(0, 212, 255, 0.5)' : 'none',
+                opacity: isActive ? 1 : 0.65,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
               }}
             />
             {label}
