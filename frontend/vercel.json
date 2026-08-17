@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://citysense-backend.onrender.com/api/:path*"
+      "destination": "https://citysense-backend-2uy0.onrender.com/api/:path*"
     },
     {
       "source": "/health",
-      "destination": "https://citysense-backend.onrender.com/health"
+      "destination": "https://citysense-backend-2uy0.onrender.com/health"
     },
     {
       "source": "/(.*)",
