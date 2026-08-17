@@ -4,8 +4,9 @@ services:
     name: citysense-backend
     env: python
     plan: free
-    buildCommand: cd city_sense && pip install -r backend/requirements.txt uvicorn
-    startCommand: cd city_sense && python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    rootDir: city_sense
+    buildCommand: pip install -r requirements.txt && pip install -r backend/requirements.txt uvicorn
+    startCommand: python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.12
