@@ -2,6 +2,7 @@
 // EnvTab — Environmental Intelligence tab within CellPanel
 // ============================================================
 
+import { Flame, Trees, Building2, Waves, AlertTriangle, ShieldCheck, FileText, Activity } from 'lucide-react'
 import type { CellBundle } from '@/types'
 
 const STATUS_BADGE: Record<string, string> = {
@@ -12,13 +13,23 @@ const STATUS_BADGE: Record<string, string> = {
   Excellent: 'badge-excellent',
 }
 
-const CONDITION_ICONS: Record<string, string> = {
-  'Urban Heat Island': '🔥',
-  'Low Vegetation': '🌿',
-  'High Built-up Density': '🏗️',
-  'Flood Susceptibility': '🌊',
-  'Environmental Stress': '⚠️',
-  'Ecological Stability': '✅',
+function getConditionIcon(condition: string) {
+  switch (condition) {
+    case 'Urban Heat Island':
+      return <Flame size={13} color="#ff6428" />
+    case 'Low Vegetation':
+      return <Trees size={13} color="#00ff9f" />
+    case 'High Built-up Density':
+      return <Building2 size={13} color="#b06bff" />
+    case 'Flood Susceptibility':
+      return <Waves size={13} color="#00d4ff" />
+    case 'Environmental Stress':
+      return <AlertTriangle size={13} color="#ff3b5c" />
+    case 'Ecological Stability':
+      return <ShieldCheck size={13} color="#00ff9f" />
+    default:
+      return <Activity size={13} color="var(--glow-cyan)" />
+  }
 }
 
 interface IndicatorDef {
@@ -83,15 +94,24 @@ export function EnvTab({ bundle }: { bundle: CellBundle }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: '14px 0' }}>
       {/* ── EHI big number + status ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div
+        className="card-glow"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 14,
+          padding: '12px 14px',
+          background: 'linear-gradient(135deg, rgba(8,24,52,0.6), rgba(4,14,32,0.8))',
+        }}
+      >
         <div
           className="font-mono animate-flicker"
           style={{
-            fontSize: 36,
-            fontWeight: 700,
+            fontSize: 34,
+            fontWeight: 800,
             color: ehiColor(ehi),
-            textShadow: `0 0 14px ${ehiColor(ehi)}55`,
-            letterSpacing: '0.05em',
+            textShadow: `0 0 14px ${ehiColor(ehi)}66`,
+            letterSpacing: '0.04em',
             lineHeight: 1,
           }}
         >
@@ -101,12 +121,12 @@ export function EnvTab({ bundle }: { bundle: CellBundle }) {
           <span
             className={statusClass}
             style={{
-              fontSize: 11,
-              padding: '2px 10px',
+              fontSize: 10,
+              padding: '3px 8px',
               borderRadius: 4,
               fontFamily: 'var(--font-mono)',
-              fontWeight: 600,
-              letterSpacing: '0.08em',
+              fontWeight: 700,
+              letterSpacing: '0.06em',
               textTransform: 'uppercase',
             }}
           >
@@ -114,14 +134,15 @@ export function EnvTab({ bundle }: { bundle: CellBundle }) {
           </span>
           <div
             style={{
-              fontSize: 10,
+              fontSize: 9,
               color: 'var(--text-muted)',
               marginTop: 4,
               fontFamily: 'var(--font-mono)',
-              letterSpacing: '0.08em',
+              letterSpacing: '0.1em',
+              fontWeight: 600,
             }}
           >
-            ENVIRONMENTAL HEALTH
+            ENVIRONMENTAL HEALTH INDEX
           </div>
         </div>
       </div>
@@ -134,19 +155,20 @@ export function EnvTab({ bundle }: { bundle: CellBundle }) {
             {conditions.map((c) => (
               <span
                 key={c}
-                className="card-glow"
                 style={{
                   fontSize: 10,
-                  padding: '3px 8px',
-                  borderRadius: 4,
+                  padding: '4px 8px',
+                  borderRadius: 5,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 4,
+                  gap: 6,
                   color: 'var(--text-primary)',
                   fontFamily: 'var(--font-mono)',
+                  background: 'rgba(0, 180, 255, 0.05)',
+                  border: '1px solid rgba(0, 180, 255, 0.12)',
                 }}
               >
-                <span style={{ fontSize: 12 }}>{CONDITION_ICONS[c] ?? '📍'}</span>
+                {getConditionIcon(c)}
                 {c}
               </span>
             ))}

@@ -3,6 +3,7 @@
 // ============================================================
 
 import { useEffect, useState } from 'react'
+import { Flame, Trees, Building2, Waves, AlertTriangle, ShieldCheck } from 'lucide-react'
 import { useCityStats, useRankings } from '@/api/citysense'
 import { useStore } from '@/store/useStore'
 
@@ -18,19 +19,37 @@ const PRIORITY_COLORS: Record<string, string> = {
   'Very Low': '#00d4ff',
 }
 
+const PRIORITY_SHORT_LABELS: Record<string, string> = {
+  Critical: 'Crit',
+  High: 'High',
+  Medium: 'Med',
+  Low: 'Low',
+  'Very Low': 'V.Low',
+}
+
 const PRIORITY_ORDER = ['Critical', 'High', 'Medium', 'Low', 'Very Low']
 
 // ----------------------------------------------------------------
 // Issue icons
 // ----------------------------------------------------------------
 
-const ISSUE_ICONS: Record<string, string> = {
-  'Urban Heat Island': '🔥',
-  'Low Vegetation': '🌿',
-  'High Built-up Density': '🏗️',
-  'Flood Susceptibility': '🌊',
-  'Environmental Stress': '⚠️',
-  'Ecological Stability': '✅',
+function getIssueIcon(issue: string) {
+  switch (issue) {
+    case 'Urban Heat Island':
+      return <Flame size={14} color="#ff6428" />
+    case 'Low Vegetation':
+      return <Trees size={14} color="#00ff9f" />
+    case 'High Built-up Density':
+      return <Building2 size={14} color="#b06bff" />
+    case 'Flood Susceptibility':
+      return <Waves size={14} color="#00d4ff" />
+    case 'Environmental Stress':
+      return <AlertTriangle size={14} color="#ff3b5c" />
+    case 'Ecological Stability':
+      return <ShieldCheck size={14} color="#00ff9f" />
+    default:
+      return <AlertTriangle size={14} color="var(--glow-cyan)" />
+  }
 }
 
 // ----------------------------------------------------------------
@@ -330,16 +349,17 @@ function PriorityBreakdown({
   total: number
 }) {
   return (
-    <div style={{ marginBottom: 4 }}>
+    <div style={{ marginBottom: 6 }}>
       {/* Stacked bar */}
       <div
         style={{
           display: 'flex',
           height: 10,
-          borderRadius: 5,
+          borderRadius: 6,
           overflow: 'hidden',
           background: 'rgba(0,180,255,0.06)',
-          marginBottom: 6,
+          border: '1px solid rgba(0, 180, 255, 0.12)',
+          marginBottom: 8,
         }}
       >
         {PRIORITY_ORDER.map((key) => {
@@ -349,11 +369,11 @@ function PriorityBreakdown({
           return (
             <div
               key={key}
-              title={`${key}: ${count}`}
+              title={`${key}: ${count} (${pct.toFixed(1)}%)`}
               style={{
                 width: `${pct}%`,
                 background: PRIORITY_COLORS[key],
-                opacity: 0.85,
+                opacity: 0.9,
                 transition: 'width 0.6s ease',
               }}
             />
@@ -361,33 +381,40 @@ function PriorityBreakdown({
         })}
       </div>
 
-      {/* Legend */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 10px' }}>
+      {/* Legend with short labels & counts */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px 8px' }}>
         {PRIORITY_ORDER.map((key) => {
           const count = counts[key] ?? 0
           if (count === 0) return null
+          const short = PRIORITY_SHORT_LABELS[key] ?? key
           return (
             <span
               key={key}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 4,
-                fontSize: 9,
+                gap: 5,
+                fontSize: 10,
                 fontFamily: 'var(--font-mono)',
                 color: 'var(--text-secondary)',
+                padding: '2px 6px',
+                borderRadius: 4,
+                background: 'rgba(0, 180, 255, 0.04)',
+                border: '1px solid rgba(0, 180, 255, 0.08)',
               }}
             >
               <span
                 style={{
                   width: 6,
                   height: 6,
-                  borderRadius: 2,
+                  borderRadius: '50%',
                   background: PRIORITY_COLORS[key],
+                  boxShadow: `0 0 6px ${PRIORITY_COLORS[key]}66`,
                   display: 'inline-block',
                 }}
               />
-              {count}
+              <span>{short}</span>
+              <span style={{ color: 'var(--text-bright)', fontWeight: 600 }}>{count}</span>
             </span>
           )
         })}
@@ -405,7 +432,7 @@ function IssueRow({
   count: number
   maxCount: number
 }) {
-  const icon = ISSUE_ICONS[issue] ?? '📍'
+  const icon = getIssueIcon(issue)
   const pct = (count / maxCount) * 100
 
   return (
@@ -413,17 +440,32 @@ function IssueRow({
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 8,
+        gap: 10,
         fontSize: 11,
+        padding: '3px 0',
       }}
     >
-      <span style={{ fontSize: 13, flexShrink: 0 }}>{icon}</span>
+      <div
+        style={{
+          width: 24,
+          height: 24,
+          borderRadius: 5,
+          background: 'rgba(0, 180, 255, 0.06)',
+          border: '1px solid rgba(0, 180, 255, 0.12)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+        }}
+      >
+        {icon}
+      </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: 2,
+            marginBottom: 3,
           }}
         >
           <span
@@ -433,6 +475,7 @@ function IssueRow({
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
               fontSize: 11,
+              fontWeight: 500,
             }}
           >
             {issue}
@@ -440,10 +483,11 @@ function IssueRow({
           <span
             className="font-mono"
             style={{
-              color: 'var(--text-secondary)',
+              color: 'var(--glow-cyan)',
               fontSize: 10,
               flexShrink: 0,
               marginLeft: 6,
+              fontWeight: 600,
             }}
           >
             {count}

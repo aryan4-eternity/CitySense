@@ -3,6 +3,7 @@
 // ============================================================
 
 import { useEffect, useState } from 'react'
+import { Activity, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import { checkHealth, useCityStats } from '@/api/citysense'
 
@@ -71,20 +72,20 @@ export function Header() {
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            padding: '4px 10px',
+            padding: '5px 12px',
             borderRadius: 6,
-            background: 'rgba(0, 212, 255, 0.06)',
-            border: '1px solid rgba(0, 212, 255, 0.25)',
+            background: 'linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(0, 180, 255, 0.04))',
+            border: '1px solid rgba(0, 212, 255, 0.3)',
             boxShadow: 'inset 0 0 12px rgba(0, 212, 255, 0.08)',
           }}
         >
-          <span style={{ fontSize: 16 }}>🌆</span>
+          <Activity size={17} color="var(--glow-cyan)" />
           <span
             className="font-mono text-glow"
             style={{
               fontSize: 15,
               fontWeight: 800,
-              letterSpacing: '0.14em',
+              letterSpacing: '0.12em',
               color: 'var(--glow-cyan)',
             }}
           >
@@ -93,13 +94,11 @@ export function Header() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span
-            className="font-mono"
             style={{
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 600,
-              letterSpacing: '0.16em',
+              letterSpacing: '0.04em',
               color: 'var(--text-primary)',
-              textTransform: 'uppercase',
             }}
           >
             Mumbai Environmental Intelligence
@@ -107,10 +106,9 @@ export function Header() {
           <span
             className="font-mono"
             style={{
-              fontSize: 8,
-              letterSpacing: '0.10em',
+              fontSize: 9,
+              letterSpacing: '0.06em',
               color: 'var(--text-muted)',
-              textTransform: 'uppercase',
             }}
           >
             836 Grid Cells • 1 km² Resolution

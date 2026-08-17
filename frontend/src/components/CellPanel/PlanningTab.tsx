@@ -2,6 +2,7 @@
 // PlanningTab — Planning Intelligence tab within CellPanel
 // ============================================================
 
+import { Target, Sparkles, CheckCircle2, Clock, DollarSign, Sliders, ShieldCheck } from 'lucide-react'
 import type { CellBundle } from '@/types'
 
 const PRIORITY_BADGE: Record<string, string> = {
@@ -38,28 +39,51 @@ export function PlanningTab({ bundle }: { bundle: CellBundle }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: '14px 0' }}>
       {/* ── Priority Badge + Score ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div
-          className={`${badgeClass} ${animClass}`}
-          style={{
-            fontSize: 13,
-            padding: '4px 14px',
-            borderRadius: 5,
-            fontFamily: 'var(--font-mono)',
-            fontWeight: 700,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-          }}
-        >
-          {priority}
+      <div
+        className="card-glow"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '12px 14px',
+          background: 'linear-gradient(135deg, rgba(8,24,52,0.6), rgba(4,14,32,0.8))',
+        }}
+      >
+        <div>
+          <span
+            className={`${badgeClass} ${animClass}`}
+            style={{
+              fontSize: 11,
+              padding: '3px 10px',
+              borderRadius: 4,
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+            }}
+          >
+            {priority}
+          </span>
+          <div
+            style={{
+              fontSize: 9,
+              color: 'var(--text-muted)',
+              marginTop: 4,
+              fontFamily: 'var(--font-mono)',
+              letterSpacing: '0.08em',
+              fontWeight: 600,
+            }}
+          >
+            PLANNING PRIORITY
+          </div>
         </div>
         <div
           className="font-mono"
           style={{
-            fontSize: 22,
-            fontWeight: 700,
+            fontSize: 24,
+            fontWeight: 800,
             color: 'var(--text-bright)',
-            letterSpacing: '0.05em',
+            letterSpacing: '0.04em',
           }}
         >
           {score.toFixed(1)}
@@ -74,13 +98,21 @@ export function PlanningTab({ bundle }: { bundle: CellBundle }) {
         <SectionLabel>Primary Objective</SectionLabel>
         <div
           style={{
-            fontSize: 13,
+            fontSize: 12,
             color: 'var(--text-primary)',
-            marginTop: 4,
+            marginTop: 6,
             fontWeight: 500,
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: 8,
+            padding: '8px 10px',
+            borderRadius: 6,
+            background: 'rgba(0, 180, 255, 0.04)',
+            border: '1px solid rgba(0, 180, 255, 0.1)',
           }}
         >
-          🎯 {objective}
+          <Target size={15} color="var(--glow-cyan)" style={{ flexShrink: 0, marginTop: 1 }} />
+          <span>{objective}</span>
         </div>
       </div>
 
@@ -88,15 +120,15 @@ export function PlanningTab({ bundle }: { bundle: CellBundle }) {
       <div>
         <SectionLabel>Recommended Intervention</SectionLabel>
         <div
+          className="card-glow"
           style={{
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: 700,
             color: 'var(--glow-cyan)',
-            textShadow: '0 0 8px var(--glow-cyan-dim)',
-            marginTop: 4,
-            borderBottom: '2px solid var(--glow-cyan-dim)',
-            paddingBottom: 4,
-            display: 'inline-block',
+            textShadow: '0 0 10px var(--glow-cyan-dim)',
+            marginTop: 6,
+            padding: '10px 12px',
+            borderLeft: '3px solid var(--glow-cyan)',
           }}
         >
           {intervention}
@@ -111,13 +143,14 @@ export function PlanningTab({ bundle }: { bundle: CellBundle }) {
             {secondary.map((s) => (
               <span
                 key={s}
-                className="card"
                 style={{
                   fontSize: 10,
-                  padding: '3px 8px',
-                  borderRadius: 4,
+                  padding: '4px 8px',
+                  borderRadius: 5,
                   color: 'var(--text-secondary)',
                   fontFamily: 'var(--font-mono)',
+                  background: 'rgba(0, 180, 255, 0.04)',
+                  border: '1px solid rgba(0, 180, 255, 0.1)',
                 }}
               >
                 {s}
@@ -131,7 +164,7 @@ export function PlanningTab({ bundle }: { bundle: CellBundle }) {
       {benefits.length > 0 && (
         <div>
           <SectionLabel>Expected Benefits</SectionLabel>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 6 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 6 }}>
             {benefits.map((b) => (
               <div
                 key={b}
@@ -140,11 +173,15 @@ export function PlanningTab({ bundle }: { bundle: CellBundle }) {
                   color: 'var(--text-primary)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 6,
+                  gap: 8,
+                  padding: '4px 8px',
+                  borderRadius: 4,
+                  background: 'rgba(0, 255, 159, 0.03)',
+                  border: '1px solid rgba(0, 255, 159, 0.1)',
                 }}
               >
-                <span style={{ color: 'var(--glow-green)', fontSize: 13 }}>✓</span>
-                {b}
+                <CheckCircle2 size={13} color="var(--glow-green)" style={{ flexShrink: 0 }} />
+                <span>{b}</span>
               </div>
             ))}
           </div>
@@ -155,9 +192,9 @@ export function PlanningTab({ bundle }: { bundle: CellBundle }) {
       <div>
         <SectionLabel>Implementation Details</SectionLabel>
         <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
-          <Chip label="Cost" value={cost} />
-          <Chip label="Timeline" value={timeline} />
-          <Chip label="Complexity" value={complexity} />
+          <Chip label="Cost" value={cost} icon={<DollarSign size={12} color="var(--glow-amber)" />} />
+          <Chip label="Timeline" value={timeline} icon={<Clock size={12} color="var(--glow-cyan)" />} />
+          <Chip label="Complexity" value={complexity} icon={<Sliders size={12} color="var(--glow-purple)" />} />
         </div>
       </div>
 
@@ -237,16 +274,20 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
-function Chip({ label, value }: { label: string; value: string }) {
+function Chip({ label, value, icon }: { label: string; value: string; icon?: React.ReactNode }) {
   return (
     <div
       className="card-glow"
       style={{
         flex: 1,
         textAlign: 'center',
-        padding: '6px 4px',
+        padding: '8px 4px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}
     >
+      {icon && <div style={{ marginBottom: 3 }}>{icon}</div>}
       <div
         className="font-mono"
         style={{ fontSize: 11, color: 'var(--text-bright)', fontWeight: 600 }}

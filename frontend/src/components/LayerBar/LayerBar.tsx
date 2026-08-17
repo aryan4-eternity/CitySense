@@ -82,19 +82,22 @@ export function LayerBar() {
       className="panel animate-slide-bottom"
       style={{
         position: 'fixed',
-        bottom: 20,
+        bottom: 18,
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 150,
         display: 'flex',
         alignItems: 'center',
-        gap: 5,
-        padding: '6px 10px',
-        borderRadius: 14,
-        background: 'rgba(4, 14, 32, 0.85)',
+        gap: 4,
+        padding: '5px 8px',
+        borderRadius: 12,
+        background: 'rgba(4, 14, 32, 0.88)',
         border: '1px solid rgba(0, 200, 255, 0.22)',
         boxShadow: '0 12px 40px rgba(0, 4, 16, 0.7), 0 0 20px rgba(0, 212, 255, 0.08)',
         backdropFilter: 'blur(20px) saturate(1.6)',
+        maxWidth: 'calc(100vw - 140px)',
+        overflowX: 'auto',
+        scrollbarWidth: 'none',
       }}
     >
       {LAYERS.map(({ key, label, gradient }) => {
@@ -108,9 +111,9 @@ export function LayerBar() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 6,
-              padding: '6px 13px',
-              borderRadius: 8,
+              gap: 5,
+              padding: '5px 11px',
+              borderRadius: 6,
               border: isActive
                 ? '1px solid var(--glow-cyan)'
                 : '1px solid transparent',
@@ -119,7 +122,7 @@ export function LayerBar() {
                 : 'transparent',
               cursor: 'pointer',
               fontFamily: 'var(--font-mono)',
-              fontSize: 11,
+              fontSize: 10,
               fontWeight: isActive ? 700 : 500,
               letterSpacing: '0.08em',
               color: isActive ? 'var(--glow-cyan)' : 'var(--text-secondary)',
@@ -127,9 +130,11 @@ export function LayerBar() {
               boxShadow: isActive
                 ? '0 0 14px rgba(0, 212, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
                 : 'none',
-              transform: isActive ? 'scale(1.04)' : 'scale(1)',
-              transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
+              transform: isActive ? 'scale(1.03)' : 'scale(1)',
+              transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
               textTransform: 'uppercase',
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
               if (!isActive) {
@@ -149,8 +154,8 @@ export function LayerBar() {
             {/* Colour swatch */}
             <span
               style={{
-                width: 12,
-                height: 7,
+                width: 10,
+                height: 6,
                 borderRadius: 2,
                 background: gradient,
                 flexShrink: 0,

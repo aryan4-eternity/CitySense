@@ -2,6 +2,7 @@
 // RawTab — Raw indicators + SHAP + cluster + Google Maps link
 // ============================================================
 
+import { MapPin, ExternalLink, TrendingUp, TrendingDown } from 'lucide-react'
 import type { CellBundle } from '@/types'
 
 const DISPLAY_KEYS: { key: string; label: string; unit: string }[] = [
@@ -42,7 +43,7 @@ export function RawTab({ bundle }: { bundle: CellBundle }) {
                 <tr key={key}>
                   <td
                     style={{
-                      padding: '4px 0',
+                      padding: '5px 0',
                       color: 'var(--text-secondary)',
                       borderBottom: '1px solid rgba(0,180,255,0.06)',
                     }}
@@ -52,7 +53,7 @@ export function RawTab({ bundle }: { bundle: CellBundle }) {
                   <td
                     className="font-mono"
                     style={{
-                      padding: '4px 0',
+                      padding: '5px 0',
                       textAlign: 'right',
                       color: 'var(--text-bright)',
                       fontWeight: 600,
@@ -64,7 +65,7 @@ export function RawTab({ bundle }: { bundle: CellBundle }) {
                       style={{
                         fontSize: 9,
                         color: 'var(--text-muted)',
-                        marginLeft: 2,
+                        marginLeft: 3,
                       }}
                     >
                       {unit}
@@ -135,15 +136,15 @@ export function RawTab({ bundle }: { bundle: CellBundle }) {
             }}
           >
             {master.top_positive_driver && (
-              <div style={{ flex: 1 }}>
-                <span style={{ color: 'var(--glow-red)' }}>▲</span>{' '}
+              <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <TrendingUp size={13} color="var(--glow-red)" />
                 <span style={{ color: 'var(--text-secondary)' }}>
                   {master.top_positive_driver}
                 </span>
                 <span
                   style={{
                     color: 'var(--glow-red)',
-                    marginLeft: 4,
+                    marginLeft: 2,
                     fontWeight: 600,
                   }}
                 >
@@ -152,15 +153,15 @@ export function RawTab({ bundle }: { bundle: CellBundle }) {
               </div>
             )}
             {master.top_negative_driver && (
-              <div style={{ flex: 1 }}>
-                <span style={{ color: 'var(--glow-green)' }}>▼</span>{' '}
+              <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <TrendingDown size={13} color="var(--glow-green)" />
                 <span style={{ color: 'var(--text-secondary)' }}>
                   {master.top_negative_driver}
                 </span>
                 <span
                   style={{
                     color: 'var(--glow-green)',
-                    marginLeft: 4,
+                    marginLeft: 2,
                     fontWeight: 600,
                   }}
                 >
@@ -186,19 +187,24 @@ export function RawTab({ bundle }: { bundle: CellBundle }) {
             color: 'var(--glow-cyan)',
             textDecoration: 'none',
             fontFamily: 'var(--font-mono)',
-            padding: '6px 10px',
+            padding: '7px 12px',
+            borderRadius: 6,
+            background: 'rgba(0, 180, 255, 0.05)',
             border: '1px solid var(--border)',
-            borderRadius: 4,
-            transition: 'all 0.2s',
+            transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.borderColor = 'var(--glow-cyan)')
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.borderColor = 'var(--border)')
-          }
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'var(--glow-cyan)'
+            e.currentTarget.style.background = 'rgba(0, 212, 255, 0.12)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'var(--border)'
+            e.currentTarget.style.background = 'rgba(0, 180, 255, 0.05)'
+          }}
         >
-          📍 View on Google Maps
+          <MapPin size={13} color="var(--glow-cyan)" />
+          <span>View on Google Maps</span>
+          <ExternalLink size={11} color="var(--text-muted)" />
         </a>
       </div>
     </div>
