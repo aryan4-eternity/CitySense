@@ -18,6 +18,10 @@ interface CitySenseStore {
   chatOpen: boolean
   setChatOpen: (open: boolean) => void
 
+  // 3D Extrusion Mode
+  is3D: boolean
+  setIs3D: (is3D: boolean) => void
+
   // API health
   apiConnected: boolean
   setApiConnected: (connected: boolean) => void
@@ -35,6 +39,9 @@ export const useStore = create<CitySenseStore>((set) => ({
 
   chatOpen: false,
   setChatOpen: (open) => set({ chatOpen: open }),
+
+  is3D: false,
+  setIs3D: (is3D) => set({ is3D }),
 
   apiConnected: false,
   setApiConnected: (connected) => set({ apiConnected: connected }),

@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import DeckGL from '@deck.gl/react'
 import type { MapViewState, Layer } from '@deck.gl/core'
 import { Map as MapLibreMap } from 'react-map-gl/maplibre'
+import { Box } from 'lucide-react'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
 import { useStore } from '@/store/useStore'
@@ -43,9 +44,9 @@ function useAnimationFrame(periodMs = 2000) {
   const frameRef = useRef<number>(0)
 
   useEffect(() => {
-    let start = performance.now()
+    let startTimestamp = performance.now()
     const tick = (now: number) => {
-      const elapsed = (now - start) % periodMs
+      const elapsed = (now - startTimestamp) % periodMs
       setTime(elapsed / periodMs)
       frameRef.current = requestAnimationFrame(tick)
     }
@@ -125,6 +126,8 @@ export function DeckMap() {
   const activeLayer = useStore((s) => s.activeLayer)
   const selectedCellId = useStore((s) => s.selectedCellId)
   const setSelectedCellId = useStore((s) => s.setSelectedCellId)
+  const is3D = useStore((s) => s.is3D)
+  const setIs3D = useStore((s) => s.setIs3D)
   const animTime = useAnimationFrame(2000)
 
   const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW)
@@ -149,6 +152,17 @@ export function DeckMap() {
       }))
     }
   }, [selectedCellId, geojson])
+
+  const handleToggle3D = () => {
+    const next = !is3D
+    setIs3D(next)
+    setViewState((prev) => ({
+      ...prev,
+      pitch: next ? 55 : 20,
+      bearing: next ? -15 : 0,
+      transitionDuration: 800,
+    }))
+  }
 
   // Derived data
   const hotspots = useMemo(
@@ -199,14 +213,14 @@ export function DeckMap() {
   const layers = useMemo((): Layer[] => {
     if (!geojson) return []
     const result: Layer[] = [
-      makeChoroplethLayer(geojson, activeLayer, selectedCellId, onHover, onClick),
+      makeChoroplethLayer(geojson, activeLayer, selectedCellId, is3D, onHover, onClick),
       makeHotspotLayer(hotspots, animTime),
     ]
     if (activeLayer === 'cluster') {
       result.push(makeClusterLabelLayer(clusterCentroids))
     }
     return result
-  }, [geojson, activeLayer, selectedCellId, hotspots, animTime, clusterCentroids, onHover, onClick])
+  }, [geojson, activeLayer, selectedCellId, is3D, hotspots, animTime, clusterCentroids, onHover, onClick])
 
   return (
     <div id="deck-map-container" style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
@@ -221,6 +235,50 @@ export function DeckMap() {
       >
         <MapLibreMap mapStyle={MAP_STYLE} />
       </DeckGL>
+
+      {/* 3D Extrusion Mode Floating Control */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 64,
+          right: 20,
+          zIndex: 105,
+          display: 'flex',
+          gap: 4,
+          padding: '3px 4px',
+          borderRadius: 8,
+          background: 'rgba(4, 14, 32, 0.88)',
+          border: '1px solid rgba(0, 200, 255, 0.25)',
+          boxShadow: '0 8px 32px rgba(0, 4, 16, 0.6), 0 0 16px rgba(0, 212, 255, 0.08)',
+          backdropFilter: 'blur(16px)',
+        }}
+      >
+        <button
+          type="button"
+          onClick={handleToggle3D}
+          title={is3D ? 'Switch to 2D flat view' : 'Switch to 3D extruded severity columns'}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            padding: '5px 11px',
+            borderRadius: 6,
+            border: is3D ? '1px solid var(--glow-cyan)' : '1px solid transparent',
+            background: is3D ? 'rgba(0, 212, 255, 0.18)' : 'transparent',
+            color: is3D ? 'var(--glow-cyan)' : 'var(--text-secondary)',
+            fontFamily: 'var(--font-mono)',
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: '0.08em',
+            cursor: 'pointer',
+            boxShadow: is3D ? '0 0 12px rgba(0, 212, 255, 0.25)' : 'none',
+            transition: 'all 0.2s',
+          }}
+        >
+          <Box size={14} color={is3D ? 'var(--glow-cyan)' : 'var(--text-muted)'} />
+          <span>{is3D ? '3D EXTRUDED' : '2D VIEW'}</span>
+        </button>
+      </div>
 
       {/* Loading overlay */}
       {isLoading && (

@@ -237,16 +237,18 @@ export function makeChoroplethLayer(
   geojson: GeoJSON.FeatureCollection,
   activeLayer: LayerKey,
   selectedCellId: string | null,
+  is3D: boolean,
   onHover: (info: { object?: GeoJSON.Feature; x: number; y: number }) => void,
   onClick: (info: { object?: GeoJSON.Feature }) => void,
 ) {
   return new GeoJsonLayer({
-    id: `choropleth-${activeLayer}`,
+    id: `choropleth-${activeLayer}-${is3D ? '3d' : '2d'}`,
     data: geojson,
     pickable: true,
     stroked: true,
     filled: true,
-    extruded: false,
+    extruded: is3D,
+    wireframe: is3D,
     lineWidthMinPixels: 0,
     lineWidthMaxPixels: 3,
 
@@ -269,10 +271,26 @@ export function makeChoroplethLayer(
       return props['cell_id'] === selectedCellId ? 2.5 : 0.5
     },
 
+    getElevation: (feature: GeoJSON.Feature) => {
+      if (!is3D) return 0
+      const props = feature.properties as Record<string, unknown>
+      if (isWaterCell(props)) return 0
+      const val = getValue(props, activeLayer)
+      if (val === null || isNaN(val as number)) return 80
+
+      const config = LAYER_CONFIGS[activeLayer]
+      const vmin = config.min ?? 0
+      const vmax = config.max ?? 100
+      const ratio = Math.max(0, Math.min(1, ((val as number) - vmin) / (vmax - vmin)))
+      // Map higher value to taller 3D column (100m to 3500m height)
+      return ratio * 3200 + 100
+    },
+
     updateTriggers: {
       getFillColor:  [activeLayer, selectedCellId],
       getLineColor:  [selectedCellId],
       getLineWidth:  [selectedCellId],
+      getElevation:  [activeLayer, is3D],
     },
 
     onHover,
@@ -280,6 +298,7 @@ export function makeChoroplethLayer(
 
     transitions: {
       getFillColor: { duration: 400, easing: (t: number) => t },
+      getElevation: { duration: 600, easing: (t: number) => t },
     },
   })
 }
