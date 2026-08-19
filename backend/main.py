@@ -170,6 +170,18 @@ for _feat in _cells_geojson["features"]:
         _feat["properties"]["iai_score"] = _iai_data[_cid].get("iai_score")
     if _cid and _cid in _burden_data:
         _feat["properties"]["burden_score"] = _burden_data[_cid].get("burden_score")
+    # Merge EHI from env_intel and planning_priority_score from planning_profiles
+    if _cid and _cid in _env_intel:
+        _feat["properties"]["environmental_health"] = (
+            _env_intel[_cid].get("environmental_health")
+        )
+    if _cid and _cid in _plans:
+        _feat["properties"]["planning_priority_score"] = (
+            _plans[_cid].get("priority_score")
+        )
+        _feat["properties"]["planning_priority"] = (
+            _plans[_cid].get("planning_priority")
+        )
 
 # Build a land-only GeoJSON for the map endpoint
 _cells_land_geojson: dict = {
