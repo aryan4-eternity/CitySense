@@ -62,3 +62,47 @@ def test_dispatch_tool_find_cell_by_coordinates():
     result = dispatch_tool("find_cell_by_coordinates", {"lat": 19.05, "lon": 72.88}, mock_data)
     assert result["cell_id"] == "r16_c10"
     assert result["master"]["risk_score"] == 75
+
+
+def test_dispatch_tool_search_cells_by_location_and_condition():
+    mock_data = {
+        "cell_props": {
+            "r17_c8": {"risk_score": 77.3},
+            "r15_c3": {"risk_score": 9.3},
+        },
+        "geo_meta": {
+            "r17_c8": {"primary_locality": "Bandra East", "ward": "H/East Ward", "secondary_localities": []},
+            "r15_c3": {"primary_locality": "Bandra West", "ward": "H/West Ward", "secondary_localities": []},
+            "r20_c5": {"primary_locality": "Andheri West", "ward": "K/West Ward", "secondary_localities": []},
+        },
+        "env_intel": {
+            "r17_c8": {"primary_issue": "Urban Heat Island", "detected_conditions": ["Urban Heat Island"]},
+            "r15_c3": {"primary_issue": None, "detected_conditions": []},
+        },
+        "fsi_data": {
+            "r17_c8": {"flood_susceptibility_score": 89.43, "flood_susceptibility_status": "Severe"},
+            "r15_c3": {"flood_susceptibility_score": 86.30, "flood_susceptibility_status": "Severe"},
+        },
+        "plans": {
+            "r17_c8": {"planning_priority": "High", "recommended_intervention": "Cool Roof Program"},
+            "r15_c3": {"planning_priority": "Low", "recommended_intervention": "Drainage Infrastructure Upgrade"},
+        },
+        "iai_data": {},
+        "burden_data": {},
+    }
+
+    # 1. Location search only
+    loc_results = dispatch_tool("search_cells_by_location", {"location": "Bandra"}, mock_data)
+    assert len(loc_results) == 2
+    cell_ids = [r["cell_id"] for r in loc_results]
+    assert "r17_c8" in cell_ids and "r15_c3" in cell_ids
+
+    # 2. Location search with flood condition
+    flood_results = dispatch_tool("search_cells_by_location", {"location": "Bandra", "condition": "Flood Susceptibility"}, mock_data)
+    assert len(flood_results) == 2
+    assert flood_results[0]["flood_susceptibility_status"] == "Severe"
+
+    # 3. Condition search with location filter
+    cond_results = dispatch_tool("search_cells_by_condition", {"condition": "flood", "location": "Bandra"}, mock_data)
+    assert len(cond_results) == 2
+

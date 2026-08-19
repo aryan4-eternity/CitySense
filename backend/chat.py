@@ -202,86 +202,179 @@ def _tool_find_cell_by_coordinates(lat: float, lon: float, data: dict) -> dict:
     return {"cell_id": cell_id, "lat": lat, "lon": lon, **_tool_get_cell_details(cell_id, data)}
 
 
-def _tool_search_cells_by_condition(condition: str, limit: int = 10, location: str | None = None, data: dict = {}) -> list[dict]:
-    cond_lower = condition.lower()
-    loc_lower = location.lower().strip() if location else None
-    matched = []
-    for cell_id, ei in data["env_intel"].items():
-        # Location filter: check primary_locality, secondary_localities, and ward
-        if loc_lower:
-            geo = data.get("geo_meta", {}).get(cell_id, {})
-            primary_loc = (geo.get("primary_locality") or "").lower()
-            secondary_locs = [s.lower() for s in geo.get("secondary_localities", [])]
-            ward = (geo.get("ward") or "").lower()
-            if not (loc_lower in primary_loc or primary_loc in loc_lower
-                    or any(loc_lower in s or s in loc_lower for s in secondary_locs)
-                    or loc_lower in ward):
-                continue
+def _matches_location(loc_query: str, geo: dict) -> bool:
+    if not loc_query:
+        return True
+    q = loc_query.lower().strip()
+    primary = (geo.get("primary_locality") or "").lower()
+    secondaries = [s.lower() for s in geo.get("secondary_localities", [])]
+    ward = (geo.get("ward") or "").lower()
+    zone = (geo.get("zone") or "").lower()
+    landmarks = [l.lower() for l in geo.get("nearest_landmarks", [])]
 
-        detected = [c.lower() for c in ei.get("detected_conditions", [])]
-        primary  = (ei.get("primary_issue") or "").lower()
-        if cond_lower in detected or cond_lower in primary:
-            plan   = data["plans"].get(cell_id, {})
-            master = data["cell_props"].get(cell_id, {})
-            geo    = data.get("geo_meta", {}).get(cell_id, {})
-            matched.append({
-                "cell_id":                  cell_id,
-                "primary_locality":         geo.get("primary_locality", "Unknown"),
-                "ward":                     geo.get("ward", "Unknown"),
-                "primary_issue":            ei.get("primary_issue"),
-                "detected_conditions":      ei.get("detected_conditions", []),
-                "environmental_health":     ei.get("environmental_health"),
-                "planning_priority":        plan.get("planning_priority"),
-                "recommended_intervention": plan.get("recommended_intervention"),
-                "risk_score":               master.get("risk_score"),
-            })
-    matched.sort(key=lambda r: r.get("risk_score") or 0, reverse=True)
+    return (
+        q in primary or primary in q
+        or any(q in s or s in q for s in secondaries)
+        or q in ward or ward in q
+        or q in zone
+        or any(q in l or l in q for l in landmarks)
+    )
+
+
+def _matches_condition(cond_query: str, cell_id: str, data: dict) -> bool:
+    if not cond_query:
+        return True
+    q = cond_query.lower().strip()
+    ei = data.get("env_intel", {}).get(cell_id, {})
+    fsi = data.get("fsi_data", {}).get(cell_id, {})
+    iai = data.get("iai_data", {}).get(cell_id, {})
+    burden = data.get("burden_data", {}).get(cell_id, {})
+    plan = data.get("plans", {}).get(cell_id, {})
+
+    detected = [c.lower() for c in ei.get("detected_conditions", [])]
+    primary = (ei.get("primary_issue") or "").lower()
+    secondary = (ei.get("secondary_issue") or "").lower()
+    env_status = (ei.get("environmental_status") or "").lower()
+
+    fsi_status = (fsi.get("flood_susceptibility_status") or "").lower()
+    fsi_score = fsi.get("flood_susceptibility_score") or 0.0
+
+    # 1. Flood / waterlogging check
+    if any(term in q for term in ["flood", "waterlog", "drainage", "inundat", "fsi"]):
+        return (
+            fsi_status in ("severe", "high", "moderate")
+            or fsi_score >= 50
+            or "flood" in primary
+            or any("flood" in d for d in detected)
+        )
+
+    # 2. Heat / UHI check
+    if any(term in q for term in ["heat", "uhi", "hot", "temperature", "thermal"]):
+        return (
+            any("heat" in d or "uhi" in d for d in detected)
+            or "heat" in primary
+            or "heat" in secondary
+        )
+
+    # 3. Vegetation / Green check
+    if any(term in q for term in ["veg", "green", "tree", "plant", "canopy", "park"]):
+        return (
+            any("veg" in d or "ecological" in d for d in detected)
+            or "veg" in primary
+            or "veg" in secondary
+        )
+
+    # 4. Built-up / Density check
+    if any(term in q for term in ["built", "density", "concrete", "impervious"]):
+        return (
+            any("built" in d for d in detected)
+            or "built" in primary
+            or "built" in secondary
+        )
+
+    # 5. Generic substring matches across all metadata fields
+    all_terms = (
+        detected
+        + [
+            primary,
+            secondary,
+            env_status,
+            fsi_status,
+            (iai.get("iai_status") or "").lower(),
+            (burden.get("burden_status") or "").lower(),
+            (plan.get("planning_priority") or "").lower(),
+            (plan.get("recommended_intervention") or "").lower(),
+        ]
+    )
+    return any(q in t or t in q for t in all_terms if t)
+
+
+def _tool_search_cells_by_condition(condition: str, limit: int = 10, location: str | None = None, data: dict = {}) -> list[dict]:
+    matched = []
+    geo_meta = data.get("geo_meta", {})
+    all_cell_ids = set(data.get("cell_props", {}).keys()) | set(geo_meta.keys()) | set(data.get("env_intel", {}).keys())
+
+    for cell_id in all_cell_ids:
+        geo = geo_meta.get(cell_id, {})
+        if location and not _matches_location(location, geo):
+            continue
+        if not _matches_condition(condition, cell_id, data):
+            continue
+
+        ei     = data.get("env_intel", {}).get(cell_id, {})
+        plan   = data.get("plans", {}).get(cell_id, {})
+        master = data.get("cell_props", {}).get(cell_id, {})
+        fsi    = data.get("fsi_data", {}).get(cell_id, {})
+        iai    = data.get("iai_data", {}).get(cell_id, {})
+        burden = data.get("burden_data", {}).get(cell_id, {})
+
+        matched.append({
+            "cell_id":                     cell_id,
+            "primary_locality":            geo.get("primary_locality", "Unknown"),
+            "ward":                        geo.get("ward", "Unknown"),
+            "primary_issue":               ei.get("primary_issue"),
+            "detected_conditions":         ei.get("detected_conditions", []),
+            "environmental_health":        ei.get("environmental_health"),
+            "planning_priority":           plan.get("planning_priority"),
+            "recommended_intervention":    plan.get("recommended_intervention"),
+            "risk_score":                  master.get("risk_score"),
+            "flood_susceptibility_score":  fsi.get("flood_susceptibility_score"),
+            "flood_susceptibility_status": fsi.get("flood_susceptibility_status"),
+            "iai_score":                   iai.get("iai_score"),
+            "burden_score":                burden.get("burden_score"),
+        })
+
+    cond_lower = (condition or "").lower()
+    if any(term in cond_lower for term in ["flood", "waterlog"]):
+        matched.sort(key=lambda r: r.get("flood_susceptibility_score") or 0, reverse=True)
+    else:
+        matched.sort(key=lambda r: r.get("risk_score") or 0, reverse=True)
+
     return matched[:min(limit, 20)]
 
 
 def _tool_search_cells_by_location(location: str, limit: int = 10, condition: str | None = None, data: dict = {}) -> list[dict]:
     """Find cells matching a locality/area name, optionally filtered by condition."""
-    loc_lower = location.lower().strip()
-    cond_lower = condition.lower().strip() if condition else None
     matched = []
     geo_meta = data.get("geo_meta", {})
+    all_cell_ids = set(data.get("cell_props", {}).keys()) | set(geo_meta.keys())
 
-    for cell_id, geo in geo_meta.items():
-        primary_loc = (geo.get("primary_locality") or "").lower()
-        secondary_locs = [s.lower() for s in geo.get("secondary_localities", [])]
-        ward = (geo.get("ward") or "").lower()
-
-        # Check if location matches any locality field
-        if not (loc_lower in primary_loc or primary_loc in loc_lower
-                or any(loc_lower in s or s in loc_lower for s in secondary_locs)
-                or loc_lower in ward):
+    for cell_id in all_cell_ids:
+        geo = geo_meta.get(cell_id, {})
+        if not _matches_location(location, geo):
+            continue
+        if condition and not _matches_condition(condition, cell_id, data):
             continue
 
-        # Optional condition filter
-        ei = data.get("env_intel", {}).get(cell_id, {})
-        if cond_lower:
-            detected = [c.lower() for c in ei.get("detected_conditions", [])]
-            primary_issue = (ei.get("primary_issue") or "").lower()
-            if not (cond_lower in detected or cond_lower in primary_issue):
-                continue
-
+        ei     = data.get("env_intel", {}).get(cell_id, {})
         plan   = data.get("plans", {}).get(cell_id, {})
         master = data.get("cell_props", {}).get(cell_id, {})
         fsi    = data.get("fsi_data", {}).get(cell_id, {})
+        iai    = data.get("iai_data", {}).get(cell_id, {})
+        burden = data.get("burden_data", {}).get(cell_id, {})
+
         matched.append({
-            "cell_id":                  cell_id,
-            "primary_locality":         geo.get("primary_locality", "Unknown"),
-            "ward":                     geo.get("ward", "Unknown"),
-            "primary_issue":            ei.get("primary_issue"),
-            "detected_conditions":      ei.get("detected_conditions", []),
-            "environmental_health":     ei.get("environmental_health"),
-            "planning_priority":        plan.get("planning_priority"),
-            "recommended_intervention": plan.get("recommended_intervention"),
-            "risk_score":               master.get("risk_score"),
-            "flood_susceptibility_score": fsi.get("flood_susceptibility_score"),
+            "cell_id":                     cell_id,
+            "primary_locality":            geo.get("primary_locality", "Unknown"),
+            "ward":                        geo.get("ward", "Unknown"),
+            "primary_issue":               ei.get("primary_issue"),
+            "detected_conditions":         ei.get("detected_conditions", []),
+            "environmental_health":        ei.get("environmental_health"),
+            "planning_priority":           plan.get("planning_priority"),
+            "recommended_intervention":    plan.get("recommended_intervention"),
+            "risk_score":                  master.get("risk_score"),
+            "flood_susceptibility_score":  fsi.get("flood_susceptibility_score"),
             "flood_susceptibility_status": fsi.get("flood_susceptibility_status"),
+            "iai_score":                   iai.get("iai_score"),
+            "burden_score":                burden.get("burden_score"),
         })
-    matched.sort(key=lambda r: r.get("risk_score") or 0, reverse=True)
+
+    cond_lower = (condition or "").lower()
+    if any(term in cond_lower for term in ["flood", "waterlog"]):
+        matched.sort(key=lambda r: r.get("flood_susceptibility_score") or 0, reverse=True)
+    else:
+        matched.sort(key=lambda r: r.get("risk_score") or 0, reverse=True)
+
     return matched[:min(limit, 20)]
 
 
