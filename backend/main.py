@@ -87,6 +87,13 @@ if _burden_path.exists():
     _burden_data = json.loads(_burden_path.read_text(encoding="utf-8"))
     print(f"[CitySense API] Composite burden: {len(_burden_data)} cells loaded")
 
+# geographic_metadata.json — locality names, wards, coordinates per cell
+_geo_meta: dict = {}
+_geo_meta_path = _DATA / "geo" / "geographic_metadata.json"
+if _geo_meta_path.exists():
+    _geo_meta = json.loads(_geo_meta_path.read_text(encoding="utf-8"))
+    print(f"[CitySense API] Geographic metadata: {len(_geo_meta)} cells loaded")
+
 # cell_explanations.json can be a list or dict depending on pipeline version
 _explanations_raw = _load("cell_explanations.json")
 if isinstance(_explanations_raw, list):
@@ -445,6 +452,7 @@ def _build_app_data() -> dict:
         "iai_data":     _iai_data,
         "burden_data":  _burden_data,
         "ward_profiles": _ward_profiles,
+        "geo_meta":     _geo_meta,
         "stats":        stats,
     }
 

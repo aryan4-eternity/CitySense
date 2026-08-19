@@ -11,6 +11,7 @@ Tools available to the model:
   - get_ward_summary          → ward-level aggregates
   - find_cell_by_coordinates  → lat/lng → cell_id (used for Google Maps links)
   - search_cells_by_condition → cells matching a detected condition
+  - search_cells_by_location  → cells in/near a named locality (e.g. Bandra, Andheri)
 
 Google Maps URL formats handled:
   https://maps.google.com/maps?q=19.05,72.88
@@ -62,6 +63,7 @@ Your job:
 - When given a Google Maps URL or coordinates, find the matching cell and give a detailed analysis.
 - Use the provided tools to fetch real data — never invent or guess numbers under any circumstances.
 - Grounding Rule: Always query system tools before stating numbers, ranks, or cell statistics.
+- Location Rule: When the user mentions a locality, neighbourhood, or area name (e.g. Bandra, Andheri, Dadar, Kurla), ALWAYS use search_cells_by_location to find the relevant cells in that area first. Do NOT use get_top_cells or search_cells_by_condition without a location filter when the user specifies a place name.
 - Out-of-Scope Rule: If a user asks non-environmental/non-urban questions (e.g., coding, recipes, general trivia, politics) or asks about locations outside Mumbai, politely decline and clarify your specific role as Mumbai's CitySense AI analyst.
 - Be concise but insightful. Use clear structure with short paragraphs.
 - Mumbai bounding box: lon 72.77–72.99°E, lat 18.89–19.27°N. If a location is outside this, state that it falls outside the system's 836-cell coverage area.
@@ -200,17 +202,32 @@ def _tool_find_cell_by_coordinates(lat: float, lon: float, data: dict) -> dict:
     return {"cell_id": cell_id, "lat": lat, "lon": lon, **_tool_get_cell_details(cell_id, data)}
 
 
-def _tool_search_cells_by_condition(condition: str, limit: int = 10, data: dict = {}) -> list[dict]:
+def _tool_search_cells_by_condition(condition: str, limit: int = 10, location: str | None = None, data: dict = {}) -> list[dict]:
     cond_lower = condition.lower()
+    loc_lower = location.lower().strip() if location else None
     matched = []
     for cell_id, ei in data["env_intel"].items():
+        # Location filter: check primary_locality, secondary_localities, and ward
+        if loc_lower:
+            geo = data.get("geo_meta", {}).get(cell_id, {})
+            primary_loc = (geo.get("primary_locality") or "").lower()
+            secondary_locs = [s.lower() for s in geo.get("secondary_localities", [])]
+            ward = (geo.get("ward") or "").lower()
+            if not (loc_lower in primary_loc or primary_loc in loc_lower
+                    or any(loc_lower in s or s in loc_lower for s in secondary_locs)
+                    or loc_lower in ward):
+                continue
+
         detected = [c.lower() for c in ei.get("detected_conditions", [])]
         primary  = (ei.get("primary_issue") or "").lower()
         if cond_lower in detected or cond_lower in primary:
             plan   = data["plans"].get(cell_id, {})
             master = data["cell_props"].get(cell_id, {})
+            geo    = data.get("geo_meta", {}).get(cell_id, {})
             matched.append({
                 "cell_id":                  cell_id,
+                "primary_locality":         geo.get("primary_locality", "Unknown"),
+                "ward":                     geo.get("ward", "Unknown"),
                 "primary_issue":            ei.get("primary_issue"),
                 "detected_conditions":      ei.get("detected_conditions", []),
                 "environmental_health":     ei.get("environmental_health"),
@@ -218,6 +235,52 @@ def _tool_search_cells_by_condition(condition: str, limit: int = 10, data: dict 
                 "recommended_intervention": plan.get("recommended_intervention"),
                 "risk_score":               master.get("risk_score"),
             })
+    matched.sort(key=lambda r: r.get("risk_score") or 0, reverse=True)
+    return matched[:min(limit, 20)]
+
+
+def _tool_search_cells_by_location(location: str, limit: int = 10, condition: str | None = None, data: dict = {}) -> list[dict]:
+    """Find cells matching a locality/area name, optionally filtered by condition."""
+    loc_lower = location.lower().strip()
+    cond_lower = condition.lower().strip() if condition else None
+    matched = []
+    geo_meta = data.get("geo_meta", {})
+
+    for cell_id, geo in geo_meta.items():
+        primary_loc = (geo.get("primary_locality") or "").lower()
+        secondary_locs = [s.lower() for s in geo.get("secondary_localities", [])]
+        ward = (geo.get("ward") or "").lower()
+
+        # Check if location matches any locality field
+        if not (loc_lower in primary_loc or primary_loc in loc_lower
+                or any(loc_lower in s or s in loc_lower for s in secondary_locs)
+                or loc_lower in ward):
+            continue
+
+        # Optional condition filter
+        ei = data.get("env_intel", {}).get(cell_id, {})
+        if cond_lower:
+            detected = [c.lower() for c in ei.get("detected_conditions", [])]
+            primary_issue = (ei.get("primary_issue") or "").lower()
+            if not (cond_lower in detected or cond_lower in primary_issue):
+                continue
+
+        plan   = data.get("plans", {}).get(cell_id, {})
+        master = data.get("cell_props", {}).get(cell_id, {})
+        fsi    = data.get("fsi_data", {}).get(cell_id, {})
+        matched.append({
+            "cell_id":                  cell_id,
+            "primary_locality":         geo.get("primary_locality", "Unknown"),
+            "ward":                     geo.get("ward", "Unknown"),
+            "primary_issue":            ei.get("primary_issue"),
+            "detected_conditions":      ei.get("detected_conditions", []),
+            "environmental_health":     ei.get("environmental_health"),
+            "planning_priority":        plan.get("planning_priority"),
+            "recommended_intervention": plan.get("recommended_intervention"),
+            "risk_score":               master.get("risk_score"),
+            "flood_susceptibility_score": fsi.get("flood_susceptibility_score"),
+            "flood_susceptibility_status": fsi.get("flood_susceptibility_status"),
+        })
     matched.sort(key=lambda r: r.get("risk_score") or 0, reverse=True)
     return matched[:min(limit, 20)]
 
@@ -238,7 +301,9 @@ def dispatch_tool(name: str, args: dict, data: dict) -> Any:
     if name == "find_cell_by_coordinates":
         return _tool_find_cell_by_coordinates(float(args.get("lat", 0)), float(args.get("lon", 0)), data)
     if name == "search_cells_by_condition":
-        return _tool_search_cells_by_condition(args.get("condition", ""), args.get("limit", 10), data)
+        return _tool_search_cells_by_condition(args.get("condition", ""), args.get("limit", 10), args.get("location"), data)
+    if name == "search_cells_by_location":
+        return _tool_search_cells_by_location(args.get("location", ""), args.get("limit", 10), args.get("condition"), data)
     return {"error": f"Unknown tool: {name}"}
 
 
@@ -338,7 +403,7 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "search_cells_by_condition",
-            "description": "Find all cells matching a specific environmental condition (e.g. 'Urban Heat Island', 'Low Vegetation', 'Flood Susceptibility', 'High Built-up Density').",
+            "description": "Find all cells matching a specific environmental condition (e.g. 'Urban Heat Island', 'Low Vegetation', 'Flood Susceptibility', 'High Built-up Density'). Optionally filter by location/area name.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -350,8 +415,37 @@ TOOLS = [
                         "type": "integer",
                         "description": "Max results (default 10, max 20)",
                     },
+                    "location": {
+                        "type": "string",
+                        "description": "Optional: locality or area name to filter by (e.g. 'Bandra', 'Andheri', 'Dadar')",
+                    },
                 },
                 "required": ["condition", "limit"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "search_cells_by_location",
+            "description": "Find all grid cells in or near a specific Mumbai locality/area/neighbourhood by name. Returns cells with their environmental data, flood susceptibility, and risk scores. Use this when the user mentions a place name like 'Bandra', 'Andheri', 'Dadar', 'Kurla', etc. Optionally filter by an environmental condition.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "Locality or area name (e.g. 'Bandra', 'Andheri West', 'Kurla')",
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "Max results (default 10, max 20)",
+                    },
+                    "condition": {
+                        "type": "string",
+                        "description": "Optional: environmental condition to filter by (e.g. 'Flood Susceptibility', 'Urban Heat Island')",
+                    },
+                },
+                "required": ["location"],
             },
         },
     },
@@ -468,7 +562,7 @@ def handle_chat(request: ChatRequest, app_data: dict) -> ChatResponse:
                 cid = result.get("cell_id") if isinstance(result, dict) else None
                 if cid and "error" not in result:
                     resolved_cell_id = cid
-            elif fn_name in ("get_top_cells", "search_cells_by_condition"):
+            elif fn_name in ("get_top_cells", "search_cells_by_condition", "search_cells_by_location"):
                 if isinstance(result, list) and len(result) > 0 and isinstance(result[0], dict):
                     cid = result[0].get("cell_id")
                     if cid and not resolved_cell_id:
