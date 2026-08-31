@@ -200,7 +200,13 @@ export interface TooltipInfo {
   x: number
   y: number
   cellId: string
+  activeMetric: string
+  activeValue: number | string | null
+  activeUnit: string
   ehi: number | null
+  risk: number | null
+  ndvi: number | null
+  ndbi: number | null
   priorityLabel: string | null
   lst: number | null
   cluster: string | null

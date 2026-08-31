@@ -1,784 +1,1395 @@
 {
   "A Ward": {
     "ward": "A Ward",
-    "zone": "City",
+    "zone": "Island City",
     "ward_population": 192000,
-    "total_cells": 79,
-    "high_priority_cells": 1,
+    "total_cells": 54,
+    "high_priority_cells": 15,
     "dominant_priority": "High",
-    "priority_score_mean": 30.9,
-    "priority_score_max": 66.0,
+    "priority_score_mean": 54.5,
+    "priority_score_max": 69.2,
     "priority_distribution": {
-      "High": 1,
-      "Medium": 15,
-      "Low": 63
-    },
-    "dominant_intervention": "Afforestation Program",
-    "intervention_counts": {
-      "Environmental Monitoring": 67,
-      "Afforestation Program": 4,
-      "Vertical Greening": 4,
-      "Integrated Drainage and Green Infrastructure": 2,
-      "Cool Roof Program": 2
-    },
-    "dominant_issue": "Low Vegetation",
-    "issue_counts": {
-      "Low Vegetation": 6,
-      "High Built-up Density": 4,
-      "Urban Heat Island": 2
-    },
-    "avg_ehi": 53.5,
-    "avg_risk_score": 23.8,
-    "planning_summary": "A Ward has low planning urgency (avg priority score 31/100, 1 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
-  },
-  "B Ward": {
-    "ward": "B Ward",
-    "zone": "City",
-    "ward_population": 130000,
-    "total_cells": 53,
-    "high_priority_cells": 2,
-    "dominant_priority": "High",
-    "priority_score_mean": 33.1,
-    "priority_score_max": 60.6,
-    "priority_distribution": {
-      "High": 2,
-      "Medium": 13,
-      "Low": 38
-    },
-    "dominant_intervention": "Cool Roof Program",
-    "intervention_counts": {
-      "Environmental Monitoring": 40,
-      "Cool Roof Program": 8,
-      "Vertical Greening": 2,
-      "Integrated Urban Renewal": 2,
-      "Afforestation Program": 1
-    },
-    "dominant_issue": "Urban Heat Island",
-    "issue_counts": {
-      "Urban Heat Island": 8,
-      "High Built-up Density": 2,
-      "Environmental Stress": 2,
-      "Low Vegetation": 1
-    },
-    "avg_ehi": 50.1,
-    "avg_risk_score": 27.2,
-    "planning_summary": "B Ward has low planning urgency (avg priority score 33/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
-  },
-  "C Ward": {
-    "ward": "C Ward",
-    "zone": "City",
-    "ward_population": 165000,
-    "total_cells": 6,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 40.0,
-    "priority_score_max": 57.8,
-    "priority_distribution": {
-      "Medium": 3,
-      "Low": 3
-    },
-    "dominant_intervention": "Vertical Greening",
-    "intervention_counts": {
-      "Environmental Monitoring": 3,
-      "Vertical Greening": 2,
-      "Cool Roof Program": 1
-    },
-    "dominant_issue": "High Built-up Density",
-    "issue_counts": {
-      "High Built-up Density": 2,
-      "Urban Heat Island": 1
-    },
-    "avg_ehi": 42.7,
-    "avg_risk_score": 41.6,
-    "planning_summary": "C Ward warrants attention (avg priority score 40/100): primary recommended intervention is Vertical Greening driven by High Built-up Density."
-  },
-  "D Ward": {
-    "ward": "D Ward",
-    "zone": "City",
-    "ward_population": 350000,
-    "total_cells": 23,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 33.1,
-    "priority_score_max": 58.9,
-    "priority_distribution": {
-      "Medium": 6,
-      "Low": 17
+      "High": 15,
+      "Medium": 39
     },
     "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Environmental Monitoring": 18,
-      "Drainage Infrastructure Upgrade": 1,
-      "Integrated Drainage and Green Infrastructure": 1,
-      "Vertical Greening": 1,
-      "Cool Roof Program": 1,
-      "Afforestation Program": 1
+      "Drainage Infrastructure Upgrade": 47,
+      "Integrated Drainage and Green Infrastructure": 6,
+      "Cool Roof Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 39,
+      "High Built-up Density": 6,
+      "Low Vegetation": 4,
+      "Urban Heat Island": 3,
+      "Flood Susceptibility": 2
+    },
+    "avg_ehi": 24.8,
+    "avg_risk_score": 47.0,
+    "planning_summary": "A Ward warrants attention (avg priority score 54/100, 15 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Airoli Ward": {
+    "ward": "Airoli Ward",
+    "zone": "Navi Mumbai North",
+    "ward_population": 210000,
+    "total_cells": 32,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 41.5,
+    "priority_score_max": 44.9,
+    "priority_distribution": {
+      "Medium": 23,
+      "Low": 9
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 27,
+      "Drainage Infrastructure Upgrade": 5
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 32
+    },
+    "avg_ehi": 46.8,
+    "avg_risk_score": 9.4,
+    "planning_summary": "Airoli Ward warrants attention (avg priority score 42/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "Belapur Ward": {
+    "ward": "Belapur Ward",
+    "zone": "Navi Mumbai Core",
+    "ward_population": 190000,
+    "total_cells": 29,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 38.4,
+    "priority_score_max": 41.6,
+    "priority_distribution": {
+      "Medium": 7,
+      "Low": 22
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 20,
+      "Drainage Infrastructure Upgrade": 9
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 29
+    },
+    "avg_ehi": 47.1,
+    "avg_risk_score": 8.5,
+    "planning_summary": "Belapur Ward has low planning urgency (avg priority score 38/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "Bhiwandi Zone": {
+    "ward": "Bhiwandi Zone",
+    "zone": "MMR Logistics Belt",
+    "ward_population": 950000,
+    "total_cells": 36,
+    "high_priority_cells": 36,
+    "dominant_priority": "Critical",
+    "priority_score_mean": 80.6,
+    "priority_score_max": 84.7,
+    "priority_distribution": {
+      "Critical": 23,
+      "High": 13
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 36
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 36
+    },
+    "avg_ehi": 7.2,
+    "avg_risk_score": 92.2,
+    "planning_summary": "Bhiwandi Zone requires urgent attention (avg priority score 81/100, 36 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "C Ward": {
+    "ward": "C Ward",
+    "zone": "Island City",
+    "ward_population": 165000,
+    "total_cells": 6,
+    "high_priority_cells": 4,
+    "dominant_priority": "High",
+    "priority_score_mean": 60.8,
+    "priority_score_max": 70.9,
+    "priority_distribution": {
+      "High": 4,
+      "Medium": 2
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 4,
+      "Integrated Drainage and Green Infrastructure": 2
     },
     "dominant_issue": "High Built-up Density",
     "issue_counts": {
       "High Built-up Density": 2,
-      "Flood Susceptibility": 1,
-      "Urban Heat Island": 1,
-      "Low Vegetation": 1
+      "Low Vegetation": 2,
+      "Environmental Stress": 2
     },
-    "avg_ehi": 50.9,
-    "avg_risk_score": 27.9,
-    "planning_summary": "D Ward has low planning urgency (avg priority score 33/100): primary recommended intervention is Drainage Infrastructure Upgrade driven by High Built-up Density."
+    "avg_ehi": 24.9,
+    "avg_risk_score": 55.1,
+    "planning_summary": "C Ward requires urgent attention (avg priority score 61/100, 4 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by High Built-up Density."
+  },
+  "D Ward": {
+    "ward": "D Ward",
+    "zone": "Island City",
+    "ward_population": 350000,
+    "total_cells": 17,
+    "high_priority_cells": 3,
+    "dominant_priority": "High",
+    "priority_score_mean": 54.7,
+    "priority_score_max": 66.1,
+    "priority_distribution": {
+      "High": 3,
+      "Medium": 14
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 14,
+      "Integrated Drainage and Green Infrastructure": 2,
+      "Urban Forest": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 8,
+      "Urban Heat Island": 5,
+      "High Built-up Density": 2,
+      "Low Vegetation": 2
+    },
+    "avg_ehi": 24.1,
+    "avg_risk_score": 53.0,
+    "planning_summary": "D Ward warrants attention (avg priority score 55/100, 3 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Dombivli Zone": {
+    "ward": "Dombivli Zone",
+    "zone": "KDMC Central",
+    "ward_population": 1250000,
+    "total_cells": 83,
+    "high_priority_cells": 83,
+    "dominant_priority": "Critical",
+    "priority_score_mean": 81.8,
+    "priority_score_max": 85.8,
+    "priority_distribution": {
+      "Critical": 63,
+      "High": 20
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 83
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 83
+    },
+    "avg_ehi": 7.3,
+    "avg_risk_score": 92.3,
+    "planning_summary": "Dombivli Zone requires urgent attention (avg priority score 82/100, 83 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "Dronagiri Ward": {
+    "ward": "Dronagiri Ward",
+    "zone": "Navi Mumbai South",
+    "ward_population": 130000,
+    "total_cells": 42,
+    "high_priority_cells": 17,
+    "dominant_priority": "High",
+    "priority_score_mean": 56.5,
+    "priority_score_max": 65.6,
+    "priority_distribution": {
+      "High": 17,
+      "Medium": 25
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 36,
+      "Integrated Drainage and Green Infrastructure": 6
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 23,
+      "Low Vegetation": 9,
+      "Urban Heat Island": 6,
+      "High Built-up Density": 4
+    },
+    "avg_ehi": 24.0,
+    "avg_risk_score": 56.1,
+    "planning_summary": "Dronagiri Ward warrants attention (avg priority score 56/100, 17 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "E Ward": {
     "ward": "E Ward",
-    "zone": "City",
+    "zone": "Island City",
     "ward_population": 400000,
-    "total_cells": 12,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 41.0,
-    "priority_score_max": 59.9,
+    "total_cells": 9,
+    "high_priority_cells": 5,
+    "dominant_priority": "High",
+    "priority_score_mean": 59.8,
+    "priority_score_max": 69.6,
     "priority_distribution": {
-      "Medium": 6,
-      "Low": 6
+      "High": 5,
+      "Medium": 4
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Cool Roof Program": 6,
-      "Environmental Monitoring": 6
+      "Drainage Infrastructure Upgrade": 8,
+      "Integrated Drainage and Green Infrastructure": 1
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 6
+      "Environmental Stress": 5,
+      "Low Vegetation": 2,
+      "Urban Heat Island": 2
     },
-    "avg_ehi": 43.4,
-    "avg_risk_score": 45.4,
-    "planning_summary": "E Ward warrants attention (avg priority score 41/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 24.2,
+    "avg_risk_score": 47.0,
+    "planning_summary": "E Ward warrants attention (avg priority score 60/100, 5 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "F/North Ward": {
     "ward": "F/North Ward",
-    "zone": "City",
+    "zone": "Island City",
     "ward_population": 540000,
-    "total_cells": 23,
-    "high_priority_cells": 2,
+    "total_cells": 14,
+    "high_priority_cells": 10,
     "dominant_priority": "High",
-    "priority_score_mean": 48.2,
-    "priority_score_max": 61.3,
+    "priority_score_mean": 63.4,
+    "priority_score_max": 74.6,
     "priority_distribution": {
-      "High": 2,
-      "Medium": 15,
-      "Low": 6
+      "High": 10,
+      "Medium": 4
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Environmental Monitoring": 8,
-      "Cool Roof Program": 7,
-      "Urban Forest": 6,
-      "Integrated Urban Renewal": 1,
-      "Afforestation Program": 1
+      "Drainage Infrastructure Upgrade": 8,
+      "Integrated Drainage and Green Infrastructure": 4,
+      "Cool Roof Program": 1,
+      "Urban Forest": 1
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 13,
-      "Environmental Stress": 1,
-      "Low Vegetation": 1
+      "Environmental Stress": 5,
+      "High Built-up Density": 4,
+      "Urban Heat Island": 3,
+      "Flood Susceptibility": 2
     },
-    "avg_ehi": 39.6,
-    "avg_risk_score": 65.3,
-    "planning_summary": "F/North Ward warrants attention (avg priority score 48/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 24.2,
+    "avg_risk_score": 55.9,
+    "planning_summary": "F/North Ward requires urgent attention (avg priority score 63/100, 10 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "F/South Ward": {
     "ward": "F/South Ward",
-    "zone": "City",
+    "zone": "Island City",
     "ward_population": 370000,
-    "total_cells": 15,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 40.7,
-    "priority_score_max": 59.0,
+    "total_cells": 2,
+    "high_priority_cells": 1,
+    "dominant_priority": "High",
+    "priority_score_mean": 59.7,
+    "priority_score_max": 66.7,
     "priority_distribution": {
-      "Medium": 8,
-      "Low": 7
+      "High": 1,
+      "Medium": 1
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Environmental Monitoring": 8,
-      "Cool Roof Program": 6,
-      "Vertical Greening": 1
+      "Drainage Infrastructure Upgrade": 2
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Flood Susceptibility",
     "issue_counts": {
-      "Urban Heat Island": 6,
-      "High Built-up Density": 1
+      "Flood Susceptibility": 1,
+      "Environmental Stress": 1
     },
-    "avg_ehi": 44.6,
-    "avg_risk_score": 46.1,
-    "planning_summary": "F/South Ward warrants attention (avg priority score 41/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 26.2,
+    "avg_risk_score": 48.9,
+    "planning_summary": "F/South Ward warrants attention (avg priority score 60/100, 1 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Flood Susceptibility."
   },
   "G/North Ward": {
     "ward": "G/North Ward",
-    "zone": "City",
+    "zone": "Western Suburbs",
     "ward_population": 615000,
-    "total_cells": 11,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 40.8,
-    "priority_score_max": 53.6,
+    "total_cells": 13,
+    "high_priority_cells": 13,
+    "dominant_priority": "Critical",
+    "priority_score_mean": 70.8,
+    "priority_score_max": 80.1,
     "priority_distribution": {
-      "Medium": 6,
-      "Low": 5
+      "Critical": 1,
+      "High": 12
     },
-    "dominant_intervention": "Vertical Greening",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Environmental Monitoring": 6,
-      "Vertical Greening": 3,
-      "Cool Roof Program": 1,
-      "Integrated Urban Renewal": 1
+      "Drainage Infrastructure Upgrade": 12,
+      "Integrated Drainage and Green Infrastructure": 1
     },
-    "dominant_issue": "High Built-up Density",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "High Built-up Density": 3,
-      "Urban Heat Island": 1,
-      "Environmental Stress": 1
+      "Environmental Stress": 9,
+      "Low Vegetation": 2,
+      "High Built-up Density": 1,
+      "Urban Heat Island": 1
     },
-    "avg_ehi": 45.1,
-    "avg_risk_score": 47.1,
-    "planning_summary": "G/North Ward warrants attention (avg priority score 41/100): primary recommended intervention is Vertical Greening driven by High Built-up Density."
+    "avg_ehi": 23.8,
+    "avg_risk_score": 55.6,
+    "planning_summary": "G/North Ward requires urgent attention (avg priority score 71/100, 13 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "G/South Ward": {
     "ward": "G/South Ward",
-    "zone": "City",
+    "zone": "Island City",
     "ward_population": 385000,
-    "total_cells": 27,
+    "total_cells": 18,
+    "high_priority_cells": 6,
+    "dominant_priority": "High",
+    "priority_score_mean": 56.0,
+    "priority_score_max": 70.6,
+    "priority_distribution": {
+      "High": 6,
+      "Medium": 12
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 16,
+      "Cool Roof Program": 1,
+      "Integrated Drainage and Green Infrastructure": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 11,
+      "Urban Heat Island": 3,
+      "Low Vegetation": 3,
+      "High Built-up Density": 1
+    },
+    "avg_ehi": 24.8,
+    "avg_risk_score": 43.0,
+    "planning_summary": "G/South Ward warrants attention (avg priority score 56/100, 6 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Ghansoli Ward": {
+    "ward": "Ghansoli Ward",
+    "zone": "Navi Mumbai Residential",
+    "ward_population": 200000,
+    "total_cells": 18,
     "high_priority_cells": 0,
     "dominant_priority": "Medium",
-    "priority_score_mean": 32.6,
-    "priority_score_max": 53.3,
+    "priority_score_mean": 40.4,
+    "priority_score_max": 44.3,
     "priority_distribution": {
-      "Medium": 6,
-      "Low": 21
+      "Medium": 11,
+      "Low": 7
     },
-    "dominant_intervention": "Vertical Greening",
+    "dominant_intervention": "Afforestation Program",
     "intervention_counts": {
-      "Environmental Monitoring": 22,
-      "Vertical Greening": 2,
-      "Cool Roof Program": 2,
-      "Integrated Urban Renewal": 1
+      "Afforestation Program": 17,
+      "Drainage Infrastructure Upgrade": 1
     },
-    "dominant_issue": "High Built-up Density",
+    "dominant_issue": "Low Vegetation",
     "issue_counts": {
-      "High Built-up Density": 2,
-      "Urban Heat Island": 2,
-      "Environmental Stress": 1
+      "Low Vegetation": 18
     },
-    "avg_ehi": 50.3,
-    "avg_risk_score": 25.8,
-    "planning_summary": "G/South Ward has low planning urgency (avg priority score 33/100): primary recommended intervention is Vertical Greening driven by High Built-up Density."
+    "avg_ehi": 47.6,
+    "avg_risk_score": 8.5,
+    "planning_summary": "Ghansoli Ward warrants attention (avg priority score 40/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "Ghodbunder Ward": {
+    "ward": "Ghodbunder Ward",
+    "zone": "Thane North",
+    "ward_population": 260000,
+    "total_cells": 16,
+    "high_priority_cells": 5,
+    "dominant_priority": "High",
+    "priority_score_mean": 57.4,
+    "priority_score_max": 69.7,
+    "priority_distribution": {
+      "High": 5,
+      "Medium": 11
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 15,
+      "Integrated Drainage and Green Infrastructure": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 12,
+      "Low Vegetation": 2,
+      "High Built-up Density": 1,
+      "Flood Susceptibility": 1
+    },
+    "avg_ehi": 25.8,
+    "avg_risk_score": 42.9,
+    "planning_summary": "Ghodbunder Ward warrants attention (avg priority score 57/100, 5 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Ghodbunder Zone": {
+    "ward": "Ghodbunder Zone",
+    "zone": "Thane North Gateway",
+    "ward_population": 320000,
+    "total_cells": 38,
+    "high_priority_cells": 10,
+    "dominant_priority": "High",
+    "priority_score_mean": 55.2,
+    "priority_score_max": 68.2,
+    "priority_distribution": {
+      "High": 10,
+      "Medium": 28
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 30,
+      "Integrated Drainage and Green Infrastructure": 5,
+      "Urban Forest": 2,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 22,
+      "Urban Heat Island": 7,
+      "Low Vegetation": 6,
+      "High Built-up Density": 2,
+      "Flood Susceptibility": 1
+    },
+    "avg_ehi": 25.3,
+    "avg_risk_score": 46.0,
+    "planning_summary": "Ghodbunder Zone warrants attention (avg priority score 55/100, 10 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "H/East Ward": {
     "ward": "H/East Ward",
     "zone": "Western Suburbs",
     "ward_population": 570000,
     "total_cells": 12,
-    "high_priority_cells": 3,
+    "high_priority_cells": 4,
     "dominant_priority": "High",
-    "priority_score_mean": 55.1,
-    "priority_score_max": 63.7,
+    "priority_score_mean": 55.9,
+    "priority_score_max": 65.8,
     "priority_distribution": {
-      "High": 3,
-      "Medium": 9
+      "High": 4,
+      "Medium": 8
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Cool Roof Program": 7,
-      "Environmental Monitoring": 2,
-      "Urban Forest": 2,
-      "Integrated Urban Renewal": 1
+      "Drainage Infrastructure Upgrade": 11,
+      "Integrated Drainage and Green Infrastructure": 1
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 9,
-      "Environmental Stress": 1
+      "Environmental Stress": 7,
+      "Low Vegetation": 4,
+      "Urban Heat Island": 1
     },
-    "avg_ehi": 31.4,
-    "avg_risk_score": 78.8,
-    "planning_summary": "H/East Ward warrants attention (avg priority score 55/100, 3 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 24.5,
+    "avg_risk_score": 51.5,
+    "planning_summary": "H/East Ward warrants attention (avg priority score 56/100, 4 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "H/West Ward": {
     "ward": "H/West Ward",
     "zone": "Western Suburbs",
     "ward_population": 315000,
-    "total_cells": 35,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 32.1,
-    "priority_score_max": 57.3,
+    "total_cells": 29,
+    "high_priority_cells": 10,
+    "dominant_priority": "High",
+    "priority_score_mean": 56.3,
+    "priority_score_max": 69.2,
     "priority_distribution": {
-      "Medium": 9,
-      "Low": 26
+      "High": 10,
+      "Medium": 19
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Environmental Monitoring": 30,
-      "Cool Roof Program": 2,
-      "Vertical Greening": 2,
-      "Integrated Urban Renewal": 1
+      "Drainage Infrastructure Upgrade": 28,
+      "Integrated Drainage and Green Infrastructure": 1
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
+      "Environmental Stress": 22,
+      "Low Vegetation": 4,
       "Urban Heat Island": 2,
-      "High Built-up Density": 2,
-      "Environmental Stress": 1
+      "High Built-up Density": 1
     },
-    "avg_ehi": 51.1,
-    "avg_risk_score": 24.8,
-    "planning_summary": "H/West Ward has low planning urgency (avg priority score 32/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 24.6,
+    "avg_risk_score": 45.8,
+    "planning_summary": "H/West Ward warrants attention (avg priority score 56/100, 10 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "K/East Ward": {
     "ward": "K/East Ward",
     "zone": "Western Suburbs",
     "ward_population": 850000,
-    "total_cells": 21,
-    "high_priority_cells": 2,
+    "total_cells": 24,
+    "high_priority_cells": 13,
     "dominant_priority": "High",
-    "priority_score_mean": 54.5,
-    "priority_score_max": 67.4,
+    "priority_score_mean": 61.8,
+    "priority_score_max": 74.7,
     "priority_distribution": {
-      "High": 2,
-      "Medium": 19
+      "High": 13,
+      "Medium": 11
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Cool Roof Program": 8,
-      "Urban Forest": 4,
-      "Drainage Infrastructure Upgrade": 3,
-      "Afforestation Program": 3,
-      "Integrated Drainage and Green Infrastructure": 2,
-      "Integrated Urban Renewal": 1
+      "Drainage Infrastructure Upgrade": 20,
+      "Cool Roof Program": 2,
+      "Urban Forest": 1,
+      "Integrated Drainage and Green Infrastructure": 1
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 12,
-      "Flood Susceptibility": 3,
-      "Low Vegetation": 3,
-      "High Built-up Density": 2,
-      "Environmental Stress": 1
+      "Environmental Stress": 14,
+      "Low Vegetation": 5,
+      "Urban Heat Island": 4,
+      "Flood Susceptibility": 1
     },
-    "avg_ehi": 34.6,
-    "avg_risk_score": 80.4,
-    "planning_summary": "K/East Ward warrants attention (avg priority score 54/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 25.1,
+    "avg_risk_score": 46.3,
+    "planning_summary": "K/East Ward requires urgent attention (avg priority score 62/100, 13 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "K/West Ward": {
     "ward": "K/West Ward",
     "zone": "Western Suburbs",
     "ward_population": 780000,
-    "total_cells": 42,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 35.6,
-    "priority_score_max": 56.0,
+    "total_cells": 18,
+    "high_priority_cells": 8,
+    "dominant_priority": "High",
+    "priority_score_mean": 58.9,
+    "priority_score_max": 69.5,
     "priority_distribution": {
-      "Medium": 15,
-      "Low": 27
+      "High": 8,
+      "Medium": 10
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 16,
+      "Integrated Drainage and Green Infrastructure": 2
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 11,
+      "High Built-up Density": 2,
+      "Low Vegetation": 2,
+      "Flood Susceptibility": 2,
+      "Urban Heat Island": 1
+    },
+    "avg_ehi": 24.9,
+    "avg_risk_score": 49.0,
+    "planning_summary": "K/West Ward warrants attention (avg priority score 59/100, 8 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Kalwa Ward": {
+    "ward": "Kalwa Ward",
+    "zone": "Thane East",
+    "ward_population": 330000,
+    "total_cells": 21,
+    "high_priority_cells": 7,
+    "dominant_priority": "High",
+    "priority_score_mean": 59.3,
+    "priority_score_max": 72.5,
+    "priority_distribution": {
+      "High": 7,
+      "Medium": 14
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 19,
+      "Urban Forest": 1,
+      "Integrated Drainage and Green Infrastructure": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 14,
+      "Low Vegetation": 4,
+      "Urban Heat Island": 1,
+      "High Built-up Density": 1,
+      "Flood Susceptibility": 1
+    },
+    "avg_ehi": 24.9,
+    "avg_risk_score": 45.0,
+    "planning_summary": "Kalwa Ward warrants attention (avg priority score 59/100, 7 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Kalyan East Zone": {
+    "ward": "Kalyan East Zone",
+    "zone": "KDMC Peripheral",
+    "ward_population": 480000,
+    "total_cells": 36,
+    "high_priority_cells": 36,
+    "dominant_priority": "Critical",
+    "priority_score_mean": 76.9,
+    "priority_score_max": 81.5,
+    "priority_distribution": {
+      "Critical": 8,
+      "High": 28
     },
     "dominant_intervention": "Cool Roof Program",
     "intervention_counts": {
-      "Environmental Monitoring": 33,
-      "Cool Roof Program": 4,
-      "Vertical Greening": 2,
-      "Integrated Urban Renewal": 2,
-      "Afforestation Program": 1
+      "Cool Roof Program": 36
     },
     "dominant_issue": "Urban Heat Island",
     "issue_counts": {
-      "Urban Heat Island": 4,
-      "High Built-up Density": 2,
-      "Environmental Stress": 2,
-      "Low Vegetation": 1
+      "Urban Heat Island": 36
     },
-    "avg_ehi": 49.2,
-    "avg_risk_score": 34.4,
-    "planning_summary": "K/West Ward has low planning urgency (avg priority score 36/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 7.3,
+    "avg_risk_score": 91.5,
+    "planning_summary": "Kalyan East Zone requires urgent attention (avg priority score 77/100, 36 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "Kalyan Zone": {
+    "ward": "Kalyan Zone",
+    "zone": "KDMC Core",
+    "ward_population": 780000,
+    "total_cells": 45,
+    "high_priority_cells": 45,
+    "dominant_priority": "Critical",
+    "priority_score_mean": 82.8,
+    "priority_score_max": 86.8,
+    "priority_distribution": {
+      "Critical": 37,
+      "High": 8
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 45
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 45
+    },
+    "avg_ehi": 7.2,
+    "avg_risk_score": 92.5,
+    "planning_summary": "Kalyan Zone requires urgent attention (avg priority score 83/100, 45 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "Kharghar Ward": {
+    "ward": "Kharghar Ward",
+    "zone": "Navi Mumbai Central",
+    "ward_population": 280000,
+    "total_cells": 35,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 40.0,
+    "priority_score_max": 43.4,
+    "priority_distribution": {
+      "Medium": 20,
+      "Low": 15
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 30,
+      "Drainage Infrastructure Upgrade": 5
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 35
+    },
+    "avg_ehi": 47.0,
+    "avg_risk_score": 9.5,
+    "planning_summary": "Kharghar Ward warrants attention (avg priority score 40/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
   },
   "L Ward": {
     "ward": "L Ward",
     "zone": "Eastern Suburbs",
     "ward_population": 930000,
-    "total_cells": 11,
-    "high_priority_cells": 1,
+    "total_cells": 9,
+    "high_priority_cells": 9,
     "dominant_priority": "High",
-    "priority_score_mean": 56.3,
-    "priority_score_max": 65.4,
+    "priority_score_mean": 69.9,
+    "priority_score_max": 76.7,
     "priority_distribution": {
-      "High": 1,
-      "Medium": 10
+      "High": 9
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Cool Roof Program": 8,
-      "Urban Forest": 2,
-      "Integrated Urban Renewal": 1
+      "Drainage Infrastructure Upgrade": 7,
+      "Urban Forest": 1,
+      "Integrated Drainage and Green Infrastructure": 1
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 10,
-      "Environmental Stress": 1
+      "Environmental Stress": 4,
+      "Urban Heat Island": 4,
+      "High Built-up Density": 1
     },
-    "avg_ehi": 29.3,
-    "avg_risk_score": 80.3,
-    "planning_summary": "L Ward warrants attention (avg priority score 56/100, 1 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 22.3,
+    "avg_risk_score": 64.0,
+    "planning_summary": "L Ward requires urgent attention (avg priority score 70/100, 9 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "M/East Ward": {
     "ward": "M/East Ward",
     "zone": "Eastern Suburbs",
     "ward_population": 830000,
-    "total_cells": 105,
-    "high_priority_cells": 3,
+    "total_cells": 18,
+    "high_priority_cells": 14,
     "dominant_priority": "High",
-    "priority_score_mean": 34.9,
-    "priority_score_max": 66.5,
+    "priority_score_mean": 65.1,
+    "priority_score_max": 75.2,
     "priority_distribution": {
-      "High": 3,
-      "Medium": 29,
-      "Low": 73
+      "High": 14,
+      "Medium": 4
     },
-    "dominant_intervention": "Afforestation Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Environmental Monitoring": 75,
-      "Afforestation Program": 15,
-      "Cool Roof Program": 7,
-      "Drainage Infrastructure Upgrade": 5,
-      "Urban Forest": 3
+      "Drainage Infrastructure Upgrade": 14,
+      "Integrated Drainage and Green Infrastructure": 3,
+      "Cool Roof Program": 1
     },
-    "dominant_issue": "Low Vegetation",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Low Vegetation": 15,
-      "Urban Heat Island": 10,
-      "Flood Susceptibility": 5
+      "Environmental Stress": 8,
+      "Low Vegetation": 5,
+      "Urban Heat Island": 3,
+      "High Built-up Density": 2
     },
-    "avg_ehi": 53.0,
-    "avg_risk_score": 36.6,
-    "planning_summary": "M/East Ward has low planning urgency (avg priority score 35/100, 3 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+    "avg_ehi": 24.0,
+    "avg_risk_score": 54.2,
+    "planning_summary": "M/East Ward requires urgent attention (avg priority score 65/100, 14 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "M/West Ward": {
     "ward": "M/West Ward",
     "zone": "Eastern Suburbs",
     "ward_population": 420000,
-    "total_cells": 13,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 54.2,
-    "priority_score_max": 59.4,
+    "total_cells": 30,
+    "high_priority_cells": 13,
+    "dominant_priority": "High",
+    "priority_score_mean": 58.6,
+    "priority_score_max": 68.8,
     "priority_distribution": {
-      "Medium": 13
+      "High": 13,
+      "Medium": 17
     },
-    "dominant_intervention": "Urban Forest",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Urban Forest": 9,
-      "Cool Roof Program": 2,
-      "Afforestation Program": 1,
-      "Integrated Urban Renewal": 1
+      "Drainage Infrastructure Upgrade": 26,
+      "Integrated Drainage and Green Infrastructure": 3,
+      "Urban Forest": 1
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 11,
-      "Low Vegetation": 1,
-      "Environmental Stress": 1
+      "Environmental Stress": 24,
+      "High Built-up Density": 3,
+      "Urban Heat Island": 3
     },
-    "avg_ehi": 34.9,
-    "avg_risk_score": 79.7,
-    "planning_summary": "M/West Ward warrants attention (avg priority score 54/100): primary recommended intervention is Urban Forest driven by Urban Heat Island."
+    "avg_ehi": 23.9,
+    "avg_risk_score": 55.0,
+    "planning_summary": "M/West Ward warrants attention (avg priority score 59/100, 13 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Mahape Ward": {
+    "ward": "Mahape Ward",
+    "zone": "Navi Mumbai IT Belt",
+    "ward_population": 240000,
+    "total_cells": 71,
+    "high_priority_cells": 27,
+    "dominant_priority": "High",
+    "priority_score_mean": 57.9,
+    "priority_score_max": 69.5,
+    "priority_distribution": {
+      "High": 27,
+      "Medium": 44
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 60,
+      "Integrated Drainage and Green Infrastructure": 9,
+      "Urban Forest": 1,
+      "Cool Roof Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 41,
+      "Urban Heat Island": 9,
+      "High Built-up Density": 9,
+      "Low Vegetation": 8,
+      "Flood Susceptibility": 4
+    },
+    "avg_ehi": 24.5,
+    "avg_risk_score": 50.0,
+    "planning_summary": "Mahape Ward warrants attention (avg priority score 58/100, 27 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Mira-Bhayandar Zone": {
+    "ward": "Mira-Bhayandar Zone",
+    "zone": "MMR North-West",
+    "ward_population": 940000,
+    "total_cells": 26,
+    "high_priority_cells": 15,
+    "dominant_priority": "High",
+    "priority_score_mean": 61.6,
+    "priority_score_max": 74.0,
+    "priority_distribution": {
+      "High": 15,
+      "Medium": 11
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 20,
+      "Afforestation Program": 2,
+      "Integrated Drainage and Green Infrastructure": 2,
+      "Urban Forest": 1,
+      "Cool Roof Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 15,
+      "Low Vegetation": 5,
+      "Urban Heat Island": 4,
+      "High Built-up Density": 2
+    },
+    "avg_ehi": 24.8,
+    "avg_risk_score": 49.7,
+    "planning_summary": "Mira-Bhayandar Zone requires urgent attention (avg priority score 62/100, 15 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Mumbra Ward": {
+    "ward": "Mumbra Ward",
+    "zone": "Thane South-East",
+    "ward_population": 430000,
+    "total_cells": 24,
+    "high_priority_cells": 17,
+    "dominant_priority": "High",
+    "priority_score_mean": 65.0,
+    "priority_score_max": 75.5,
+    "priority_distribution": {
+      "High": 17,
+      "Medium": 7
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 20,
+      "Integrated Drainage and Green Infrastructure": 3,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 10,
+      "Urban Heat Island": 7,
+      "Low Vegetation": 4,
+      "High Built-up Density": 3
+    },
+    "avg_ehi": 24.2,
+    "avg_risk_score": 51.1,
+    "planning_summary": "Mumbra Ward requires urgent attention (avg priority score 65/100, 17 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "N Ward": {
     "ward": "N Ward",
     "zone": "Eastern Suburbs",
     "ward_population": 640000,
-    "total_cells": 27,
-    "high_priority_cells": 3,
+    "total_cells": 24,
+    "high_priority_cells": 11,
     "dominant_priority": "High",
-    "priority_score_mean": 50.1,
-    "priority_score_max": 64.2,
+    "priority_score_mean": 59.7,
+    "priority_score_max": 70.5,
     "priority_distribution": {
-      "High": 3,
-      "Medium": 20,
-      "Low": 4
+      "High": 11,
+      "Medium": 13
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Cool Roof Program": 11,
-      "Afforestation Program": 7,
-      "Urban Forest": 3,
-      "Environmental Monitoring": 2,
-      "Integrated Urban Renewal": 2,
-      "Drainage Infrastructure Upgrade": 2
+      "Drainage Infrastructure Upgrade": 24
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 14,
-      "Low Vegetation": 7,
-      "Environmental Stress": 2,
-      "Flood Susceptibility": 2
+      "Environmental Stress": 19,
+      "Low Vegetation": 4,
+      "Urban Heat Island": 1
     },
-    "avg_ehi": 41.3,
-    "avg_risk_score": 73.5,
-    "planning_summary": "N Ward warrants attention (avg priority score 50/100, 3 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 25.2,
+    "avg_risk_score": 44.7,
+    "planning_summary": "N Ward warrants attention (avg priority score 60/100, 11 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
-  "Outside Municipal Limits": {
-    "ward": "Outside Municipal Limits",
-    "zone": "N/A",
-    "ward_population": 0,
-    "total_cells": 8,
-    "high_priority_cells": 3,
+  "Naupada Ward": {
+    "ward": "Naupada Ward",
+    "zone": "Thane Core",
+    "ward_population": 310000,
+    "total_cells": 9,
+    "high_priority_cells": 7,
     "dominant_priority": "High",
-    "priority_score_mean": 56.5,
-    "priority_score_max": 61.4,
+    "priority_score_mean": 65.0,
+    "priority_score_max": 72.7,
     "priority_distribution": {
-      "High": 3,
-      "Medium": 5
+      "High": 7,
+      "Medium": 2
     },
-    "dominant_intervention": "Cool Roof Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Cool Roof Program": 7,
-      "Afforestation Program": 1
+      "Drainage Infrastructure Upgrade": 9
     },
-    "dominant_issue": "Urban Heat Island",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Urban Heat Island": 7,
-      "Low Vegetation": 1
+      "Environmental Stress": 5,
+      "Urban Heat Island": 2,
+      "Low Vegetation": 2
     },
-    "avg_ehi": 30.1,
-    "avg_risk_score": 81.8,
-    "planning_summary": "Outside Municipal Limits warrants attention (avg priority score 56/100, 3 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 23.6,
+    "avg_risk_score": 53.5,
+    "planning_summary": "Naupada Ward requires urgent attention (avg priority score 65/100, 7 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Nerul Ward": {
+    "ward": "Nerul Ward",
+    "zone": "Navi Mumbai Core",
+    "ward_population": 600000,
+    "total_cells": 40,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 40.0,
+    "priority_score_max": 43.9,
+    "priority_distribution": {
+      "Medium": 19,
+      "Low": 21
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 28,
+      "Drainage Infrastructure Upgrade": 12
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 40
+    },
+    "avg_ehi": 47.2,
+    "avg_risk_score": 8.7,
+    "planning_summary": "Nerul Ward warrants attention (avg priority score 40/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "Ovala Ward": {
+    "ward": "Ovala Ward",
+    "zone": "Thane North-East",
+    "ward_population": 270000,
+    "total_cells": 60,
+    "high_priority_cells": 27,
+    "dominant_priority": "High",
+    "priority_score_mean": 58.2,
+    "priority_score_max": 70.7,
+    "priority_distribution": {
+      "High": 27,
+      "Medium": 33
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 48,
+      "Integrated Drainage and Green Infrastructure": 9,
+      "Cool Roof Program": 2,
+      "Urban Forest": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 30,
+      "Low Vegetation": 12,
+      "Urban Heat Island": 11,
+      "High Built-up Density": 6,
+      "Flood Susceptibility": 1
+    },
+    "avg_ehi": 24.9,
+    "avg_risk_score": 48.7,
+    "planning_summary": "Ovala Ward warrants attention (avg priority score 58/100, 27 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "P/North Ward": {
     "ward": "P/North Ward",
-    "zone": "Western Suburbs",
+    "zone": "Western Coastal Belt",
     "ward_population": 970000,
-    "total_cells": 38,
-    "high_priority_cells": 1,
+    "total_cells": 69,
+    "high_priority_cells": 27,
     "dominant_priority": "High",
-    "priority_score_mean": 42.7,
-    "priority_score_max": 61.7,
+    "priority_score_mean": 57.9,
+    "priority_score_max": 72.2,
     "priority_distribution": {
-      "High": 1,
-      "Medium": 22,
-      "Low": 15
+      "High": 27,
+      "Medium": 42
     },
-    "dominant_intervention": "Afforestation Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Environmental Monitoring": 14,
-      "Afforestation Program": 10,
-      "Cool Roof Program": 7,
-      "Vertical Greening": 5,
-      "Urban Forest": 1,
-      "Integrated Urban Renewal": 1
-    },
-    "dominant_issue": "Low Vegetation",
-    "issue_counts": {
-      "Low Vegetation": 10,
-      "Urban Heat Island": 8,
-      "High Built-up Density": 5,
-      "Environmental Stress": 1
-    },
-    "avg_ehi": 46.5,
-    "avg_risk_score": 55.1,
-    "planning_summary": "P/North Ward warrants attention (avg priority score 43/100, 1 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
-  },
-  "P/South Ward": {
-    "ward": "P/South Ward",
-    "zone": "Western Suburbs",
-    "ward_population": 480000,
-    "total_cells": 41,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 46.1,
-    "priority_score_max": 59.8,
-    "priority_distribution": {
-      "Medium": 33,
-      "Low": 8
-    },
-    "dominant_intervention": "Afforestation Program",
-    "intervention_counts": {
-      "Afforestation Program": 16,
-      "Environmental Monitoring": 10,
-      "Cool Roof Program": 8,
-      "Integrated Urban Renewal": 3,
+      "Drainage Infrastructure Upgrade": 55,
+      "Integrated Drainage and Green Infrastructure": 11,
       "Urban Forest": 2,
-      "Vertical Greening": 1,
-      "Integrated Drainage and Green Infrastructure": 1
+      "Afforestation Program": 1
     },
-    "dominant_issue": "Low Vegetation",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Low Vegetation": 16,
-      "Urban Heat Island": 10,
-      "Environmental Stress": 3,
-      "High Built-up Density": 2
+      "Environmental Stress": 38,
+      "Urban Heat Island": 12,
+      "High Built-up Density": 9,
+      "Low Vegetation": 8,
+      "Flood Susceptibility": 2
     },
-    "avg_ehi": 46.2,
-    "avg_risk_score": 65.9,
-    "planning_summary": "P/South Ward warrants attention (avg priority score 46/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+    "avg_ehi": 24.0,
+    "avg_risk_score": 54.0,
+    "planning_summary": "P/North Ward warrants attention (avg priority score 58/100, 27 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Panvel Municipal Corp": {
+    "ward": "Panvel Municipal Corp",
+    "zone": "Navi Mumbai South",
+    "ward_population": 470000,
+    "total_cells": 48,
+    "high_priority_cells": 22,
+    "dominant_priority": "High",
+    "priority_score_mean": 60.2,
+    "priority_score_max": 72.7,
+    "priority_distribution": {
+      "High": 22,
+      "Medium": 26
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 43,
+      "Urban Forest": 3,
+      "Integrated Drainage and Green Infrastructure": 1,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 32,
+      "Urban Heat Island": 7,
+      "Low Vegetation": 6,
+      "Flood Susceptibility": 2,
+      "High Built-up Density": 1
+    },
+    "avg_ehi": 24.5,
+    "avg_risk_score": 48.7,
+    "planning_summary": "Panvel Municipal Corp requires urgent attention (avg priority score 60/100, 22 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Panvel Node": {
+    "ward": "Panvel Node",
+    "zone": "Navi Mumbai East",
+    "ward_population": 320000,
+    "total_cells": 48,
+    "high_priority_cells": 19,
+    "dominant_priority": "High",
+    "priority_score_mean": 57.9,
+    "priority_score_max": 68.5,
+    "priority_distribution": {
+      "High": 19,
+      "Medium": 29
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 45,
+      "Cool Roof Program": 1,
+      "Integrated Drainage and Green Infrastructure": 1,
+      "Urban Forest": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 31,
+      "Urban Heat Island": 8,
+      "Flood Susceptibility": 4,
+      "Low Vegetation": 4,
+      "High Built-up Density": 1
+    },
+    "avg_ehi": 24.2,
+    "avg_risk_score": 51.8,
+    "planning_summary": "Panvel Node warrants attention (avg priority score 58/100, 19 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "R/Central Ward": {
     "ward": "R/Central Ward",
     "zone": "Western Suburbs",
     "ward_population": 580000,
-    "total_cells": 38,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 43.9,
-    "priority_score_max": 54.9,
+    "total_cells": 112,
+    "high_priority_cells": 45,
+    "dominant_priority": "High",
+    "priority_score_mean": 44.2,
+    "priority_score_max": 72.4,
     "priority_distribution": {
-      "Medium": 26,
-      "Low": 12
+      "High": 45,
+      "Medium": 27,
+      "Very Low": 40
     },
-    "dominant_intervention": "Afforestation Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Afforestation Program": 19,
-      "Environmental Monitoring": 6,
-      "Integrated Drainage and Green Infrastructure": 4,
-      "Urban Forest": 3,
-      "Cool Roof Program": 2,
-      "Integrated Urban Renewal": 2,
-      "Vertical Greening": 1,
-      "Drainage Infrastructure Upgrade": 1
+      "Drainage Infrastructure Upgrade": 58,
+      "Afforestation Program": 41,
+      "Integrated Drainage and Green Infrastructure": 10,
+      "Urban Forest": 2,
+      "Cool Roof Program": 1
     },
     "dominant_issue": "Low Vegetation",
     "issue_counts": {
-      "Low Vegetation": 23,
-      "Urban Heat Island": 5,
-      "Environmental Stress": 2,
-      "High Built-up Density": 1,
+      "Low Vegetation": 49,
+      "Environmental Stress": 45,
+      "Urban Heat Island": 9,
+      "High Built-up Density": 8,
       "Flood Susceptibility": 1
     },
-    "avg_ehi": 51.9,
-    "avg_risk_score": 65.3,
-    "planning_summary": "R/Central Ward warrants attention (avg priority score 44/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
-  },
-  "R/North Ward": {
-    "ward": "R/North Ward",
-    "zone": "Western Suburbs",
-    "ward_population": 440000,
-    "total_cells": 45,
-    "high_priority_cells": 0,
-    "dominant_priority": "Medium",
-    "priority_score_mean": 45.4,
-    "priority_score_max": 59.3,
-    "priority_distribution": {
-      "Medium": 37,
-      "Low": 8
-    },
-    "dominant_intervention": "Afforestation Program",
-    "intervention_counts": {
-      "Afforestation Program": 30,
-      "Integrated Drainage and Green Infrastructure": 5,
-      "Cool Roof Program": 5,
-      "Environmental Monitoring": 3,
-      "Urban Forest": 2
-    },
-    "dominant_issue": "Low Vegetation",
-    "issue_counts": {
-      "Low Vegetation": 35,
-      "Urban Heat Island": 7
-    },
-    "avg_ehi": 56.9,
-    "avg_risk_score": 76.1,
-    "planning_summary": "R/North Ward warrants attention (avg priority score 45/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
-  },
-  "R/South Ward": {
-    "ward": "R/South Ward",
-    "zone": "Western Suburbs",
-    "ward_population": 710000,
-    "total_cells": 19,
-    "high_priority_cells": 2,
-    "dominant_priority": "High",
-    "priority_score_mean": 53.6,
-    "priority_score_max": 60.1,
-    "priority_distribution": {
-      "High": 2,
-      "Medium": 17
-    },
-    "dominant_intervention": "Cool Roof Program",
-    "intervention_counts": {
-      "Cool Roof Program": 7,
-      "Urban Forest": 4,
-      "Integrated Drainage and Green Infrastructure": 3,
-      "Afforestation Program": 3,
-      "Environmental Monitoring": 1,
-      "Integrated Urban Renewal": 1
-    },
-    "dominant_issue": "Urban Heat Island",
-    "issue_counts": {
-      "Urban Heat Island": 11,
-      "Low Vegetation": 6,
-      "Environmental Stress": 1
-    },
-    "avg_ehi": 39.5,
-    "avg_risk_score": 83.2,
-    "planning_summary": "R/South Ward warrants attention (avg priority score 54/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+    "avg_ehi": 48.5,
+    "avg_risk_score": 33.4,
+    "planning_summary": "R/Central Ward warrants attention (avg priority score 44/100, 45 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Low Vegetation."
   },
   "S Ward": {
     "ward": "S Ward",
     "zone": "Eastern Suburbs",
     "ward_population": 720000,
-    "total_cells": 51,
-    "high_priority_cells": 1,
+    "total_cells": 60,
+    "high_priority_cells": 28,
     "dominant_priority": "High",
-    "priority_score_mean": 41.8,
-    "priority_score_max": 60.6,
+    "priority_score_mean": 58.7,
+    "priority_score_max": 71.4,
     "priority_distribution": {
-      "High": 1,
-      "Medium": 26,
-      "Low": 24
+      "High": 28,
+      "Medium": 32
     },
-    "dominant_intervention": "Afforestation Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Afforestation Program": 24,
-      "Environmental Monitoring": 7,
-      "Cool Roof Program": 7,
-      "Drainage Infrastructure Upgrade": 6,
-      "Urban Forest": 4,
-      "Integrated Drainage and Green Infrastructure": 3
+      "Drainage Infrastructure Upgrade": 54,
+      "Integrated Drainage and Green Infrastructure": 4,
+      "Urban Forest": 1,
+      "Cool Roof Program": 1
     },
-    "dominant_issue": "Low Vegetation",
+    "dominant_issue": "Environmental Stress",
     "issue_counts": {
-      "Low Vegetation": 26,
-      "Urban Heat Island": 11,
-      "Flood Susceptibility": 6,
-      "High Built-up Density": 1
+      "Environmental Stress": 43,
+      "Urban Heat Island": 7,
+      "High Built-up Density": 4,
+      "Flood Susceptibility": 3,
+      "Low Vegetation": 3
     },
-    "avg_ehi": 54.4,
-    "avg_risk_score": 61.2,
-    "planning_summary": "S Ward warrants attention (avg priority score 42/100, 1 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+    "avg_ehi": 24.6,
+    "avg_risk_score": 50.2,
+    "planning_summary": "S Ward warrants attention (avg priority score 59/100, 28 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
   },
   "T Ward": {
     "ward": "T Ward",
     "zone": "Eastern Suburbs",
     "ward_population": 350000,
-    "total_cells": 81,
-    "high_priority_cells": 4,
+    "total_cells": 32,
+    "high_priority_cells": 10,
     "dominant_priority": "High",
-    "priority_score_mean": 50.7,
-    "priority_score_max": 63.2,
+    "priority_score_mean": 57.6,
+    "priority_score_max": 71.5,
     "priority_distribution": {
-      "High": 4,
-      "Medium": 71,
-      "Low": 6
+      "High": 10,
+      "Medium": 22
     },
-    "dominant_intervention": "Afforestation Program",
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
     "intervention_counts": {
-      "Afforestation Program": 26,
-      "Urban Forest": 21,
-      "Cool Roof Program": 17,
-      "Integrated Drainage and Green Infrastructure": 8,
-      "Environmental Monitoring": 6,
-      "Integrated Urban Renewal": 2,
-      "Drainage Infrastructure Upgrade": 1
+      "Drainage Infrastructure Upgrade": 26,
+      "Integrated Drainage and Green Infrastructure": 4,
+      "Cool Roof Program": 1,
+      "Urban Forest": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 17,
+      "Urban Heat Island": 6,
+      "High Built-up Density": 4,
+      "Flood Susceptibility": 3,
+      "Low Vegetation": 2
+    },
+    "avg_ehi": 25.3,
+    "avg_risk_score": 45.0,
+    "planning_summary": "T Ward warrants attention (avg priority score 58/100, 10 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Taloja MIDC": {
+    "ward": "Taloja MIDC",
+    "zone": "Navi Mumbai Industrial",
+    "ward_population": 160000,
+    "total_cells": 63,
+    "high_priority_cells": 63,
+    "dominant_priority": "High",
+    "priority_score_mean": 74.2,
+    "priority_score_max": 78.8,
+    "priority_distribution": {
+      "High": 63
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 63
     },
     "dominant_issue": "Urban Heat Island",
     "issue_counts": {
-      "Urban Heat Island": 38,
-      "Low Vegetation": 34,
-      "Environmental Stress": 2,
+      "Urban Heat Island": 63
+    },
+    "avg_ehi": 7.7,
+    "avg_risk_score": 91.9,
+    "planning_summary": "Taloja MIDC requires urgent attention (avg priority score 74/100, 63 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "Turbhe Ward": {
+    "ward": "Turbhe Ward",
+    "zone": "Navi Mumbai Core",
+    "ward_population": 220000,
+    "total_cells": 21,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 40.4,
+    "priority_score_max": 43.1,
+    "priority_distribution": {
+      "Medium": 13,
+      "Low": 8
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 14,
+      "Drainage Infrastructure Upgrade": 7
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 21
+    },
+    "avg_ehi": 46.2,
+    "avg_risk_score": 11.1,
+    "planning_summary": "Turbhe Ward warrants attention (avg priority score 40/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "Ulhasnagar Zone": {
+    "ward": "Ulhasnagar Zone",
+    "zone": "Extended MMR East",
+    "ward_population": 510000,
+    "total_cells": 15,
+    "high_priority_cells": 9,
+    "dominant_priority": "High",
+    "priority_score_mean": 60.7,
+    "priority_score_max": 69.5,
+    "priority_distribution": {
+      "High": 9,
+      "Medium": 6
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 12,
+      "Integrated Drainage and Green Infrastructure": 2,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 10,
+      "High Built-up Density": 2,
+      "Urban Heat Island": 1,
+      "Low Vegetation": 1,
       "Flood Susceptibility": 1
     },
-    "avg_ehi": 44.6,
-    "avg_risk_score": 79.3,
-    "planning_summary": "T Ward warrants attention (avg priority score 51/100, 4 high-priority cells): primary recommended intervention is Afforestation Program driven by Urban Heat Island."
+    "avg_ehi": 25.5,
+    "avg_risk_score": 45.5,
+    "planning_summary": "Ulhasnagar Zone requires urgent attention (avg priority score 61/100, 9 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Ulwe Ward": {
+    "ward": "Ulwe Ward",
+    "zone": "Navi Mumbai Central",
+    "ward_population": 300000,
+    "total_cells": 88,
+    "high_priority_cells": 40,
+    "dominant_priority": "High",
+    "priority_score_mean": 57.9,
+    "priority_score_max": 68.9,
+    "priority_distribution": {
+      "High": 40,
+      "Medium": 48
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 73,
+      "Integrated Drainage and Green Infrastructure": 14,
+      "Urban Forest": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 52,
+      "High Built-up Density": 12,
+      "Low Vegetation": 10,
+      "Urban Heat Island": 9,
+      "Flood Susceptibility": 5
+    },
+    "avg_ehi": 24.5,
+    "avg_risk_score": 51.3,
+    "planning_summary": "Ulwe Ward warrants attention (avg priority score 58/100, 40 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Uran Zone": {
+    "ward": "Uran Zone",
+    "zone": "Navi Mumbai Coastal",
+    "ward_population": 150000,
+    "total_cells": 27,
+    "high_priority_cells": 4,
+    "dominant_priority": "High",
+    "priority_score_mean": 51.7,
+    "priority_score_max": 62.8,
+    "priority_distribution": {
+      "High": 4,
+      "Medium": 23
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 19,
+      "Integrated Drainage and Green Infrastructure": 6,
+      "Urban Forest": 2
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 18,
+      "High Built-up Density": 5,
+      "Low Vegetation": 2,
+      "Urban Heat Island": 2
+    },
+    "avg_ehi": 25.4,
+    "avg_risk_score": 46.0,
+    "planning_summary": "Uran Zone warrants attention (avg priority score 52/100, 4 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Vartak Nagar Ward": {
+    "ward": "Vartak Nagar Ward",
+    "zone": "Thane Central",
+    "ward_population": 290000,
+    "total_cells": 12,
+    "high_priority_cells": 8,
+    "dominant_priority": "High",
+    "priority_score_mean": 62.6,
+    "priority_score_max": 74.0,
+    "priority_distribution": {
+      "High": 8,
+      "Medium": 4
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 7,
+      "Integrated Drainage and Green Infrastructure": 4,
+      "Urban Forest": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 5,
+      "Low Vegetation": 3,
+      "High Built-up Density": 2,
+      "Urban Heat Island": 2
+    },
+    "avg_ehi": 25.3,
+    "avg_risk_score": 50.3,
+    "planning_summary": "Vartak Nagar Ward requires urgent attention (avg priority score 63/100, 8 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Vasai Zone": {
+    "ward": "Vasai Zone",
+    "zone": "MMR Northern Gateway",
+    "ward_population": 830000,
+    "total_cells": 62,
+    "high_priority_cells": 34,
+    "dominant_priority": "High",
+    "priority_score_mean": 60.9,
+    "priority_score_max": 72.4,
+    "priority_distribution": {
+      "High": 34,
+      "Medium": 28
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Drainage Infrastructure Upgrade": 51,
+      "Integrated Drainage and Green Infrastructure": 9,
+      "Urban Forest": 1,
+      "Cool Roof Program": 1
+    },
+    "dominant_issue": "Environmental Stress",
+    "issue_counts": {
+      "Environmental Stress": 39,
+      "High Built-up Density": 8,
+      "Urban Heat Island": 7,
+      "Low Vegetation": 4,
+      "Flood Susceptibility": 4
+    },
+    "avg_ehi": 24.4,
+    "avg_risk_score": 50.8,
+    "planning_summary": "Vasai Zone requires urgent attention (avg priority score 61/100, 34 high-priority cells): primary recommended intervention is Drainage Infrastructure Upgrade driven by Environmental Stress."
+  },
+  "Vashi Ward": {
+    "ward": "Vashi Ward",
+    "zone": "Navi Mumbai Commercial",
+    "ward_population": 620000,
+    "total_cells": 48,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 41.5,
+    "priority_score_max": 44.9,
+    "priority_distribution": {
+      "Medium": 39,
+      "Low": 9
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 36,
+      "Drainage Infrastructure Upgrade": 12
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 48
+    },
+    "avg_ehi": 47.3,
+    "avg_risk_score": 8.8,
+    "planning_summary": "Vashi Ward warrants attention (avg priority score 42/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
   }
 }

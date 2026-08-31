@@ -118,7 +118,7 @@ def main() -> None:
 
     elapsed = time.time() - t_start
     logger.info(
-        "Wrote planning profiles for %d cells → %s (%.2fs)",
+        "Wrote planning profiles for %d cells -> %s (%.2fs)",
         len(profiles), output_path, elapsed,
     )
 

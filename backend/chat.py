@@ -23,7 +23,6 @@ Google Maps URL formats handled:
 from __future__ import annotations
 
 import json
-import math
 import os
 import re
 from typing import Any
@@ -111,23 +110,37 @@ def extract_coords_from_text(text: str) -> tuple[float, float] | None:
 
 
 # ---------------------------------------------------------------------------
-# Grid math — lat/lng → cell_id
+# Grid lookup — lat/lng → cell_id
 # ---------------------------------------------------------------------------
 
-GRID_LAT_MIN = 18.89
-GRID_LON_MIN = 72.77
-CELL_SIZE    = 0.01
-GRID_ROWS    = 38
-GRID_COLS    = 22
+# Coverage bounds of the full MMR master grid (0.01° ≈ 1 km² cells)
+GRID_LAT_MIN = 18.82
+GRID_LAT_MAX = 19.36
+GRID_LON_MIN = 72.76
+GRID_LON_MAX = 73.16
+HALF_CELL    = 0.005
+_EPS         = 1e-6  # float-tolerance for points sitting exactly on cell edges
 
-def coords_to_cell_id(lat: float, lon: float) -> str | None:
-    if not (GRID_LAT_MIN <= lat <= GRID_LAT_MIN + GRID_ROWS * CELL_SIZE):
+def coords_to_cell_id(lat: float, lon: float, geo_meta: dict | None = None) -> str | None:
+    """Resolve a coordinate to a cell via geographic-metadata centroids.
+
+    Centroid containment is used instead of row/col lattice math because the
+    expanded MMR cells use a shifted lattice origin (18.82°N / 72.76°E) from
+    the original Greater Mumbai grid (18.89°N / 72.77°E), so cell ids are not
+    on a single lattice.
+    """
+    if not (GRID_LAT_MIN <= lat <= GRID_LAT_MAX and GRID_LON_MIN <= lon <= GRID_LON_MAX):
         return None
-    if not (GRID_LON_MIN <= lon <= GRID_LON_MIN + GRID_COLS * CELL_SIZE):
+    if not geo_meta:
         return None
-    row = max(0, min(math.floor((lat - GRID_LAT_MIN) / CELL_SIZE), GRID_ROWS - 1))
-    col = max(0, min(math.floor((lon - GRID_LON_MIN) / CELL_SIZE), GRID_COLS - 1))
-    return f"r{row}_c{col}"
+    for cid, meta in geo_meta.items():
+        clat = meta.get("centroid_lat")
+        clon = meta.get("centroid_lon")
+        if clat is None or clon is None:
+            continue
+        if abs(lat - clat) <= HALF_CELL + _EPS and abs(lon - clon) <= HALF_CELL + _EPS:
+            return cid
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -196,9 +209,9 @@ def _tool_get_ward_summary(ward_name: str, data: dict) -> dict:
 
 
 def _tool_find_cell_by_coordinates(lat: float, lon: float, data: dict) -> dict:
-    cell_id = coords_to_cell_id(lat, lon)
+    cell_id = coords_to_cell_id(lat, lon, data.get("geo_meta"))
     if cell_id is None:
-        return {"error": f"({lat}, {lon}) is outside Mumbai's coverage area (lat 18.89–19.27°N, lon 72.77–72.99°E)."}
+        return {"error": f"({lat}, {lon}) is outside the MMR coverage area (lat 18.82–19.36°N, lon 72.76–73.16°E)."}
     return {"cell_id": cell_id, "lat": lat, "lon": lon, **_tool_get_cell_details(cell_id, data)}
 
 
@@ -581,7 +594,7 @@ def handle_chat(request: ChatRequest, app_data: dict) -> ChatResponse:
 
     if coords:
         lat, lng = coords
-        cell_id = coords_to_cell_id(lat, lng)
+        cell_id = coords_to_cell_id(lat, lng, app_data.get("geo_meta"))
         if cell_id:
             last_msg_content = (
                 f"{last_msg_content}\n\n[System note: Detected coordinates ({lat}, {lng}). "
@@ -590,7 +603,7 @@ def handle_chat(request: ChatRequest, app_data: dict) -> ChatResponse:
         else:
             last_msg_content = (
                 f"{last_msg_content}\n\n[System note: Coordinates ({lat}, {lng}) are outside "
-                f"Mumbai's coverage area. Inform the user.]"
+                f"MMR's coverage area. Inform the user.]"
             )
 
     # Build OpenAI message history

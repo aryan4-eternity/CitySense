@@ -3,10 +3,10 @@ project:
   random_seed: 42
 
 aoi:
-  west: 72.77
-  south: 18.89
-  east: 72.99
-  north: 19.27
+  west: 72.76
+  south: 18.82
+  east: 73.16
+  north: 19.36
 
 grid:
   cell_size_deg: 0.01
@@ -56,9 +56,9 @@ processing:
     lat_max: 19.25
 
 dashboard:
-  map_center: [19.076, 72.877]
-  zoom_start: 11
-  overlay_bounds: [[18.89, 72.77], [19.27, 72.98]]
+  map_center: [19.09, 72.96]
+  zoom_start: 10.5
+  overlay_bounds: [[18.82, 72.76], [19.36, 73.16]]
   thresholds:
     low_ndvi: 0.2
     high_lst: 35

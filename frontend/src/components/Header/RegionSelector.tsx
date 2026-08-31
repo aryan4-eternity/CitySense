@@ -6,6 +6,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Globe, MapPin, ChevronDown, Check, Building2, Trees, Waves, Factory } from 'lucide-react'
 import { useStore } from '@/store/useStore'
+import { useCityStats } from '@/api/citysense'
 import type { MMRRegionKey, MMRRegionOption } from '@/types'
 
 export const MMR_REGIONS: MMRRegionOption[] = [
@@ -15,7 +16,7 @@ export const MMR_REGIONS: MMRRegionOption[] = [
     shortLabel: 'All MMR',
     icon: '🌐',
     corporation: 'MMRDA Regional Scope',
-    description: 'Macro-scale regional analysis spanning 2,046 grid cells',
+    description: 'Macro-scale regional analysis spanning the full MMR grid',
     center: [72.95, 19.12],
     zoom: 10.2,
   },
@@ -74,10 +75,18 @@ export const MMR_REGIONS: MMRRegionOption[] = [
 export function RegionSelector() {
   const selectedRegion = useStore((s) => s.selectedRegion)
   const setSelectedRegion = useStore((s) => s.setSelectedRegion)
+  const { data: stats } = useCityStats()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const activeOption = MMR_REGIONS.find((r) => r.key === selectedRegion) || MMR_REGIONS[0]
+
+  // Derive the region count from live data instead of hard-coding it
+  const regions = MMR_REGIONS.map((r) =>
+    r.key === 'all' && stats?.total_cells
+      ? { ...r, description: `Macro-scale regional analysis spanning ${stats.total_cells.toLocaleString()} grid cells` }
+      : r,
+  )
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -177,7 +186,7 @@ export function RegionSelector() {
           </div>
 
           <div style={{ padding: '4px 0' }}>
-            {MMR_REGIONS.map((region) => {
+            {regions.map((region) => {
               const isSelected = region.key === selectedRegion
 
               return (

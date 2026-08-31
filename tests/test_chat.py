@@ -28,8 +28,13 @@ def test_extract_bare_coords():
     assert abs(coords[1] - 72.88) < 1e-4
 
 def test_coords_to_cell_id():
-    cell_id = coords_to_cell_id(19.05, 72.88)
-    assert cell_id == "r16_c10"
+    geo_meta = {
+        # Centroid of the cell containing (19.05, 72.88)
+        "r16_c10": {"centroid_lat": 19.055, "centroid_lon": 72.885},
+    }
+    assert coords_to_cell_id(19.05, 72.88, geo_meta) == "r16_c10"
+    # Outside MMR coverage bounds → no cell
+    assert coords_to_cell_id(20.05, 72.88, geo_meta) is None
 
 def test_dispatch_tool_get_city_stats():
     mock_data = {
@@ -58,6 +63,9 @@ def test_dispatch_tool_find_cell_by_coordinates():
         "fsi_data": {},
         "iai_data": {},
         "burden_data": {},
+        "geo_meta": {
+            "r16_c10": {"centroid_lat": 19.055, "centroid_lon": 72.885},
+        },
     }
     result = dispatch_tool("find_cell_by_coordinates", {"lat": 19.05, "lon": 72.88}, mock_data)
     assert result["cell_id"] == "r16_c10"

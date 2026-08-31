@@ -115,9 +115,12 @@ def main() -> None:
         pca.components_[0] = -pca.components_[0]
 
     # ---- 5. Scale PC1 to Risk Score (0 - 100) ------------------------------
-    # Min-max scale the PC1 array
-    pc1_min, pc1_max = pc1.min(), pc1.max()
-    risk_score = (pc1 - pc1_min) / (pc1_max - pc1_min) * 100.0
+    # Percentile-rank scaling instead of min-max: with min-max, extreme cells
+    # (e.g. SGNP forest peaks, industrial thermal sinks) compress most of the
+    # urban mass into a narrow band. Ranking PC1 across all cells yields a
+    # uniform 0-100 spread where a cell's score equals its percentile of risk.
+    pc1_series = pd.Series(pc1)
+    risk_score = (pc1_series.rank(pct=True).to_numpy() * 100.0).round(2)
 
     gdf["risk_score"] = risk_score
     gdf["sustainability_score"] = 100.0 - risk_score

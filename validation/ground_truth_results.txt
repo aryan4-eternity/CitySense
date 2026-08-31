@@ -12,60 +12,72 @@ flood-prone spots in Mumbai — not a random or exhaustive sample.
 
 SPATIAL MATCHING
 ----------------
-  Total flood points:    25
-  Matched to grid cell:  25
+  Total flood points:    37
+  Matched to grid cell:  37
 
 CITY-WIDE QUARTILE THRESHOLDS
 -----------------------------
-  DEM  Q25 (bottom 25% elevation):  2.61 m
-  DEM  Q75 (top 25% elevation):     25.90 m
-  Risk Q75 (top 25% risk score):    79.56 / 100
+  DEM  Q25 (bottom 25% elevation):  17.30 m
+  DEM  Q75 (top 25% elevation):     24.50 m
+  Risk Q75 (top 25% risk score):    75.02 / 100
 
 METRIC 1 — Elevation (DEM) Check
 ---------------------------------
-  Flood points in bottom 25% elevation (DEM ≤ 2.6 m):
-    0 / 25  = 0.0%
-  (City average DEM: 22.4 m  |  Flood-point average DEM: 11.1 m)
+  Flood points in bottom 25% elevation (DEM ≤ 17.3 m):
+    10 / 37  = 27.0%
+  (City average DEM: 24.4 m  |  Flood-point average DEM: 21.3 m)
 
 METRIC 2 — Risk Score Check
 ---------------------------
-  Flood points in top 25% risk score (score ≥ 79.6):
-    10 / 25  = 40.0%
-  (City average risk: 51.8  |  Flood-point average risk: 78.0)
+  Flood points in top 25% risk score (score ≥ 75.0):
+    11 / 37  = 29.7%
+  (City average risk: 50.0  |  Flood-point average risk: 50.5)
 
 BOTH CONDITIONS MET (low elevation AND high risk)
 --------------------------------------------------
-  0 / 25  = 0.0%
+  4 / 37  = 10.8%
 
 PER-LOCATION DETAIL
 -------------------
   Location                                  DEM(m)   Risk  LowElev  HighRisk
   ---------------------------------------------------------------------------
-  Hindmata Junction (Dadar)                    9.0   71.7      [ ]       [ ]
-  King's Circle (Matunga)                      8.1   81.9      [ ]       [✓]
-  Andheri Subway                              17.1   71.9      [ ]       [ ]
-  Milan Subway (Santacruz)                     7.4   83.6      [ ]       [✓]
-  Kurla (Sonapur gully)                        6.3   82.3      [ ]       [✓]
-  Sion (Road No. 24)                           9.7   79.7      [ ]       [✓]
-  Gandhi Market (Sion)                         9.5   80.6      [ ]       [✓]
-  Dadar TT East                                8.5   76.0      [ ]       [ ]
-  Parel TT                                     7.7   81.5      [ ]       [✓]
-  Kalachowki (Lower Parel)                     9.6   77.1      [ ]       [ ]
-  Wadala                                       9.7   76.7      [ ]       [ ]
-  Matunga (near station)                       8.0   80.7      [ ]       [✓]
-  Chembur (main road)                          7.0   75.0      [ ]       [ ]
-  Khar (subway/low point)                     12.8   70.7      [ ]       [ ]
-  Andheri East (Veera Desai Rd)               23.6   75.7      [ ]       [ ]
-  Andheri East (Metro station area)           23.6   75.7      [ ]       [ ]
-  Andheri West (Pancham Society)               6.8   71.8      [ ]       [ ]
-  Goregaon (Laxmi Nagar)                      13.8   73.6      [ ]       [ ]
-  Goregaon (Lokhandwala flyover)               9.7   74.1      [ ]       [ ]
-  Malad (near Oberoi Mall)                    16.5   75.3      [ ]       [ ]
-  Sakinaka (Andheri East)                     19.5   93.0      [ ]       [✓]
-  Ghatkopar (Barve Nagar)                      4.4   81.3      [ ]       [✓]
-  Mazgaon (near BMC garage Tardeo)             7.7   82.2      [ ]       [✓]
-  Mithi River (Kurla-Kalina stretch)           9.0   78.0      [ ]       [ ]
-  Mantralaya area (Marine Lines)              13.7   78.9      [ ]       [ ]
+  Hindmata Junction (Dadar)                   22.2   33.4      [ ]       [ ]
+  King's Circle (Matunga)                     25.5   42.5      [ ]       [ ]
+  Andheri Subway                              21.6   54.1      [ ]       [ ]
+  Milan Subway (Santacruz)                    13.1   34.9      [✓]       [ ]
+  Kurla (Sonapur gully)                       14.4   78.9      [✓]       [✓]
+  Sion (Road No. 24)                          14.3   52.1      [✓]       [ ]
+  Gandhi Market (Sion)                        24.5   62.4      [ ]       [ ]
+  Dadar TT East                               15.1   24.2      [✓]       [ ]
+  Parel TT                                    23.9   21.4      [ ]       [ ]
+  Kalachowki (Lower Parel)                    17.8   75.5      [ ]       [✓]
+  Wadala                                      18.8   59.0      [ ]       [ ]
+  Matunga (near station)                      25.1   58.5      [ ]       [ ]
+  Chembur (main road)                         16.6   28.4      [✓]       [ ]
+  Khar (subway/low point)                     15.7   83.1      [✓]       [✓]
+  Andheri East (Veera Desai Rd)               23.5   46.2      [ ]       [ ]
+  Andheri East (Metro station area)           23.5   46.2      [ ]       [ ]
+  Andheri West (Pancham Society)              19.4   19.1      [ ]       [ ]
+  Goregaon (Laxmi Nagar)                      21.2   75.7      [ ]       [✓]
+  Goregaon (Lokhandwala flyover)              19.0   48.3      [ ]       [ ]
+  Malad (near Oberoi Mall)                    17.6   17.0      [ ]       [ ]
+  Sakinaka (Andheri East)                     20.1   37.8      [ ]       [ ]
+  Ghatkopar (Barve Nagar)                     13.3   63.9      [✓]       [ ]
+  Mazgaon (near BMC garage Tardeo)            23.7   74.8      [ ]       [ ]
+  Mithi River (Kurla-Kalina stretch)          16.5   44.2      [✓]       [ ]
+  Mantralaya area (Marine Lines)              13.5   82.0      [✓]       [✓]
+  Kalyan Railway Station area                 23.3   93.2      [ ]       [✓]
+  Bhiwandi (Ulhas River bank)                 23.9   87.5      [ ]       [✓]
+  Ulhasnagar (Station Road)                   20.8   84.3      [ ]       [✓]
+  Dombivli MIDC                               16.8   85.9      [✓]       [✓]
+  Thane Kalwa (low-lying belt)                23.6   18.5      [ ]       [ ]
+  Mumbra                                      19.9   79.3      [ ]       [✓]
+  Mira Road                                   22.0   37.6      [ ]       [ ]
+  Vashi Railway Station area                  35.3    6.8      [ ]       [ ]
+  CBD Belapur                                 32.7    4.0      [ ]       [ ]
+  Kharghar (Utsav Chowk area)                 27.7   11.6      [ ]       [ ]
+  Panvel (Kalundre River belt)                26.4   89.0      [ ]       [✓]
+  Airoli                                      37.6    5.7      [ ]       [ ]
 
 INTERPRETATION
 --------------

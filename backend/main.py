@@ -28,7 +28,7 @@ load_dotenv(Path(__file__).parent / ".env")
 
 app = FastAPI(
     title="CitySense API",
-    description="Environmental intelligence and planning data for Mumbai",
+    description="Environmental intelligence and planning data for the Mumbai Metropolitan Region (MMR)",
     version="3.0.0",
 )
 

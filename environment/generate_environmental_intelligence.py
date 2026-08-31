@@ -52,6 +52,7 @@ from pathlib import Path
 import geopandas as gpd
 
 from config_loader import load_config, project_path
+from environment.benchmarks import compute_benchmarks, save_benchmarks
 from environment.comparative_analysis import compute_city_stats, compute_cell_comparisons
 from environment.environmental_health import compute_ehi, compute_ehi_batch, get_environmental_status
 from environment.indicator_interpreter import (
@@ -95,9 +96,11 @@ def main() -> None:
 
     master_path = project_path(cfg, "master_data")
     output_path = project_path(cfg, "environmental_intelligence")
+    benchmarks_path = Path("data/benchmarks.json")
 
-    logger.info("Master dataset : %s", master_path)
-    logger.info("Output path    : %s", output_path)
+    logger.info("Master dataset  : %s", master_path)
+    logger.info("Output path     : %s", output_path)
+    logger.info("Benchmarks path : %s", benchmarks_path)
 
     # ── 2. Load master dataset ────────────────────────────────────────────
     if not master_path.exists():
@@ -121,16 +124,21 @@ def main() -> None:
         list(city_stats.keys()),
     )
 
-    # ── 4. Batch-compute EHI (vectorised) ─────────────────────────────────
-    logger.info("Computing Environmental Health Index (batch) …")
-    ehi_series = compute_ehi_batch(gdf, city_stats)
+    # ── 4. Compute Green-Urban Benchmarks & Anchors ───────────────────────
+    logger.info("Computing green-urban benchmarks and indicator anchors …")
+    anchors = compute_benchmarks(gdf, cfg)
+    save_benchmarks(anchors, benchmarks_path)
+
+    # ── 5. Batch-compute EHI (vectorised with benchmark anchors) ──────────
+    logger.info("Computing Environmental Health Index (batch with benchmark anchors) …")
+    ehi_series = compute_ehi_batch(gdf, city_stats=city_stats, anchors=anchors)
     logger.info(
         "EHI stats: min=%.1f  max=%.1f  mean=%.1f  median=%.1f",
         ehi_series.min(), ehi_series.max(),
         ehi_series.mean(), ehi_series.median(),
     )
 
-    # ── 5. Per-cell enrichment ─────────────────────────────────────────────
+    # ── 6. Per-cell enrichment ─────────────────────────────────────────────
     logger.info("Enriching %d cells …", len(gdf))
     output: dict[str, dict] = {}
     status_counter: Counter = Counter()
@@ -195,16 +203,16 @@ def main() -> None:
         if primary_issue:
             issue_counter[primary_issue] += 1
 
-    # ── 6. Write output JSON ───────────────────────────────────────────────
+    # ── 7. Write output JSON ───────────────────────────────────────────────
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(str(output_path), "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
     elapsed = time.time() - t_start
-    logger.info("Wrote environmental intelligence for %d cells → %s", len(output), output_path)
+    logger.info("Wrote environmental intelligence for %d cells -> %s", len(output), output_path)
     logger.info("Completed in %.2f seconds.", elapsed)
 
-    # ── 7. Summary log ────────────────────────────────────────────────────
+    # ── 8. Summary log ────────────────────────────────────────────────────
     logger.info("Environmental Status distribution:")
     for label in ["Excellent", "Good", "Moderate", "Poor", "Critical"]:
         count = status_counter.get(label, 0)

@@ -2,7 +2,7 @@
 
 **AI-Powered Urban Planning Decision Support System for Mumbai**
 
-CitySense fuses satellite Earth observation, OpenStreetMap infrastructure data, and deterministic analytics into a city-wide environmental intelligence platform — helping urban planners move from raw indicators to actionable, explainable recommendations at 1 km² resolution across 836 grid cells covering Greater Mumbai.
+CitySense fuses satellite Earth observation, OpenStreetMap infrastructure data, and deterministic analytics into a city-wide environmental intelligence platform — helping urban planners move from raw indicators to actionable, explainable recommendations at 1 km² resolution across 1,663 grid cells covering the Mumbai Metropolitan Region (MMR): Mumbai, Navi Mumbai, Thane, Kalyan-Dombivli and beyond.
 
 ---
 
@@ -58,7 +58,7 @@ city_sense/
 │   ├── config.yaml                  # All runtime configuration
 │   └── geographic_config.yaml       # Ward populations, land-use thresholds
 ├── ingestion/                       # GEE data fetching
-│   ├── generate_grid.py             # 836-cell Mumbai fishnet grid
+│   ├── generate_grid.py             # 1 km² fishnet grid (from config AOI)
 │   ├── fetch_ndvi.py                # Sentinel-2 NDVI (pre-monsoon)
 │   ├── fetch_lst.py                 # Landsat LST with emissivity correction
 │   ├── fetch_ndbi.py                # Sentinel-2 Built-up Index
@@ -76,6 +76,7 @@ city_sense/
 │   ├── drainage_proxy.py            # OSM waterway distances per cell
 │   └── infrastructure_access.py    # OSM hospital/school/park/transit distances
 ├── environment/                     # Environmental intelligence
+│   ├── benchmarks.py                # Green-urban benchmark selection & anchors
 │   ├── environment_templates.py     # EHI weights, thresholds, templates
 │   ├── comparative_analysis.py      # City-wide stats and percentile ranks
 │   ├── environmental_health.py      # EHI (0–100)
@@ -111,7 +112,7 @@ city_sense/
 │   └── statistical_validation.py   # AUC/AP for FSI vs risk_score vs DEM
 ├── data/                            # Pipeline outputs
 ├── models/                          # Trained model .pkl files
-└── tests/                           # 82 unit tests
+└── tests/                           # 93 unit tests
 ```
 
 ---
@@ -122,7 +123,7 @@ city_sense/
 |---|---|---|---|
 | `risk_score` | 0–100 | More environmental risk | LST, NDVI, NDBI, DEM (PCA) |
 | `sustainability_score` | 0–100 | More sustainable | 100 − risk_score |
-| `environmental_health` (EHI) | 0–100 | Healthier environment | LST 30%, NDVI 25%, UHI 20%, NDBI 15%, DEM 10% |
+| `environmental_health` (EHI) | 0–100 | Healthier environment | Green-urban benchmark normalized: LST 30%, NDVI 25%, UHI 20%, NDBI 15%, DEM 10% |
 | `flood_susceptibility_score` (FSI) | 0–100 | More flood-prone | DEM 30%, Rainfall 30%, Drain distance 25%, NDBI 15% |
 | `iai_score` (IAI) | 0–100 | Better infrastructure access | Hospital, school, park, transit distances + population |
 | `burden_score` | 0–100 | Greater combined burden | 50% EHI deficit + 50% IAI deficit |
@@ -229,7 +230,7 @@ python -m environment.generate_environmental_intelligence
 ### Stage 4 — Flood Susceptibility Index
 
 ```bash
-# Drainage proxy via Overpass API [slow — ~15 min for 836 cells]
+# Drainage proxy via Overpass API [slow — ~15 min for the full grid]
 python -m metadata.drainage_proxy
 
 # FSI composite (runs immediately from existing data)
@@ -239,7 +240,7 @@ python -m environment.generate_flood_susceptibility
 ### Stage 5 — Infrastructure Access Index
 
 ```bash
-# Facility distances via Overpass API [slow — ~30-45 min for 836 cells × 4 queries]
+# Facility distances via Overpass API [slow — ~30-45 min for the full grid × 4 queries]
 python -m metadata.infrastructure_access
 
 # IAI composite (runs immediately)
@@ -300,12 +301,12 @@ python main.py
 ## Validation
 
 ```bash
-pytest tests/ -v          # 82 unit tests
+pytest tests/ -v          # 93 unit tests
 ```
 
 | Test file | Coverage |
 |---|---|
-| `test_environmental_intelligence.py` | EHI, conditions, summaries (37 tests) |
+| `test_environmental_intelligence.py` | EHI, benchmarks, conditions, summaries (42 tests) |
 | `test_planning_engine.py` | Priority, interventions, confidence (35 tests) |
 | `test_scoring.py` | PCA bounds, correlation, clusters (3 tests) |
 | `test_indicators.py` | LST/NDVI/DEM ranges (3 tests) |
@@ -321,12 +322,12 @@ Ground-truth validation against 25 documented Mumbai flood locations:
 
 | Metric | Value |
 |---|---|
-| Grid cells | 836 (0.01° ≈ 1 km² each) |
-| Avg EHI | 48.1 / 100 |
-| Urban Heat Island cells | 209 (25%) |
-| Low Vegetation cells | 187 (22%) |
-| High planning priority cells | 264 (31.6%) |
-| Top recommended intervention | Drainage Infrastructure Upgrade (539 cells, FSI-injected) |
+| Grid cells | 1,663 (0.01° ≈ 1 km² each, full MMR) |
+| Avg EHI | 47.5 / 100 |
+| Urban Heat Island cells | 416 (25.0%) |
+| Low Vegetation cells | 406 (24.4%) |
+| High + Critical planning priority cells | 471 (28.3%) |
+| Top recommended intervention | Drainage Infrastructure Upgrade (1,008 cells, FSI-injected) |
 | Highest-burden ward | L Ward / K-East Ward (avg priority ~55–56) |
 
 ---

@@ -39,50 +39,54 @@ type ColorStop = { t: number; rgb: [number, number, number] }
 
 const SCALES: Record<LayerConfig['colorScale'], ColorStop[]> = {
   // EHI & IAI (Higher is healthier):
-  // 0-30: Crimson Red (Critical Deficit) -> 30-50: Vivid Amber (Poor) -> 50-65: Warm Gold (Moderate Baseline) -> 65-80: Fresh Lime (Good) -> 80-100: Lush Emerald (Excellent)
+  // 0-25: Crimson Red (Critical Deficit) -> 25-45: Vivid Amber (Poor) -> 45-65: Warm Gold (Moderate Baseline) -> 65-80: Fresh Lime (Good) -> 80-100: Lush Emerald (Excellent)
   green_red: [
     { t: 0.00, rgb: [255, 45, 75] },    // 0: Critical deficit (Crimson Red)
-    { t: 0.32, rgb: [255, 130, 35] },   // 32: Poor (Vivid Amber/Orange)
+    { t: 0.25, rgb: [255, 75, 55] },    // 25: Critical / Poor transition
+    { t: 0.40, rgb: [255, 140, 35] },   // 40: Poor (Vivid Amber/Orange)
     { t: 0.50, rgb: [255, 215, 45] },   // 50: Moderate urban baseline (Warm Gold)
-    { t: 0.68, rgb: [65, 215, 95] },    // 68: Good (Fresh Lime Green)
-    { t: 1.00, rgb: [0, 240, 130] },    // 100: Excellent (Lush Emerald)
+    { t: 0.70, rgb: [85, 215, 95] },    // 70: Good (Fresh Lime Green)
+    { t: 0.88, rgb: [0, 235, 130] },    // 88: Benchmark-level Green Urban
+    { t: 1.00, rgb: [0, 240, 130] },    // 100: Pristine / Forest (Lush Emerald)
   ],
 
   // Risk, Planning Priority, Flood Susceptibility, Burden (Higher is riskier):
-  // 0-30: Lush Emerald (Safe) -> 30-50: Mint Lime (Low Risk) -> 50-68: Warm Gold (Moderate) -> 68-82: Vivid Orange (Elevated) -> 82-100: Crimson Red (Critical Hotspots)
+  // 0-30: Lush Emerald (Safe) -> 30-50: Fresh Lime (Low Risk) -> 50-70: Warm Gold (Moderate) -> 70-85: Vivid Orange (Elevated) -> 85-100: Crimson Red (Critical Hotspots)
   red_green: [
-    { t: 0.00, rgb: [0, 230, 130] },    // 0: Safe (Lush Emerald)
-    { t: 0.30, rgb: [95, 220, 95] },    // 30: Low risk (Mint/Lime)
-    { t: 0.52, rgb: [255, 215, 45] },   // 52: Moderate urban baseline (Warm Gold)
-    { t: 0.72, rgb: [255, 130, 35] },   // 72: High priority (Vivid Orange)
+    { t: 0.00, rgb: [0, 235, 130] },    // 0: Safe (Lush Emerald)
+    { t: 0.28, rgb: [85, 215, 95] },    // 28: Low risk (Fresh Lime)
+    { t: 0.50, rgb: [255, 215, 45] },   // 50: Moderate urban baseline (Warm Gold)
+    { t: 0.75, rgb: [255, 130, 35] },   // 75: High priority / stress (Vivid Orange)
+    { t: 0.88, rgb: [255, 65, 55] },    // 88: Near-crisis boundary
     { t: 1.00, rgb: [255, 45, 75] },    // 100: Critical crisis hotspot (Crimson Red)
   ],
 
-  // LST (Thermal gradient: Blue 28-33°C -> Cyan 33-37°C -> Gold 37-41°C -> Orange 41-45°C -> Red >45°C)
+  // LST (Thermal gradient: Blue 28-33°C -> Cyan 33-36°C -> Gold 36-40°C -> Orange 40-43°C -> Red >43°C)
   blue_red: [
-    { t: 0.00, rgb: [30, 105, 245] },   // Cool forest/water
-    { t: 0.28, rgb: [0, 195, 225] },    // Mild coastal
-    { t: 0.52, rgb: [255, 215, 45] },   // Typical urban
-    { t: 0.76, rgb: [255, 115, 30] },   // Elevated thermal stress
-    { t: 1.00, rgb: [255, 35, 75] },    // Extreme UHI peak hotspot
+    { t: 0.00, rgb: [30, 105, 245] },   // Cool forest/water (<30°C)
+    { t: 0.30, rgb: [0, 195, 225] },    // Mild coastal (33-35°C)
+    { t: 0.55, rgb: [255, 215, 45] },   // Typical urban (38-40°C)
+    { t: 0.80, rgb: [255, 115, 30] },   // Elevated thermal stress (41-43°C)
+    { t: 1.00, rgb: [255, 35, 75] },    // Extreme UHI peak hotspot (>44°C)
   ],
 
-  // NDVI (Vegetation gradient: Brown <0.05 -> Olive 0.05-0.20 -> Mint 0.20-0.40 -> Deep Forest >0.40)
+  // NDVI (Vegetation gradient: Brown <0.12 -> Olive 0.12-0.22 -> Mint 0.22-0.38 -> Deep Forest >0.45)
   brown_green: [
     { t: 0.00, rgb: [145, 95, 70] },    // Barren / mudflat
-    { t: 0.25, rgb: [195, 155, 95] },   // Dense impervious / concrete
-    { t: 0.48, rgb: [200, 220, 75] },   // Sparse roadside greenery / grass
-    { t: 0.72, rgb: [65, 205, 95] },    // Urban parks & residential gardens
-    { t: 1.00, rgb: [0, 160, 55] },     // Dense national park canopy & mangroves
+    { t: 0.20, rgb: [195, 155, 95] },   // Dense impervious / concrete (<0.18)
+    { t: 0.35, rgb: [200, 220, 75] },   // Sparse roadside greenery / grass (~0.25)
+    { t: 0.60, rgb: [65, 205, 95] },    // Green-urban benchmark & residential gardens (~0.38)
+    { t: 1.00, rgb: [0, 160, 55] },     // Dense national park canopy & mangroves (>0.55)
   ],
 
-  // UHI Intensity (-10°C to +10°C relative to SGNP baseline)
+  // UHI Intensity (-2°C to +15°C relative to SGNP baseline)
   blue_orange: [
-    { t: 0.00, rgb: [25, 85, 230] },    // Substantially cooler than baseline
-    { t: 0.35, rgb: [0, 185, 220] },    // Mild maritime cooling
-    { t: 0.50, rgb: [200, 225, 245] },  // Neutral baseline (0°C delta)
-    { t: 0.70, rgb: [255, 140, 35] },   // Elevated urban heat (+4°C)
-    { t: 1.00, rgb: [255, 35, 55] },    // Severe heat island anomaly (+8°C to +10°C)
+    { t: 0.00, rgb: [25, 85, 230] },    // Cooler than SGNP baseline (<0°C)
+    { t: 0.20, rgb: [0, 185, 220] },    // Mild maritime cooling (+1 to +3°C)
+    { t: 0.45, rgb: [200, 225, 245] },  // Neutral baseline transition (+5 to +6°C)
+    { t: 0.65, rgb: [255, 215, 45] },   // Typical urban UHI (+8 to +10°C, Warm Gold)
+    { t: 0.82, rgb: [255, 130, 35] },   // Elevated urban heat anomaly (+11 to +13°C)
+    { t: 1.00, rgb: [255, 35, 55] },    // Severe heat island anomaly (+14°C to +15°C)
   ],
 
   categorical: [
@@ -158,7 +162,7 @@ export const LAYER_CONFIGS: Record<LayerKey, LayerConfig> = {
     unit: '°C',
     colorScale: 'blue_red',
     description: 'Mean land surface temperature derived from Landsat thermal band',
-    min: 28, max: 48,
+    min: 28, max: 46,
   },
   mean_ndvi: {
     key: 'mean_ndvi',
@@ -167,7 +171,7 @@ export const LAYER_CONFIGS: Record<LayerKey, LayerConfig> = {
     unit: '',
     colorScale: 'brown_green',
     description: 'Normalised Difference Vegetation Index (–1 to +1)',
-    min: -0.15, max: 0.65,
+    min: 0.05, max: 0.65,
   },
   mean_ndbi: {
     key: 'mean_ndbi',
@@ -176,7 +180,7 @@ export const LAYER_CONFIGS: Record<LayerKey, LayerConfig> = {
     unit: '',
     colorScale: 'red_green',
     description: 'Normalised Difference Built-up Index (higher = denser urban)',
-    min: -0.25, max: 0.35,
+    min: -0.15, max: 0.35,
   },
   uhi_intensity: {
     key: 'uhi_intensity',
@@ -185,7 +189,7 @@ export const LAYER_CONFIGS: Record<LayerKey, LayerConfig> = {
     unit: '°C',
     colorScale: 'blue_orange',
     description: 'Temperature deviation from green reference zone (°C)',
-    min: -6, max: 8,
+    min: -2, max: 15,
   },
   planning_priority_score: {
     key: 'planning_priority_score',

@@ -141,7 +141,7 @@ def main() -> None:
     with out_path.open("w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    logger.info("Wrote burden scores for %d cells → %s (%.2fs)",
+    logger.info("Wrote burden scores for %d cells -> %s (%.2fs)",
                 len(output), out_path, time.time() - t0)
     for label in ["Critical", "High", "Moderate", "Low"]:
         count = status_counter.get(label, 0)

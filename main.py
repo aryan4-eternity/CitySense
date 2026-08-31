@@ -71,7 +71,11 @@ def main() -> None:
         ("Fetch land-surface temperature", fetch_lst.main, project_path(config, "lst_grid")),
         ("Fetch NDBI", fetch_ndbi.main, project_path(config, "ndbi_grid")),
         ("Fetch DEM", fetch_dem.main, project_path(config, "dem_grid")),
-        ("Merge indicators", merge_indicators.main, None),
+        # Guarded by the master output: merge rebuilds cells_master.geojson from
+        # the indicator grids, which may cover a smaller AOI than the current
+        # master (e.g. stale Greater Mumbai grids vs. the full MMR dataset).
+        # Delete data/cells_master.geojson intentionally to re-merge.
+        ("Merge indicators", merge_indicators.main, project_path(config, "master_data")),
         ("Compute UHI", compute_uhi.main, None),
         ("Analyze LST and NDVI", lst_ndvi_analysis.main, None),
         ("Score cells with PCA", pca_scoring.main, None),

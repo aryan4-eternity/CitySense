@@ -1,0 +1,22 @@
+{
+  "mean_lst": {
+    "good": 36.43,
+    "worst": 43.329
+  },
+  "uhi_intensity": {
+    "good": 6.23,
+    "worst": 13.129
+  },
+  "mean_ndbi": {
+    "good": 0.094,
+    "worst": 0.3179
+  },
+  "mean_ndvi": {
+    "good": 0.3795,
+    "worst": 0.123
+  },
+  "mean_dem": {
+    "good": 32.65,
+    "worst": 13.9
+  }
+}

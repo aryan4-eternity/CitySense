@@ -227,6 +227,60 @@ class TestComputeEHI:
                 f"Batch EHI ({batch.loc[idx]:.3f}) != single EHI ({single:.3f}) for idx {idx}"
             )
 
+    def test_top_10_percent_ndvi_urban_cell_scores_high_ehi(self, synthetic_gdf):
+        """A green-urban benchmark cell (top 10% NDVI) must score EHI >= 70."""
+        from environment.benchmarks import compute_benchmarks
+        from environment.environmental_health import compute_ehi
+        anchors = compute_benchmarks(synthetic_gdf)
+        # Row 9 is the greenest cell in synthetic_gdf
+        top_green_cell = synthetic_gdf.iloc[9]
+        ehi = compute_ehi(top_green_cell, anchors=anchors)
+        assert ehi >= 70.0, f"Top green cell EHI ({ehi:.1f}) should be >= 70.0"
+
+    def test_ehi_with_anchors_batch_matches_single_cell(self, synthetic_gdf):
+        """Batch EHI with anchors must match single-cell with anchors within 0.01."""
+        from environment.benchmarks import compute_benchmarks
+        from environment.environmental_health import compute_ehi, compute_ehi_batch
+        anchors = compute_benchmarks(synthetic_gdf)
+        batch = compute_ehi_batch(synthetic_gdf, anchors=anchors)
+        for idx, row in synthetic_gdf.iterrows():
+            single = compute_ehi(row, anchors=anchors)
+            assert abs(batch.loc[idx] - single) < 0.01, (
+                f"Batch EHI ({batch.loc[idx]:.3f}) != single EHI ({single:.3f}) for idx {idx}"
+            )
+
+
+class TestBenchmarks:
+    def test_compute_benchmarks_returns_expected_structure(self, synthetic_gdf):
+        from environment.benchmarks import compute_benchmarks
+        anchors = compute_benchmarks(synthetic_gdf)
+        expected_indicators = {"mean_lst", "mean_ndvi", "mean_ndbi", "uhi_intensity", "mean_dem"}
+        assert expected_indicators.issubset(set(anchors.keys()))
+        for ind, vals in anchors.items():
+            assert "good" in vals and "worst" in vals
+            assert isinstance(vals["good"], float)
+            assert isinstance(vals["worst"], float)
+
+    def test_benchmark_anchor_order(self, synthetic_gdf):
+        from environment.benchmarks import compute_benchmarks
+        anchors = compute_benchmarks(synthetic_gdf)
+        # For indicators where high is bad (LST, UHI, NDBI), good <= worst
+        for ind in ["mean_lst", "uhi_intensity", "mean_ndbi"]:
+            if ind in anchors:
+                assert anchors[ind]["good"] <= anchors[ind]["worst"], f"{ind}: good > worst"
+        # For indicators where high is good (NDVI, DEM), worst <= good
+        for ind in ["mean_ndvi", "mean_dem"]:
+            if ind in anchors:
+                assert anchors[ind]["worst"] <= anchors[ind]["good"], f"{ind}: worst > good"
+
+    def test_save_and_load_benchmarks(self, synthetic_gdf, tmp_path):
+        from environment.benchmarks import compute_benchmarks, save_benchmarks, load_benchmarks
+        anchors = compute_benchmarks(synthetic_gdf)
+        out_file = tmp_path / "test_benchmarks.json"
+        save_benchmarks(anchors, out_file)
+        loaded = load_benchmarks(out_file)
+        assert loaded == anchors
+
 
 class TestEnvironmentalStatus:
     def test_all_five_statuses_reachable(self):

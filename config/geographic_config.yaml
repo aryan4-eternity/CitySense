@@ -30,6 +30,36 @@ geographic:
     "R/South Ward": 710000
     "S Ward": 720000
     "T Ward": 350000
+
+    # MMR ward / zone population baselines (2024 estimated)
+    "Airoli Ward": 210000
+    "Belapur Ward": 190000
+    "Bhiwandi Zone": 950000
+    "Dombivli Zone": 1250000
+    "Dronagiri Ward": 130000
+    "Ghansoli Ward": 200000
+    "Ghodbunder Ward": 260000
+    "Ghodbunder Zone": 320000
+    "Kalwa Ward": 330000
+    "Kalyan East Zone": 480000
+    "Kalyan Zone": 780000
+    "Kharghar Ward": 280000
+    "Mahape Ward": 240000
+    "Mira-Bhayandar Zone": 940000
+    "Mumbra Ward": 430000
+    "Naupada Ward": 310000
+    "Nerul Ward": 600000
+    "Ovala Ward": 270000
+    "Panvel Municipal Corp": 470000
+    "Panvel Node": 320000
+    "Taloja MIDC": 160000
+    "Turbhe Ward": 220000
+    "Ulhasnagar Zone": 510000
+    "Ulwe Ward": 300000
+    "Uran Zone": 150000
+    "Vartak Nagar Ward": 290000
+    "Vasai Zone": 830000
+    "Vashi Ward": 620000
     
   land_use_thresholds:
     green_ndvi_min: 0.4

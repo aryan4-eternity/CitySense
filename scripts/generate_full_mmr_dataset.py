@@ -1,4 +1,19 @@
 # ============================================================
+# DEPRECATED — DO NOT RUN
+# ============================================================
+# This script OVERWRITES cells_master.geojson and every derived
+# dataset (environmental_intelligence, planning_profiles, geo
+# metadata, FSI, IAI, burden) with its own synthesized dataset.
+#
+# The authoritative MMR expansion script is scripts/expand_mmr_grid.py,
+# which extends the existing master dataset in place and preserves the
+# original Greater Mumbai cells. The current 1,663-cell dataset was
+# produced by expand_mmr_grid.py + the trained model pipeline.
+#
+# Only run this if you intentionally want to replace the whole
+# dataset with this generator's output.
+# ============================================================
+
 # generate_full_mmr_dataset.py
 # Seamless, contiguous grid generation across all 5 MMR zones:
 # 1. Mumbai Island City (BMC South)

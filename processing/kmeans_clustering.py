@@ -57,6 +57,8 @@ def assign_cluster_labels(centroids: pd.DataFrame) -> dict:
         
         if row["mean_ndvi"] > 0.6:
             name_parts.append("Green/Forested")
+        elif row["mean_ndbi"] > 0.8 and row["mean_lst"] > 0.8:
+            name_parts.append("Extreme Urban Heat / Industrial")
         elif row["mean_ndbi"] > 0.6 and row["mean_lst"] > 0.6:
             name_parts.append("Dense Urban Heat")
         elif row["mean_dem"] < 0.2:

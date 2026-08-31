@@ -14,12 +14,7 @@ import { useStore } from '@/store/useStore'
 import { useCells } from '@/api/citysense'
 import type { TooltipInfo, BasemapKey } from '@/types'
 import { MMR_REGIONS } from '@/components/Header/RegionSelector'
-import {
-  makeChoroplethLayer,
-  makeHotspotLayer,
-  makeClusterLabelLayer,
-  makeRegionBoundaryLayer,
-} from './layers'
+import { LAYER_CONFIGS, makeChoroplethLayer, makeHotspotLayer, makeClusterLabelLayer, makeRegionBoundaryLayer } from './layers'
 
 // ----------------------------------------------------------------
 // Constants
@@ -291,11 +286,24 @@ export function DeckMap() {
     (info: { object?: GeoJSON.Feature; x: number; y: number }) => {
       if (info.object) {
         const props = info.object.properties as Record<string, unknown>
+        const layerConfig = LAYER_CONFIGS[activeLayer]
+        const rawActiveValue = props[activeLayer]
+        const activeValue = activeLayer === 'cluster'
+          ? (props.cluster as string) ?? null
+          : rawActiveValue === null || rawActiveValue === undefined
+            ? null
+            : Number(rawActiveValue)
         setLocalTooltip({
           x: info.x,
           y: info.y,
           cellId: (props.cell_id as string) ?? '',
+          activeMetric: layerConfig.label,
+          activeValue,
+          activeUnit: layerConfig.unit,
           ehi: (props.environmental_health as number) ?? null,
+          risk: (props.risk_score as number) ?? null,
+          ndvi: (props.mean_ndvi as number) ?? null,
+          ndbi: (props.mean_ndbi as number) ?? null,
           priorityLabel: (props.planning_priority as string) ?? null,
           lst: (props.mean_lst as number) ?? null,
           cluster: (props.cluster as string) ?? null,
@@ -304,7 +312,7 @@ export function DeckMap() {
         setLocalTooltip(null)
       }
     },
-    [],
+    [activeLayer],
   )
 
   const onClick = useCallback(
@@ -554,24 +562,23 @@ export function DeckMap() {
           >
             {localTooltip.cellId}
           </div>
-          {localTooltip.ehi !== null && (
-            <div style={{ fontSize: 12, marginBottom: 2 }}>
-              EHI:{' '}
-              <span style={{ color: 'var(--text-bright)', fontWeight: 600 }}>
-                {localTooltip.ehi.toFixed(1)}
-              </span>
-            </div>
-          )}
-          {localTooltip.priorityLabel && (
-            <div style={{ fontSize: 12, marginBottom: 2 }}>
-              Priority:{' '}
-              <span style={{ fontWeight: 600 }}>{localTooltip.priorityLabel}</span>
-            </div>
-          )}
-          {localTooltip.lst !== null && (
-            <div style={{ fontSize: 12 }}>
-              LST:{' '}
-              <span style={{ fontWeight: 600 }}>{localTooltip.lst.toFixed(1)}°C</span>
+          {localTooltip.activeValue !== null && (
+            <div
+              style={{
+                margin: '6px 0 0',
+                padding: '7px 0 2px',
+                borderTop: '1px solid rgba(0, 212, 255, 0.25)',
+                fontSize: 12,
+              }}
+            >
+              <div style={{ color: 'var(--text-secondary)', fontSize: 10, marginBottom: 3 }}>
+                {localTooltip.activeMetric}:
+              </div>
+              <div style={{ color: 'var(--glow-cyan)', fontWeight: 700, fontSize: 14 }}>
+                {typeof localTooltip.activeValue === 'number'
+                  ? `${localTooltip.activeValue.toFixed(2)}${localTooltip.activeUnit}`
+                  : localTooltip.activeValue}
+              </div>
             </div>
           )}
         </div>
