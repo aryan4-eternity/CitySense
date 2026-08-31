@@ -126,6 +126,7 @@ export function CellPanel() {
                         ? 'badge-good'
                         : 'badge-excellent'
               }
+              title={`Environmental Health Status: ${bundle.environment.environmental_status}`}
               style={{
                 fontSize: 9,
                 padding: '2px 7px',
@@ -136,7 +137,7 @@ export function CellPanel() {
                 textTransform: 'uppercase',
               }}
             >
-              {bundle.environment.environmental_status}
+              ENV: {bundle.environment.environmental_status}
             </span>
           )}
           {bundle?.planning?.planning_priority && (
@@ -146,6 +147,7 @@ export function CellPanel() {
                   ? 'animate-pulse-red'
                   : ''
               }`}
+              title={`Planning Intervention Priority: ${bundle.planning.planning_priority}`}
               style={{
                 fontSize: 9,
                 padding: '2px 7px',
@@ -156,7 +158,7 @@ export function CellPanel() {
                 textTransform: 'uppercase',
               }}
             >
-              {bundle.planning.planning_priority}
+              PRIORITY: {bundle.planning.planning_priority}
             </span>
           )}
         </div>
