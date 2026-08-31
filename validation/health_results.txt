@@ -1,0 +1,121 @@
+====================================================================
+CitySense — Public Health Co-location Check (Ward Level)
+====================================================================
+
+APPROACH
+--------
+Ward-level analysis: 6 wards with documented high vector-borne
+disease burden (dengue/malaria) compared against CitySense
+ward_profiles.json (avg_risk_score, avg_ehi).
+
+Disease data is not available at sub-ward or point resolution.
+This check uses ward names as the matching unit, not geocoded
+coordinates. See §15.7 of CITYSENSE_TECHNICAL_DOCUMENTATION.md.
+
+CITY-WIDE WARD BASELINES
+------------------------
+  Mean avg_risk_score across 24 wards: 55.2
+  Mean avg_ehi         across 24 wards: 45.2
+  Median avg_risk_score:                58.2
+  Median avg_ehi:                       45.7
+
+RESULTS PER WARD
+----------------
+  Ward               Disease               Risk   EHI  AboveRisk  BelowEHI  Converges
+  --------------------------------------------------------------------------------
+  M/East Ward        Malaria (primary) + Dengue  36.6  53.0                         DIVERGE
+  L Ward             Dengue (primary)      80.3  29.3          ✓         ✓   CONVERGE
+  K/East Ward        Dengue + Malaria      80.4  34.6          ✓         ✓   CONVERGE
+  M/West Ward        Dengue                79.7  34.9          ✓         ✓   CONVERGE
+  N Ward             Malaria + Dengue      73.5  41.3          ✓         ✓   CONVERGE
+  D Ward             Malaria               27.9  50.9                         DIVERGE
+
+  4/6 wards converge (above-average risk AND below-average EHI).
+
+DETAILED FINDINGS
+-----------------
+  M/East Ward (pop ~830,000)
+    Disease: Malaria (primary) + Dengue
+    Risk score: 36.6  (city mean: 55.2)  BELOW ↓
+    EHI:        53.0  (city mean: 45.2)  ABOVE ↑
+    Dominant issue: Low Vegetation
+    Source: ToI 2021 (BMC data cited): '95% of Mumbai's malaria burden from M/East'; NDTV 20
+    Notes:  Govandi/Mankhurd/Trombay; highest malaria burden ward in city by far; dense info
+
+  L Ward (pop ~930,000)
+    Disease: Dengue (primary)
+    Risk score: 80.3  (city mean: 55.2)  ABOVE ↑
+    EHI:        29.3  (city mean: 45.2)  BELOW ↓
+    Dominant issue: Urban Heat Island
+    Source: IndianExpress 2020 (BMC data cited): 371 confirmed cases, six to seven slum hots
+    Notes:  Kurla East/West; dense slums, poor sanitation, standing water post-monsoon.
+
+  K/East Ward (pop ~850,000)
+    Disease: Dengue + Malaria
+    Risk score: 80.4  (city mean: 55.2)  ABOVE ↑
+    EHI:        34.6  (city mean: 45.2)  BELOW ↓
+    Dominant issue: Urban Heat Island
+    Source: NDTV 2016: 'Kurla East' named alongside Govandi as top dengue source; ToI BMC 10
+    Notes:  Sakinaka, Kurla East; mixed industrial-residential; construction sites.
+
+  M/West Ward (pop ~420,000)
+    Disease: Dengue
+    Risk score: 79.7  (city mean: 55.2)  ABOVE ↑
+    EHI:        34.9  (city mean: 45.2)  BELOW ↓
+    Dominant issue: Urban Heat Island
+    Source: ToI 2025; NDTV 2016: Chembur named among top dengue areas.
+    Notes:  Chembur; adjacent to M/East; similar informal settlement density.
+
+  N Ward (pop ~640,000)
+    Disease: Malaria + Dengue
+    Risk score: 73.5  (city mean: 55.2)  ABOVE ↑
+    EHI:        41.3  (city mean: 45.2)  BELOW ↓
+    Dominant issue: Urban Heat Island
+    Source: ToI 2024: 'area-specific focus' for malaria control; Ghatkopar named in BMC floo
+    Notes:  Ghatkopar; construction-heavy area; 35% malaria increase 2024 partly from here.
+
+  D Ward (pop ~350,000)
+    Disease: Malaria
+    Risk score: 27.9  (city mean: 55.2)  BELOW ↓
+    EHI:        50.9  (city mean: 45.2)  ABOVE ↑
+    Dominant issue: High Built-up Density
+    Source: MCGM PCO Notice 2020: insecticidal treatment tendered specifically for D Ward co
+    Notes:  Worli/Prabhadevi; construction activity drives larval breeding.
+
+INTERPRETATION
+--------------
+Convergent wards (high disease + high risk + low EHI):  expected
+  co-location — the composite index elevates these areas for the
+  same environmental reasons that drive disease transmission
+  (heat stress, poor drainage indicators, dense built-up areas).
+
+Divergent wards (high disease + moderate/low risk):  the composite
+  index DOES NOT capture M/East Ward's disease burden accurately.
+  M/East (Govandi) contains large green/forested Aarey-adjacent
+  cells that suppress its composite risk score, while actual disease
+  burden is concentrated in dense informal settlement micro-pockets
+  that are not resolved at 1 km² grid resolution. This is a known
+  limitation of reconnaissance-scale composite indices.
+
+WHAT THIS DOES AND DOES NOT PROVE
+----------------------------------
+The CitySense composite risk index is a heat-and-ecology stress
+indicator, not a disease burden predictor. Co-location with high-
+burden wards (where it occurs) reflects shared environmental
+drivers — heat, density, impervious surfaces — not a causal or
+predictive relationship with disease incidence. M/East's divergence
+demonstrates this clearly: it is the city's highest malaria ward
+yet scores in the middle tercile of the composite index.
+
+LIMITATIONS
+-----------
+1. Only 6 wards — far too few for any statistical correlation.
+2. Disease data sourced from news/BMC citations, not official ward-
+   level tables. Not all wards are equally reported in the media.
+3. Pre-monsoon 2023 risk scores may not represent peak disease
+   transmission season (July-September), when standing water
+   conditions are most relevant.
+4. M/East Ward divergence may partly reflect the ward-centroid
+   assignment method: Aarey Colony cells are assigned to adjacent
+   wards rather than the actual settlement areas.
+====================================================================

@@ -1,0 +1,17 @@
+services:
+  # FastAPI Backend Service (Render Free Tier)
+  - type: web
+    name: citysense-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && pip install -r backend/requirements.txt uvicorn
+    startCommand: python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: google/gemini-2.5-flash

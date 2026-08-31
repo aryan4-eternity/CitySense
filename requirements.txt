@@ -1,0 +1,17 @@
+earthengine-api
+geemap
+geopandas
+shapely
+pyyaml
+pandas
+scikit-learn
+xgboost
+shap
+matplotlib
+seaborn
+rasterio
+requests
+geopy
+pyproj
+fastapi
+uvicorn[standard]

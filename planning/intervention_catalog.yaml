@@ -1,0 +1,242 @@
+# intervention_catalog.yaml
+# ==========================
+# Urban Planning Decision Engine — Intervention Knowledge Base
+#
+# HOW TO ADD A NEW INTERVENTION
+# ------------------------------
+# 1. Add a new key under `interventions:` matching an environmental condition
+#    name exactly as it appears in environmental_intelligence.json
+#    (e.g. "Urban Heat Island", "Low Vegetation", etc.).
+# 2. Provide all required fields: primary, secondary, objectives, benefits,
+#    cost, timeline, complexity, priority_weight.
+# 3. To handle combinations of conditions, add an entry under
+#    `multi_condition_overrides:` with a `conditions:` list (≥2 items).
+#    The engine selects the override whose condition set is the largest
+#    subset of the detected conditions (most-specific match wins).
+# 4. No source-code changes are needed.
+#
+# FIELD REFERENCE
+# ---------------
+# primary          : str   — recommended primary intervention name
+# secondary        : list  — 2–4 supporting interventions
+# objectives       : list  — planning objectives addressed (first used as primary)
+# benefits         : list  — expected environmental improvements
+# cost             : str   — "Low" | "Medium" | "High"
+# timeline         : str   — indicative delivery timeframe
+# complexity       : str   — "Easy" | "Moderate" | "Complex"
+# priority_weight  : str   — "Low" | "Medium" | "High" (catalog-level hint)
+# conditions       : list  — (multi_condition_overrides only) trigger conditions
+
+interventions:
+
+  Urban Heat Island:
+    primary: "Urban Forest"
+    secondary:
+      - "Cool Roof Program"
+      - "Street Tree Plantation"
+      - "Green Roof Initiative"
+    objectives:
+      - "Reduce Urban Heat"
+      - "Increase Green Cover"
+    benefits:
+      - "Lower LST"
+      - "Higher NDVI"
+      - "Better Air Quality"
+      - "Improved Walkability"
+    cost: "Medium"
+    timeline: "2-5 Years"
+    complexity: "Moderate"
+    priority_weight: "High"
+
+  Low Vegetation:
+    primary: "Afforestation Program"
+    secondary:
+      - "Park Expansion"
+      - "Green Corridors"
+      - "Urban Garden Network"
+    objectives:
+      - "Increase Green Cover"
+      - "Protect Ecological Assets"
+    benefits:
+      - "Higher NDVI"
+      - "Lower LST"
+      - "Improved Biodiversity"
+      - "Carbon Sequestration"
+    cost: "Low"
+    timeline: "1-3 Years"
+    complexity: "Easy"
+    priority_weight: "High"
+
+  High Built-up Density:
+    primary: "Vertical Greening"
+    secondary:
+      - "Pocket Parks"
+      - "Development Regulation"
+      - "Permeable Paving"
+    objectives:
+      - "Limit Urban Expansion"
+      - "Increase Green Cover"
+    benefits:
+      - "Reduced Heat Retention"
+      - "Improved Water Retention"
+      - "Higher NDVI"
+    cost: "High"
+    timeline: "3-7 Years"
+    complexity: "Complex"
+    priority_weight: "Medium"
+
+  Flood Susceptibility:
+    primary: "Drainage Infrastructure Upgrade"
+    secondary:
+      - "Rainwater Harvesting"
+      - "Wetland Restoration"
+      - "Permeable Pavements"
+    objectives:
+      - "Improve Drainage"
+      - "Reduce Flood Risk"
+    benefits:
+      - "Reduced Flood Risk"
+      - "Improved Water Retention"
+      - "Groundwater Recharge"
+    cost: "High"
+    timeline: "2-5 Years"
+    complexity: "Complex"
+    priority_weight: "High"
+
+  Environmental Stress:
+    primary: "Integrated Urban Renewal"
+    secondary:
+      - "Green Infrastructure Network"
+      - "Cool Corridor Development"
+    objectives:
+      - "Reduce Urban Heat"
+      - "Increase Green Cover"
+      - "Improve Drainage"
+    benefits:
+      - "Lower LST"
+      - "Higher NDVI"
+      - "Better Air Quality"
+      - "Reduced Flood Risk"
+    cost: "High"
+    timeline: "5-10 Years"
+    complexity: "Complex"
+    priority_weight: "High"
+
+  Ecological Stability:
+    primary: "Ecological Asset Protection"
+    secondary:
+      - "Green Buffer Zone"
+      - "Biodiversity Corridor"
+    objectives:
+      - "Protect Ecological Assets"
+    benefits:
+      - "Maintained Biodiversity"
+      - "Sustained Cooling"
+      - "Carbon Storage"
+    cost: "Low"
+    timeline: "Ongoing"
+    complexity: "Easy"
+    priority_weight: "Low"
+
+  default:
+    primary: "Environmental Monitoring"
+    secondary:
+      - "Baseline Assessment"
+      - "Indicator Tracking"
+    objectives:
+      - "Baseline Environmental Management"
+    benefits:
+      - "Improved Data Quality"
+      - "Early Warning Capability"
+    cost: "Low"
+    timeline: "Ongoing"
+    complexity: "Easy"
+    priority_weight: "Low"
+
+
+# Multi-condition overrides
+# --------------------------
+# Ordered from most-specific (longest conditions list) to least-specific.
+# The engine picks the first entry whose conditions are ALL present in the
+# cell's detected_conditions list.
+
+multi_condition_overrides:
+
+  - conditions:
+      - "Urban Heat Island"
+      - "Low Vegetation"
+      - "High Built-up Density"
+    primary: "Urban Forest"
+    secondary:
+      - "Cool Roof Program"
+      - "Vertical Greening"
+      - "Street Tree Plantation"
+    objectives:
+      - "Reduce Urban Heat"
+      - "Increase Green Cover"
+      - "Limit Urban Expansion"
+    benefits:
+      - "Lower LST"
+      - "Higher NDVI"
+      - "Better Air Quality"
+      - "Reduced Heat Retention"
+    cost: "High"
+    timeline: "3-7 Years"
+    complexity: "Complex"
+
+  - conditions:
+      - "Urban Heat Island"
+      - "Low Vegetation"
+    primary: "Urban Forest"
+    secondary:
+      - "Cool Roof Program"
+      - "Street Tree Plantation"
+      - "Bioswales"
+    objectives:
+      - "Reduce Urban Heat"
+      - "Increase Green Cover"
+    benefits:
+      - "Lower LST"
+      - "Higher NDVI"
+      - "Better Air Quality"
+    cost: "Medium"
+    timeline: "2-5 Years"
+    complexity: "Moderate"
+
+  - conditions:
+      - "Urban Heat Island"
+      - "High Built-up Density"
+    primary: "Cool Roof Program"
+    secondary:
+      - "Vertical Greening"
+      - "Green Roof Initiative"
+      - "Reflective Pavements"
+    objectives:
+      - "Reduce Urban Heat"
+      - "Limit Urban Expansion"
+    benefits:
+      - "Lower LST"
+      - "Reduced Energy Consumption"
+      - "Improved Comfort"
+    cost: "Medium"
+    timeline: "1-3 Years"
+    complexity: "Moderate"
+
+  - conditions:
+      - "Flood Susceptibility"
+      - "High Built-up Density"
+    primary: "Integrated Drainage and Green Infrastructure"
+    secondary:
+      - "Permeable Pavements"
+      - "Rainwater Harvesting"
+      - "Wetland Restoration"
+    objectives:
+      - "Improve Drainage"
+      - "Reduce Flood Risk"
+    benefits:
+      - "Reduced Flood Risk"
+      - "Improved Water Retention"
+      - "Groundwater Recharge"
+    cost: "High"
+    timeline: "3-7 Years"
+    complexity: "Complex"

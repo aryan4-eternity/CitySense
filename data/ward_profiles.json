@@ -1,0 +1,784 @@
+{
+  "A Ward": {
+    "ward": "A Ward",
+    "zone": "City",
+    "ward_population": 192000,
+    "total_cells": 79,
+    "high_priority_cells": 1,
+    "dominant_priority": "High",
+    "priority_score_mean": 30.9,
+    "priority_score_max": 66.0,
+    "priority_distribution": {
+      "High": 1,
+      "Medium": 15,
+      "Low": 63
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 67,
+      "Afforestation Program": 4,
+      "Vertical Greening": 4,
+      "Integrated Drainage and Green Infrastructure": 2,
+      "Cool Roof Program": 2
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 6,
+      "High Built-up Density": 4,
+      "Urban Heat Island": 2
+    },
+    "avg_ehi": 53.5,
+    "avg_risk_score": 23.8,
+    "planning_summary": "A Ward has low planning urgency (avg priority score 31/100, 1 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "B Ward": {
+    "ward": "B Ward",
+    "zone": "City",
+    "ward_population": 130000,
+    "total_cells": 53,
+    "high_priority_cells": 2,
+    "dominant_priority": "High",
+    "priority_score_mean": 33.1,
+    "priority_score_max": 60.6,
+    "priority_distribution": {
+      "High": 2,
+      "Medium": 13,
+      "Low": 38
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 40,
+      "Cool Roof Program": 8,
+      "Vertical Greening": 2,
+      "Integrated Urban Renewal": 2,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 8,
+      "High Built-up Density": 2,
+      "Environmental Stress": 2,
+      "Low Vegetation": 1
+    },
+    "avg_ehi": 50.1,
+    "avg_risk_score": 27.2,
+    "planning_summary": "B Ward has low planning urgency (avg priority score 33/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "C Ward": {
+    "ward": "C Ward",
+    "zone": "City",
+    "ward_population": 165000,
+    "total_cells": 6,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 40.0,
+    "priority_score_max": 57.8,
+    "priority_distribution": {
+      "Medium": 3,
+      "Low": 3
+    },
+    "dominant_intervention": "Vertical Greening",
+    "intervention_counts": {
+      "Environmental Monitoring": 3,
+      "Vertical Greening": 2,
+      "Cool Roof Program": 1
+    },
+    "dominant_issue": "High Built-up Density",
+    "issue_counts": {
+      "High Built-up Density": 2,
+      "Urban Heat Island": 1
+    },
+    "avg_ehi": 42.7,
+    "avg_risk_score": 41.6,
+    "planning_summary": "C Ward warrants attention (avg priority score 40/100): primary recommended intervention is Vertical Greening driven by High Built-up Density."
+  },
+  "D Ward": {
+    "ward": "D Ward",
+    "zone": "City",
+    "ward_population": 350000,
+    "total_cells": 23,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 33.1,
+    "priority_score_max": 58.9,
+    "priority_distribution": {
+      "Medium": 6,
+      "Low": 17
+    },
+    "dominant_intervention": "Drainage Infrastructure Upgrade",
+    "intervention_counts": {
+      "Environmental Monitoring": 18,
+      "Drainage Infrastructure Upgrade": 1,
+      "Integrated Drainage and Green Infrastructure": 1,
+      "Vertical Greening": 1,
+      "Cool Roof Program": 1,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "High Built-up Density",
+    "issue_counts": {
+      "High Built-up Density": 2,
+      "Flood Susceptibility": 1,
+      "Urban Heat Island": 1,
+      "Low Vegetation": 1
+    },
+    "avg_ehi": 50.9,
+    "avg_risk_score": 27.9,
+    "planning_summary": "D Ward has low planning urgency (avg priority score 33/100): primary recommended intervention is Drainage Infrastructure Upgrade driven by High Built-up Density."
+  },
+  "E Ward": {
+    "ward": "E Ward",
+    "zone": "City",
+    "ward_population": 400000,
+    "total_cells": 12,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 41.0,
+    "priority_score_max": 59.9,
+    "priority_distribution": {
+      "Medium": 6,
+      "Low": 6
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 6,
+      "Environmental Monitoring": 6
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 6
+    },
+    "avg_ehi": 43.4,
+    "avg_risk_score": 45.4,
+    "planning_summary": "E Ward warrants attention (avg priority score 41/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "F/North Ward": {
+    "ward": "F/North Ward",
+    "zone": "City",
+    "ward_population": 540000,
+    "total_cells": 23,
+    "high_priority_cells": 2,
+    "dominant_priority": "High",
+    "priority_score_mean": 48.2,
+    "priority_score_max": 61.3,
+    "priority_distribution": {
+      "High": 2,
+      "Medium": 15,
+      "Low": 6
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 8,
+      "Cool Roof Program": 7,
+      "Urban Forest": 6,
+      "Integrated Urban Renewal": 1,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 13,
+      "Environmental Stress": 1,
+      "Low Vegetation": 1
+    },
+    "avg_ehi": 39.6,
+    "avg_risk_score": 65.3,
+    "planning_summary": "F/North Ward warrants attention (avg priority score 48/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "F/South Ward": {
+    "ward": "F/South Ward",
+    "zone": "City",
+    "ward_population": 370000,
+    "total_cells": 15,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 40.7,
+    "priority_score_max": 59.0,
+    "priority_distribution": {
+      "Medium": 8,
+      "Low": 7
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 8,
+      "Cool Roof Program": 6,
+      "Vertical Greening": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 6,
+      "High Built-up Density": 1
+    },
+    "avg_ehi": 44.6,
+    "avg_risk_score": 46.1,
+    "planning_summary": "F/South Ward warrants attention (avg priority score 41/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "G/North Ward": {
+    "ward": "G/North Ward",
+    "zone": "City",
+    "ward_population": 615000,
+    "total_cells": 11,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 40.8,
+    "priority_score_max": 53.6,
+    "priority_distribution": {
+      "Medium": 6,
+      "Low": 5
+    },
+    "dominant_intervention": "Vertical Greening",
+    "intervention_counts": {
+      "Environmental Monitoring": 6,
+      "Vertical Greening": 3,
+      "Cool Roof Program": 1,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "High Built-up Density",
+    "issue_counts": {
+      "High Built-up Density": 3,
+      "Urban Heat Island": 1,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 45.1,
+    "avg_risk_score": 47.1,
+    "planning_summary": "G/North Ward warrants attention (avg priority score 41/100): primary recommended intervention is Vertical Greening driven by High Built-up Density."
+  },
+  "G/South Ward": {
+    "ward": "G/South Ward",
+    "zone": "City",
+    "ward_population": 385000,
+    "total_cells": 27,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 32.6,
+    "priority_score_max": 53.3,
+    "priority_distribution": {
+      "Medium": 6,
+      "Low": 21
+    },
+    "dominant_intervention": "Vertical Greening",
+    "intervention_counts": {
+      "Environmental Monitoring": 22,
+      "Vertical Greening": 2,
+      "Cool Roof Program": 2,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "High Built-up Density",
+    "issue_counts": {
+      "High Built-up Density": 2,
+      "Urban Heat Island": 2,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 50.3,
+    "avg_risk_score": 25.8,
+    "planning_summary": "G/South Ward has low planning urgency (avg priority score 33/100): primary recommended intervention is Vertical Greening driven by High Built-up Density."
+  },
+  "H/East Ward": {
+    "ward": "H/East Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 570000,
+    "total_cells": 12,
+    "high_priority_cells": 3,
+    "dominant_priority": "High",
+    "priority_score_mean": 55.1,
+    "priority_score_max": 63.7,
+    "priority_distribution": {
+      "High": 3,
+      "Medium": 9
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 7,
+      "Environmental Monitoring": 2,
+      "Urban Forest": 2,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 9,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 31.4,
+    "avg_risk_score": 78.8,
+    "planning_summary": "H/East Ward warrants attention (avg priority score 55/100, 3 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "H/West Ward": {
+    "ward": "H/West Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 315000,
+    "total_cells": 35,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 32.1,
+    "priority_score_max": 57.3,
+    "priority_distribution": {
+      "Medium": 9,
+      "Low": 26
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 30,
+      "Cool Roof Program": 2,
+      "Vertical Greening": 2,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 2,
+      "High Built-up Density": 2,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 51.1,
+    "avg_risk_score": 24.8,
+    "planning_summary": "H/West Ward has low planning urgency (avg priority score 32/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "K/East Ward": {
+    "ward": "K/East Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 850000,
+    "total_cells": 21,
+    "high_priority_cells": 2,
+    "dominant_priority": "High",
+    "priority_score_mean": 54.5,
+    "priority_score_max": 67.4,
+    "priority_distribution": {
+      "High": 2,
+      "Medium": 19
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 8,
+      "Urban Forest": 4,
+      "Drainage Infrastructure Upgrade": 3,
+      "Afforestation Program": 3,
+      "Integrated Drainage and Green Infrastructure": 2,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 12,
+      "Flood Susceptibility": 3,
+      "Low Vegetation": 3,
+      "High Built-up Density": 2,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 34.6,
+    "avg_risk_score": 80.4,
+    "planning_summary": "K/East Ward warrants attention (avg priority score 54/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "K/West Ward": {
+    "ward": "K/West Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 780000,
+    "total_cells": 42,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 35.6,
+    "priority_score_max": 56.0,
+    "priority_distribution": {
+      "Medium": 15,
+      "Low": 27
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 33,
+      "Cool Roof Program": 4,
+      "Vertical Greening": 2,
+      "Integrated Urban Renewal": 2,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 4,
+      "High Built-up Density": 2,
+      "Environmental Stress": 2,
+      "Low Vegetation": 1
+    },
+    "avg_ehi": 49.2,
+    "avg_risk_score": 34.4,
+    "planning_summary": "K/West Ward has low planning urgency (avg priority score 36/100): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "L Ward": {
+    "ward": "L Ward",
+    "zone": "Eastern Suburbs",
+    "ward_population": 930000,
+    "total_cells": 11,
+    "high_priority_cells": 1,
+    "dominant_priority": "High",
+    "priority_score_mean": 56.3,
+    "priority_score_max": 65.4,
+    "priority_distribution": {
+      "High": 1,
+      "Medium": 10
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 8,
+      "Urban Forest": 2,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 10,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 29.3,
+    "avg_risk_score": 80.3,
+    "planning_summary": "L Ward warrants attention (avg priority score 56/100, 1 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "M/East Ward": {
+    "ward": "M/East Ward",
+    "zone": "Eastern Suburbs",
+    "ward_population": 830000,
+    "total_cells": 105,
+    "high_priority_cells": 3,
+    "dominant_priority": "High",
+    "priority_score_mean": 34.9,
+    "priority_score_max": 66.5,
+    "priority_distribution": {
+      "High": 3,
+      "Medium": 29,
+      "Low": 73
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 75,
+      "Afforestation Program": 15,
+      "Cool Roof Program": 7,
+      "Drainage Infrastructure Upgrade": 5,
+      "Urban Forest": 3
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 15,
+      "Urban Heat Island": 10,
+      "Flood Susceptibility": 5
+    },
+    "avg_ehi": 53.0,
+    "avg_risk_score": 36.6,
+    "planning_summary": "M/East Ward has low planning urgency (avg priority score 35/100, 3 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "M/West Ward": {
+    "ward": "M/West Ward",
+    "zone": "Eastern Suburbs",
+    "ward_population": 420000,
+    "total_cells": 13,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 54.2,
+    "priority_score_max": 59.4,
+    "priority_distribution": {
+      "Medium": 13
+    },
+    "dominant_intervention": "Urban Forest",
+    "intervention_counts": {
+      "Urban Forest": 9,
+      "Cool Roof Program": 2,
+      "Afforestation Program": 1,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 11,
+      "Low Vegetation": 1,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 34.9,
+    "avg_risk_score": 79.7,
+    "planning_summary": "M/West Ward warrants attention (avg priority score 54/100): primary recommended intervention is Urban Forest driven by Urban Heat Island."
+  },
+  "N Ward": {
+    "ward": "N Ward",
+    "zone": "Eastern Suburbs",
+    "ward_population": 640000,
+    "total_cells": 27,
+    "high_priority_cells": 3,
+    "dominant_priority": "High",
+    "priority_score_mean": 50.1,
+    "priority_score_max": 64.2,
+    "priority_distribution": {
+      "High": 3,
+      "Medium": 20,
+      "Low": 4
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 11,
+      "Afforestation Program": 7,
+      "Urban Forest": 3,
+      "Environmental Monitoring": 2,
+      "Integrated Urban Renewal": 2,
+      "Drainage Infrastructure Upgrade": 2
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 14,
+      "Low Vegetation": 7,
+      "Environmental Stress": 2,
+      "Flood Susceptibility": 2
+    },
+    "avg_ehi": 41.3,
+    "avg_risk_score": 73.5,
+    "planning_summary": "N Ward warrants attention (avg priority score 50/100, 3 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "Outside Municipal Limits": {
+    "ward": "Outside Municipal Limits",
+    "zone": "N/A",
+    "ward_population": 0,
+    "total_cells": 8,
+    "high_priority_cells": 3,
+    "dominant_priority": "High",
+    "priority_score_mean": 56.5,
+    "priority_score_max": 61.4,
+    "priority_distribution": {
+      "High": 3,
+      "Medium": 5
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 7,
+      "Afforestation Program": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 7,
+      "Low Vegetation": 1
+    },
+    "avg_ehi": 30.1,
+    "avg_risk_score": 81.8,
+    "planning_summary": "Outside Municipal Limits warrants attention (avg priority score 56/100, 3 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "P/North Ward": {
+    "ward": "P/North Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 970000,
+    "total_cells": 38,
+    "high_priority_cells": 1,
+    "dominant_priority": "High",
+    "priority_score_mean": 42.7,
+    "priority_score_max": 61.7,
+    "priority_distribution": {
+      "High": 1,
+      "Medium": 22,
+      "Low": 15
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Environmental Monitoring": 14,
+      "Afforestation Program": 10,
+      "Cool Roof Program": 7,
+      "Vertical Greening": 5,
+      "Urban Forest": 1,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 10,
+      "Urban Heat Island": 8,
+      "High Built-up Density": 5,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 46.5,
+    "avg_risk_score": 55.1,
+    "planning_summary": "P/North Ward warrants attention (avg priority score 43/100, 1 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "P/South Ward": {
+    "ward": "P/South Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 480000,
+    "total_cells": 41,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 46.1,
+    "priority_score_max": 59.8,
+    "priority_distribution": {
+      "Medium": 33,
+      "Low": 8
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 16,
+      "Environmental Monitoring": 10,
+      "Cool Roof Program": 8,
+      "Integrated Urban Renewal": 3,
+      "Urban Forest": 2,
+      "Vertical Greening": 1,
+      "Integrated Drainage and Green Infrastructure": 1
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 16,
+      "Urban Heat Island": 10,
+      "Environmental Stress": 3,
+      "High Built-up Density": 2
+    },
+    "avg_ehi": 46.2,
+    "avg_risk_score": 65.9,
+    "planning_summary": "P/South Ward warrants attention (avg priority score 46/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "R/Central Ward": {
+    "ward": "R/Central Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 580000,
+    "total_cells": 38,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 43.9,
+    "priority_score_max": 54.9,
+    "priority_distribution": {
+      "Medium": 26,
+      "Low": 12
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 19,
+      "Environmental Monitoring": 6,
+      "Integrated Drainage and Green Infrastructure": 4,
+      "Urban Forest": 3,
+      "Cool Roof Program": 2,
+      "Integrated Urban Renewal": 2,
+      "Vertical Greening": 1,
+      "Drainage Infrastructure Upgrade": 1
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 23,
+      "Urban Heat Island": 5,
+      "Environmental Stress": 2,
+      "High Built-up Density": 1,
+      "Flood Susceptibility": 1
+    },
+    "avg_ehi": 51.9,
+    "avg_risk_score": 65.3,
+    "planning_summary": "R/Central Ward warrants attention (avg priority score 44/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "R/North Ward": {
+    "ward": "R/North Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 440000,
+    "total_cells": 45,
+    "high_priority_cells": 0,
+    "dominant_priority": "Medium",
+    "priority_score_mean": 45.4,
+    "priority_score_max": 59.3,
+    "priority_distribution": {
+      "Medium": 37,
+      "Low": 8
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 30,
+      "Integrated Drainage and Green Infrastructure": 5,
+      "Cool Roof Program": 5,
+      "Environmental Monitoring": 3,
+      "Urban Forest": 2
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 35,
+      "Urban Heat Island": 7
+    },
+    "avg_ehi": 56.9,
+    "avg_risk_score": 76.1,
+    "planning_summary": "R/North Ward warrants attention (avg priority score 45/100): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "R/South Ward": {
+    "ward": "R/South Ward",
+    "zone": "Western Suburbs",
+    "ward_population": 710000,
+    "total_cells": 19,
+    "high_priority_cells": 2,
+    "dominant_priority": "High",
+    "priority_score_mean": 53.6,
+    "priority_score_max": 60.1,
+    "priority_distribution": {
+      "High": 2,
+      "Medium": 17
+    },
+    "dominant_intervention": "Cool Roof Program",
+    "intervention_counts": {
+      "Cool Roof Program": 7,
+      "Urban Forest": 4,
+      "Integrated Drainage and Green Infrastructure": 3,
+      "Afforestation Program": 3,
+      "Environmental Monitoring": 1,
+      "Integrated Urban Renewal": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 11,
+      "Low Vegetation": 6,
+      "Environmental Stress": 1
+    },
+    "avg_ehi": 39.5,
+    "avg_risk_score": 83.2,
+    "planning_summary": "R/South Ward warrants attention (avg priority score 54/100, 2 high-priority cells): primary recommended intervention is Cool Roof Program driven by Urban Heat Island."
+  },
+  "S Ward": {
+    "ward": "S Ward",
+    "zone": "Eastern Suburbs",
+    "ward_population": 720000,
+    "total_cells": 51,
+    "high_priority_cells": 1,
+    "dominant_priority": "High",
+    "priority_score_mean": 41.8,
+    "priority_score_max": 60.6,
+    "priority_distribution": {
+      "High": 1,
+      "Medium": 26,
+      "Low": 24
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 24,
+      "Environmental Monitoring": 7,
+      "Cool Roof Program": 7,
+      "Drainage Infrastructure Upgrade": 6,
+      "Urban Forest": 4,
+      "Integrated Drainage and Green Infrastructure": 3
+    },
+    "dominant_issue": "Low Vegetation",
+    "issue_counts": {
+      "Low Vegetation": 26,
+      "Urban Heat Island": 11,
+      "Flood Susceptibility": 6,
+      "High Built-up Density": 1
+    },
+    "avg_ehi": 54.4,
+    "avg_risk_score": 61.2,
+    "planning_summary": "S Ward warrants attention (avg priority score 42/100, 1 high-priority cells): primary recommended intervention is Afforestation Program driven by Low Vegetation."
+  },
+  "T Ward": {
+    "ward": "T Ward",
+    "zone": "Eastern Suburbs",
+    "ward_population": 350000,
+    "total_cells": 81,
+    "high_priority_cells": 4,
+    "dominant_priority": "High",
+    "priority_score_mean": 50.7,
+    "priority_score_max": 63.2,
+    "priority_distribution": {
+      "High": 4,
+      "Medium": 71,
+      "Low": 6
+    },
+    "dominant_intervention": "Afforestation Program",
+    "intervention_counts": {
+      "Afforestation Program": 26,
+      "Urban Forest": 21,
+      "Cool Roof Program": 17,
+      "Integrated Drainage and Green Infrastructure": 8,
+      "Environmental Monitoring": 6,
+      "Integrated Urban Renewal": 2,
+      "Drainage Infrastructure Upgrade": 1
+    },
+    "dominant_issue": "Urban Heat Island",
+    "issue_counts": {
+      "Urban Heat Island": 38,
+      "Low Vegetation": 34,
+      "Environmental Stress": 2,
+      "Flood Susceptibility": 1
+    },
+    "avg_ehi": 44.6,
+    "avg_risk_score": 79.3,
+    "planning_summary": "T Ward warrants attention (avg priority score 51/100, 4 high-priority cells): primary recommended intervention is Afforestation Program driven by Urban Heat Island."
+  }
+}

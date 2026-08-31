@@ -1,0 +1,434 @@
+@import 'tailwindcss';
+
+/* ================================================================
+   CitySense Design System — Dark Command-Center Theme
+   ================================================================ */
+
+:root {
+  /* Background layers */
+  --bg-base:         #030914;
+  --bg-panel:        rgba(4, 14, 32, 0.82);
+  --bg-card:         rgba(7, 20, 44, 0.75);
+  --bg-card-hover:   rgba(11, 30, 64, 0.88);
+  --bg-input:        rgba(0, 180, 255, 0.05);
+
+  /* Borders & Specular */
+  --border:          rgba(0, 200, 255, 0.16);
+  --border-bright:   rgba(0, 220, 255, 0.65);
+  --border-subtle:   rgba(0, 160, 230, 0.08);
+
+  /* Glow accent colours */
+  --glow-cyan:       #00d4ff;
+  --glow-cyan-dim:   rgba(0, 212, 255, 0.35);
+  --glow-green:      #00ff9f;
+  --glow-green-dim:  rgba(0, 255, 159, 0.30);
+  --glow-red:        #ff3b5c;
+  --glow-red-dim:    rgba(255, 59, 92, 0.35);
+  --glow-amber:      #ffb340;
+  --glow-amber-dim:  rgba(255, 179, 64, 0.35);
+  --glow-purple:     #b06bff;
+
+  /* Text */
+  --text-primary:    #e2f0fd;
+  --text-secondary:  #7aaad0;
+  --text-muted:      #416b8e;
+  --text-bright:     #ffffff;
+
+  /* Fonts */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --font-ui:   'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ================================================================
+   Base reset
+   ================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================================================================
+   Scrollbar styling
+   ================================================================ */
+
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: rgba(2, 8, 20, 0.6); }
+::-webkit-scrollbar-thumb { background: rgba(0, 180, 255, 0.25); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--glow-cyan); }
+
+/* ================================================================
+   Typography utilities
+   ================================================================ */
+
+.font-mono   { font-family: var(--font-mono); }
+.text-glow   { text-shadow: 0 0 14px var(--glow-cyan); }
+.text-glow-green { text-shadow: 0 0 14px var(--glow-green); }
+.text-glow-red   { text-shadow: 0 0 14px var(--glow-red); }
+.text-glow-amber { text-shadow: 0 0 14px var(--glow-amber); }
+
+.text-cyber  {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   Panel / card glass styles
+   ================================================================ */
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 12px 36px rgba(0, 4, 16, 0.65), 0 0 0 1px rgba(0, 212, 255, 0.08);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glow {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08),
+              0 4px 16px rgba(0, 0, 0, 0.4),
+              0 0 12px rgba(0, 180, 255, 0.06);
+  backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glow:hover {
+  border-color: var(--border-bright);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15),
+              0 6px 20px rgba(0, 0, 0, 0.5),
+              0 0 18px rgba(0, 212, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ================================================================
+   Keyframe animations
+   ================================================================ */
+
+/* Scan line sweeps top → bottom every 8s */
+@keyframes scanline {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Pulse glow — red (critical/high-risk cells) */
+@keyframes pulse-glow-red {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(255, 59, 92, 0.3); }
+  50%       { box-shadow: 0 0 22px 8px rgba(255, 59, 92, 0.75); }
+}
+
+/* Pulse glow — cyan (selected cell panel border) */
+@keyframes pulse-glow-cyan {
+  0%, 100% { border-color: rgba(0, 212, 255, 0.25); box-shadow: 0 0 8px rgba(0, 212, 255, 0.1); }
+  50%       { border-color: rgba(0, 212, 255, 0.80); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+}
+
+/* Number flicker on data load */
+@keyframes flicker {
+  0%            { opacity: 0; transform: scale(0.96); }
+  50%           { opacity: 0.8; }
+  100%          { opacity: 1; transform: scale(1); }
+}
+
+/* Slide in from left */
+@keyframes slide-in-left {
+  from { transform: translateX(-110%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Slide in from bottom (centered) */
+@keyframes slide-in-bottom-center {
+  from { transform: translate(-50%, 40px); opacity: 0; }
+  to   { transform: translate(-50%, 0);    opacity: 1; }
+}
+
+/* Slide in from bottom */
+@keyframes slide-in-bottom {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Fade in */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Dot blink — status indicator */
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Radar ring expand */
+@keyframes radar-ring {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Shimmer across a bar */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* ================================================================
+   Animation utility classes
+   ================================================================ */
+
+.animate-scanline     { animation: scanline 8s linear infinite; }
+.animate-pulse-red    { animation: pulse-glow-red 2s ease-in-out infinite; }
+.animate-pulse-cyan   { animation: pulse-glow-cyan 3s ease-in-out infinite; }
+.animate-flicker      { animation: flicker 0.8s ease-out forwards; }
+.animate-slide-left   { animation: slide-in-left  0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-slide-right  { animation: slide-in-right 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-slide-bottom { animation: slide-in-bottom-center 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-fade-in      { animation: fade-in 0.35s ease-out forwards; }
+.animate-dot-blink    { animation: dot-blink 1.4s ease-in-out infinite; }
+.animate-radar        { animation: radar-ring 2s ease-out infinite; }
+.animate-float        { animation: float-gentle 3s ease-in-out infinite; }
+
+/* ================================================================
+   Indicator bar
+   ================================================================ */
+
+.indicator-bar-track {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(0, 180, 255, 0.10);
+  overflow: hidden;
+  position: relative;
+}
+
+.indicator-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.indicator-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ================================================================
+   Priority badge colours
+   ================================================================ */
+
+.badge-critical { background: rgba(255,59,92,0.18);  color: #ff3b5c; border: 1px solid rgba(255,59,92,0.45); }
+.badge-high     { background: rgba(255,100,40,0.18); color: #ff6428; border: 1px solid rgba(255,100,40,0.45); }
+.badge-medium   { background: rgba(255,179,64,0.18); color: #ffb340; border: 1px solid rgba(255,179,64,0.45); }
+.badge-low      { background: rgba(0,255,159,0.12);  color: #00ff9f; border: 1px solid rgba(0,255,159,0.35); }
+.badge-verylow  { background: rgba(0,212,255,0.10);  color: #00d4ff; border: 1px solid rgba(0,212,255,0.30); }
+
+/* EHI status badge colours */
+.badge-excellent { background: rgba(0,255,159,0.15);  color: #00ff9f; border: 1px solid rgba(0,255,159,0.40); }
+.badge-good      { background: rgba(0,212,255,0.12);  color: #00d4ff; border: 1px solid rgba(0,212,255,0.35); }
+.badge-moderate  { background: rgba(255,179,64,0.15); color: #ffb340; border: 1px solid rgba(255,179,64,0.40); }
+.badge-poor      { background: rgba(255,100,40,0.15); color: #ff6428; border: 1px solid rgba(255,100,40,0.40); }
+.badge-critical-ehi { background: rgba(255,59,92,0.18); color: #ff3b5c; border: 1px solid rgba(255,59,92,0.45); }
+
+/* ================================================================
+   Tab styles
+   ================================================================ */
+
+.tab-list {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-trigger {
+  padding: 8px 14px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.tab-trigger:hover {
+  color: var(--text-secondary);
+}
+
+.tab-trigger[data-state='active'] {
+  color: var(--glow-cyan);
+  border-bottom-color: var(--glow-cyan);
+  text-shadow: 0 0 8px var(--glow-cyan-dim);
+}
+
+/* ================================================================
+   Scanline container (overlay — non-interactive)
+   ================================================================ */
+
+.scanline-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 212, 255, 0.08),
+    rgba(0, 212, 255, 0.14),
+    rgba(0, 212, 255, 0.08),
+    transparent
+  );
+}
+
+/* ================================================================
+   Radar hotspot ring (on map hotspot markers)
+   ================================================================ */
+
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 59, 92, 0.6);
+  pointer-events: none;
+}
+
+/* ================================================================
+   Deck.gl tooltip
+   ================================================================ */
+
+.deck-tooltip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-primary);
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 180, 255, 0.08);
+}
+
+/* ================================================================
+   Dividers
+   ================================================================ */
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 12px 0;
+}
+
+/* ================================================================
+   Mobile Responsiveness (UI/UX Pro Max)
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Header mobile adjustments */
+  .header-subtitle {
+    display: none !important;
+  }
+  .header-clock {
+    display: none !important;
+  }
+
+  /* Stats Panel Mobile Drawer */
+  .stats-panel-container {
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    max-width: 320px !important;
+    top: 56px !important;
+    bottom: 74px !important;
+    z-index: 180 !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 212, 255, 0.15) !important;
+  }
+
+  /* Cell Detail Panel Bottom Sheet */
+  .cell-panel-container {
+    right: 10px !important;
+    left: 10px !important;
+    top: auto !important;
+    bottom: 74px !important;
+    width: auto !important;
+    max-height: 58vh !important;
+    z-index: 180 !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.9), 0 0 24px rgba(0, 212, 255, 0.15) !important;
+  }
+
+  /* Chat Panel Mobile */
+  .chat-panel-container {
+    right: 10px !important;
+    left: 10px !important;
+    top: 56px !important;
+    bottom: 74px !important;
+    width: auto !important;
+    max-width: none !important;
+    z-index: 195 !important;
+  }
+
+  /* Layer Bar Mobile Horizontal Scroll */
+  #layer-bar {
+    bottom: 12px !important;
+    max-width: calc(100vw - 76px) !important;
+    padding: 4px 6px !important;
+    border-radius: 10px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #layer-bar button {
+    padding: 6px 9px !important;
+    font-size: 9.5px !important;
+    min-height: 36px !important;
+  }
+}

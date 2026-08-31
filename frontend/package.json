@@ -1,0 +1,41 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "start:frontend": "vite --open",
+    "start:backend": "cd .. && uvicorn backend.main:app --reload --port 8000"
+  },
+  "dependencies": {
+    "@deck.gl/geo-layers": "^9.3.7",
+    "@deck.gl/layers": "^9.3.7",
+    "@deck.gl/react": "^9.3.7",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tanstack/react-query": "^5.101.2",
+    "autoprefixer": "^10.5.4",
+    "deck.gl": "^9.3.7",
+    "lucide-react": "^1.25.0",
+    "maplibre-gl": "^5.24.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-map-gl": "^8.1.1",
+    "recharts": "^3.9.2",
+    "tailwindcss": "^4.3.3",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  }
+}

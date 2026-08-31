@@ -1,0 +1,106 @@
+"""
+merge_indicators.py
+===================
+Loads the four per-cell GeoJSON files (NDVI, LST, NDBI, DEM) and merges
+them on cell_id into a single master GeoDataFrame. Saves the result as
+data/cells_master.geojson.
+
+Final columns: cell_id, mean_ndvi, mean_lst, mean_ndbi, mean_dem, geometry
+
+Usage:
+    python processing/merge_indicators.py    (from project root)
+"""
+
+import os
+import logging
+import geopandas as gpd
+import pandas as pd
+from config_loader import load_config
+
+logger = logging.getLogger("CitySense.processing.merge_indicators")
+
+# ---------------------------------------------------------------------------
+# Resolve paths
+# ---------------------------------------------------------------------------
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
+
+
+def main() -> None:
+    """Merge the four configured indicator layers into the master dataset."""
+    logger.info("=== City Sense -- Week 4: Merge Indicators ===")
+
+    cfg = load_config()
+    paths = cfg["output_paths"]
+
+    # Define input files and the column each contributes
+    sources = {
+        "ndvi": {
+            "path": os.path.join(PROJECT_ROOT, paths["ndvi_grid"]),
+            "column": "mean_ndvi",
+        },
+        "lst": {
+            "path": os.path.join(PROJECT_ROOT, paths["lst_grid"]),
+            "column": "mean_lst",
+        },
+        "ndbi": {
+            "path": os.path.join(PROJECT_ROOT, paths["ndbi_grid"]),
+            "column": "mean_ndbi",
+        },
+        "dem": {
+            "path": os.path.join(PROJECT_ROOT, paths["dem_grid"]),
+            "column": "mean_dem",
+        },
+    }
+
+    # ---- Load the first source as the base GeoDataFrame --------------------
+    logger.info("Loading indicator layers...")
+    base_name = "ndvi"
+    base_info = sources.pop(base_name)
+    master = gpd.read_file(base_info["path"])
+    logger.info("[%s] %d cells, column: %s", base_name.upper(), len(master), base_info['column'])
+
+    # ---- Merge remaining sources on cell_id --------------------------------
+    for name, info in sources.items():
+        gdf = gpd.read_file(info["path"])
+        col = info["column"]
+        logger.info("[%s] %d cells, column: %s", name.upper(), len(gdf), col)
+
+        # Extract only cell_id and the indicator column (drop geometry)
+        df = pd.DataFrame(gdf[["cell_id", col]])
+        master = master.merge(df, on="cell_id", how="left")
+
+    # ---- Ensure correct column order ---------------------------------------
+    desired_cols = ["cell_id", "mean_ndvi", "mean_lst", "mean_ndbi", "mean_dem", "geometry"]
+    # Keep only desired columns (some may have extra from previous runs)
+    available = [c for c in desired_cols if c in master.columns]
+    master = master[available]
+
+    # ---- Print summary -----------------------------------------------------
+    logger.info("Merged dataset: %d rows x %d columns", len(master), len(master.columns))
+    logger.info("Columns: %s", list(master.columns))
+    logger.debug("First 5 rows:\n%s", master.drop(columns="geometry").head().to_string(index=False))
+
+    logger.debug("Basic statistics:\n%s", master.drop(columns=["geometry", "cell_id"]).describe().to_string())
+
+    # ---- Check for missing values ------------------------------------------
+    missing = master.drop(columns="geometry").isnull().sum()
+    if missing.sum() > 0:
+        logger.warning("Missing values detected:")
+        for col, count in missing.items():
+            if count > 0:
+                logger.warning("  %s: %d missing", col, count)
+    else:
+        logger.info("No missing values in any column.")
+
+    # ---- Save ---------------------------------------------------------------
+    output_path = os.path.join(PROJECT_ROOT, paths["master_data"])
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    master.to_file(output_path, driver="GeoJSON")
+    logger.info("Saved master dataset to: %s", output_path)
+
+    logger.info("=== Merge complete! ===")
+
+
+if __name__ == "__main__":
+    main()

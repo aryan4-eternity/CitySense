@@ -1,0 +1,19 @@
+{
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://citysense-backend-2uy0.onrender.com/api/:path*"
+    },
+    {
+      "source": "/health",
+      "destination": "https://citysense-backend-2uy0.onrender.com/health"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
